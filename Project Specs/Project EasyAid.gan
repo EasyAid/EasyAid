@@ -95,30 +95,30 @@
         <task id="107" name="Scelta e creazione icone e logo applicazione" color="#cc0000" meeting="false" start="2019-01-19" duration="1" complete="0" thirdDate="2019-01-11" thirdDate-constraint="0" expand="true">
             <depend id="44" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="44" name="Implementazione del database" color="#cc0000" meeting="false" start="2019-01-21" duration="15" complete="0" thirdDate="2018-12-24" thirdDate-constraint="0" expand="true">
+        <task id="44" name="Implementazione del database" color="#cc0000" meeting="false" start="2019-01-21" duration="5" complete="0" thirdDate="2018-12-24" thirdDate-constraint="0" expand="true">
             <notes><![CDATA[Implementazione database e analisi casi prova, limitazioni e vincoli del database.]]></notes>
             <depend id="78" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="78" name="Definizione specifiche sviluppo" color="#009900" meeting="false" start="2019-02-07" duration="3" complete="0" thirdDate="2019-01-28" thirdDate-constraint="0" expand="true">
+        <task id="78" name="Definizione specifiche sviluppo" color="#009900" meeting="false" start="2019-01-26" duration="3" complete="0" thirdDate="2019-01-28" thirdDate-constraint="0" expand="true">
             <notes><![CDATA[Nomi variabili, commenti, ecc.]]></notes>
             <depend id="62" type="2" difference="0" hardness="Strong"/>
             <depend id="68" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="62" name="Sviluppo Android App - Parte 1" color="#ffcc33" meeting="false" start="2019-02-11" duration="15" complete="0" thirdDate="2019-01-12" thirdDate-constraint="0" expand="true">
+        <task id="62" name="Sviluppo Android App - Parte 1" color="#ffcc33" meeting="false" start="2019-01-30" duration="20" complete="0" thirdDate="2019-01-12" thirdDate-constraint="0" expand="true">
             <depend id="73" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="68" name="Sviluppo Windows Software - Parte 1" color="#ffcc33" meeting="false" start="2019-02-11" duration="15" complete="0" thirdDate="2019-02-04" thirdDate-constraint="0" expand="true">
+        <task id="68" name="Sviluppo Windows Software - Parte 1" color="#ffcc33" meeting="false" start="2019-01-30" duration="20" complete="0" thirdDate="2019-02-04" thirdDate-constraint="0" expand="true">
             <depend id="73" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="73" name="Punto di confronto 1" color="#ffcc33" meeting="true" start="2019-02-28" duration="0" complete="0" thirdDate="2019-02-05" thirdDate-constraint="0" expand="true">
+        <task id="73" name="Punto di confronto 1" color="#ffcc33" meeting="true" start="2019-02-22" duration="0" complete="0" thirdDate="2019-02-05" thirdDate-constraint="0" expand="true">
             <notes><![CDATA[Confronto sul lavoro svolto da entrambi i gruppi durante la prima parte dello sviluppo.]]></notes>
             <depend id="98" type="2" difference="0" hardness="Strong"/>
             <depend id="130" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="98" name="Sviluppo Android App - Parte 2" color="#ff6600" meeting="false" start="2019-02-28" duration="15" complete="0" thirdDate="2019-02-04" thirdDate-constraint="0" expand="true">
+        <task id="98" name="Sviluppo Android App - Parte 2" color="#ff6600" meeting="false" start="2019-02-22" duration="20" complete="0" thirdDate="2019-02-04" thirdDate-constraint="0" expand="true">
             <depend id="134" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="130" name="Sviluppo Windows Software - Parte 2" color="#ff6600" meeting="false" start="2019-02-28" duration="15" complete="0" thirdDate="2019-02-13" thirdDate-constraint="0" expand="true">
+        <task id="130" name="Sviluppo Windows Software - Parte 2" color="#ff6600" meeting="false" start="2019-02-22" duration="20" complete="0" thirdDate="2019-02-13" thirdDate-constraint="0" expand="true">
             <depend id="134" type="2" difference="0" hardness="Strong"/>
         </task>
         <task id="134" name="Punto di confronto 2" color="#ff6600" meeting="true" start="2019-03-18" duration="0" complete="0" thirdDate="2019-02-13" thirdDate-constraint="0" expand="true">
