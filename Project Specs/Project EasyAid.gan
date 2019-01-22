@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2018-12-10" view-index="0" gantt-divider-location="397" resource-divider-location="300" version="2.8.9" locale="it">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2019-01-14" view-index="0" gantt-divider-location="396" resource-divider-location="300" version="2.8.9" locale="it">
     <description/>
-    <view zooming-state="default:7" id="gantt-chart">
-        <field id="tpd3" name="Nome" width="233" order="0"/>
-        <field id="tpd4" name="Data d'inizio" width="82" order="1"/>
+    <view zooming-state="default:5" id="gantt-chart">
+        <field id="tpd3" name="Nome" width="239" order="0"/>
+        <field id="tpd4" name="Data d'inizio" width="75" order="1"/>
         <field id="tpd5" name="Data di fine" width="78" order="2"/>
         <option id="color.recent"><![CDATA[#009900 #cc0000 #ff6600 #f4f4f4 #ffcc33 #00ff00]]></option>
     </view>
@@ -92,51 +92,51 @@
         <task id="31" name="Graphic Design for Windows Application" color="#cc0000" meeting="false" start="2019-01-15" duration="6" complete="0" thirdDate="2018-12-20" thirdDate-constraint="0" expand="true">
             <depend id="107" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="107" name="Scelta e creazione icone e logo applicazione" color="#cc0000" meeting="false" start="2019-01-22" duration="3" complete="0" thirdDate="2019-01-11" thirdDate-constraint="0" expand="true">
+        <task id="107" name="Scelta e creazione icone e logo applicazione" color="#cc0000" meeting="false" start="2019-01-22" duration="4" complete="0" thirdDate="2019-01-11" thirdDate-constraint="0" expand="true">
             <depend id="44" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="44" name="Implementazione del database" color="#cc0000" meeting="false" start="2019-01-25" duration="5" complete="0" thirdDate="2018-12-24" thirdDate-constraint="0" expand="true">
+        <task id="44" name="Implementazione del database" color="#cc0000" meeting="false" start="2019-01-26" duration="5" complete="0" thirdDate="2018-12-24" thirdDate-constraint="0" expand="true">
             <notes><![CDATA[Implementazione database e analisi casi prova, limitazioni e vincoli del database.]]></notes>
             <depend id="78" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="78" name="Definizione specifiche sviluppo" color="#009900" meeting="false" start="2019-01-31" duration="3" complete="0" thirdDate="2019-01-28" thirdDate-constraint="0" expand="true">
+        <task id="78" name="Definizione specifiche sviluppo" color="#009900" meeting="false" start="2019-02-01" duration="3" complete="0" thirdDate="2019-01-28" thirdDate-constraint="0" expand="true">
             <notes><![CDATA[Nomi variabili, commenti, ecc.]]></notes>
             <depend id="62" type="2" difference="0" hardness="Strong"/>
             <depend id="68" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="62" name="Sviluppo Android App - Parte 1" color="#ffcc33" meeting="false" start="2019-02-04" duration="20" complete="0" thirdDate="2019-01-12" thirdDate-constraint="0" expand="true">
+        <task id="62" name="Sviluppo Android App - Parte 1" color="#ffcc33" meeting="false" start="2019-02-05" duration="20" complete="0" thirdDate="2019-01-12" thirdDate-constraint="0" expand="true">
             <depend id="73" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="68" name="Sviluppo Windows Software - Parte 1" color="#ffcc33" meeting="false" start="2019-02-04" duration="20" complete="0" thirdDate="2019-02-04" thirdDate-constraint="0" expand="true">
+        <task id="68" name="Sviluppo Windows Software - Parte 1" color="#ffcc33" meeting="false" start="2019-02-05" duration="20" complete="0" thirdDate="2019-02-04" thirdDate-constraint="0" expand="true">
             <depend id="73" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="73" name="Punto di confronto 1" color="#ffcc33" meeting="true" start="2019-02-27" duration="0" complete="0" thirdDate="2019-02-05" thirdDate-constraint="0" expand="true">
+        <task id="73" name="Punto di confronto 1" color="#ffcc33" meeting="true" start="2019-02-28" duration="0" complete="0" thirdDate="2019-02-05" thirdDate-constraint="0" expand="true">
             <notes><![CDATA[Confronto sul lavoro svolto da entrambi i gruppi durante la prima parte dello sviluppo.]]></notes>
             <depend id="98" type="2" difference="0" hardness="Strong"/>
             <depend id="130" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="98" name="Sviluppo Android App - Parte 2" color="#ff6600" meeting="false" start="2019-02-27" duration="20" complete="0" thirdDate="2019-02-04" thirdDate-constraint="0" expand="true">
+        <task id="98" name="Sviluppo Android App - Parte 2" color="#ff6600" meeting="false" start="2019-02-28" duration="20" complete="0" thirdDate="2019-02-04" thirdDate-constraint="0" expand="true">
             <depend id="134" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="130" name="Sviluppo Windows Software - Parte 2" color="#ff6600" meeting="false" start="2019-02-27" duration="20" complete="0" thirdDate="2019-02-13" thirdDate-constraint="0" expand="true">
+        <task id="130" name="Sviluppo Windows Software - Parte 2" color="#ff6600" meeting="false" start="2019-02-28" duration="20" complete="0" thirdDate="2019-02-13" thirdDate-constraint="0" expand="true">
             <depend id="134" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="134" name="Punto di confronto 2" color="#ff6600" meeting="true" start="2019-03-22" duration="0" complete="0" thirdDate="2019-02-13" thirdDate-constraint="0" expand="true">
+        <task id="134" name="Punto di confronto 2" color="#ff6600" meeting="true" start="2019-03-23" duration="0" complete="0" thirdDate="2019-02-13" thirdDate-constraint="0" expand="true">
             <notes><![CDATA[Confronto sul lavoro svolto da entrambi i gruppi durante la seconda parte dello sviluppo.]]></notes>
             <depend id="140" type="2" difference="0" hardness="Strong"/>
             <depend id="146" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="140" name="Sviluppo Android App - Parte 3" color="#ff6600" meeting="false" start="2019-03-22" duration="20" complete="0" thirdDate="2019-03-05" thirdDate-constraint="0" expand="true">
+        <task id="140" name="Sviluppo Android App - Parte 3" color="#ff6600" meeting="false" start="2019-03-23" duration="20" complete="0" thirdDate="2019-03-05" thirdDate-constraint="0" expand="true">
             <depend id="150" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="146" name="Sviluppo Windows Software - Parte 3" color="#ff6600" meeting="false" start="2019-03-22" duration="20" complete="0" thirdDate="2019-03-05" thirdDate-constraint="0" expand="true">
+        <task id="146" name="Sviluppo Windows Software - Parte 3" color="#ff6600" meeting="false" start="2019-03-23" duration="20" complete="0" thirdDate="2019-03-05" thirdDate-constraint="0" expand="true">
             <depend id="150" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="150" name="Testing finale dell'applicazione" color="#cc0000" meeting="false" start="2019-04-15" duration="7" complete="0" thirdDate="2019-03-23" thirdDate-constraint="0" expand="true">
+        <task id="150" name="Testing finale dell'applicazione" color="#cc0000" meeting="false" start="2019-04-16" duration="7" complete="0" thirdDate="2019-03-23" thirdDate-constraint="0" expand="true">
             <notes><![CDATA[Test finale di tutte le funzionalità, facendosi aiutare anche da soggetti terzi.]]></notes>
             <depend id="154" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="154" name="Slack" color="#009900" meeting="false" start="2019-04-23" duration="2" complete="0" thirdDate="2019-03-27" thirdDate-constraint="0" expand="true"/>
+        <task id="154" name="Slack" color="#009900" meeting="false" start="2019-04-24" duration="1" complete="0" thirdDate="2019-03-27" thirdDate-constraint="0" expand="true"/>
         <task id="14" name="Fine" color="#8cb6ce" meeting="true" start="2019-05-02" duration="0" complete="0" thirdDate="2018-12-17" thirdDate-constraint="0" expand="true">
             <notes><![CDATA[Fine progetto e presentazione]]></notes>
         </task>
