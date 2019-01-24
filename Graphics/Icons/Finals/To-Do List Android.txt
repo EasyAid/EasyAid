@@ -10,5 +10,5 @@ Punti solo per Android (material.io, theme color):
 Punti comuni:
 - Logo applicazione (b/w, theme colors)
 - Loghi paziente, medico e farmacia (white)
-- Logo richiesta farmaco, calendario, cronologia, impostazioni, ordina ricetta farmacia, richiesta generica (theme colors)
+- Logo richiesta farmaco, calendario, cronologia, impostazioni, ordina ricetta farmaco, richiesta generica (theme colors)
 - Logo richiesta visita, richiesta ricetta, visualizza richieste (white)
