@@ -1,0 +1,13 @@
+Punti solo per Windows (da Fluent Design...non fare):
+- Iconcina persona per login
+- Iconcina lucchetto per password
+- Iconcina calendario per date
+- Iconcina più per richieste
+- Iconcina riduci a incona
+- Iconcina x per chiudere
+
+Punti comuni:
+- Logo applicazione (b/w, theme colors)
+- Loghi paziente, medico e farmacia (white)
+- Logo richiesta farmaco, calendario, cronologia, impostazioni, ordina ricetta farmaco, richiesta generica (theme colors)
+- Logo richiesta visita, richiesta ricetta, visualizza richieste (white)
