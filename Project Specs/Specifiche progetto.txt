@@ -1,0 +1,20 @@
+Cose uguali:
+- Variabili con nomi SIGNIFICATIVI
+- Naming delle variabili in lowerCamelCase
+- Naming delle funzioni in lowerCamelCase
+- Naming delle classi/strutture in UpperCamelCase
+- Per ogni classe, struttura e funzione: commento che indichi l'autore e il funzionamento in breve (Nome1, [Nome2] \n Descrizione)
+- Variabili globali/costanti in CAPSLOCK e underscore al posto degli spazi
+- Evitare la ricorsione
+- Evitare congestione del database (attraverso thread e delay)
+- Non si toccano le funzioni degli altri senza discuterne
+
+Windows:
+- Stesura delle graffe a capo
+- IDE da utilizzare: Visual Studio 2017
+- Linguaggio da usare: C# .NET e XAML (possibile uso di Framework Fluent Design)
+
+Android:
+- Stesura delle graffe in riga
+- IDE da utilizzare: Android Studio
+- Linguaggio da usare: XML e Java
