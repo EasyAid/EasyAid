@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".RegistrazionePaziente">
 
+    <!-- mettere il topBar in tutti i layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,213 +42,494 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/registrazione1Paz"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="DATI ANAGRAFICI"
-            android:layout_marginBottom="10dp"
-            android:textColor="@color/greenDark"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"/>
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:orientation="vertical">
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint=" NOME"
-                android:inputType="text"
-                android:imeOptions="actionDone"
+                android:text="DATI ANAGRAFICI"
+                android:layout_marginBottom="10dp"
                 android:textColor="@color/greenDark"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
-                android:background="@null"/>
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"/>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="20dp"
-                android:background="@color/greenDark"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint=" COGNOME"
-                android:inputType="text"
-                android:imeOptions="actionDone"
-                android:textColor="@color/greenDark"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
-                android:background="@null"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="20dp"
-                android:background="@color/greenDark"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/calendar"/>
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/editCodiceFiscalePaz"
+                    android:id="@+id/editNomePaz"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="5dp"
-                    android:hint=" DATA DI NASCITA"
+                    android:layout_height="wrap_content"
+                    android:hint=" NOME"
                     android:inputType="text"
                     android:imeOptions="actionDone"
                     android:textColor="@color/greenDark"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                     android:background="@null"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/greenDark"/>
             </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="20dp"
-                android:background="@color/greenDark"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <RadioGroup
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <RadioButton
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/editCognomePaz"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
+                    android:hint=" COGNOME"
+                    android:inputType="text"
+                    android:imeOptions="actionDone"
                     android:textColor="@color/greenDark"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:text="Maschio"/>
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:background="@null"/>
 
-                <RadioButton
-                    android:layout_width="wrap_content"
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/greenDark"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/calendar"/>
+
+                    <EditText
+                        android:id="@+id/editDataNascitaPaz"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="5dp"
+                        android:hint=" DATA DI NASCITA"
+                        android:inputType="text"
+                        android:imeOptions="actionDone"
+                        android:textColor="@color/greenDark"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                        android:background="@null"/>
+                </LinearLayout>
+
+                <CalendarView
+                    android:id="@+id/calendario"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/greenDark"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioGroup
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:textColor="@color/greenDark"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:text="Maschio"/>
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/greenDark"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:text="Femmina"/>
+                </RadioGroup>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="LUOGO DI NASCITA"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/greenDark"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/editProvinciaNascPaz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint=" PROVINCIA"
+                    android:inputType="text"
+                    android:imeOptions="actionDone"
                     android:textColor="@color/greenDark"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:text="Femmina"/>
-            </RadioGroup>
-        </LinearLayout>
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:background="@null"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="LUOGO DI NASCITA"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="10dp"
-            android:textColor="@color/greenDark"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/greenDark"/>
+            </LinearLayout>
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <EditText
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint=" PROVINCIA"
-                android:inputType="text"
-                android:imeOptions="actionDone"
-                android:textColor="@color/greenDark"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
-                android:background="@null"/>
+                android:orientation="vertical">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="20dp"
-                android:background="@color/greenDark"/>
-        </LinearLayout>
+                <EditText
+                    android:id="@+id/editCittaNascPaz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint=" CITTA|COMUNE"
+                    android:inputType="text"
+                    android:imeOptions="actionDone"
+                    android:textColor="@color/greenDark"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:background="@null"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/greenDark"/>
+            </LinearLayout>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint=" CITTA|COMUNE"
-                android:inputType="text"
-                android:imeOptions="actionDone"
-                android:textColor="@color/greenDark"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
-                android:background="@null"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="20dp"
-                android:background="@color/greenDark"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <EditText
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint=" VIA|PIAZZA"
-                android:inputType="text"
-                android:imeOptions="actionDone"
-                android:textColor="@color/greenDark"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
-                android:background="@null"/>
+                android:orientation="vertical">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="20dp"
-                android:background="@color/greenDark"/>
+                <EditText
+                    android:id="@+id/editViaNascPaz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint=" VIA|PIAZZA"
+                    android:inputType="text"
+                    android:imeOptions="actionDone"
+                    android:textColor="@color/greenDark"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:background="@null"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/greenDark"/>
+            </LinearLayout>
+
         </LinearLayout>
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/continua1Paz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/top_round"
+            android:text="@string/continua"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+            android:textColor="@color/white" />
+    </RelativeLayout>
 
-    <Button
-        android:id="@+id/registrazioneButtonPaz"
+    <RelativeLayout
+        android:id="@+id/registrazione2Paz"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/top_round"
-        android:text="@string/continua"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
-        android:textColor="@color/white" />
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="INFORMAZIONE MEDICO DI BASE"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/greenDark"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/editMedicoPaz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint=" MEDICO DI BASE"
+                    android:inputType="text"
+                    android:imeOptions="actionDone"
+                    android:textColor="@color/greenDark"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:background="@null"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/greenDark"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="INDIRIZZO DI RESIDENZA"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/greenDark"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/editProvinciaResPaz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint=" PROVINCIA"
+                    android:inputType="text"
+                    android:imeOptions="actionDone"
+                    android:textColor="@color/greenDark"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:background="@null"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/greenDark"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/editCittaResPaz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint=" CITTA|COMUNE"
+                    android:inputType="text"
+                    android:imeOptions="actionDone"
+                    android:textColor="@color/greenDark"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:background="@null"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/greenDark"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/editViaResPaz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint=" VIA|PIAZZA"
+                    android:inputType="text"
+                    android:imeOptions="actionDone"
+                    android:textColor="@color/greenDark"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:background="@null"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/greenDark"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/continua2Paz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/top_round"
+            android:text="@string/continua"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/registrazione3Paz"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MEDICO BASE"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/greenDark"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/editCodiceFiscalePaz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint=" MEDICO BASE"
+                    android:inputType="text"
+                    android:imeOptions="actionDone"
+                    android:textColor="@color/greenDark"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:background="@null"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/greenDark"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="IMPOSTAZIONE PASSWORD"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/greenDark"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/editPasswordPaz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint=" PASSWORD"
+                    android:inputType="text"
+                    android:imeOptions="actionDone"
+                    android:textColor="@color/greenDark"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:background="@null"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/greenDark"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/editConfermaPasswordPaz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint=" CONFERMA PASSWORD"
+                    android:inputType="text"
+                    android:imeOptions="actionDone"
+                    android:textColor="@color/greenDark"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:background="@null"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/greenDark"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/registrazionePaz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/top_round"
+            android:text="@string/registrazione"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
 </RelativeLayout>

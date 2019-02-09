@@ -2,5 +2,6 @@
     <string name="app_name">EasyAid</string>
     <string name="accedi">ACCEDI</string>
     <string name="registrati">REGISTRATI</string>
+    <string name="registrazione">REGISTRAZIONE</string>
     <string name="continua">CONTINUA</string>
 </resources>
