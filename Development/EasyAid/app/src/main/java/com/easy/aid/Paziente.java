@@ -13,6 +13,31 @@ public class Paziente {
 
     }
 
+    public Paziente(int ID, String nome, String cognome, String dataNascita, String provinciaNascita, String cittaNascita, String viaNascita, String codiceFiscale, String provinciaResidenza, String cittaResidenza, String viaResidenza, String medicoBase, String password, String confermaPassword) {
+        this.ID = ID;
+        this.nome = nome;
+        this.cognome = cognome;
+        this.dataNascita = dataNascita;
+        this.provinciaNascita = provinciaNascita;
+        this.cittaNascita = cittaNascita;
+        this.viaNascita = viaNascita;
+        this.codiceFiscale = codiceFiscale;
+        this.provinciaResidenza = provinciaResidenza;
+        this.cittaResidenza = cittaResidenza;
+        this.viaResidenza = viaResidenza;
+        this.medicoBase = medicoBase;
+        this.password = password;
+        this.confermaPassword = confermaPassword;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
     public String getNome() {
         return nome;
     }

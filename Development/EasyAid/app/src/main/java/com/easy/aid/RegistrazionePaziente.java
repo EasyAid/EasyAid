@@ -23,7 +23,6 @@ public class RegistrazionePaziente extends AppCompatActivity {
         setContentView(R.layout.registrazione_paziente);
 
 
-
         //TODO INSERIRE TUTTI I DATI ALL'INTERNO DI PAZIENTE SOLAMENTE DOPO CHE L'UTENTE HA CLICCATO REGISTRAZIONE
         Paziente paziente = new Paziente();
 
