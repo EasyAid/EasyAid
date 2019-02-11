@@ -1,11 +1,12 @@
-package com.easy.aid;
+package com.easy.aid.Paziente;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
+
+import com.easy.aid.R;
 
 public class RegistrazionePaziente extends AppCompatActivity {
 
@@ -24,7 +25,7 @@ public class RegistrazionePaziente extends AppCompatActivity {
 
 
         //TODO INSERIRE TUTTI I DATI ALL'INTERNO DI PAZIENTE SOLAMENTE DOPO CHE L'UTENTE HA CLICCATO REGISTRAZIONE
-        Paziente paziente = new Paziente();
+        /*Paziente paziente = new Paziente();
 
         paziente.setNome((
                 (EditText) findViewById(R.id.editNomePaz)).getText().toString());
@@ -60,7 +61,7 @@ public class RegistrazionePaziente extends AppCompatActivity {
             public void onClick(View v) {
                 calendario.setVisibility(View.VISIBLE);
             }
-        });
+        });*/
 
     }
 }

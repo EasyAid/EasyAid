@@ -9,15 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainPaziente"></activity>
-        <activity android:name=".RegistrazionePaziente">
+        <activity android:name=".Paziente.RichiediVisitaRicettaPaz"></activity>
+        <activity android:name=".Paziente.OrdinaRicettaPaz" />
+        <activity android:name=".Paziente.ImpostazioniPaz" />
+        <activity android:name=".Paziente.CronologiaPaz" />
+        <activity android:name=".Paziente.MainPaziente">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AccessoPaziente" />
+        <activity android:name=".Paziente.AccessoPaziente" />
         <activity android:name=".MainActivity" />
     </application>
 

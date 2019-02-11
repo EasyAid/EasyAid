@@ -1,4 +1,4 @@
-package com.easy.aid;
+package com.easy.aid.Class;
 
 import android.widget.EditText;
 
