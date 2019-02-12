@@ -20,7 +20,7 @@ public class MainPaziente extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_paziente);
+        setContentView(R.layout.paziente_main);
 
         richiediVisRic = (LinearLayout) findViewById(R.id.richiediVisitaRicettaPaz);
         ordinaRicetta = (LinearLayout) findViewById(R.id.ordinaRicettaPaz);
@@ -30,7 +30,7 @@ public class MainPaziente extends AppCompatActivity {
         richiediVisRic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainPaziente.this, RichiediVisitaRicettaPaz.class);
+                Intent i = new Intent(MainPaziente.this, RichiediVisitaRicettaPaziente.class);
                 startActivity(i);
             }
         });
@@ -38,7 +38,7 @@ public class MainPaziente extends AppCompatActivity {
         ordinaRicetta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainPaziente.this, OrdinaRicettaPaz.class);
+                Intent i = new Intent(MainPaziente.this, OrdinaRicettaPaziente.class);
                 startActivity(i);
             }
         });
@@ -46,7 +46,7 @@ public class MainPaziente extends AppCompatActivity {
         impostazioni.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainPaziente.this, ImpostazioniPaz.class);
+                Intent i = new Intent(MainPaziente.this, ImpostazioniPaziente.class);
                 startActivity(i);
             }
         });
@@ -54,7 +54,7 @@ public class MainPaziente extends AppCompatActivity {
         cronologia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainPaziente.this, CronologiaPaz.class);
+                Intent i = new Intent(MainPaziente.this, CronologiaPaziente.class);
                 startActivity(i);
             }
         });

@@ -26,7 +26,7 @@ public class AccessoPaziente extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.accesso_paziente);
+        setContentView(R.layout.paziente_accesso);
 
 
         user            = (EditText) findViewById(R.id.accessoCodiceFiscalePaz);

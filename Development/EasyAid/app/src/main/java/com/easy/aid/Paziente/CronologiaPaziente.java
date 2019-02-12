@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import com.easy.aid.R;
 
-public class OrdinaRicettaPaz extends AppCompatActivity {
+public class CronologiaPaziente extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ordina_ricetta_paziente);
+        setContentView(R.layout.paziente_cronologia);
     }
 }

@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import com.easy.aid.R;
 
-public class RichiediVisitaRicettaPaz extends AppCompatActivity {
+public class RichiestaVisitaPaziente extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.richiedi_visita_ricetta_paziente);
+        setContentView(R.layout.paziente_richiesta_visita);
     }
 }
