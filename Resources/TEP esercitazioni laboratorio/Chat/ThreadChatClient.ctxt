@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.params=lista\ ipServer\ porta
-comment0.target=ThreadChatClient(java.awt.List,\ java.lang.String,\ int)
-comment1.params=
-comment1.target=void\ run()
-comment2.params=messaggio
-comment2.target=void\ spedisciMessaggioChat(java.lang.String)
-numComments=3

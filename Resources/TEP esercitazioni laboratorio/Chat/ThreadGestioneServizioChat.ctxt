@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.params=numeroMaxConnessioni\ lista
-comment0.target=ThreadGestioneServizioChat(int,\ java.awt.List)
-comment1.params=
-comment1.target=void\ run()
-comment2.params=mex
-comment2.target=void\ spedisciMessaggio(java.lang.String)
-numComments=3
