@@ -1,0 +1,80 @@
+Classi:
+
+- Persona
+- Indirizzo
+- Account
+- Paziente
+- Medico
+- Farmacia
+- DBEpaziente
+- DBEmedico
+- DBEfarmacia
+
+Persona
+
+Definisce il tipo di oggetto persona, utilizzabile sia per il medico che per il paziente
+che incapsula tutti i metodi e gli attributi comuni
+
+classe persona
+    attributi:
+        [privato] nome : stringa
+        [privato] cognome : stringa
+        [privato] dataNascita : data
+        [privato] indirizzoNascita : indirizzo
+        [privato] indirizzoResidenza : indirizzo
+        [privato] codiceFiscale : stringa
+    metodi:
+        [pubblico] getNome : stringa
+        [pubblico] setNome(stringa) : void
+        [pubblico] getCognome : stringa
+        [pubblico] setCognome(stringa) : void
+        [pubblico] getNominativo : stringa
+        [pubblico] getDataNascita : data
+        [pubblico] setDataNascita(data) : void
+        [pubblico] getIndirizzoNascita : indirizzo
+        [pubblico] setIndirizzoNascita(indirizzo) : void
+        [pubblico] getIndirizzoResidenza : indirizzo
+        [pubblico] setIndirizzoResidenza(indirizzo) : void
+        [pubblico] getCodiceFiscale : stringa
+        [pubblico] setCodiceFiscale(stringa) : void
+
+Indirizzo
+
+Definisce il tipo di oggetto indirizzo, contenente via, numero civico, CAP,
+città e provincia utilizzabili sia come indirizzo nascita che residenza 
+(rendere opzionale via e numero civico per l'indirizzo di nascita)
+
+classe indirizzo
+    attributi:
+        [privato] provincia : stringa
+        [privato] città : stringa
+        [privato] via : stringa
+        [privato] CAP : stringa
+        [privato] numeroCivico : int
+    metodi:
+        [pubblico] getProvincia : stringa
+        [pubblico] setProvincia(stringa) : void
+        [pubblico] getCittà : stringa
+        [pubblico] setCittà(stringa) : void
+        [pubblico] getVia : stringa
+        [pubblico] setVia(stringa) : void
+        [pubblico] getNumeroCivico : int
+        [pubblico] setNumeroCivico(int) : void
+        [pubblico] toString() : stringa //override - returns via nomevia, civico - CAP città (Sigla Provincia)
+
+Account
+
+Definisce il tipo di oggetto account, per gestire il nome
+utente e la password di un profilo, comune a tutte e tre le entità (medico, paziente e farmacia)
+
+classe account
+    attributi:
+        [privato] username : stringa
+        [privato] password : stringa
+    metodi:
+        [pubblico] getUsername : stringa
+        [pubblico] setUsername(stringa) : void
+        [pubblico] getPassword : stringa
+        [pubblico] setPassword(stringa) : void
+
+//TODO add missing classes
