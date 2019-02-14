@@ -5,4 +5,5 @@
     <string name="registrazione">REGISTRAZIONE</string>
     <string name="continua">CONTINUA</string>
     <string name="invia_richiesta">INVIA RICHIESTA</string>
+    <string name="seleziona_un_altro_giorno"><u>SELEZIONA UN ALTRO GIORNO</u></string>
 </resources>

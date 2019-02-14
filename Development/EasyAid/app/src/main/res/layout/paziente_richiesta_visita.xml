@@ -123,10 +123,9 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textColor="@color/greenDark"
-                android:textStyle="italic"
                 android:layout_marginBottom="70dp"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                android:text="SELEZIONA UN ALTRO GIORNO"/>
+                android:text="@string/seleziona_un_altro_giorno"/>
 
             <Button
                 android:layout_width="match_parent"

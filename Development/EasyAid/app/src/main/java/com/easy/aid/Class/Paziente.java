@@ -5,8 +5,10 @@ import android.widget.EditText;
 public class Paziente {
 
     private int ID;
-    private String nome, cognome, dataNascita, provinciaNascita, cittaNascita, viaNascita;
-    private String codiceFiscale, provinciaResidenza, cittaResidenza, viaResidenza;
+    private String nome;
+    private String cognome;
+    private String dataNascita;
+    private String codiceFiscale;
     private String medicoBase, password, confermaPassword;
 
     public Paziente() {
@@ -18,13 +20,7 @@ public class Paziente {
         this.nome = nome;
         this.cognome = cognome;
         this.dataNascita = dataNascita;
-        this.provinciaNascita = provinciaNascita;
-        this.cittaNascita = cittaNascita;
-        this.viaNascita = viaNascita;
         this.codiceFiscale = codiceFiscale;
-        this.provinciaResidenza = provinciaResidenza;
-        this.cittaResidenza = cittaResidenza;
-        this.viaResidenza = viaResidenza;
         this.medicoBase = medicoBase;
         this.password = password;
         this.confermaPassword = confermaPassword;
@@ -62,60 +58,12 @@ public class Paziente {
         this.dataNascita = dataNascita;
     }
 
-    public String getProvinciaNascita() {
-        return provinciaNascita;
-    }
-
-    public void setProvinciaNascita(String provinciaNascita) {
-        this.provinciaNascita = provinciaNascita;
-    }
-
-    public String getCittaNascita() {
-        return cittaNascita;
-    }
-
-    public void setCittaNascita(String cittaNascita) {
-        this.cittaNascita = cittaNascita;
-    }
-
-    public String getViaNascita() {
-        return viaNascita;
-    }
-
-    public void setViaNascita(String viaNascita) {
-        this.viaNascita = viaNascita;
-    }
-
     public String getCodiceFiscale() {
         return codiceFiscale;
     }
 
     public void setCodiceFiscale(String codiceFiscale) {
         this.codiceFiscale = codiceFiscale;
-    }
-
-    public String getProvinciaResidenza() {
-        return provinciaResidenza;
-    }
-
-    public void setProvinciaResidenza(String provinciaResidenza) {
-        this.provinciaResidenza = provinciaResidenza;
-    }
-
-    public String getCittaResidenza() {
-        return cittaResidenza;
-    }
-
-    public void setCittaResidenza(String cittaResidenza) {
-        this.cittaResidenza = cittaResidenza;
-    }
-
-    public String getViaResidenza() {
-        return viaResidenza;
-    }
-
-    public void setViaResidenza(String viaResidenza) {
-        this.viaResidenza = viaResidenza;
     }
 
     public String getMedicoBase() {
