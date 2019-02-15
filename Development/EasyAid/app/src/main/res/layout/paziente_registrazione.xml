@@ -78,7 +78,7 @@
                     android:inputType="text"
                     android:imeOptions="actionDone"
                     android:textColor="@color/greenDark"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:background="@null"/>
 
                 <View
@@ -101,7 +101,7 @@
                     android:inputType="text"
                     android:imeOptions="actionDone"
                     android:textColor="@color/greenDark"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:background="@null"/>
 
                 <View
@@ -133,7 +133,7 @@
                         android:inputType="text"
                         android:imeOptions="actionDone"
                         android:textColor="@color/greenDark"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         android:background="@null"/>
                 </LinearLayout>
 
@@ -198,7 +198,7 @@
                     android:inputType="text"
                     android:imeOptions="actionDone"
                     android:textColor="@color/greenDark"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:background="@null"/>
 
                 <View
@@ -222,7 +222,7 @@
                     android:inputType="text"
                     android:imeOptions="actionDone"
                     android:textColor="@color/greenDark"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:background="@null"/>
 
                 <View
@@ -246,7 +246,7 @@
                     android:inputType="text"
                     android:imeOptions="actionDone"
                     android:textColor="@color/greenDark"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:background="@null"/>
 
                 <View

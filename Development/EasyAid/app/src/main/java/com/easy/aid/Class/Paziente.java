@@ -9,21 +9,24 @@ public class Paziente {
     private String cognome;
     private String dataNascita;
     private String codiceFiscale;
+    private Indirizzo indirizzoNascita;
+    private Indirizzo indirizzoResidenza;
     private String medicoBase, password, confermaPassword;
 
-    public Paziente() {
-
-    }
-
-    public Paziente(int ID, String nome, String cognome, String dataNascita, String provinciaNascita, String cittaNascita, String viaNascita, String codiceFiscale, String provinciaResidenza, String cittaResidenza, String viaResidenza, String medicoBase, String password, String confermaPassword) {
+    public Paziente(int ID, String nome, String cognome, String dataNascita, String codiceFiscale, Indirizzo indirizzoNascita, Indirizzo indirizzoResidenza, String medicoBase, String password, String confermaPassword) {
         this.ID = ID;
         this.nome = nome;
         this.cognome = cognome;
         this.dataNascita = dataNascita;
         this.codiceFiscale = codiceFiscale;
+        this.indirizzoNascita = indirizzoNascita;
+        this.indirizzoResidenza = indirizzoResidenza;
         this.medicoBase = medicoBase;
         this.password = password;
         this.confermaPassword = confermaPassword;
+    }
+
+    public Paziente() {
     }
 
     public int getID() {
@@ -64,6 +67,22 @@ public class Paziente {
 
     public void setCodiceFiscale(String codiceFiscale) {
         this.codiceFiscale = codiceFiscale;
+    }
+
+    public Indirizzo getIndirizzoNascita() {
+        return indirizzoNascita;
+    }
+
+    public void setIndirizzoNascita(Indirizzo indirizzoNascita) {
+        this.indirizzoNascita = indirizzoNascita;
+    }
+
+    public Indirizzo getIndirizzoResidenza() {
+        return indirizzoResidenza;
+    }
+
+    public void setIndirizzoResidenza(Indirizzo indirizzoResidenza) {
+        this.indirizzoResidenza = indirizzoResidenza;
     }
 
     public String getMedicoBase() {

@@ -23,6 +23,10 @@ public class RegistrazionePaziente extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.paziente_registrazione);
 
+        continua1 = (Button) findViewById(R.id.continua1Paz);
+        continua2 = (Button) findViewById(R.id.continua2Paz);
+        registrazione = (Button) findViewById(R.id.registrazionePaz);
+
 
         //TODO INSERIRE TUTTI I DATI ALL'INTERNO DI PAZIENTE SOLAMENTE DOPO CHE L'UTENTE HA CLICCATO REGISTRAZIONE
         /*Paziente paziente = new Paziente();

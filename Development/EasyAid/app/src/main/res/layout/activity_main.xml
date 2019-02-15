@@ -1,12 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
     android:background="@color/background"
     tools:context=".MainActivity">
 
+    <LinearLayout
+        android:id="@+id/sceltaMedico"
+        android:layout_width="165dp"
+        android:layout_height="165dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/fill_circle">
 
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:src="@drawable/icon_medico"/>
 
-</RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+            android:text="MEDICO"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sceltaPaziente"
+        android:layout_width="165dp"
+        android:layout_height="165dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/fill_circle">
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:src="@drawable/icon_paziente"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+            android:text="PAZIENTE"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/sceltaFarmacia"
+        android:layout_width="165dp"
+        android:layout_height="165dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/fill_circle">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="90dp"
+            android:src="@drawable/icon_farmacia"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+            android:text="FARMACIA"/>
+
+    </LinearLayout>
+</LinearLayout>

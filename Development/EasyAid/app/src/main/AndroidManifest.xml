@@ -9,13 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Paziente.RichiestaVisitaPaziente"></activity>
-        <activity android:name=".Paziente.RichiediRicettaPaziente" />
-        <activity android:name=".Paziente.RichiediVisitaRicettaPaziente" />
-        <activity android:name=".Paziente.OrdinaRicettaPaziente" />
-        <activity android:name=".Paziente.ImpostazioniPaziente" />
-        <activity android:name=".Paziente.CronologiaPaziente" />
-        <activity android:name=".Paziente.MainPaziente">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +17,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".Paziente.AccessoPaziente" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".Paziente.MainPaziente" />
+        <activity android:name=".Paziente.RichiestaVisitaPaziente" />
+        <activity android:name=".Paziente.RichiediRicettaPaziente" />
+        <activity android:name=".Paziente.RichiediVisitaRicettaPaziente" />
+        <activity android:name=".Paziente.OrdinaRicettaPaziente" />
+        <activity android:name=".Paziente.ImpostazioniPaziente" />
+        <activity android:name=".Paziente.CronologiaPaziente" />
+        <activity android:name=".Paziente.RegistrazionePaziente" />
+        <activity android:name=".Medico.AccessoMedico"/>
+        <activity android:name=".Farmacia.AccessoFarmacia" />
     </application>
 
 </manifest>

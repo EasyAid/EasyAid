@@ -155,7 +155,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/top_round"
+        android:background="@color/greenDark"
         android:text="@string/registrati"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
         android:textColor="@color/white" />

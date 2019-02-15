@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.easy.aid.R;
 
@@ -16,6 +17,7 @@ import com.easy.aid.R;
 public class MainPaziente extends AppCompatActivity {
 
     private LinearLayout richiediVisRic, ordinaRicetta, impostazioni, cronologia;
+    private int close=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,5 +61,15 @@ public class MainPaziente extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(close==0){
+            Toast.makeText(getApplicationContext(), "Premi un'altra volta per uscire", Toast.LENGTH_SHORT).show();
+            close++;
+        }else{
+            finish();
+        }
     }
 }
