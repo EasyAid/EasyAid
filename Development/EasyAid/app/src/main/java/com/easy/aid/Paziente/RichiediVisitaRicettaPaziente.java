@@ -33,6 +33,7 @@ public class RichiediVisitaRicettaPaziente extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(RichiediVisitaRicettaPaziente.this, RichiediRicettaPaziente.class);
                 startActivity(i);
+                finish();
             }
         });
 
@@ -41,6 +42,7 @@ public class RichiediVisitaRicettaPaziente extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(RichiediVisitaRicettaPaziente.this, RichiestaVisitaPaziente.class);
                 startActivity(i);
+                finish();
             }
         });
 

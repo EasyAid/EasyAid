@@ -22,6 +22,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/backRegistrazionePaz"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/back"/>
@@ -138,7 +139,7 @@
                 </LinearLayout>
 
                 <CalendarView
-                    android:id="@+id/calendario"
+                    android:id="@+id/calendarioRegistrazionePaz"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:visibility="gone"/>

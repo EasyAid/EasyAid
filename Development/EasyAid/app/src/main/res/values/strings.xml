@@ -6,4 +6,6 @@
     <string name="continua">CONTINUA</string>
     <string name="invia_richiesta">INVIA RICHIESTA</string>
     <string name="seleziona_un_altro_giorno"><u>SELEZIONA UN ALTRO GIORNO</u></string>
+    <string name="continua_ordine"><u>CONTINUA ORDINE</u></string>
+    <string name="paga_ora"><u>PAGA ORA</u></string>
 </resources>

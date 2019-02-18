@@ -1,10 +1,220 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/background"
     tools:context=".Paziente.OrdinaRicettaPaziente">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/backRichiediVisitaPaz"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/back"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:textColor="@color/greenDark"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                android:text="ORDINA RICETTA MEDICA"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/greenDark"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="35dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="INSERISCI DATI FARMACIA"
+                android:textAlignment="center"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/greenDark"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="PROVINCIA"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/greenDark"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/editNomePaz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:imeOptions="actionDone"
+                    android:textColor="@color/greenDark"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:background="@null"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/greenDark"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FARMACIA"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/greenDark"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/editCognomePaz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:imeOptions="actionDone"
+                    android:textColor="@color/greenDark"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:background="@null"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/greenDark"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SCEGLI RICETTA"
+                android:textAlignment="center"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/greenDark"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="textEnd"
+                android:layout_marginRight="8dp"
+                android:text="@string/continua_ordine"
+                android:textColor="@color/greenDark"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_marginTop="35dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="INSERISCI DATA E ORARIO\nDI RITIRO FARMACO"
+                android:textAlignment="center"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/greenDark"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"/>
+
+            <CalendarView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></CalendarView>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="textEnd"
+                android:layout_marginLeft="8dp"
+                android:text="@string/paga_ora"
+                android:textColor="@color/greenDark"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="textEnd"
+                android:layout_marginRight="8dp"
+                android:text="@string/continua_ordine"
+                android:textColor="@color/greenDark"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

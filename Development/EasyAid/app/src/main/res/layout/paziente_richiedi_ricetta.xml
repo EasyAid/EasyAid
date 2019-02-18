@@ -71,7 +71,7 @@
                     android:fontFamily="serif"
                     android:layout_marginBottom="10dp"
                     android:textColor="@color/greenDark"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:text="MEDICO DI BASE: NOME CONGNOME"/>
 
                 <TextView
@@ -80,7 +80,7 @@
                     android:textAlignment="center"
                     android:fontFamily="serif"
                     android:textColor="@color/greenDark"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:text="PAZIENTE: NOME CONGNOME"/>
             </LinearLayout>
 
