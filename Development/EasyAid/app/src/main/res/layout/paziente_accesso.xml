@@ -64,19 +64,27 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:layout_gravity="center"
                     android:src="@drawable/profile"/>
 
-                <EditText
-                    android:id="@+id/accessoCodiceFiscalePaz"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="5dp"
-                    android:hint=" Codice Fiscale"
-                    android:inputType="text"
-                    android:imeOptions="actionDone"
-                    android:textColor="@color/greenDark"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
-                    android:background="@null"/>
+                    android:layout_height="wrap_content">
+
+
+                    <EditText
+                        android:id="@+id/accessoCodiceFiscalePaz"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="5dp"
+                        android:hint=" Codice Fiscale"
+                        android:inputType="text"
+                        android:imeOptions="actionDone"
+                        android:textColor="@color/greenDark"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                        android:background="@null"/>
+
+                </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
             <View
@@ -99,18 +107,25 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:layout_gravity="center"
                     android:src="@drawable/lock"/>
 
-                <EditText
-                    android:id="@+id/accessoPasswordPaz"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="5dp"
-                    android:hint=" Password"
-                    android:inputType="textPassword"
-                    android:textColor="@color/greenDark"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
-                    android:background="@null"/>
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/accessoPasswordPaz"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="5dp"
+                        android:hint=" Password"
+                        android:inputType="textPassword"
+                        android:textColor="@color/greenDark"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                        android:background="@null"/>
+
+                </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
             <View
