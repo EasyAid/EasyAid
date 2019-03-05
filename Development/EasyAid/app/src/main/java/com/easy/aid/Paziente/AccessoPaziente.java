@@ -1,8 +1,13 @@
 package com.easy.aid.Paziente;
 
 import android.content.Intent;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,7 +44,7 @@ public class AccessoPaziente extends AppCompatActivity {
     private EditText cf, pwd;
     private Button accedi, registrazione;
     private static String URL_LOGIN = "http://192.168.1.9/codiceplastico/login.php";
-
+    private TextInputLayout layoutPass;
     private Intent intent;
 
     private ImageView back;
@@ -50,12 +55,29 @@ public class AccessoPaziente extends AppCompatActivity {
         setContentView(R.layout.paziente_accesso);
 
 
-        cf            = (EditText) findViewById(R.id.accessoCodiceFiscalePaz);
+        cf              = (EditText) findViewById(R.id.accessoCodiceFiscalePaz);
         pwd             = (EditText) findViewById(R.id.accessoPasswordPaz);
         accedi          = (Button)   findViewById(R.id.accessoButtonPaz);
-        registrazione   = (Button)   findViewById(R.id.registrazioneButtonPaz);
-        back            = (ImageView)findViewById(R.id.backAccessoPaz);
+        registrazione   = (Button)    findViewById(R.id.registrazioneButtonPaz);
+        back            = (ImageView) findViewById(R.id.backAccessoPaz);
+        layoutPass      = (TextInputLayout) findViewById(R.id.layoutAccessoPasswordPaz);
 
+        pwd.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                layoutPass.setPasswordVisibilityToggleEnabled(true);
+            }
+        });
 
         accedi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +88,7 @@ public class AccessoPaziente extends AppCompatActivity {
                 if(!sCF.isEmpty() && !sPass.isEmpty()){
                     Login(sCF,sPass);
                 }else{
+                    layoutPass.setPasswordVisibilityToggleEnabled(false);
                     cf.setError("Please insert email");
                     pwd.setError("Please insert password");
                 }
@@ -104,8 +127,11 @@ public class AccessoPaziente extends AppCompatActivity {
                             JSONArray jsonArray = jsonObject.getJSONArray("login");
 
                             if (success.equals("1")){
+                                intent.putExtra("CF", sCF);
                                 startActivity(intent);
                                 finish();
+                            }else{
+                                Toast.makeText(AccessoPaziente.this, "Dati errati", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

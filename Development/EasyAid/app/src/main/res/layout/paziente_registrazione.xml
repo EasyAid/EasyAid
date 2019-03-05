@@ -23,8 +23,9 @@
 
             <ImageView
                 android:id="@+id/backRegistrazionePaz"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
                 android:src="@drawable/back"/>
 
             <TextView
@@ -71,16 +72,22 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/editNomePaz"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint=" NOME"
-                    android:inputType="text"
-                    android:imeOptions="actionDone"
-                    android:textColor="@color/greenDark"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:background="@null"/>
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/editNomePaz"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint=" NOME"
+                        android:inputType="text"
+                        android:imeOptions="actionDone"
+                        android:textColor="@color/greenDark"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:background="@null"/>
+
+                </android.support.design.widget.TextInputLayout>
 
                 <View
                     android:layout_width="match_parent"

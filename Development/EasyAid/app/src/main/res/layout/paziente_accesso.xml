@@ -22,8 +22,9 @@
 
             <ImageView
                 android:id="@+id/backAccessoPaz"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
                 android:src="@drawable/back"/>
 
             <TextView
@@ -81,7 +82,7 @@
                         android:inputType="text"
                         android:imeOptions="actionDone"
                         android:textColor="@color/greenDark"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         android:background="@null"/>
 
                 </android.support.design.widget.TextInputLayout>
@@ -111,8 +112,10 @@
                     android:src="@drawable/lock"/>
 
                 <android.support.design.widget.TextInputLayout
+                    android:id="@+id/layoutAccessoPasswordPaz"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    app:passwordToggleEnabled="true">
 
                     <EditText
                         android:id="@+id/accessoPasswordPaz"
@@ -122,7 +125,7 @@
                         android:hint=" Password"
                         android:inputType="textPassword"
                         android:textColor="@color/greenDark"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         android:background="@null"/>
 
                 </android.support.design.widget.TextInputLayout>

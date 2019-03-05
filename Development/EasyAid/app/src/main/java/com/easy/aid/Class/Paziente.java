@@ -11,9 +11,9 @@ public class Paziente {
     private String codiceFiscale;
     private Indirizzo indirizzoNascita;
     private Indirizzo indirizzoResidenza;
-    private String medicoBase, password, confermaPassword;
+    private String medicoBase, password;
 
-    public Paziente(int ID, String nome, String cognome, String dataNascita, String codiceFiscale, Indirizzo indirizzoNascita, Indirizzo indirizzoResidenza, String medicoBase, String password, String confermaPassword) {
+    public Paziente(int ID, String nome, String cognome, String dataNascita, String codiceFiscale, Indirizzo indirizzoNascita, Indirizzo indirizzoResidenza, String medicoBase, String password) {
         this.ID = ID;
         this.nome = nome;
         this.cognome = cognome;
@@ -23,7 +23,6 @@ public class Paziente {
         this.indirizzoResidenza = indirizzoResidenza;
         this.medicoBase = medicoBase;
         this.password = password;
-        this.confermaPassword = confermaPassword;
     }
 
     public Paziente() {
@@ -101,11 +100,4 @@ public class Paziente {
         this.password = password;
     }
 
-    public String getConfermaPassword() {
-        return confermaPassword;
-    }
-
-    public void setConfermaPassword(String confermaPassword) {
-        this.confermaPassword = confermaPassword;
-    }
 }

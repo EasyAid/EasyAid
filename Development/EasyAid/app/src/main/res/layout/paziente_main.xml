@@ -25,6 +25,7 @@
             android:background="@color/greenDark" />
 
         <TextView
+            android:id="@+id/nomeCognomePaz"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:gravity="center"

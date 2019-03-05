@@ -28,8 +28,9 @@
 
                 <ImageView
                     android:id="@+id/backRichiediVisitaPaz"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
                     android:src="@drawable/back"/>
 
                 <TextView
@@ -72,16 +73,17 @@
                     android:layout_marginBottom="10dp"
                     android:textColor="@color/greenDark"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:text="MEDICO DI BASE: NOME CONGNOME"/>
+                    android:text="MEDICO DI BASE: NOME COGNOME"/>
 
                 <TextView
+                    android:id="@+id/nomeCognomeRichiediRicetta"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
                     android:fontFamily="serif"
-                    android:textColor="@color/greenDark"
+                    android:text="PAZIENTE: NOME COGNOME"
+                    android:textAlignment="center"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:text="PAZIENTE: NOME CONGNOME"/>
+                    android:textColor="@color/greenDark" />
             </LinearLayout>
 
             <!--todo migliorare in autocomplete_textview-->
@@ -157,7 +159,7 @@
                 android:layout_marginBottom="4dp"
                 android:textColor="@color/greenDark"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                android:text="RICHIESTA DI ESENZIONE PER REDDITO"/>
+                android:text="ESENZIONE PER REDDITO"/>
 
             <CheckBox
                 android:layout_width="wrap_content"
@@ -165,7 +167,7 @@
                 android:textColor="@color/greenDark"
                 android:layout_marginLeft="15dp"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                android:text="RICHIESTA DI ESENZIONE PER PATOLOGIA"/>
+                android:text="ESENZIONE PER PATOLOGIA"/>
 
 
         </LinearLayout>
