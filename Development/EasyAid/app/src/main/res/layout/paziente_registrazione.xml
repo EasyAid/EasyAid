@@ -80,9 +80,9 @@
                         android:id="@+id/editNomePaz"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint=" NOME"
+                        android:hint="NOME"
                         android:inputType="text"
-                        android:imeOptions="actionDone"
+                        android:imeOptions="actionGo"
                         android:textColor="@color/greenDark"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         android:background="@null"/>
@@ -101,16 +101,23 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/editCognomePaz"
+
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint=" COGNOME"
-                    android:inputType="text"
-                    android:imeOptions="actionDone"
-                    android:textColor="@color/greenDark"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:background="@null"/>
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/editCognomePaz"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="COGNOME"
+                        android:inputType="text"
+                        android:imeOptions="actionGo"
+                        android:textColor="@color/greenDark"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:background="@null"/>
+
+                </android.support.design.widget.TextInputLayout>
 
                 <View
                     android:layout_width="match_parent"
@@ -137,9 +144,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginLeft="5dp"
-                        android:hint=" DATA DI NASCITA"
+                        android:hint="DATA DI NASCITA"
                         android:inputType="text"
-                        android:imeOptions="actionDone"
+                        android:imeOptions="actionGo"
                         android:textColor="@color/greenDark"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         android:background="@null"/>
@@ -198,16 +205,23 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/editProvinciaNascPaz"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint=" PROVINCIA"
-                    android:inputType="text"
-                    android:imeOptions="actionDone"
-                    android:textColor="@color/greenDark"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:background="@null"/>
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/editProvinciaNascPaz"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="PROVINCIA"
+                        android:inputType="text"
+                        android:imeOptions="actionGo"
+                        android:textColor="@color/greenDark"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:background="@null"/>
+
+                </android.support.design.widget.TextInputLayout>
+
 
                 <View
                     android:layout_width="match_parent"
@@ -222,16 +236,23 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/editCittaNascPaz"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint=" CITTA|COMUNE"
-                    android:inputType="text"
-                    android:imeOptions="actionDone"
-                    android:textColor="@color/greenDark"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:background="@null"/>
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/editCittaNascPaz"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="CITTA|COMUNE"
+                        android:inputType="text"
+                        android:imeOptions="actionGo"
+                        android:textColor="@color/greenDark"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:background="@null"/>
+
+                </android.support.design.widget.TextInputLayout>
+
 
                 <View
                     android:layout_width="match_parent"
@@ -246,16 +267,22 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/editViaNascPaz"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint=" VIA|PIAZZA"
-                    android:inputType="text"
-                    android:imeOptions="actionDone"
-                    android:textColor="@color/greenDark"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:background="@null"/>
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/editViaNascPaz"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="VIA|PIAZZA"
+                        android:inputType="text"
+                        android:imeOptions="actionDone"
+                        android:textColor="@color/greenDark"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:background="@null"/>
+
+                </android.support.design.widget.TextInputLayout>
 
                 <View
                     android:layout_width="match_parent"
@@ -310,7 +337,7 @@
                     android:id="@+id/editMedicoPaz"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint=" MEDICO DI BASE"
+                    android:hint="MEDICO DI BASE"
                     android:inputType="text"
                     android:imeOptions="actionDone"
                     android:textColor="@color/greenDark"
@@ -344,7 +371,7 @@
                     android:id="@+id/editProvinciaResPaz"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint=" PROVINCIA"
+                    android:hint="PROVINCIA"
                     android:inputType="text"
                     android:imeOptions="actionDone"
                     android:textColor="@color/greenDark"
@@ -368,7 +395,7 @@
                     android:id="@+id/editCittaResPaz"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint=" CITTA|COMUNE"
+                    android:hint="CITTA|COMUNE"
                     android:inputType="text"
                     android:imeOptions="actionDone"
                     android:textColor="@color/greenDark"
@@ -392,7 +419,7 @@
                     android:id="@+id/editViaResPaz"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint=" VIA|PIAZZA"
+                    android:hint="VIA|PIAZZA"
                     android:inputType="text"
                     android:imeOptions="actionDone"
                     android:textColor="@color/greenDark"
@@ -453,7 +480,7 @@
                     android:id="@+id/editCodiceFiscalePaz"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint=" MEDICO BASE"
+                    android:hint="MEDICO BASE"
                     android:inputType="text"
                     android:imeOptions="actionDone"
                     android:textColor="@color/greenDark"
@@ -487,7 +514,7 @@
                     android:id="@+id/editPasswordPaz"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint=" PASSWORD"
+                    android:hint="PASSWORD"
                     android:inputType="text"
                     android:imeOptions="actionDone"
                     android:textColor="@color/greenDark"
@@ -511,7 +538,7 @@
                     android:id="@+id/editConfermaPasswordPaz"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint=" CONFERMA PASSWORD"
+                    android:hint="CONFERMA PASSWORD"
                     android:inputType="text"
                     android:imeOptions="actionDone"
                     android:textColor="@color/greenDark"

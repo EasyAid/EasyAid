@@ -80,7 +80,7 @@
                         android:layout_marginLeft="5dp"
                         android:hint=" Codice Fiscale"
                         android:inputType="text"
-                        android:imeOptions="actionDone"
+                        android:imeOptions="actionGo"
                         android:textColor="@color/greenDark"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         android:background="@null"/>

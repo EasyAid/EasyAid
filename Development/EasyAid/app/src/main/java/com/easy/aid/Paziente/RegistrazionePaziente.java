@@ -29,7 +29,48 @@ public class RegistrazionePaziente extends AppCompatActivity {
         continua2       = (Button) findViewById(R.id.continua2Paz);
         registrazione   = (Button) findViewById(R.id.registrazionePaz);
 
+        nome = (EditText) findViewById(R.id.editNomePaz);
+        cognome = (EditText) findViewById(R.id.editCognomePaz);
+        dataNascita = (EditText) findViewById(R.id.editDataNascitaPaz);
+        provinciaNascita = (EditText) findViewById(R.id.editProvinciaNascPaz);
+        cittaNascita = (EditText) findViewById(R.id.editCittaNascPaz);
+        viaNascita = (EditText) findViewById(R.id.editViaNascPaz);
+
         back            = (ImageView)findViewById(R.id.backRegistrazionePaz);
+
+        continua1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean error = false;
+                if(nome.getText().toString().isEmpty()){
+                    nome.setError("Inserisci nome");
+                    error = true;
+                }
+                if(cognome.getText().toString().isEmpty()){
+                    cognome.setError("Inserisci cognome");
+                    error = true;
+                }
+                if(dataNascita.getText().toString().isEmpty()){
+                    dataNascita.setError("Inserisci data di nascita");
+                    error = true;
+                }
+                if(provinciaNascita.getText().toString().isEmpty()){
+                    provinciaNascita.setError("Inserisci provincia di nascita");
+                    error = true;
+                }
+                if(cittaNascita.getText().toString().isEmpty()){
+                    cittaNascita.setError("Inserisci città di nascita");
+                    error = true;
+                }
+                if(viaNascita.getText().toString().isEmpty()){
+                    viaNascita.setError("Inserisci via di nascita");
+                    error = true;
+                }
+                if(!error){
+
+                }
+            }
+        });
 
 
         back.setOnClickListener(new View.OnClickListener() {

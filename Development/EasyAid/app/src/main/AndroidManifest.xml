@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.easy.aid">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,24 +11,63 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Paziente.AccessoPaziente">
+        <activity android:name=".MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".SplashScreen"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".Paziente.MainPaziente" />
-        <activity android:name=".Paziente.RichiestaVisitaPaziente" />
-        <activity android:name=".Paziente.RichiediRicettaPaziente" />
-        <activity android:name=".Paziente.RichiediVisitaRicettaPaziente" />
-        <activity android:name=".Paziente.OrdinaRicettaPaziente" />
-        <activity android:name=".Paziente.ImpostazioniPaziente" />
-        <activity android:name=".Paziente.CronologiaPaziente" />
-        <activity android:name=".Paziente.RegistrazionePaziente" />
-        <activity android:name=".Medico.AccessoMedico"/>
-        <activity android:name=".Farmacia.AccessoFarmacia" />
+        <activity
+            android:name=".Paziente.AccessoPaziente"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Paziente.MainPaziente"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Paziente.RichiestaVisitaPaziente"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Paziente.RichiediRicettaPaziente"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Paziente.RichiediVisitaRicettaPaziente"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Paziente.OrdinaRicettaPaziente"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Paziente.ImpostazioniPaziente"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Paziente.CronologiaPaziente"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Paziente.RegistrazionePaziente"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Medico.AccessoMedico"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Farmacia.AccessoFarmacia"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

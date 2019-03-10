@@ -114,7 +114,7 @@ public class AccessoPaziente extends AppCompatActivity {
 
     private void Login(final String sCF, final String sPass) {
         intent = new Intent(AccessoPaziente.this, MainPaziente.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN,
                 new Response.Listener<String>() {
