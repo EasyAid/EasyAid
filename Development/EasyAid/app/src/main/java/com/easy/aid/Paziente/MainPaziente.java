@@ -41,7 +41,7 @@ public class MainPaziente extends AppCompatActivity {
     private LinearLayout richiediVisRic, ordinaRicetta, impostazioni, cronologia;
     private int close=0;
     private TextView nomeCognome;
-    private static String URL_LOGIN = "http://192.168.1.9/codiceplastico/read.php";
+    private static String URL_LOGIN = "http://99.80.72.24/read.php";
 
     public Paziente paziente;
     private String sCF;
@@ -81,16 +81,14 @@ public class MainPaziente extends AppCompatActivity {
         impostazioni.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainPaziente.this, ImpostazioniPaziente.class);
-                startActivity(i);
+
             }
         });
 
         cronologia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainPaziente.this, CronologiaPaziente.class);
-                startActivity(i);
+
             }
         });
 
@@ -145,7 +143,7 @@ public class MainPaziente extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("cf", sCF);
-                params.put("table", "paziente");
+                params.put("table", "Paziente");
                 return params;
             }
         };

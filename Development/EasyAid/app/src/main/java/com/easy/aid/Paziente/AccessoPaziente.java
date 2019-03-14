@@ -43,7 +43,7 @@ public class AccessoPaziente extends AppCompatActivity {
 
     private EditText cf, pwd;
     private Button accedi, registrazione;
-    private static String URL_LOGIN = "http://192.168.1.9/codiceplastico/login.php";
+    private static String URL_LOGIN = "http://99.80.72.24/login.php";
     private TextInputLayout layoutPass;
     private Intent intent;
 
@@ -89,8 +89,8 @@ public class AccessoPaziente extends AppCompatActivity {
                     Login(sCF,sPass);
                 }else{
                     layoutPass.setPasswordVisibilityToggleEnabled(false);
-                    cf.setError("Please insert email");
-                    pwd.setError("Please insert password");
+                    cf.setError("Inserire codice fiscale");
+                    pwd.setError("Inserire password");
                 }
             }
         });
@@ -135,7 +135,7 @@ public class AccessoPaziente extends AppCompatActivity {
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(AccessoPaziente.this, "Error " + e.toString() , Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AccessoPaziente.this, "Errore di accesso", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
@@ -161,3 +161,9 @@ public class AccessoPaziente extends AppCompatActivity {
 
     }
 }
+
+
+
+
+
+

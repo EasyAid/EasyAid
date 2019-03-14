@@ -61,6 +61,20 @@
                 android:layout_marginRight="3dp"
                 android:orientation="vertical">
 
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/richiesta_medica"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="@color/greenDark"
+                    android:textStyle="bold"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:text="RICHIESTA\nMEDICA"/>
+
             </LinearLayout>
 
             <LinearLayout

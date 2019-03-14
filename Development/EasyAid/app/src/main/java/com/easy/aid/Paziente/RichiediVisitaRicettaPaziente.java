@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -17,6 +19,7 @@ import com.easy.aid.R;
 public class RichiediVisitaRicettaPaziente extends AppCompatActivity {
 
     private LinearLayout richiediRicetta, richiediVisita, visualizzaRichieste;
+    private ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,7 @@ public class RichiediVisitaRicettaPaziente extends AppCompatActivity {
         richiediRicetta = (LinearLayout) findViewById(R.id.richiediRicetta);
         richiediVisita = (LinearLayout) findViewById(R.id.richiediVisita);
         visualizzaRichieste = (LinearLayout) findViewById(R.id.visualizzaRichieste);
+        back = (ImageView) findViewById(R.id.backRichiediVisRicPaz);
 
         richiediRicetta.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,5 +50,11 @@ public class RichiediVisitaRicettaPaziente extends AppCompatActivity {
             }
         });
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }
