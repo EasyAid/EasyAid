@@ -1,0 +1,22 @@
+{
+  "name": "easyaidelectron",
+  "version": "0.1.0",
+  "description": "EasyAid Electron Desktop Project",
+  "main": "start.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EasyAid/EasyAid/tree/Windows/Development"
+  },
+  "author": "Zanchi Federico, Murtas Manuel",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^4.1.0"
+  },
+  "dependencies": {
+    "bulma": "^0.7.4"
+  }
+}
