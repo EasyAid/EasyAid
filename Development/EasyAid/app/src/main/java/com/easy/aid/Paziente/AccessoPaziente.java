@@ -79,6 +79,7 @@ public class AccessoPaziente extends AppCompatActivity {
             }
         });
 
+        //TODO RAGO LINE----------------------------------
         accedi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,6 +95,7 @@ public class AccessoPaziente extends AppCompatActivity {
                 }
             }
         });
+        //todo fine---------------------------------------
 
         //APRE L' ACTIVITY REGISTRAZIONE PAZIENTE
         registrazione.setOnClickListener(new View.OnClickListener() {
@@ -135,7 +137,7 @@ public class AccessoPaziente extends AppCompatActivity {
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(AccessoPaziente.this, "Errore di accesso", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AccessoPaziente.this, "Errore di connessione", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },

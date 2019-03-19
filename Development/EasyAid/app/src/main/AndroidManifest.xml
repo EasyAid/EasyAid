@@ -11,9 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SplashScreen"
             android:configChanges="orientation"
@@ -68,6 +69,8 @@
             android:name=".Farmacia.AccessoFarmacia"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
+        <activity android:name=".Medico.MainMedico" />
+        <activity android:name=".Medico.RegistrazioneMedico"></activity>
     </application>
 
 </manifest>
