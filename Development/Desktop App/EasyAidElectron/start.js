@@ -1,4 +1,4 @@
-const { ipcMain, app, BrowserWindow } = require('electron')
+const { app, BrowserWindow } = require('electron')
 
 // Mantiene un riferimento globale all'oggetto window, se non lo fai, la finestra sarà
 // chiusa automaticamente quando l'oggetto JavaScript sarà garbage collected.
