@@ -22,12 +22,14 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.easy.aid.Class.Indirizzo;
 import com.easy.aid.Class.Paziente;
+import com.easy.aid.MainActivity;
 import com.easy.aid.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,8 +67,8 @@ public class MainPaziente extends AppCompatActivity {
         richiediVisRic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainPaziente.this, RichiediVisitaRicettaPaziente.class);
-                startActivity(i);
+                Intent intent = new Intent(MainPaziente.this, RichiediVisitaRicettaPaziente.class);
+                startActivity(intent);
             }
         });
 

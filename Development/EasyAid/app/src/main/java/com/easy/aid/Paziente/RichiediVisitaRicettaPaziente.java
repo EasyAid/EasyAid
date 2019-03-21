@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.easy.aid.Class.Paziente;
 import com.easy.aid.R;
 
 /**
@@ -25,6 +26,7 @@ public class RichiediVisitaRicettaPaziente extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.paziente_richiedi_visita_ricetta);
+
 
         //BUTTON per cambiare pagina
         richiediRicetta = (LinearLayout) findViewById(R.id.richiediRicetta);

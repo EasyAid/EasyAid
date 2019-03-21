@@ -2,7 +2,9 @@ package com.easy.aid.Class;
 
 import android.widget.EditText;
 
-public class Paziente {
+import java.io.Serializable;
+
+public class Paziente implements Serializable {
 
     private int ID;
     private String nome;

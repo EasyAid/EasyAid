@@ -66,6 +66,7 @@
                 android:layout_marginBottom="50dp">
 
                 <TextView
+                    android:id="@+id/nomeCognomeMedicoRichiediRicettaPaz"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
@@ -76,7 +77,7 @@
                     android:text="MEDICO DI BASE: NOME COGNOME"/>
 
                 <TextView
-                    android:id="@+id/nomeCognomeRichiediRicetta"
+                    android:id="@+id/nomeCognomePazienteRichiediRicettaPaz"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="serif"
@@ -101,17 +102,24 @@
                     android:layout_marginBottom="20dp"
                     android:orientation="vertical">
 
-                    <EditText
+
+                    <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint=" FARMACO RICHIESTO*"
-                        android:inputType="text"
-                        android:fontFamily="serif"
-                        android:textAlignment="center"
-                        android:imeOptions="actionDone"
-                        android:textColor="@color/greenDark"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
-                        android:background="@null"/>
+                        android:layout_height="wrap_content">
+
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="FARMACO RICHIESTO"
+                            android:inputType="text"
+                            android:fontFamily="serif"
+                            android:imeOptions="actionDone"
+                            android:textColor="@color/greenDark"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                            android:background="@null"/>
+
+                    </android.support.design.widget.TextInputLayout>
 
                     <View
                         android:layout_width="match_parent"
@@ -120,23 +128,47 @@
                         android:background="@color/greenDark"/>
                 </LinearLayout>
 
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/autoCompleteTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="65dp"
+                        android:ems="10" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:orientation="vertical">
 
-                    <EditText
+                    <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint=" DESCRIZIONE PATOLOGIA\nRISCONTRATA"
-                        android:inputType="text"
-                        android:fontFamily="serif"
-                        android:textAlignment="center"
-                        android:imeOptions="actionDone"
-                        android:textColor="@color/greenDark"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
-                        android:background="@null"/>
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="DESCRIZIONE PATOLOGIA"
+                            android:inputType="text"
+                            android:fontFamily="serif"
+                            android:imeOptions="actionDone"
+                            android:textColor="@color/greenDark"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                            android:background="@null"/>
+
+                    </android.support.design.widget.TextInputLayout>
 
                     <View
                         android:layout_width="match_parent"
