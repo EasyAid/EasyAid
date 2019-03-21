@@ -1,4 +1,4 @@
-/*const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow } = require('electron')
 
 // Mantiene un riferimento globale all'oggetto window, se non lo fai, la finestra sarà
 // chiusa automaticamente quando l'oggetto JavaScript sarà garbage collected.
@@ -48,12 +48,3 @@ app.on('activate', () => {
 })
 // in questo file possiamo includere il codice specifico necessario 
 // alla nostra app. Si può anche mettere il codice in file separati e richiederlo qui.
-*/
-
-const { app, BrowserWindow } = require('electron')
-
-let splashScreen = null
-let loginPaziente = null
-
-splashScreen = new BrowserWindow({ width: 800, height: 400, frame: false, resizable: false, show: false})
-splashScreen.loadFile('src/SplashScreen.html')
