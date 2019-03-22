@@ -8,26 +8,33 @@
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <title>Loading...</title>
-    <script src="../start.js">
-        
-        var xhttp = new XMLHttpRequest();
+    <script src="../start.js"></script>
+    <script>
+        var SplashScreenComplete = document.createEvent('Event')
+        SplashScreenComplete.initEvent('splashscreen-complete', true, true)
+
+        document.addEventListener("splashscreen-complete", function(e) {
+            CreateEmpty()
+            document.getElementById('content').innerHTML += '<p>ciao</p>'
+        }, false);
+
+        var xhttp = new XMLHttpRequest()
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 var text = this.responseText
-                //document.getElementsByClassName('col')[0].innerHTML += "<h1>" + text + "</h1>";
-                //window.location.href = "src/empty.html";
-                createWindow("src/empty.html", 1280, 720)
+                document.dispatchEvent(SplashScreenComplete)
+                document.getElementById('content').innerHTML += '<p>' + text + '</p>'
             }
         };
-        xhttp.open("GET", "http://99.80.72.24/login.php?cf=test&password=test", true);
-        xhttp.send();
+        xhttp.open("GET", "http://99.80.72.24/login.php?cf=test&password=test", true)
+        xhttp.send()
     </script>
 </head>
 
 <body style="background-color: #00796A;">
-    <div class="container-fluid" style="text-align: center;">
+    <div class="container-fluid" style="text-align: center; margin: 0">
         <div class="row align-items-center">
-            <div class="col">
+            <div class="col" id="content">
                 <img src="../img/LogoTextWhite.png" width="60%" height="60%" style="margin-top: 12%" /><br>
                 <img src="../img/three-dots.svg" height="10%" width="10%" />
             </div>
