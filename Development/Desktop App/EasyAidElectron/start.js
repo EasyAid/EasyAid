@@ -16,8 +16,6 @@ function CreateSplashScreen() {
 	
 	SplashScreen.loadFile('src/SplashScreen.html')
 
-	SplashScreen.webContents.openDevTools()
-
 	SplashScreen.once('ready-to-show', () => {
         SplashScreen.show()
         SplashScreen.on('closed', () => {
@@ -26,8 +24,29 @@ function CreateSplashScreen() {
     })
 }
 
+function CreateFirstWindow() {
+	win = new BrowserWindow({
+		width: 1280,
+		height: 720,
+		frame: false,
+		resizable: false,
+		show: false
+	})
+	
+	win.loadFile('src/SelectAccount.html')
+
+	win.once('ready-to-show', () => {
+        win.show()
+        win.on('closed', () => {
+            win = null
+        })
+    })
+}
+
+
 app.on('ready', () => {
-    CreateSplashScreen()
+	//CreateSplashScreen()
+	CreateFirstWindow()
 })
 
 app.on('window-all-closed', () => {
@@ -38,7 +57,8 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
 	if (win === null) {
-		CreateSplashScreen()
+		//CreateSplashScreen()
+		CreateFirstWindow()
 	}
 })
 
