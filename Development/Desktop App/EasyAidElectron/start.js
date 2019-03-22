@@ -1,7 +1,8 @@
-const { app, BrowserWindow } = require('electron')
+const electron = require('electron')
+const BrowserWindow = electron.BrowserWindow
+const app = electron.app
 
 let SplashScreen = null
-let Empty = null
 
 function CreateSplashScreen() {
 	SplashScreen = new BrowserWindow({
@@ -15,27 +16,13 @@ function CreateSplashScreen() {
 	
 	SplashScreen.loadFile('src/SplashScreen.html')
 
+	SplashScreen.webContents.openDevTools()
+
 	SplashScreen.once('ready-to-show', () => {
         SplashScreen.show()
         SplashScreen.on('closed', () => {
             SplashScreen = null
         })
-    })
-}
-
-function CreateEmpty() {
-	Empty = new BrowserWindow({ 
-        parent: SplashScreen, 
-        modal: true, 
-        show: false,
-        width: 1280,
-        height: 720
-	})
-	
-	Empty.loadFile('src/empty.html')
-	
-    Empty.once('ready-to-show', () => {
-        Empty.show()
     })
 }
 
@@ -54,3 +41,7 @@ app.on('activate', () => {
 		CreateSplashScreen()
 	}
 })
+
+function test() {
+	console.log("test")
+}
