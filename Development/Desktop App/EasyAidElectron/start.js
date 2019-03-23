@@ -26,8 +26,8 @@ function CreateSplashScreen() {
 
 function CreateFirstWindow() {
 	win = new BrowserWindow({
-		width: 1280,
-		height: 720,
+		width: 1000,
+		height: 600,
 		frame: false,
 		resizable: false,
 		show: false
@@ -45,8 +45,8 @@ function CreateFirstWindow() {
 
 
 app.on('ready', () => {
-	//CreateSplashScreen()
-	CreateFirstWindow()
+	CreateSplashScreen()
+	//CreateFirstWindow()
 })
 
 app.on('window-all-closed', () => {
@@ -57,8 +57,8 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
 	if (win === null) {
-		//CreateSplashScreen()
-		CreateFirstWindow()
+		CreateSplashScreen()
+		//CreateFirstWindow()
 	}
 })
 

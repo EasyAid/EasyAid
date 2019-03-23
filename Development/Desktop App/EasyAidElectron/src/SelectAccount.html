@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<!-- TODO FIX HOVER BUG AND MARGIN BUG -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,13 +8,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script>
+        function CloseWindow() {
+            const electron = require('electron')
+            const BrowserWindow = electron.remote.BrowserWindow
+            BrowserWindow.getFocusedWindow().close()
+        }
+
+        function MinimizeWindow() {
+            const electron = require('electron')
+            const BrowserWindow = electron.remote.BrowserWindow
+            BrowserWindow.getFocusedWindow().minimize()
+        }
+    </script>
+    <style>
+        #circle {
+            width: 200px;
+            height: 200px;
+            -webkit-border-radius: 100px;
+            -moz-border-radius: 100px;
+            border-radius: 100px;
+            background: #00796A;
+        }
+
+        #circle:hover {
+            background: #00695C;
+        }
+
+        .btn-func:hover {
+            background-color: #00695C;
+        }
+    </style>
 </head>
 
-<body>
+<body style="font-family: Arial, Helvetica, sans-serif; color: #ffffff;">
     <div class="container-fluid" style="text-align: center; background-color: #00796A;">
-        <div class="row">
-            <div class="col" id="content">
-                <h1>CODE HERE :D</h1>
+        <div class="row align-items-center">
+            <div class="col-10">
+                <h3 style="font-weight: bold; margin-top: 1%; margin-left: 150px">EasyAid</h3>
+            </div>
+            <div class="col btn-func" id="btn-minimize" onclick="MinimizeWindow()">
+                <img src="../img/MinimizeIcon.svg" width="60%" height="60%" />
+            </div>
+            <div class="col btn-func" onclick="CloseWindow()">
+                <img src="../img/CloseIcon.svg" width="60%" height="60%" />
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row align-items-center" style="margin-top:150px; margin-left: 50px">
+            <div class="col">
+                <div id="circle" style="text-align: center;">
+                    <img src="../img/MedicoWhite.png" width="30%" height="40%" style="margin-top: 30px" /><br>
+                    <h5 style="font-weight: bold; margin-top: 25px">MEDICO</h5>
+                </div>
+            </div>
+            <div class="col">
+                <div id="circle" style="text-align: center;">
+                    <img src="../img/PazienteWhite.png" width="30%" height="40%" style="margin-top: 30px" /><br>
+                    <h5 style="font-weight: bold; margin-top: 25px">PAZIENTE</h5>
+                </div>
+            </div>
+            <div class="col">
+                <div id="circle" style="text-align: center;">
+                    <img src="../img/FarmaciaWhite.png" width="30%" height="40%" style="margin-top: 30px" /><br>
+                    <h5 style="font-weight: bold; margin-top: 25px">FARMACIA</h5>
+                </div>
             </div>
         </div>
     </div>
