@@ -33,7 +33,8 @@ function CreateFirstWindow() {
 		show: false
 	})
 	
-	win.loadFile('src/SelectAccount.html')
+	//win.loadFile('src/SelectAccount.html')
+	win.loadFile('src/PatientLogin.html')
 
 	win.once('ready-to-show', () => {
         win.show()
@@ -45,8 +46,8 @@ function CreateFirstWindow() {
 
 
 app.on('ready', () => {
-	CreateSplashScreen()
-	//CreateFirstWindow()
+	//CreateSplashScreen()
+	CreateFirstWindow()
 })
 
 app.on('window-all-closed', () => {
@@ -57,8 +58,8 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
 	if (win === null) {
-		CreateSplashScreen()
-		//CreateFirstWindow()
+		//CreateSplashScreen()
+		CreateFirstWindow()
 	}
 })
 
