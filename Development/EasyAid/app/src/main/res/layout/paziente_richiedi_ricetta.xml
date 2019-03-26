@@ -63,7 +63,7 @@
                 android:orientation="vertical"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_marginBottom="50dp">
+                android:layout_marginBottom="30dp">
 
                 <TextView
                     android:id="@+id/nomeCognomeMedicoRichiediRicettaPaz"
@@ -87,7 +87,6 @@
                     android:textColor="@color/greenDark" />
             </LinearLayout>
 
-            <!--todo migliorare in autocomplete_textview-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -102,46 +101,61 @@
                     android:layout_marginBottom="20dp"
                     android:orientation="vertical">
 
-
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:padding="4dp">
 
-
-                        <EditText
+                        <AutoCompleteTextView
+                            android:id="@+id/autoCompleteNomeFarmacoRichiediRicettaPaz"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="FARMACO RICHIESTO"
-                            android:inputType="text"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:hint="@string/farmaco_richiesto"
+                            android:layout_marginTop="65dp"
                             android:fontFamily="serif"
                             android:imeOptions="actionDone"
                             android:textColor="@color/greenDark"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
-                            android:background="@null"/>
+                            android:background="@null"
+                            android:ems="10" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_marginTop="2dp"
+                            android:background="@color/greenDark"/>
 
                     </android.support.design.widget.TextInputLayout>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_marginTop="2dp"
-                        android:background="@color/greenDark"/>
-                </LinearLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <AutoCompleteTextView
-                        android:id="@+id/autoCompleteTextView"
+                    <TextView
+                        android:id="@+id/usoFarmacoRichiediRicettaPaz"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="65dp"
-                        android:ems="10" />
+                        android:layout_marginTop="15dp"
+                        android:fontFamily="serif"
+                        android:textColor="@color/black"
+                        android:text="@string/quantit_e_utilizzo_n"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:background="@null"/>
 
-                </android.support.design.widget.TextInputLayout>
+                    <TextView
+                        android:id="@+id/prezzoFarmacoRichiediRicettaPaz"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/black"
+                        android:text="@string/prezzo"
+                        android:fontFamily="serif"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:background="@null"/>
+
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -160,7 +174,7 @@
                         <EditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="DESCRIZIONE PATOLOGIA"
+                            android:hint="@string/descrizione_patologia"
                             android:inputType="text"
                             android:fontFamily="serif"
                             android:imeOptions="actionDone"
@@ -191,7 +205,7 @@
                 android:layout_marginBottom="4dp"
                 android:textColor="@color/greenDark"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                android:text="ESENZIONE PER REDDITO"/>
+                android:text="@string/esenzione_per_reddito"/>
 
             <CheckBox
                 android:layout_width="wrap_content"
@@ -199,7 +213,7 @@
                 android:textColor="@color/greenDark"
                 android:layout_marginLeft="15dp"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                android:text="ESENZIONE PER PATOLOGIA"/>
+                android:text="@string/esenzione_per_patologia"/>
 
 
         </LinearLayout>

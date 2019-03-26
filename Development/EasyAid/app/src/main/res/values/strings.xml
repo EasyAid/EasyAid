@@ -8,4 +8,10 @@
     <string name="seleziona_un_altro_giorno"><u>SELEZIONA UN ALTRO GIORNO</u></string>
     <string name="continua_ordine"><u>CONTINUA ORDINE</u></string>
     <string name="paga_ora"><u>PAGA ORA</u></string>
+    <string name="farmaco_richiesto">FARMACO RICHIESTO</string>
+    <string name="quantit_e_utilizzo_n">QUANTITÀ e UTILIZZO:\n</string>
+    <string name="prezzo">PREZZO: </string>
+    <string name="descrizione_patologia">DESCRIZIONE PATOLOGIA</string>
+    <string name="esenzione_per_reddito">ESENZIONE PER REDDITO</string>
+    <string name="esenzione_per_patologia">ESENZIONE PER PATOLOGIA</string>
 </resources>

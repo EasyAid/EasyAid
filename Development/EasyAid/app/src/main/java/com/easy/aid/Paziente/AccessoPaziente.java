@@ -79,7 +79,6 @@ public class AccessoPaziente extends AppCompatActivity {
             }
         });
 
-        //TODO RAGO LINE----------------------------------
         accedi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,7 +94,6 @@ public class AccessoPaziente extends AppCompatActivity {
                 }
             }
         });
-        //todo fine---------------------------------------
 
         //APRE L' ACTIVITY REGISTRAZIONE PAZIENTE
         registrazione.setOnClickListener(new View.OnClickListener() {
