@@ -13,9 +13,7 @@ public class NetVariables extends Application {
     public static String URL_READ = "http://" + URL + "/read.php";
     public static String URL_UPLOAD = "http://" + URL + "/upload.php";
     public static String URL_REGISTER = "http://" + URL + "/register.php";
-    public List<String> nomeFarmaci;
-    public List<String> usoFarmaci;
-    public List<String> prezzoFarmaci;
+    public Map<String, Farmaco> farmaci;
 
 
 }

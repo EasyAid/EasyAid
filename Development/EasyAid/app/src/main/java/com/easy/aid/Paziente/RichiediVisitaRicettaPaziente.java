@@ -19,7 +19,7 @@ import com.easy.aid.R;
 
 public class RichiediVisitaRicettaPaziente extends AppCompatActivity {
 
-    private LinearLayout richiediRicetta, richiediVisita, visualizzaRichieste;
+    private LinearLayout richiediRicetta, richiediVisita;
     private ImageView back;
 
     @Override
@@ -31,7 +31,6 @@ public class RichiediVisitaRicettaPaziente extends AppCompatActivity {
         //BUTTON per cambiare pagina
         richiediRicetta = (LinearLayout) findViewById(R.id.richiediRicetta);
         richiediVisita = (LinearLayout) findViewById(R.id.richiediVisita);
-        visualizzaRichieste = (LinearLayout) findViewById(R.id.visualizzaRichieste);
         back = (ImageView) findViewById(R.id.backRichiediVisRicPaz);
 
         richiediRicetta.setOnClickListener(new View.OnClickListener() {

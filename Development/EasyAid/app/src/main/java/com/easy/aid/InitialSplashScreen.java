@@ -6,12 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.easy.aid.Class.Farmaco;
 import com.easy.aid.Class.NetVariables;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
 public class InitialSplashScreen extends AppCompatActivity {
 
@@ -23,10 +26,7 @@ public class InitialSplashScreen extends AppCompatActivity {
         setContentView(R.layout.splash_screen);
 
         c = ((NetVariables) this.getApplication());
-
-        c.nomeFarmaci = new ArrayList<>();
-        c.usoFarmaci = new ArrayList<>();
-        c.prezzoFarmaci = new ArrayList<>();
+        c.farmaci = new HashMap<>();
 
         BufferedReader reader = null;
         try {
@@ -43,13 +43,14 @@ public class InitialSplashScreen extends AppCompatActivity {
                 riga[4] = riga[4].replace(",",".");
                 String prezzo = riga[4];
 
-                c.nomeFarmaci.add(nome);
-                c.usoFarmaci.add(usoQuantita);
-                c.prezzoFarmaci.add(prezzo);
+                if(c.farmaci.containsKey(nome)){
+                    c.farmaci.get(nome).setQuatitaEuso(usoQuantita);
+                    c.farmaci.get(nome).setPrezzo(prezzo);
+                }else{
+                    c.farmaci.put(nome,new Farmaco(nome,usoQuantita,prezzo));
+                }
 
             }
-
-            Toast.makeText(this, "finito", Toast.LENGTH_SHORT).show();
 
         } catch (IOException e) {
             //log the exception

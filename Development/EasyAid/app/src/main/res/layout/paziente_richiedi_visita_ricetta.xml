@@ -57,12 +57,24 @@
             android:gravity="center"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:layout_marginBottom="40dp"
+                android:textColor="@color/greenDark"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Display1"
+                android:text="RICHIEDI"/>
+
             <LinearLayout
                 android:id="@+id/richiediRicetta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
 
@@ -88,7 +100,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/greenDark"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
-                    android:text="RICHIEDI\nRICETTA"/>
+                    android:text="RICETTA\nMEDICA"/>
             </LinearLayout>
 
 
@@ -97,6 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -108,7 +121,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/greenDark"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
-                    android:text="RICHIEDI\nVISITA"/>
+                    android:text="VISITA DI \nCONTROLLO"/>
 
                 <LinearLayout
                     android:id="@+id/richiediVisita"
@@ -124,40 +137,6 @@
                         android:src="@drawable/richiedi_visita"/>
 
                 </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="15dp"
-                android:orientation="horizontal">
-
-
-                <LinearLayout
-                    android:id="@+id/visualizzaRichieste"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:background="@drawable/fill_circle"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/visualizza_richieste"/>
-
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textAlignment="center"
-                    android:textStyle="bold"
-                    android:textColor="@color/greenDark"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
-                    android:text="VISUALIZZA\nRICHIESTE"/>
             </LinearLayout>
 
         </LinearLayout>

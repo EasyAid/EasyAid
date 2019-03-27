@@ -61,20 +61,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:layout_marginBottom="30dp">
-
-                <TextView
-                    android:id="@+id/nomeCognomeMedicoRichiediRicettaPaz"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:fontFamily="serif"
-                    android:layout_marginBottom="10dp"
-                    android:textColor="@color/greenDark"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:text="MEDICO DI BASE: NOME COGNOME"/>
 
                 <TextView
                     android:id="@+id/nomeCognomePazienteRichiediRicettaPaz"
@@ -82,9 +71,19 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="serif"
                     android:text="PAZIENTE: NOME COGNOME"
-                    android:textAlignment="center"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:textColor="@color/greenDark" />
+
+                <TextView
+                    android:id="@+id/nomeCognomeMedicoRichiediRicettaPaz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/greenDark"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:text="MEDICO DI BASE: NOME COGNOME"/>
+
             </LinearLayout>
 
             <LinearLayout
@@ -101,9 +100,39 @@
                     android:layout_marginBottom="20dp"
                     android:orientation="vertical">
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/descrizione_patologia"
+                                android:inputType="text"
+                                android:fontFamily="serif"
+                                android:textColor="@color/black"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                                android:background="@null"/>
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_marginTop="2dp"
+                            android:background="@color/greenDark"/>
+                    </LinearLayout>
+
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:padding="4dp">
 
                         <AutoCompleteTextView
@@ -113,10 +142,10 @@
                             android:layout_alignParentTop="true"
                             android:layout_centerHorizontal="true"
                             android:hint="@string/farmaco_richiesto"
-                            android:layout_marginTop="65dp"
                             android:fontFamily="serif"
+                            android:inputType="text"
                             android:imeOptions="actionDone"
-                            android:textColor="@color/greenDark"
+                            android:textColor="@color/black"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                             android:background="@null"
                             android:ems="10" />
@@ -129,18 +158,19 @@
 
                     </android.support.design.widget.TextInputLayout>
 
-                    <TextView
+
+                    <Spinner
                         android:id="@+id/usoFarmacoRichiediRicettaPaz"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="15dp"
-                        android:fontFamily="serif"
-                        android:textColor="@color/black"
-                        android:text="@string/quantit_e_utilizzo_n"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                        android:background="@null"/>
+                        android:layout_marginTop="25dp"
+                        android:textAlignment="center"
+                        android:spinnerMode="dropdown"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="2dp"
+                        android:background="@color/greenDark"/>
 
                     <TextView
                         android:id="@+id/prezzoFarmacoRichiediRicettaPaz"
@@ -148,7 +178,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="20dp"
                         android:textColor="@color/black"
                         android:text="@string/prezzo"
                         android:fontFamily="serif"
@@ -161,42 +191,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:orientation="vertical">
-
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/descrizione_patologia"
-                            android:inputType="text"
-                            android:fontFamily="serif"
-                            android:imeOptions="actionDone"
-                            android:textColor="@color/greenDark"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
-                            android:background="@null"/>
-
-                    </android.support.design.widget.TextInputLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_marginTop="2dp"
-                        android:background="@color/greenDark"/>
-                </LinearLayout>
-
-
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="60dp"/>
 
             <CheckBox
                 android:layout_width="wrap_content"
