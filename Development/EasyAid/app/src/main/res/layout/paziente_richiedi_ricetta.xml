@@ -111,6 +111,7 @@
                             android:layout_height="wrap_content">
 
                             <EditText
+                                android:id="@+id/descPatologiaRichiediRicettaPaz"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="@string/descrizione_patologia"
@@ -214,15 +215,16 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/continua1Paz"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="@color/greenDark"
-            android:text="@string/invia_richiesta"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
-            android:textColor="@color/white" />
-
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/inviaRichiestaPaz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:background="@color/greenDark"
+        android:text="@string/invia_richiesta"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+        android:textColor="@color/white" />
 </RelativeLayout>
