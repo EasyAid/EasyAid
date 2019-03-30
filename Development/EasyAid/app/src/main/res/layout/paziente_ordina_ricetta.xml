@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,6 +10,7 @@
     tools:context=".Paziente.OrdinaRicettaPaziente">
 
     <LinearLayout
+        android:id="@+id/toopbarOrdinaFarmacoPaz"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -46,19 +47,130 @@
     </LinearLayout>
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toopbarOrdinaFarmacoPaz"
+        android:layout_above="@id/bottombarOrdinaFarmacoPaz"
         android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:orientation="vertical">
+        android:layout_marginLeft="20dp">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:orientation="vertical">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:fontFamily="serif"
+                        android:hint="NOME FARMACO"
+                        android:inputType="text"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                        android:textColor="@color/black" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/greenDark" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:fontFamily="serif"
+                    android:hint="NUMERO CONFEZIONI"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:textColor="@color/black" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center">
+
+                    <Button
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/all_round"
+                        android:textColor="@color/white"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                        android:text="-"/>
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:fontFamily="serif"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Display1"
+                        android:text="0"/>
+                    <Button
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/all_round"
+                        android:textColor="@color/white"
+                        android:fontFamily="casual"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                        android:text="+"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:fontFamily="serif"
+                        android:hint="PROVINCIA FARMACIA"
+                        android:inputType="text"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                        android:textColor="@color/black" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/greenDark" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -68,18 +180,18 @@
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
+
                     android:layout_height="wrap_content">
 
                     <EditText
-                        android:id="@+id/descPatologiaRichiediRicettaPaz"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="FARMACO"
-                        android:inputType="text"
+                        android:background="@null"
                         android:fontFamily="serif"
-                        android:textColor="@color/black"
+                        android:hint="NOME FARMACO"
+                        android:inputType="text"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
-                        android:background="@null"/>
+                        android:textColor="@color/black" />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -87,10 +199,59 @@
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:layout_marginTop="2dp"
-                    android:background="@color/greenDark"/>
+                    android:background="@color/greenDark" />
             </LinearLayout>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/bottombarOrdinaFarmacoPaz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.66">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:src="@drawable/richiedi_ricetta_green"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:text="SCEGLI RICETTA"
+                android:textColor="@color/white"
+                android:background="@drawable/all_round"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="bottom"
+            android:layout_weight="0.33">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:text="CONTINUA ORDINE"
+                android:textColor="@color/white"
+                android:background="@drawable/all_round"/>
+
         </LinearLayout>
     </LinearLayout>
 
-
-</LinearLayout>
+</RelativeLayout>

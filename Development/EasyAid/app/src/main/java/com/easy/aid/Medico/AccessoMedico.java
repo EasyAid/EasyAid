@@ -53,7 +53,7 @@ public class AccessoMedico extends AppCompatActivity {
         cf          = (EditText)findViewById(R.id.accessoCodiceFiscaleMed);
 
         layoutPass  = (TextInputLayout) findViewById(R.id.layoutAccessoPasswordPaz);
-        back        = (ImageView) findViewById(R.id.backAccessoPaz);
+        back        = (ImageView) findViewById(R.id.backAccessoMed);
 
         accedi.setOnClickListener(new View.OnClickListener() {
             @Override

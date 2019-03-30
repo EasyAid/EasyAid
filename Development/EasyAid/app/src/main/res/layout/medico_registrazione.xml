@@ -9,8 +9,6 @@
     android:background="@color/background"
     tools:context=".Medico.RegistrazioneMedico">
 
-    <!--todo time picker-->
-
     <!-- mettere la topBar in tutti i layout -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,12 +47,11 @@
     </LinearLayout>
 
     <!--prima pagina-->
-
     <RelativeLayout
         android:id="@+id/registrazione1Med"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -355,27 +352,266 @@
     </RelativeLayout>
 
     <!--seconda pagina-->
-
     <RelativeLayout
         android:id="@+id/registrazione2Med"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:text="INDIRIZZO STUDIO MEDICO"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                android:textColor="@color/greenDark"/>
-        </LinearLayout>
+                android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="INDIRIZZO STUDIO MEDICO"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:textColor="@color/greenDark"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="25dp"
+                    />
+                <!--provincia-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/editProvinciaStudMed"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/greenDark"
+                        android:imeOptions="actionGo"
+                        android:background="@null"
+                        android:inputType="text"
+                        android:hint="PROVINCIA"/>
+                </android.support.design.widget.TextInputLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/greenDark"
+                    android:layout_marginBottom="10dp"/>
+                <!--citta-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/editCittaStudMed"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/greenDark"
+                        android:imeOptions="actionGo"
+                        android:background="@null"
+                        android:inputType="text"
+                        android:hint="CITTA|PROVINCIA"/>
+                </android.support.design.widget.TextInputLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/greenDark"
+                    android:layout_marginBottom="10dp"/>
+                <!--via-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/editViaStudMed"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/greenDark"
+                        android:imeOptions="actionDone"
+                        android:background="@null"
+                        android:inputType="text"
+                        android:hint="VIA|PIAZZA"/>
+                </android.support.design.widget.TextInputLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/greenDark"
+                    android:layout_marginBottom="30dp"/>
+            </LinearLayout>
+
+            <!--orari-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:style="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:text="ORARI DI LAVORO"
+                    android:textColor="@color/greenDark"
+                    />
+
+                <!--todo tabella con time picker-->
+
+            </LinearLayout>
+        </LinearLayout>
+        <Button
+            android:id="@+id/continua2Med"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/top_round"
+            android:text="@string/continua"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+            android:textColor="@color/white" />
     </RelativeLayout>
 
+    <!--terza pagina-->
+    <RelativeLayout
+        android:id="@+id/registrazione3Med"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+            <!--dati di contatto-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="90dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:style="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:textColor="@color/greenDark"
+                    android:text="DATI DI CONTATTO"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/greenDark"
+                    android:layout_marginBottom="15dp"/>
+
+                <!--email-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/editEmailMed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/greenDark"
+                        style="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:imeOptions="actionGo"
+                        android:background="@null"
+                        android:hint="EMAIL"/>
+                </android.support.design.widget.TextInputLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/greenDark"
+                        android:layout_marginBottom="15dp"/>
+
+                <!--telefono-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/editTelMed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/greenDark"
+                        style="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:imeOptions="actionGo"
+                        android:background="@null"
+                        android:hint="TELEFONO"/>
+                </android.support.design.widget.TextInputLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/greenDark"
+                    android:layout_marginBottom="15dp"/>
+            </LinearLayout>
+
+            <!--password-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:style="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:textColor="@color/greenDark"
+                    android:text="IMPOSTAZIONE PASSWORD"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/greenDark"
+                    android:layout_marginBottom="15dp"/>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/editPasswordMed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/greenDark"
+                        style="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:imeOptions="actionGo"
+                        android:background="@null"
+                        android:hint="PASSWORD"/>
+                </android.support.design.widget.TextInputLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/greenDark"
+                    android:layout_marginBottom="15dp"/>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/editConfermaPasswordMed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/greenDark"
+                        style="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:imeOptions="actionDone"
+                        android:background="@null"
+                        android:hint="CONFERMA PASSWORD"/>
+                </android.support.design.widget.TextInputLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/greenDark"
+                    android:layout_marginBottom="15dp"/>
+            </LinearLayout>
+        </LinearLayout>
+        <Button
+            android:id="@+id/registrazioneMed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/top_round"
+            android:text="@string/registrazione"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+            android:textColor="@color/white" />
+    </RelativeLayout>
 </LinearLayout>
