@@ -7,6 +7,7 @@
     <title>Login Paziente</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script>
         function CloseWindow() {
@@ -43,6 +44,121 @@
         .draggable {
             -webkit-app-region: drag;
         }
+
+        .inputWithIcon input[type="text"]::placeholder,
+        .inputWithIcon input[type="password"]::placeholder {
+            color: #00796A;
+            opacity: 1;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            border: 2px solid #fff;
+            border-bottom: 2px solid #00796A;
+            border-radius: 4px;
+            margin: 8px 0;
+            outline: none;
+            padding: 8px;
+            box-sizing: border-box;
+            transition: 0.25s;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            color: #004d40;
+            border-color: #00695C;
+            box-shadow: 0 0 5px 0 #00695C;
+        }
+
+        .inputWithIcon input[type="text"],
+        .inputWithIcon input[type="password"] {
+            padding-left: 40px;
+        }
+
+        .inputWithIcon {
+            position: relative;
+        }
+
+        .inputWithIcon i {
+            position: absolute;
+            left: 0;
+            top: 8px;
+            padding: 14px 17px;
+            color: #00796A;
+            transition: 0.25s;
+        }
+
+        .inputWithIcon input[type="text"]:focus+i,
+        .inputWithIcon input[type="password"]:focus+i {
+            color: #00695C;
+        }
+
+        .inputWithIcon.inputIconBg i {
+            background-color: #00796A;
+            color: #fff;
+            padding: 9px 4px;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .inputWithIcon.inputIconBg input[type="text"]:focus+i,
+        .inputWithIcon.inputIconBg input[type="password"]:focus+i {
+            color: #fff;
+            background-color: #00695C;
+        }
+
+        .wrap {
+            position: relative;
+            margin-left: 13px;
+            margin-top: 5px;
+        }
+
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        label {
+            font-size: 85%;
+            color: #00695C;
+            display: inline-block;
+            padding: 0.45em 0 0 2em;
+            cursor: pointer;
+        }
+
+        label:before {
+            content: '';
+            display: inline-block;
+            background: #00695C;
+            position: absolute;
+            left: 0;
+            top: 5px;
+            height: 20px;
+            width: 20px;
+            margin-right: 10px;
+            border-radius: 80%;
+            box-shadow: 0px 1px 0 0 rgba(0, 0, 0, .2);
+            box-sizing: border-box;
+            border: 10px solid #fff;
+            transition: border .3s ease;
+        }
+
+        input[type="checkbox"]:checked+label:before {
+            border-color: #fff;
+            border-width: 3px;
+        }
+
+        input[type="checkbox"]+label {
+            transition: color .7s ease;
+        }
+
+        input[type="checkbox"]:checked+label {
+            color: #5D5D5D;
+        }
+
+        #AccediButton:hover,
+        #RegistratiButton:hover {
+            background-color: #004d40 !important;
+        }
     </style>
 </head>
 
@@ -55,48 +171,58 @@
             <div class="col btn-func" id="btn-minimize" onclick="MinimizeWindow()" style="line-height: 2.4;">
                 <img src="../img/MinimizeIcon.svg" style="width: 39px; height: 39px; padding-top:15px" />
             </div>
-            <div class="col btn-func" onclick="CloseWindow()" style="line-height: 2.4;">
+            <div class="col btn-func" onclick="CloseWindow()" style="line-height: 2.5;">
                 <img src="../img/CloseIcon.svg" style="width: 25px; height: 25px;" />
             </div>
         </div>
     </div>
 
-    <div class="container-fluid" style="background-color: red;">
-        <div class="row align-items-center" style="margin-left: 370px; height: 250px">
+    <div class="container-fluid">
+        <div class="row align-items-center" style="margin-left: 370px; height: 220px; margin-top: 30px;">
             <div class="col">
                 <div id="circle" style="text-align: center;">
                     <img src="../img/PazienteWhite.png" width="30%" height="40%" style="margin-top: 30px" /><br>
                     <h5 style="font-weight: bold; margin-top: 25px">PAZIENTE</h5>
                 </div>
+
             </div>
         </div>
     </div>
 
-    <div class="container-fluid" style="background-color: blue;">
+    <div class="container-fluid">
         <div class="row align-items-center" style="height:250px">
             <div class="col-6">
-                <div id="circle" style="text-align: center;">
-                    <img src="../img/PazienteWhite.png" width="30%" height="40%" style="margin-top: 30px" /><br>
-                    <h5 style="font-weight: bold; margin-top: 25px">PAZIENTE</h5>
+                <div class="inputWithIcon">
+                    <input type="text" placeholder="Codice Fiscale" id="TextCodiceFiscale">
+                    <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+                </div>
+                <div class="inputWithIcon">
+                    <input type="password" placeholder="Password" id="TextPassword">
+                    <i class="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
+                </div>
+                <div class="wrap centre">
+                    <div class="checkbox">
+                        <input id="check" type="checkbox" name="check" value="check">
+                        <label for="check">Resta Connesso</label>
+                    </div>
                 </div>
             </div>
 
-            <div class="col-6">
-                <div id="circle" style="text-align: center;">
-                    <img src="../img/PazienteWhite.png" width="30%" height="40%" style="margin-top: 30px" /><br>
-                    <h5 style="font-weight: bold; margin-top: 25px">PAZIENTE</h5>
-                </div>
+            <div class="col-6" style="text-align: center">
+                <p style="color:#00695C">Non hai ancora un profilo?</p>
             </div>
         </div>
     </div>
 
     <div class="container-fluid">
         <div class="row" style="height:60px">
-            <div class="col-6" style="text-align:center; font-weight: bold; background-color: #00695C;">
+            <div class="col-6" id="AccediButton"
+                style="text-align:center; font-weight: bold; background-color: #00695C;">
                 <p style="margin-top: 18px;">ACCEDI</p>
             </div>
 
-            <div class="col-6" style="text-align:center; font-weight: bold; background-color: #00796A">
+            <div class="col-6" id="RegistratiButton"
+                style="text-align:center; font-weight: bold; background-color: #00796A">
                 <p style="margin-top: 18px;">REGISTRATI</p>
             </div>
         </div>
