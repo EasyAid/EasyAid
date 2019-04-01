@@ -34,7 +34,7 @@ function CreateFirstWindow() {
 	})
 	
 	//win.loadFile('src/SelectAccount.html')
-	win.loadFile('src/PatientLogin.html')
+	win.loadFile('src/DoctorLogin.html')
 
 	win.once('ready-to-show', () => {
         win.show()
