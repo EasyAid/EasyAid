@@ -10,6 +10,6 @@ public class RegistrazioneFarmacia extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registrazione_farmacia);
+        setContentView(R.layout.farmacia_registrazione);
     }
 }

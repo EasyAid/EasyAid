@@ -63,7 +63,8 @@
         <activity
             android:name=".Paziente.RegistrazionePaziente"
             android:configChanges="orientation"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".Medico.AccessoMedico"
             android:configChanges="orientation"
@@ -73,7 +74,8 @@
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity android:name=".Medico.MainMedico" />
-        <activity android:name=".Medico.RegistrazioneMedico" />
+        <activity android:name=".Medico.RegistrazioneMedico"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

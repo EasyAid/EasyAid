@@ -1,9 +1,11 @@
 package com.easy.aid.Paziente;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
@@ -25,20 +27,18 @@ public class RegistrazionePaziente extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.paziente_registrazione);
 
-        continua1       = (Button) findViewById(R.id.continua1Paz);
-        continua2       = (Button) findViewById(R.id.continua2Paz);
-        registrazione   = (Button) findViewById(R.id.registrazionePaz);
+        registrazione   = (Button) findViewById(R.id.continuaPaziente);
 
-        nome = (EditText) findViewById(R.id.editNomePaz);
-        cognome = (EditText) findViewById(R.id.editCognomePaz);
-        dataNascita = (EditText) findViewById(R.id.editDataNascitaPaz);
-        provinciaNascita = (EditText) findViewById(R.id.editProvinciaNascPaz);
-        cittaNascita = (EditText) findViewById(R.id.editCittaNascPaz);
-        viaNascita = (EditText) findViewById(R.id.editViaNascPaz);
+        nome = (EditText) findViewById(R.id.editNomePaziente);
+        cognome = (EditText) findViewById(R.id.editCognomePaziente);
+        dataNascita = (EditText) findViewById(R.id.editDataNascitaPaziente);
+        provinciaNascita = (EditText) findViewById(R.id.editProvinciaNascPaziente);
+        cittaNascita = (EditText) findViewById(R.id.editCittaNascPaziente);
+        viaNascita = (EditText) findViewById(R.id.editViaNascPaziente);
 
-        back            = (ImageView)findViewById(R.id.backRegistrazionePaz);
+        back = (ImageView)findViewById(R.id.backRegistrazionePaziente);
 
-        continua1.setOnClickListener(new View.OnClickListener() {
+        registrazione.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 boolean error = false;

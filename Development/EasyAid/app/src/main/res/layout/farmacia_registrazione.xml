@@ -7,11 +7,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/background"
-    tools:context=".Paziente.RegistrazionePaziente">
+    tools:context=".Farmacia.RegistrazioneFarmacia">
 
     <!-- mettere la topBar in tutti i layout -->
     <LinearLayout
-        android:id="@+id/topbarRegistrazionePaziente"
+        android:id="@+id/topbarRegistrazioneFarmacia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -22,10 +22,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
             <!--tasto indietro-->
             <ImageView
-                android:id="@+id/backRegistrazionePaziente"
+                android:id="@+id/backRegistrazioneFarmacia"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
@@ -36,7 +35,7 @@
                 android:layout_height="40dp"
                 android:gravity="center"
                 android:textAlignment="center"
-                android:text="REGISTRAZIONE PAZIENTE"
+                android:text="REGISTRAZIONE FARMACIA"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                 android:textColor="@color/greenDark" />
 
@@ -52,16 +51,16 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/topbarRegistrazionePaziente"
-        android:layout_above="@+id/continuaPaziente"
+        android:layout_below="@id/topbarRegistrazioneFarmacia"
+        android:layout_above="@+id/continuaFarmacia"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="20dp">
 
         <RelativeLayout
-            android:id="@+id/registrazione1Paziente"
+            android:id="@+id/registrazione1Farmacia"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/topbarRegistrazionePaziente"
+            android:layout_below="@+id/topbarRegistrazioneFarmacia"
             android:visibility="visible">
 
             <LinearLayout
@@ -83,19 +82,19 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
-                        android:text="DATI ANAGRAFICI"
+                        android:text="DATI DI CONTATTO"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                         android:textColor="@color/greenDark"/>
 
-                    <!--nome-->
+                    <!--email-->
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <EditText
-                            android:id="@+id/editNomePaziente"
+                            android:id="@+id/editEmailFarmacia"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="NOME"
+                            android:hint="EMAIL"
                             android:inputType="text"
                             android:imeOptions="actionGo"
                             android:textColor="@color/greenDark"
@@ -121,10 +120,10 @@
                         android:layout_height="wrap_content">
 
                         <EditText
-                            android:id="@+id/editCognomePaziente"
+                            android:id="@+id/editTelFarmacia"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="COGNOME"
+                            android:hint="TELEFONO"
                             android:inputType="text"
                             android:imeOptions="actionGo"
                             android:textColor="@color/greenDark"
@@ -137,84 +136,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:background="@color/greenDark"/>
-
                 </LinearLayout>
-
-                <!--data nascita-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/calendar"/>
-
-                        <EditText
-                            android:id="@+id/editDataNascitaPaziente"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="5dp"
-                            android:hint="DATA DI NASCITA"
-                            android:inputType="text"
-                            android:imeOptions="actionGo"
-                            android:textColor="@color/greenDark"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:background="@null"/>
-                    </LinearLayout>
-
-                    <CalendarView
-                        android:id="@+id/calendarioRegistrazionePaziente"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:visibility="gone"/>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="20dp"
-                        android:background="@color/greenDark"/>
-                </LinearLayout>
-
-                <!--maschio / femmina-->
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <RadioGroup
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="10dp"
-                            android:textColor="@color/greenDark"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:text="Maschio"/>
-
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/greenDark"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:text="Femmina"/>
-                    </RadioGroup>
-                </LinearLayout>
-                <!--luogo di nascita-->
+                    android:layout_height="wrap_content"/>
+                <!--password-->
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left"
-                    android:text="LUOGO DI NASCITA"
+                    android:text="IMPOSTAZIONE PASSWORD"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
                     android:textColor="@color/greenDark"
@@ -231,10 +164,10 @@
                         android:layout_height="wrap_content">
 
                         <EditText
-                            android:id="@+id/editProvinciaNascPaziente"
+                            android:id="@+id/editPasswordFarmacia"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="PROVINCIA"
+                            android:hint="PASSWORD"
                             android:inputType="text"
                             android:imeOptions="actionGo"
                             android:textColor="@color/greenDark"
@@ -262,10 +195,10 @@
                         android:layout_height="wrap_content">
 
                         <EditText
-                            android:id="@+id/editCittaNascPaziente"
+                            android:id="@+id/editConfermaPasswordFarmacia"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="CITTA|COMUNE"
+                            android:hint="CONFERMA PASSWORD"
                             android:inputType="text"
                             android:imeOptions="actionGo"
                             android:textColor="@color/greenDark"
@@ -312,8 +245,8 @@
                         android:layout_marginBottom="10dp"
                         android:background="@color/greenDark"/>
                 </LinearLayout>
-                <!--Codice fiscale-->
 
+                <!--Codice fiscale-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -354,7 +287,7 @@
 
 
     <Button
-        android:id="@+id/continuaPaziente"
+        android:id="@+id/continuaFarmacia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
