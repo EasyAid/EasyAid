@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script>
         function CloseWindow() {
@@ -102,52 +103,77 @@
             background-color: #00695C;
         }
 
-        .wrap {
+        /* Customize the label (the container) */
+        .container {
+            display: block;
             position: relative;
+            padding-left: 40px;
+            margin-bottom: 12px;
             margin-left: 13px;
-            margin-top: 5px;
+            margin-top: 7px;
+            cursor: pointer;
+            font-size: 22px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            font-size: 90%;
+            width: 170px;
+            color: #004d40;
         }
 
-        input[type="checkbox"] {
+        /* Hide the browser's default checkbox */
+        .container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        /* Create a custom checkbox */
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #eee;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .container:hover input~.checkmark {
+            background-color: #ccc;
+        }
+
+        /* When the checkbox is checked, add a blue background */
+        .container input:checked~.checkmark {
+            background-color: #00695C;
+        }
+
+        /* Create the checkmark/indicator (hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
             display: none;
         }
 
-        label {
-            font-size: 85%;
-            color: #00695C;
-            display: inline-block;
-            padding: 0.45em 0 0 2em;
-            cursor: pointer;
+        /* Show the checkmark when checked */
+        .container input:checked~.checkmark:after {
+            display: block;
         }
 
-        label:before {
-            content: '';
-            display: inline-block;
-            background: #00695C;
-            position: absolute;
-            left: 0;
-            top: 5px;
-            height: 20px;
-            width: 20px;
-            margin-right: 10px;
-            border-radius: 80%;
-            box-shadow: 0px 1px 0 0 rgba(0, 0, 0, .2);
-            box-sizing: border-box;
-            border: 10px solid #fff;
-            transition: border .3s ease;
-        }
-
-        input[type="checkbox"]:checked+label:before {
-            border-color: #fff;
-            border-width: 3px;
-        }
-
-        input[type="checkbox"]+label {
-            transition: color .7s ease;
-        }
-
-        input[type="checkbox"]:checked+label {
-            color: #5D5D5D;
+        /* Style the checkmark/indicator */
+        .container .checkmark:after {
+            left: 7px;
+            top: 4px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
         }
 
         #AccediButton:hover,
@@ -157,17 +183,18 @@
     </style>
 </head>
 
-<body style="font-family: Arial, Helvetica, sans-serif; color: #ffffff;">
+<body style="font-family: 'Raleway', Arial, Helvetica, sans-serif; color: #ffffff; cursor: default;">
     <div class="container-fluid" style="text-align: center; background-color: #00796A; height: 40px !important">
         <div class="row align-items-center" style="padding: 0px;">
             <div class="col-10 draggable">
-                <h5 style="font-weight: bold; margin-left: 165px; margin-top: 7px">EasyAid</h5>
+                <img draggable="false" src="../img/LogoTextWhite.png" style="margin-left: 165px; margin-top: -10px; height: 60px; width: 169px" />
             </div>
-            <div class="col btn-func" id="btn-minimize" onclick="MinimizeWindow()" style="line-height: 2.4;">
-                <img src="../img/MinimizeIcon.svg" style="width: 39px; height: 39px; padding-top:15px" />
+            <div class="col btn-func" id="btn-minimize" onclick="MinimizeWindow()" style="line-height: 2.4; margin-top: -10px;">
+                <img draggable="false" src="../img/MinimizeIcon.svg"
+                    style="width: 39px; height: 39px; padding-top:15px" />
             </div>
-            <div class="col btn-func" onclick="CloseWindow()" style="line-height: 2.5;">
-                <img src="../img/CloseIcon.svg" style="width: 25px; height: 25px;" />
+            <div class="col btn-func" onclick="CloseWindow()" style="line-height: 2.5; margin-top: -10px;">
+                <img draggable="false" src="../img/CloseIcon.svg" style="width: 25px; height: 25px;" />
             </div>
         </div>
     </div>
@@ -176,7 +203,8 @@
         <div class="row align-items-center" style="margin-left: 370px; height: 220px; margin-top: 30px;">
             <div class="col">
                 <div id="circle" style="text-align: center;">
-                    <img src="../img/MedicoWhite.png" width="30%" height="40%" style="margin-top: 30px" /><br>
+                    <img draggable="false" src="../img/MedicoWhite.png" width="30%" height="40%"
+                        style="margin-top: 30px" /><br>
                     <h5 style="font-weight: bold; margin-top: 25px">MEDICO</h5>
                 </div>
 
@@ -195,12 +223,10 @@
                     <input type="password" placeholder="Password" id="TextPassword">
                     <i class="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
                 </div>
-                <div class="wrap centre">
-                    <div class="checkbox">
-                        <input id="check" type="checkbox" name="check" value="check">
-                        <label for="check">Resta Connesso</label>
-                    </div>
-                </div>
+                <label class="container"><div style="margin-left:-11px;">Resta connesso</div>
+                    <input type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
             </div>
 
             <div class="col-6" style="text-align: center">
@@ -212,12 +238,12 @@
     <div class="container-fluid">
         <div class="row" style="height:60px">
             <div class="col-6" id="AccediButton"
-                style="text-align:center; font-weight: bold; background-color: #00695C;">
+                style="text-align:center; font-weight: bold; background-color: #00695C; cursor: pointer;">
                 <p style="margin-top: 18px;">ACCEDI</p>
             </div>
 
             <div class="col-6" id="RegistratiButton"
-                style="text-align:center; font-weight: bold; background-color: #00796A">
+                style="text-align:center; font-weight: bold; background-color: #00796A; cursor: pointer;">
                 <p style="margin-top: 18px;">REGISTRATI</p>
             </div>
         </div>

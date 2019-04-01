@@ -11,7 +11,10 @@ function CreateSplashScreen() {
 		frame: false,
 		resizable: false,
 		show: false,
-		backgroundColor: '#00796A'
+		backgroundColor: '#00796A',
+		webPreferences: {
+			devTools: false
+		}
 	})
 	
 	SplashScreen.loadFile('src/SplashScreen.html')
@@ -30,11 +33,15 @@ function CreateFirstWindow() {
 		height: 600,
 		frame: false,
 		resizable: false,
-		show: false
+		show: false,
+		webPreferences: {
+			devTools: false
+		}
 	})
 	
 	//win.loadFile('src/SelectAccount.html')
-	win.loadFile('src/DoctorLogin.html')
+	//win.loadFile('src/DoctorLogin.html')
+	win.loadFile('src/PatientLogin.html')
 
 	win.once('ready-to-show', () => {
         win.show()

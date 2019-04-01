@@ -22,7 +22,10 @@
                     frame: false,
                     width: 1000,
                     height: 600,
-                    resizable: false
+                    resizable: false,
+                    webPreferences: {
+                        devTools: false
+                    }
                 })
                 
                 SelectAccount.loadFile('src/SelectAccount.html')
