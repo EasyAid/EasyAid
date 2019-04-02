@@ -3,11 +3,13 @@ Piattaforma Android &amp; Windows per la gestione delle ricette e delle prenotaz
 
 Il team di sviluppo è suddiviso in due gruppi:
 
-\t **Android**
+**Android**
 * Lupi Matteo
 * Ragosta Stefano
 * Tironi Cristian
 
-\t **Windows**
+**Windows**
 * Murtas Manuel
 * Zanchi Federico
+
+Entrambe le piattaforme si collegano ad un Server Web hostato su Amazon Web Services il quale provvederà alla comunicazione con il database MySQL. 
