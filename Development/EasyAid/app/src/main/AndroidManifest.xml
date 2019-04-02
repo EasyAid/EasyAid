@@ -31,7 +31,8 @@
         <activity
             android:name=".Paziente.AccessoPaziente"
             android:configChanges="orientation"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Paziente.MainPaziente"
             android:configChanges="orientation"

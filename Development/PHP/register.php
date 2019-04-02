@@ -1,10 +1,10 @@
 <?php
 
-if ($_SERVER['REQUEST_METHOD'] =='POST'){
+if ($_SERVER['REQUEST_METHOD']=='POST'|| $_SERVER['REQUEST_METHOD']=='GET'){
 
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $name = $_REQUEST['name'];
+    $email = $_REQUEST['email'];
+    $password = $_REQUEST['password'];
 
     $password = password_hash($password, PASSWORD_DEFAULT);
 

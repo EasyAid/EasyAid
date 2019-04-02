@@ -9,6 +9,7 @@
     tools:context=".Paziente.AccessoPaziente">
 
     <LinearLayout
+        android:id="@+id/topbarAccessoPaziente"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -46,137 +47,161 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:layout_below="@id/topbarAccessoPaziente"
+        android:layout_above="@id/bottombarAccessoPaziente"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/profile"/>
-
-                <android.support.design.widget.TextInputLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-
-                    <EditText
-                        android:id="@+id/accessoCodiceFiscalePaz"
-                        android:layout_width="match_parent"
+                    <ImageView
+                        android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:layout_marginLeft="5dp"
-                        android:hint=" Codice Fiscale"
-                        android:inputType="text"
-                        android:imeOptions="actionGo"
-                        android:textColor="@color/greenDark"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                        android:background="@null"/>
+                        android:layout_gravity="center"
+                        android:src="@drawable/profile"/>
 
-                </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <EditText
+                            android:id="@+id/accessoCodiceFiscalePaz"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="5dp"
+                            android:hint=" Codice Fiscale"
+                            android:inputType="text"
+                            android:imeOptions="actionGo"
+                            android:textColor="@color/greenDark"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:background="@null"/>
+
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/greenDark"/>
             </LinearLayout>
 
-            <View
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="20dp"
-                android:background="@color/greenDark"/>
-        </LinearLayout>
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/lock"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/layoutAccessoPasswordPaz"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:passwordToggleEnabled="true">
+
+                        <EditText
+                            android:id="@+id/accessoPasswordPaz"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="5dp"
+                            android:hint=" Password"
+                            android:inputType="textPassword"
+                            android:textColor="@color/greenDark"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:background="@null"/>
+
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/greenDark"/>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/lock"/>
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/layoutAccessoPasswordPaz"
-                    android:layout_width="match_parent"
+                <CheckBox
+                    android:id="@+id/restaConnessoPaz"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:passwordToggleEnabled="true">
-
-                    <EditText
-                        android:id="@+id/accessoPasswordPaz"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="5dp"
-                        android:hint=" Password"
-                        android:inputType="textPassword"
-                        android:textColor="@color/greenDark"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                        android:background="@null"/>
-
-                </android.support.design.widget.TextInputLayout>
+                    android:text="RESTA CONNESSO"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/greenDark" />
             </LinearLayout>
 
-            <View
+            <Button
+                android:id="@+id/accessoButtonPaz"
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="20dp"
-                android:background="@color/greenDark"/>
+                android:layout_height="wrap_content"
+                android:background="@drawable/all_round"
+                android:text="@string/accedi"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                android:textColor="@color/white" />
 
         </LinearLayout>
-
-        <CheckBox
-            android:id="@+id/restaConnessoPaz"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="RESTA CONNESSO"
-            android:layout_marginBottom="5dp"
-            android:textColor="@color/greenDark" />
-
-
-        <Button
-            android:id="@+id/accessoButtonPaz"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/all_round"
-            android:text="@string/accedi"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
-            android:textColor="@color/white" />
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/registrazioneButtonPaz"
-        android:layout_marginBottom="15dp"
-        android:text="Non hai ancora un profilo?"
-        android:textAlignment="center"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-        android:textColor="@color/greenDark" />
 
-    <Button
-        android:id="@+id/registrazioneButtonPaz"
+    <LinearLayout
+        android:id="@+id/bottombarAccessoPaziente"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/greenDark"
-        android:text="@string/registrati"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
-        android:textColor="@color/white" />
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/registrazioneButtonPaz"
+            android:layout_marginBottom="15dp"
+            android:text="Non hai ancora un profilo?"
+            android:textAlignment="center"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/greenDark" />
+
+        <Button
+            android:id="@+id/registrazioneButtonPaz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/greenDark"
+            android:text="@string/registrati"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
 
 </RelativeLayout>

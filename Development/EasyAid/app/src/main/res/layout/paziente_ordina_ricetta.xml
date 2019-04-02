@@ -17,7 +17,7 @@
         android:layout_marginRight="15dp"
         android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -25,7 +25,7 @@
             <ImageView
                 android:id="@+id/backRichiediVisitaPaz"
                 android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:src="@drawable/back"/>
 
@@ -37,7 +37,14 @@
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                 android:text="ORDINA FARMACO"/>
 
-        </LinearLayout>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/carrello"/>
+
+        </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
@@ -60,6 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:visibility="gone"
             android:orientation="vertical">
 
             <LinearLayout
@@ -73,6 +81,7 @@
                     android:layout_height="wrap_content">
 
                     <EditText
+                        android:id="@+id/nomeFarmacoOrdinaFarmacoPaziente"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
@@ -114,6 +123,7 @@
                     android:gravity="center">
 
                     <Button
+                        android:id="@+id/minusOrdinaFarmacoPaziente"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:background="@drawable/all_round"
@@ -131,6 +141,7 @@
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Display1"
                         android:text="0"/>
                     <Button
+                        android:id="@+id/addOrdinaFarmacoPaziente"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:background="@drawable/all_round"
@@ -142,65 +153,27 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
+            <Button
+                android:id="@+id/aggiungiCarrelloOrdinaFarmacoPaziente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="30dp"
-                android:orientation="vertical">
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:text="AGGIUNGI AL CARRELLO"
+                android:textColor="@color/white"
+                android:background="@drawable/all_round"/>
 
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+        </LinearLayout>
 
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:fontFamily="serif"
-                        android:hint="PROVINCIA FARMACIA"
-                        android:inputType="text"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
-                        android:textColor="@color/black" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
 
-                </android.support.design.widget.TextInputLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="2dp"
-                    android:background="@color/greenDark" />
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:orientation="vertical">
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-
-                    android:layout_height="wrap_content">
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:fontFamily="serif"
-                        android:hint="NOME FARMACO"
-                        android:inputType="text"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
-                        android:textColor="@color/black" />
-
-                </android.support.design.widget.TextInputLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="2dp"
-                    android:background="@color/greenDark" />
-            </LinearLayout>
 
         </LinearLayout>
 
@@ -217,6 +190,7 @@
         android:layout_marginBottom="5dp">
 
         <LinearLayout
+            android:id="@+id/scegliRicettaOrdinaFarmacoPaziente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -227,13 +201,15 @@
                 android:layout_height="80dp"
                 android:src="@drawable/richiedi_ricetta_green"/>
 
-            <Button
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
                 android:text="SCEGLI RICETTA"
-                android:textColor="@color/white"
-                android:background="@drawable/all_round"/>
+                android:textAlignment="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textStyle="bold"
+                android:textColor="@color/greenDark"/>
         </LinearLayout>
 
         <LinearLayout
@@ -244,6 +220,7 @@
             android:layout_weight="0.33">
 
             <Button
+                android:id="@+id/continuaOrdinaFarmacoPaziente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"

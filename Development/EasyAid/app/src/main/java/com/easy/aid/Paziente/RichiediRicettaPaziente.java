@@ -62,7 +62,6 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
     private Spinner dropdown;
     private boolean set = false;
     private Button invia;
-    private int close;
     private String sql;
 
     @Override
@@ -198,15 +197,5 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
 
         finish();
 
-    }
-
-    @Override
-    public void onBackPressed() {
-        if(close==0){
-            Toast.makeText(getApplicationContext(), "Premi un'altra volta per uscire", Toast.LENGTH_SHORT).show();
-            close++;
-        }else{
-            finish();
-        }
     }
 }
