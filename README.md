@@ -3,11 +3,11 @@ Piattaforma Android &amp; Windows per la gestione delle ricette e delle prenotaz
 
 Il team di sviluppo è suddiviso in due gruppi:
 
-**Android**
+\t **Android**
 * Lupi Matteo
 * Ragosta Stefano
 * Tironi Cristian
 
-**Windows**
+\t **Windows**
 * Murtas Manuel
 * Zanchi Federico
