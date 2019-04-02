@@ -1,6 +1,4 @@
-<p align="center">
-    <img src="https://i.ibb.co/PjjNL9N/green.png" width="150">
-</p>
+#EasyAid
 Piattaforma Android &amp; Windows per la gestione delle ricette e delle prenotazioni mediche, nonchè del ritiro di farmaci dalla farmacia.
 
 Il team di sviluppo è suddiviso in due gruppi:
