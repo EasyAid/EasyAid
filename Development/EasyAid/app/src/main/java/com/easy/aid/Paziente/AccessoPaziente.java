@@ -9,6 +9,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -54,6 +55,7 @@ public class AccessoPaziente extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.paziente_accesso);
 
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         cf              = (EditText) findViewById(R.id.accessoCodiceFiscalePaz);
         pwd             = (EditText) findViewById(R.id.accessoPasswordPaz);

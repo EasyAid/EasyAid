@@ -69,6 +69,8 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.paziente_richiedi_ricetta);
 
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
         c  = ((NetVariables) this.getApplication());
 
         nomeCognomePaz  = (TextView) findViewById(R.id.nomeCognomePazienteRichiediRicettaPaz);
