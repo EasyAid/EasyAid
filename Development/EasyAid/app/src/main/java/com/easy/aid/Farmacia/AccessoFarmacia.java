@@ -17,7 +17,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.easy.aid.Medico.RegistrazioneMedico;
 import com.easy.aid.R;
 
 import org.json.JSONArray;
@@ -33,19 +32,20 @@ public class AccessoFarmacia extends AppCompatActivity {
     private Button accedi, registrazione;
     private static String URL_LOGIN = "http://99.80.72.24/login.php";
     private Intent intent;
-    private ImageView back;
     private TextInputLayout layoutPass;
+
+    private ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.medico_accesso);
+        setContentView(R.layout.farmacia_accesso);
         accedi = (Button)findViewById(R.id.accessoButtonFarm);
         registrazione = (Button)findViewById(R.id.registrazioneButtonFarm);
 
         pwd         = (EditText)findViewById(R.id.accessoPasswordFarm);
         cf          = (EditText)findViewById(R.id.accessoCodiceFarmacia);
-
+        back        = (ImageView)findViewById(R.id.backAccessoFarm);
         layoutPass  = (TextInputLayout) findViewById(R.id.layoutAccessoPasswordPaz);
         back        = (ImageView) findViewById(R.id.backAccessoFarm);
 
@@ -69,6 +69,13 @@ public class AccessoFarmacia extends AppCompatActivity {
             public void onClick(View v) {
                 intent = new Intent(AccessoFarmacia.this, RegistrazioneFarmacia.class);
                 startActivity(intent);
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 

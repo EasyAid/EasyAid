@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/background"
+    android:orientation="vertical"
     tools:context=".Farmacia.RegistrazioneFarmacia">
 
     <!-- mettere la topBar in tutti i layout -->
@@ -34,8 +33,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center"
-                android:textAlignment="center"
                 android:text="REGISTRAZIONE FARMACIA"
+                android:textAlignment="center"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                 android:textColor="@color/greenDark" />
 
@@ -51,16 +50,16 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/continuaRegistrazioneFarmacia"
         android:layout_below="@id/topbarRegistrazioneFarmacia"
-        android:layout_above="@+id/continuaFarmacia"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp">
 
         <RelativeLayout
             android:id="@+id/registrazione1Farmacia"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/topbarRegistrazioneFarmacia"
+            android:layout_gravity="center"
             android:visibility="visible">
 
             <LinearLayout
@@ -72,34 +71,60 @@
                 android:layout_marginRight="30dp"
                 android:orientation="vertical">
 
+                <!-- DATI DI CONTATTO -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginBottom="20dp">
+                    android:layout_marginBottom="30dp"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
-                        android:text="DATI DI CONTATTO"
+                        android:text="IMPOSTAZIONE PASSWORD"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
-                        android:textColor="@color/greenDark"/>
+                        android:textColor="@color/greenDark" />
 
-                    <!--email-->
+                    <!-- password -->
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
+
                         <EditText
-                            android:id="@+id/editEmailFarmacia"
+                            android:id="@+id/editPswFarmacia"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="EMAIL"
-                            android:inputType="text"
+                            android:background="@null"
+                            android:hint="PASSWORD"
                             android:imeOptions="actionGo"
-                            android:textColor="@color/greenDark"
+                            android:inputType="text"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:background="@null"/>
+                            android:textColor="@color/greenDark" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/greenDark"
+                        android:layout_marginBottom="5dp" />
+
+
+                    <!--telefono-->
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/ConfPswFarmacia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="CONFERMA PASSWORD"
+                            android:imeOptions="actionGo"
+                            android:inputType="text"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
                     </android.support.design.widget.TextInputLayout>
 
                     <View
@@ -108,13 +133,45 @@
                         android:background="@color/greenDark" />
                 </LinearLayout>
 
-                <!--Cognome-->
+                <!-- IMPOSTAZIONE PASSWORD -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginBottom="20dp">
+                    android:layout_marginBottom="30dp"
+                    android:orientation="vertical">
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="DATI DI CONTATTO"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                        android:textColor="@color/greenDark" />
+
+                    <!-- email -->
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editEmailFarmacia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="EMAIL"
+                            android:imeOptions="actionGo"
+                            android:inputType="text"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/greenDark"
+                        android:layout_marginBottom="5dp" />
+
+                    <!-- telefono -->
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -123,171 +180,113 @@
                             android:id="@+id/editTelFarmacia"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="@null"
                             android:hint="TELEFONO"
-                            android:inputType="text"
                             android:imeOptions="actionGo"
-                            android:textColor="@color/greenDark"
+                            android:inputType="text"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:background="@null"/>
-
+                            android:textColor="@color/greenDark" />
                     </android.support.design.widget.TextInputLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/greenDark"/>
+                        android:background="@color/greenDark" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <!--password-->
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:text="IMPOSTAZIONE PASSWORD"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:textColor="@color/greenDark"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"/>
-
-
+                <!-- INDIRIZZO FARMACIA -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
                     android:orientation="vertical">
 
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <EditText
-                            android:id="@+id/editPasswordFarmacia"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="PASSWORD"
-                            android:inputType="text"
-                            android:imeOptions="actionGo"
-                            android:textColor="@color/greenDark"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:background="@null"/>
-
-                    </android.support.design.widget.TextInputLayout>
-
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="10dp"
-                        android:background="@color/greenDark"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <EditText
-                            android:id="@+id/editConfermaPasswordFarmacia"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="CONFERMA PASSWORD"
-                            android:inputType="text"
-                            android:imeOptions="actionGo"
-                            android:textColor="@color/greenDark"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:background="@null"/>
-
-                    </android.support.design.widget.TextInputLayout>
-
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="10dp"
-                        android:background="@color/greenDark"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <EditText
-                            android:id="@+id/editViaNascPaziente"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="VIA|PIAZZA"
-                            android:inputType="text"
-                            android:imeOptions="actionGo"
-                            android:textColor="@color/greenDark"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:background="@null"/>
-
-                    </android.support.design.widget.TextInputLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="10dp"
-                        android:background="@color/greenDark"/>
-                </LinearLayout>
-
-                <!--Codice fiscale-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="CODICE FISCALE"
-                        android:gravity="left"
-                        android:textColor="@color/greenDark"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"/>
+                        android:layout_marginBottom="10dp"
+                        android:text="INDIRIZZO FARMACIA"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                        android:textColor="@color/greenDark" />
 
+                    <!-- provincia -->
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
+
                         <EditText
-                            android:id="@+id/editCodiceFiscaleMed"
+                            android:id="@+id/editProvinciaFarmacia"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="CODICE|FISCALE"
-                            android:imeOptions="actionDone"
+                            android:background="@null"
+                            android:hint="PROVINCIA"
+                            android:imeOptions="actionGo"
                             android:inputType="text"
-                            android:textColor="@color/greenDark"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:background="@null"/>
+                            android:textColor="@color/greenDark" />
                     </android.support.design.widget.TextInputLayout>
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="20dp"
-                        android:background="@color/greenDark"/>
+                        android:background="@color/greenDark"
+                        android:layout_marginBottom="5dp" />
+
+                    <!-- città/comune -->
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editCittaFarmacia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="CITTA|COMUNE"
+                            android:imeOptions="actionGo"
+                            android:inputType="text"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/greenDark"
+                        android:layout_marginBottom="5dp" />
+
+                    <!-- via/piazza -->
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editViaFarmacia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="VIA|PIAZZA"
+                            android:imeOptions="actionGo"
+                            android:inputType="text"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/greenDark" />
                 </LinearLayout>
 
             </LinearLayout>
+
+
         </RelativeLayout>
     </ScrollView>
 
 
     <Button
-        android:id="@+id/continuaFarmacia"
+        android:id="@+id/continuaRegistrazioneFarmacia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

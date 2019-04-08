@@ -89,7 +89,8 @@
                     <!--nome-->
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:id="@+id/layoutEditNomeMed">
                         <EditText
                             android:id="@+id/editNomeMed"
                             android:layout_width="match_parent"
@@ -117,7 +118,8 @@
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:id="@+id/layoutEditCognomeMed">
 
                         <EditText
                             android:id="@+id/editCognomeMed"
@@ -229,10 +231,11 @@
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:id="@+id/layoutEditProvinciaNascMed">
 
                         <EditText
-                            android:id="@+id/editProvinciaNascPaz"
+                            android:id="@+id/editProvinciaNascMed"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="PROVINCIA"
@@ -260,10 +263,11 @@
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:id="@+id/layoutEditCittaNascMed">
 
                         <EditText
-                            android:id="@+id/editCittaNascPaz"
+                            android:id="@+id/editCittaNascMed"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="CITTA|COMUNE"
@@ -291,10 +295,11 @@
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:id="@+id/layoutEditViaNascPaz">
 
                         <EditText
-                            android:id="@+id/editViaNascPaz"
+                            android:id="@+id/editViaNascMed"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="VIA|PIAZZA"
@@ -330,7 +335,8 @@
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:id="@+id/layoutEditCodiceFiscaleMed">
                         <EditText
                             android:id="@+id/editCodiceFiscaleMed"
                             android:layout_width="match_parent"
@@ -390,11 +396,12 @@
                     <!--provincia-->
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:id="@+id/layoutEditProvinciaStudMed">
                         <EditText
+                            android:id="@+id/editProvinciaStudMed"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/editProvinciaStudMed"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:textColor="@color/greenDark"
                             android:imeOptions="actionGo"
@@ -410,11 +417,12 @@
                     <!--citta-->
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:id="@+id/layoutEditCittaStudMed">
                         <EditText
+                            android:id="@+id/editCittaStudMed"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/editCittaStudMed"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:textColor="@color/greenDark"
                             android:imeOptions="actionGo"
@@ -430,11 +438,12 @@
                     <!--via-->
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:id="@+id/layoutEditViaStudMed">
                         <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
                             android:id="@+id/editViaStudMed"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:textColor="@color/greenDark"
                             android:imeOptions="actionDone"
@@ -511,7 +520,8 @@
                     <!--email-->
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:id="@+id/layoutEditEmailMed">
                         <EditText
                             android:id="@+id/editEmailMed"
                             android:layout_width="match_parent"
@@ -532,7 +542,8 @@
                     <!--telefono-->
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:id="@+id/layoutEditTelMed">
                         <EditText
                             android:id="@+id/editTelMed"
                             android:layout_width="match_parent"
@@ -571,7 +582,8 @@
                         android:layout_marginBottom="15dp"/>
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:id="@+id/layoutEditPasswordMed">
                         <EditText
                             android:id="@+id/editPasswordMed"
                             android:layout_width="match_parent"
@@ -590,7 +602,8 @@
                         android:layout_marginBottom="15dp"/>
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:id="@+id/layoutEditConfermaPasswordMed">
                         <EditText
                             android:id="@+id/editConfermaPasswordMed"
                             android:layout_width="match_parent"
