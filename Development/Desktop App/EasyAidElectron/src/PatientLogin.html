@@ -12,15 +12,77 @@
     <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script>
         function CloseWindow() {
-            const electron = require('electron')
-            const BrowserWindow = electron.remote.BrowserWindow
-            BrowserWindow.getFocusedWindow().close()
+            const electron = require('electron');
+            const BrowserWindow = electron.remote.BrowserWindow;
+            BrowserWindow.getFocusedWindow().close();
         }
 
         function MinimizeWindow() {
-            const electron = require('electron')
-            const BrowserWindow = electron.remote.BrowserWindow
-            BrowserWindow.getFocusedWindow().minimize()
+            const electron = require('electron');
+            const BrowserWindow = electron.remote.BrowserWindow;
+            BrowserWindow.getFocusedWindow().minimize();
+        }
+
+        function connectDatabase() {
+            const electron = require('electron');
+            const session = electron.remote.session;
+            const BrowserWindow = electron.remote.BrowserWindow;
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var response = JSON.parse(this.responseText);
+
+                    if (response.success == "1") {
+                        //TODO: Set Cookie
+                        var expiration = new Date();
+                        expiration.setFullYear(2200);
+                        const cookieUser = { url: 'BaseURL', name: 'username', value: document.getElementById("TextCodiceFiscale").value, expirationDate: expiration.getTime() }
+                        session.defaultSession.cookies.set(cookieUser, (error) => {
+                            if (error) console.error(error)
+                        });
+                        const cookiePassword = { url: 'BaseURL', name: 'password', value: document.getElementById("TextPassword").value, expirationDate: expiration.getTime() }
+                        session.defaultSession.cookies.set(cookiePassword, (error) => {
+                            if (error) console.error(error)
+                        });
+                        session.defaultSession.cookies.get({}, (error, cookies) => {
+                            console.log(error, cookies)
+                        })
+
+                        alert("Login success!");
+                        /*var SelectAccount = new BrowserWindow({
+                            show: false,
+                            frame: false,
+                            width: 1000,
+                            height: 600,
+                            resizable: false,
+                            webPreferences: {
+                                devTools: false
+                            }
+                        });
+
+                        SelectAccount.loadFile('src/DoctorLogin.html');
+
+                        SelectAccount.once('ready-to-show', () => {
+                            var parent = BrowserWindow.getFocusedWindow();
+                            SelectAccount.show();
+                            parent.close();
+                        });*/
+                    } else {
+                        if (response.message == "ErrorUsername") {
+                            alert("Lo username inserito è errato. Vuoi registrarti?");
+                        } else if (response.message == "ErrorPassword") {
+                            alert("La password inserita è errata.");
+                        } else {
+                            alert("Errore sconosciuto!");
+                        }
+                    }
+
+
+                }
+            };
+            xhttp.open("GET", "http://99.80.72.24/login.php?cf=" + document.getElementById("TextCodiceFiscale").value + "&password=" + document.getElementById("TextPassword").value, true);
+            xhttp.send();
         }
     </script>
     <style>
@@ -225,7 +287,8 @@
                     <input type="password" placeholder="Password" id="TextPassword">
                     <i class="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
                 </div>
-                <label class="container"><div style="margin-left:-11px;">Resta connesso</div>
+                <label class="container">
+                    <div style="margin-left:-11px;">Resta connesso</div>
                     <input type="checkbox" checked="checked">
                     <span class="checkmark"></span>
                 </label>
@@ -239,7 +302,7 @@
 
     <div class="container-fluid">
         <div class="row" style="height:60px">
-            <div class="col-6" id="AccediButton"
+            <div class="col-6" id="AccediButton" onclick="connectDatabase()"
                 style="text-align:center; font-weight: bold; background-color: #00695C; cursor: pointer;">
                 <p style="margin-top: 18px;">ACCEDI</p>
             </div>

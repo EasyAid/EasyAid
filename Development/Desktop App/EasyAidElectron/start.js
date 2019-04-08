@@ -34,9 +34,9 @@ function CreateFirstWindow() {
 		frame: false,
 		resizable: false,
 		show: false,
-		webPreferences: {
+		/*webPreferences: {
 			devTools: false
-		}
+		}*/
 	})
 	
 	//win.loadFile('src/SelectAccount.html')
