@@ -10,4 +10,7 @@
     <color name="white">#FFF</color>
     <color name="black">#000</color>
 
+    <color name="def">#757575</color>
+
+
 </resources>

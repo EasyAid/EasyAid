@@ -27,6 +27,7 @@ public class InitialSplashScreen extends AppCompatActivity {
 
         c = ((NetVariables) this.getApplication());
         c.farmaci = new HashMap<>();
+        c.province = new ArrayList<String>();
 
         BufferedReader reader = null;
         try {
@@ -49,7 +50,17 @@ public class InitialSplashScreen extends AppCompatActivity {
                 }else{
                     c.farmaci.put(nome,new Farmaco(nome,usoQuantita,prezzo));
                 }
+            }
 
+            reader = new BufferedReader(
+                    new InputStreamReader(getAssets().open("province.txt"), "UTF-8"));
+
+            // do reading, usually loop until end of file reading
+
+            while ((mLine = reader.readLine()) != null) {
+
+                String provincia = mLine;
+                c.province.add(provincia);
             }
 
         } catch (IOException e) {

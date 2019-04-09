@@ -8,10 +8,6 @@
     android:background="@color/background"
     tools:context=".Paziente.RichiediRicettaPaziente">
 
-
-
-
-
         <RelativeLayout
             android:id="@+id/linearRichiestaRicetta"
             android:layout_width="match_parent"

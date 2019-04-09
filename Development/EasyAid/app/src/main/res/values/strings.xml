@@ -14,4 +14,5 @@
     <string name="descrizione_patologia">DESCRIZIONE PATOLOGIA</string>
     <string name="esenzione_per_reddito">ESENZIONE PER REDDITO</string>
     <string name="esenzione_per_patologia">ESENZIONE PER PATOLOGIA</string>
+    <string name="default_Hour">00:00\n00:00</string>
 </resources>

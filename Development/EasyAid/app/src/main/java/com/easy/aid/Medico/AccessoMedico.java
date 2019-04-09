@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.easy.aid.Class.NetVariables;
 import com.easy.aid.Paziente.AccessoPaziente;
 import com.easy.aid.Paziente.MainPaziente;
 import com.easy.aid.R;
@@ -37,7 +38,7 @@ public class AccessoMedico extends AppCompatActivity {
 
     private EditText cf, pwd;
     private Button accedi, registrazione;
-    private static String URL_LOGIN = "http://99.80.72.24/login.php";
+    private static String URL_LOGIN = NetVariables.URL_LOGIN;
     private Intent intent;
     private ImageView back;
     private TextInputLayout layoutPass;
@@ -54,6 +55,12 @@ public class AccessoMedico extends AppCompatActivity {
 
         layoutPass  = (TextInputLayout) findViewById(R.id.layoutAccessoPasswordPaz);
         back        = (ImageView) findViewById(R.id.backAccessoMed);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         accedi.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -27,6 +27,12 @@ public class Indirizzo {
         this.numeroCivico = numeroCivico;
     }
 
+    public Indirizzo(String provincia, String citta, String via) {
+        this.provincia = provincia;
+        this.citta = citta;
+        this.via = via;
+    }
+
     public String getProvincia() {
         return provincia;
     }
