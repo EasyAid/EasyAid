@@ -37,16 +37,32 @@
                         if(document.getElementById("StayConnected").checked) {
                             var expiration = new Date();
                             expiration.setFullYear(2200);
+
+                            /* cookie type */
+
+                            const cookieType = { url: 'BaseURL', name: 'type', value: 'patient', expirationDate: expiration.getTime() };
+                            session.defaultSession.cookies.set(cookieType, (error) => {
+                                if(error) console.error(error);
+                            });
+
+                            /* user cookie */
+
                             const cookieUser = { url: 'BaseURL', name: 'username', value: document.getElementById("TextCodiceFiscale").value, expirationDate: expiration.getTime() }
                             session.defaultSession.cookies.set(cookieUser, (error) => {
-                                if (error) console.error(error)
+                                if (error) console.error(error);
                             });
+
+                            /* password cookie */
+
                             const cookiePassword = { url: 'BaseURL', name: 'password', value: document.getElementById("TextPassword").value, expirationDate: expiration.getTime() }
                             session.defaultSession.cookies.set(cookiePassword, (error) => {
-                                if (error) console.error(error)
+                                if (error) console.error(error);
                             });
+                            
+                            /* get cookies */
+
                             session.defaultSession.cookies.get({}, (error, cookies) => {
-                                console.log(error, cookies)
+                                console.log(error, cookies);
                             })
 
                             alert("Login success!");

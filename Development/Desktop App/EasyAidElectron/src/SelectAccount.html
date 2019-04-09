@@ -12,25 +12,48 @@
     <link rel="stylesheet" href="custom.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script>
-        const electron = require('electron')
-        const BrowserWindow = electron.remote.BrowserWindow
+        const electron = require('electron');
+        const BrowserWindow = electron.remote.BrowserWindow;
+        const session = electron.remote.session;
 
         function CloseWindow() {
-            BrowserWindow.getFocusedWindow().close()
+            BrowserWindow.getFocusedWindow().close();
         }
 
         function MinimizeWindow() {
-            BrowserWindow.getFocusedWindow().minimize()
+            BrowserWindow.getFocusedWindow().minimize();
         }
         function NavigatePatient() {
             //set global: electron.remote.getGlobal("shared").stringa = "ciao";
-            BrowserWindow.getFocusedWindow().loadFile('src/PatientLogin.html')
+            session.defaultSession.cookies.get({ name: 'type' }, (error, cookies) => {
+                if (cookies[0].value == "patient") {
+                    BrowserWindow.getFocusedWindow().loadFile("src/PatientHome.html");
+                }
+                else {
+                    BrowserWindow.getFocusedWindow().loadFile("src/PatientLogin.html");
+                }
+            })
+            //BrowserWindow.getFocusedWindow().loadFile('src/PatientLogin.html')
         }
         function NavigateDoctor() {
-            BrowserWindow.getFocusedWindow().loadFile('src/DoctorLogin.html')
+            session.defaultSession.cookies.get({ name: 'type' }, (error, cookies) => {
+                if (cookies[0].value == "doctor") {
+                    BrowserWindow.getFocusedWindow().loadFile("src/DoctorHome.html");
+                }
+                else {
+                    BrowserWindow.getFocusedWindow().loadFile("src/DoctorLogin.html");
+                }
+            })
         }
         function NavigatePharmacy() {
-            BrowserWindow.getFocusedWindow().loadFile('src/PharmacyLogin.html')
+            session.defaultSession.cookies.get({ name: 'type' }, (error, cookies) => {
+                if (cookies[0].value == "pharmacy") {
+                    BrowserWindow.getFocusedWindow().loadFile("src/PharmacyHome.html");
+                }
+                else {
+                    BrowserWindow.getFocusedWindow().loadFile("src/PharmacyLogin.html");
+                }
+            })
         }
     </script>
 </head>
@@ -54,22 +77,25 @@
     </div>
 
     <div class="container-fluid">
-        <div class="row align-items-center" style="margin-top:150px; margin-left: 50px">
+        <div class="row align-items-center" style="margin-top:150px; margin-left: 50px" id="contentdiv">
             <div class="col">
                 <div id="selectcircle" style="text-align: center; cursor: pointer;" onclick="NavigateDoctor()">
-                    <img draggable="false" src="../img/MedicoWhite.png" width="30%" height="40%" style="margin-top: 30px" /><br>
+                    <img draggable="false" src="../img/MedicoWhite.png" width="30%" height="40%"
+                        style="margin-top: 30px" /><br>
                     <h5 style="font-weight: bold; margin-top: 25px">MEDICO</h5>
                 </div>
             </div>
             <div class="col">
                 <div id="selectcircle" style="text-align: center; cursor: pointer;" onclick="NavigatePatient()">
-                    <img draggable="false" src="../img/PazienteWhite.png" width="30%" height="40%" style="margin-top: 30px" /><br>
+                    <img draggable="false" src="../img/PazienteWhite.png" width="30%" height="40%"
+                        style="margin-top: 30px" /><br>
                     <h5 style="font-weight: bold; margin-top: 25px">PAZIENTE</h5>
                 </div>
             </div>
             <div class="col">
                 <div id="selectcircle" style="text-align: center; cursor: pointer;" onclick="NavigatePharmacy()">
-                    <img draggable="false" src="../img/FarmaciaWhite.png" width="30%" height="40%" style="margin-top: 30px" /><br>
+                    <img draggable="false" src="../img/FarmaciaWhite.png" width="30%" height="40%"
+                        style="margin-top: 30px" /><br>
                     <h5 style="font-weight: bold; margin-top: 25px">FARMACIA</h5>
                 </div>
             </div>
