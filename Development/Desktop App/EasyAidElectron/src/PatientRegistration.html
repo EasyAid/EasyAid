@@ -49,6 +49,66 @@
                 document.getElementById("TextPasswordConfirm").type = "password";
             }
         }
+
+        function registration(){
+            if(document.getElementById("TextPassword").value == document.getElementById("TextPasswordConfirm").value){
+                if(document.getElementById("TextNome").value == ""){
+                    alert("Il campo Nome non può essere vuoto");
+                }else if(document.getElementById("TextCognome").value == ""){
+                    alert("Il campo Cognome non può essere vuoto");
+                }else if(document.getElementById("TextData").value == ""){
+                    alert("Il campo Data di Nascita non può essere vuoto");
+                }else if(document.getElementById("TextCodiceFiscale").value == ""){
+                    alert("Il campo Codice fiscale non può essere vuoto");
+                }else if(document.getElementById("TextMedico").value == ""){
+                    alert("Il campo Medico di Base non può essere vuoto");
+                }else if(document.getElementById("TextProvinciaNascita").value == ""){
+                    alert("Il campo Provincia di Nascita non può essere vuoto");
+                }else if(document.getElementById("TextComuneNascita").value == ""){
+                    alert("Il campo Citta/Comune di Nascita non può essere vuoto");
+                }else if(document.getElementById("TextViaNascita").value == ""){
+                    alert("Il campo Via/Piazza di Nascita non può essere vuoto");
+                }else if(document.getElementById("TextProvinciaResidenza").value == ""){
+                    alert("Il campo Provincia di Residenza non può essere vuoto");
+                }else if(document.getElementById("TextComuneResidenza").value == ""){
+                    alert("Il campo Citta/Comune di Residenza non può essere vuoto");
+                }else if(document.getElementById("TextViaResidenza").value == ""){
+                    alert("Il campo Via/Piazza di Residenza non può essere vuoto");
+                }else if(document.getElementById("TextViaResidenza").value == ""){
+                    alert("Il campo Via/Piazza di Residenza non può essere vuoto");
+                }else if(document.getElementById("TextPassword").value == ""){
+                    alert("Il campo Password non può essere vuoto");
+                }else if(document.getElementById("TextPasswordConfirm").value == ""){
+                    alert("Il campo Conferma Password non può essere vuoto");
+                }else{
+                    if(document.getElementById("male").checked){
+                        var xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function () {
+                            if (this.readyState == 4 && this.status == 200) {
+                                var response = JSON.parse(this.responseText);
+                            }
+                        };
+                        //xhttp.open("GET", "http://99.80.72.24/register.php?Nome=" + document.getElementById("TextNome").value + "&Cognome=" + document.getElementById("TextCognome").value + "&DataNascita=" + document.getElementById("TextData").value + "&CF=" + document.getElementById("TextCodiceFiscale").value + "&Sex=male" + "&Medico=" + document.getElementById("TextMedico").value + "&ProvNascita=" + document.getElementById("TextProvinciaNascita").value + "&CittaNascita=" + document.getElementById("TextComuneNascita").value + "&ViaNascita=" + document.getElementById("TextViaNascita").value + "&ProvResidenza=" + document.getElementById("TextProvinciaResidenza").value + "&CittaResidenza=" + document.getElementById("TextComuneResidenza").value + "&ViaResidenza=" + document.getElementById("TextViaResidenza").value + "&Password=" + document.getElementById("TextPassword").value, true);
+                        //xhttp.send();
+                    }else if (document.getElementById("female").checked){
+                        var xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function () {
+                            if (this.readyState == 4 && this.status == 200) {
+                                var response = JSON.parse(this.responseText);
+                            }
+                        };
+                        //xhttp.open("GET", "http://99.80.72.24/register.php?Nome=" + document.getElementById("TextNome").value + "&Cognome=" + document.getElementById("TextCognome").value + "&DataNascita=" + document.getElementById("TextData").value + "&CF=" + document.getElementById("TextCodiceFiscale").value + "&Sex=female" + "&Medico=" + document.getElementById("TextMedico").value + "&ProvNascita=" + document.getElementById("TextProvinciaNascita").value + "&CittaNascita=" + document.getElementById("TextComuneNascita").value + "&ViaNascita=" + document.getElementById("TextViaNascita").value + "&ProvResidenza=" + document.getElementById("TextProvinciaResidenza").value + "&CittaResidenza=" + document.getElementById("TextComuneResidenza").value + "&ViaResidenza=" + document.getElementById("TextViaResidenza").value + "&Password=" + document.getElementById("TextPassword").value, true);
+                        //xhttp.send();
+                    }else{
+                        alert("error"); //Da rimuovere
+                    }
+                    
+                }
+            }else{
+                alert("Le due password non coincidono!");
+            }
+            
+        }
     </script>
 
 </head>
@@ -156,7 +216,7 @@
 
     <div class="container-fluid">
         <div class="row" style="height:60px">
-            <div class="col-12" id="RegistratiButton"
+            <div class="col-12" id="RegistratiButton" onclick="registration()"
                 style="text-align:center; font-weight: bold; background-color: #00796A; cursor: pointer;">
                 <p style="margin-top: 18px;">REGISTRATI</p>
             </div>
