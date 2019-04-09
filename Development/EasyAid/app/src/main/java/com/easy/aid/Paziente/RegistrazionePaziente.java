@@ -8,21 +8,28 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.easy.aid.Class.NetVariables;
 import com.easy.aid.R;
 
 public class RegistrazionePaziente extends AppCompatActivity {
 
-    private EditText nome, cognome, dataNascita, provinciaNascita, cittaNascita, viaNascita;
+    private EditText nome, cognome, cittaNascita, viaNascita;
     private EditText codiceFiscale, provinciaResidenza, cittaResidenza, viaResidenza;
     private EditText medicoBase, password, confermaPassword;
+    private TextView dataNascita;
+    private AutoCompleteTextView provinciaNascita;
     private Button continua1, continua2, registrazione;
     private CalendarView calendario;
     private ImageView back;
+    private NetVariables c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,17 +37,32 @@ public class RegistrazionePaziente extends AppCompatActivity {
         setContentView(R.layout.paziente_registrazione);
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        c  = ((NetVariables) this.getApplication());
 
         registrazione   = (Button) findViewById(R.id.continuaPaziente);
 
         nome = (EditText) findViewById(R.id.editNomePaziente);
         cognome = (EditText) findViewById(R.id.editCognomePaziente);
-        dataNascita = (EditText) findViewById(R.id.editDataNascitaPaziente);
-        provinciaNascita = (EditText) findViewById(R.id.editProvinciaNascPaziente);
+        dataNascita = (TextView) findViewById(R.id.editDataNascitaPaziente);
+        provinciaNascita = (AutoCompleteTextView) findViewById(R.id.editProvinciaNascPaziente);
         cittaNascita = (EditText) findViewById(R.id.editCittaNascPaziente);
         viaNascita = (EditText) findViewById(R.id.editViaNascPaziente);
+        calendario = (CalendarView) findViewById(R.id.calendarioRegistrazionePaziente);
 
         back = (ImageView)findViewById(R.id.backRegistrazionePaziente);
+
+        dataNascita.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calendario.setVisibility(View.VISIBLE);
+            }
+        });
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (this, android.R.layout.select_dialog_item, c.province);
+
+        provinciaNascita.setThreshold(1);//will start working from first character
+        provinciaNascita.setAdapter(adapter);
 
         registrazione.setOnClickListener(new View.OnClickListener() {
             @Override

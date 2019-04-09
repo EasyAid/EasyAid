@@ -55,6 +55,7 @@
         android:layout_below="@id/topbarRegistrazionePaziente"
         android:layout_above="@+id/continuaPaziente"
         android:layout_marginBottom="10dp"
+        android:visibility="gone"
         android:layout_marginTop="20dp">
 
         <RelativeLayout
@@ -96,6 +97,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="NOME"
+                            android:fontFamily="serif"
                             android:inputType="text"
                             android:imeOptions="actionGo"
                             android:textColor="@color/greenDark"
@@ -125,6 +127,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="COGNOME"
+                            android:fontFamily="serif"
                             android:inputType="text"
                             android:imeOptions="actionGo"
                             android:textColor="@color/greenDark"
@@ -155,14 +158,14 @@
                             android:layout_height="40dp"
                             android:src="@drawable/calendar"/>
 
-                        <EditText
+                        <TextView
                             android:id="@+id/editDataNascitaPaziente"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_marginLeft="5dp"
                             android:hint="DATA DI NASCITA"
-                            android:inputType="text"
-                            android:imeOptions="actionGo"
+                            android:fontFamily="serif"
+                            android:gravity="center_vertical"
                             android:textColor="@color/greenDark"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:background="@null"/>
@@ -173,6 +176,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:visibility="gone"/>
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
@@ -230,16 +234,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <EditText
+                        <AutoCompleteTextView
                             android:id="@+id/editProvinciaNascPaziente"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="PROVINCIA"
+                            android:fontFamily="serif"
                             android:inputType="text"
+                            android:hint="PROVINCIA"
                             android:imeOptions="actionGo"
-                            android:textColor="@color/greenDark"
+                            android:textColor="@color/black"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:background="@null"/>
+                            android:background="@null"
+                            android:ems="10" />
 
                     </android.support.design.widget.TextInputLayout>
 
@@ -267,6 +273,7 @@
                             android:layout_height="wrap_content"
                             android:hint="CITTA|COMUNE"
                             android:inputType="text"
+                            android:fontFamily="serif"
                             android:imeOptions="actionGo"
                             android:textColor="@color/greenDark"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
@@ -298,6 +305,7 @@
                             android:layout_height="wrap_content"
                             android:hint="VIA|PIAZZA"
                             android:inputType="text"
+                            android:fontFamily="serif"
                             android:imeOptions="actionGo"
                             android:textColor="@color/greenDark"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
@@ -336,6 +344,7 @@
                             android:hint="CODICE|FISCALE"
                             android:imeOptions="actionDone"
                             android:inputType="text"
+                            android:fontFamily="serif"
                             android:textColor="@color/greenDark"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:background="@null"/>
@@ -352,6 +361,253 @@
         </RelativeLayout>
     </ScrollView>
 
+    <!--seconda pagina-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/topbarRegistrazionePaziente"
+        android:layout_above="@+id/continuaPaziente"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/topbarRegistrazionePaziente"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="INDIRIZZO DI RESIDENZA"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/greenDark"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <AutoCompleteTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="serif"
+                            android:inputType="text"
+                            android:hint="PROVINCIA"
+                            android:imeOptions="actionGo"
+                            android:textColor="@color/black"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:background="@null"
+                            android:ems="10" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/greenDark"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="CITTA|COMUNE"
+                            android:inputType="text"
+                            android:fontFamily="serif"
+                            android:imeOptions="actionGo"
+                            android:textColor="@color/greenDark"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:background="@null"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/greenDark"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="VIA|PIAZZA"
+                            android:inputType="text"
+                            android:fontFamily="serif"
+                            android:imeOptions="actionGo"
+                            android:textColor="@color/greenDark"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:background="@null"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/greenDark"/>
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="INDIZZO EMAIL"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/greenDark"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <AutoCompleteTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="serif"
+                            android:inputType="text"
+                            android:hint="INDIRIZZO EMAIL"
+                            android:imeOptions="actionGo"
+                            android:textColor="@color/black"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:background="@null"
+                            android:ems="10" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/greenDark"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="IMPOSTA PASSWORD"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/greenDark"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <AutoCompleteTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="serif"
+                            android:inputType="text"
+                            android:hint="PASSWORD"
+                            android:imeOptions="actionGo"
+                            android:textColor="@color/black"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:background="@null"
+                            android:ems="10" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/greenDark"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <AutoCompleteTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="serif"
+                            android:inputType="text"
+                            android:hint="CONFERMA PASSWORD"
+                            android:imeOptions="actionGo"
+                            android:textColor="@color/black"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:background="@null"
+                            android:ems="10" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/greenDark"/>
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/continuaPaziente"
