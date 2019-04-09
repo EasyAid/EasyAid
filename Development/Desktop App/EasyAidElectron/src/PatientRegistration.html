@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<!-- TODO MAXLENGTH-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login Paziente</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="custom.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script>
+        const electron = require('electron');
+        const BrowserWindow = electron.remote.BrowserWindow;
+
+        function CloseWindow() {
+            BrowserWindow.getFocusedWindow().close();
+        }
+
+        function MinimizeWindow() {
+            BrowserWindow.getFocusedWindow().minimize();
+        }
+
+        function BackWindow() {
+            BrowserWindow.getFocusedWindow().loadFile("src/PatientLogin.html")
+        }
+
+        function PasswordVisibility() {
+            if (document.getElementById("PasswordLogo").className == "fa fa-eye fa-lg fa-fw") {
+                document.getElementById("PasswordLogo").className = "fa fa-eye-slash fa-lg fa-fw";
+                document.getElementById("TextPassword").type = "text";
+            }
+            else {
+                document.getElementById("PasswordLogo").className = "fa fa-eye fa-lg fa-fw";
+                document.getElementById("TextPassword").type = "password";
+            }
+        }
+
+        function ConfirmPasswordVisibility() {
+            if (document.getElementById("ConfirmPasswordLogo").className == "fa fa-eye fa-lg fa-fw") {
+                document.getElementById("ConfirmPasswordLogo").className = "fa fa-eye-slash fa-lg fa-fw";
+                document.getElementById("TextPasswordConfirm").type = "text";
+            }
+            else {
+                document.getElementById("ConfirmPasswordLogo").className = "fa fa-eye fa-lg fa-fw";
+                document.getElementById("TextPasswordConfirm").type = "password";
+            }
+        }
+    </script>
+
+</head>
+
+<body style="font-family: 'Raleway', Arial, Helvetica, sans-serif; color: #ffffff; cursor: default;">
+    <div class="container-fluid" style="text-align: center; background-color: #00796A; height: 40px !important">
+        <div class="row align-items-center" style="padding: 0px;">
+            <div class="col btn-func" onclick="BackWindow()" style="line-height: 2.5; margin-top: -10px;">
+                <img draggable="false" src="../img/BackArrowIcon.svg" style="width: 25px; height: 25px;" />
+            </div>
+            <div class="col-9 draggable">
+                <img draggable="false" src="../img/LogoTextWhite.png"
+                    style="margin-left: 83px; margin-top: -10px; height: 60px; width: 169px" />
+            </div>
+            <div class="col btn-func" id="btn-minimize" onclick="MinimizeWindow()"
+                style="line-height: 2.4; margin-top: -10px;">
+                <img draggable="false" src="../img/MinimizeIcon.svg"
+                    style="width: 39px; height: 39px; padding-top:15px" />
+            </div>
+            <div class="col btn-func" onclick="CloseWindow()" style="line-height: 2.5; margin-top: -10px;">
+                <img draggable="false" src="../img/CloseIcon.svg" style="width: 25px; height: 25px;" />
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row"
+            style="height: 40px; border-bottom: 1px solid #00796A; color: #00796A; margin-left: 20px; margin-right: 20px;">
+            <div class="col-12" style="text-align: center; line-height: 40px;">
+                <p style="text-align: center; vertical-align: middle; font-weight: bold">REGISTRAZIONE NUOVO PAZIENTE
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row" style="height: 460px; padding: 10px; color: #00796A">
+            <div class="col-4" style="text-align: center;">
+                <span style="font-weight:bold">DATI ANAGRAFICI</span>
+                <div class="input">
+                    <input type="text" placeholder="Nome" id="TextNome">
+                </div>
+                <div class="input">
+                    <input type="text" placeholder="Cognome" id="TextCognome">
+                </div>
+                <div class="input">
+                    <input type="date" placeholder="Data di nascita" id="TextData">
+                </div>
+                <div class="input">
+                    <input type="text" placeholder="Codice Fiscale" id="TextCodiceFiscale">
+                </div>
+
+                <form action="#" style="margin-top: 15px; margin-bottom: 15px;">
+                    <span style="margin:10px; margin-left: -10px;">
+                        <input type="radio" id="male" name="radio-group" checked>
+                        <label for="male" style="color: #00796A">Maschio</label>
+                    </span>
+                    <span>
+                        <input type="radio" id="female" name="radio-group">
+                        <label for="female" style="color: #00796A">Femmina</label>
+                    </span>
+                </form>
+                <span style="font-weight:bold; line-height: 50px;">INFORMAZIONI MEDICO DI BASE</span>
+                <div class="input" style="margin-top: -2px;">
+                    <input type="text" placeholder="Medico Di Base" id="TextMedico">
+                </div>
+            </div>
+            <div class="col-4" style="text-align: center;">
+                <span style="font-weight:bold">LUOGO DI NASCITA</span>
+                <div class="input">
+                    <input type="text" placeholder="Provincia" id="TextProvinciaNascita">
+                </div>
+                <div class="input">
+                    <input type="text" placeholder="Citta/Comune" id="TextComuneNascita">
+                </div>
+                <div class="input">
+                    <input type="text" placeholder="Via/Piazza" id="TextViaNascita">
+                </div>
+                <span style="font-weight:bold; line-height: 50px;">INDIRIZZO DI RESIDENZA</span>
+                <div class="input">
+                    <input type="text" placeholder="Provincia" id="TextProvinciaResidenza">
+                </div>
+                <div class="input">
+                    <input type="text" placeholder="Citta/Comune" id="TextComuneResidenza">
+                </div>
+                <div class="input">
+                    <input type="text" placeholder="Via/Piazza" id="TextViaResidenza">
+                </div>
+            </div>
+            <div class="col-4" style="text-align: center;">
+                <span style="font-weight:bold">IMPOSTA PASSWORD</span>
+                <div class="inputWithIcon leftalign">
+                    <input type="password" placeholder="Password" id="TextPassword">
+                    <i id="PasswordLogo" class="fa fa-eye fa-lg fa-fw" aria-hidden="true"
+                        style="margin-left: 250px; margin-top: -6px;" onclick="PasswordVisibility()"></i>
+                </div>
+                <div class="inputWithIcon leftalign">
+                    <input type="password" placeholder="Conferma Password" id="TextPasswordConfirm">
+                    <i id="ConfirmPasswordLogo" class="fa fa-eye fa-lg fa-fw" aria-hidden="true"
+                        style="margin-left: 250px; margin-top: -6px;" onclick="ConfirmPasswordVisibility()"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row" style="height:60px">
+            <div class="col-12" id="RegistratiButton"
+                style="text-align:center; font-weight: bold; background-color: #00796A; cursor: pointer;">
+                <p style="margin-top: 18px;">REGISTRATI</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

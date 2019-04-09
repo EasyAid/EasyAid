@@ -3,6 +3,9 @@ const BrowserWindow = electron.BrowserWindow
 const app = electron.app
 
 let SplashScreen = null
+global.shared = {
+	stringa: "lol"
+}
 
 function CreateSplashScreen() {
 	SplashScreen = new BrowserWindow({
@@ -12,9 +15,9 @@ function CreateSplashScreen() {
 		resizable: false,
 		show: false,
 		backgroundColor: '#00796A',
-		webPreferences: {
+		/*webPreferences: {
 			devTools: false
-		}
+		}*/
 	})
 	
 	SplashScreen.loadFile('src/SplashScreen.html')
@@ -41,7 +44,9 @@ function CreateFirstWindow() {
 	
 	//win.loadFile('src/SelectAccount.html')
 	//win.loadFile('src/DoctorLogin.html')
-	win.loadFile('src/PatientLogin.html')
+	//win.loadFile('src/PatientLogin.html')
+	//win.loadFile('src/PharmacyLogin.html')
+	//win.loadFile('src/PatientRegistration.html')
 
 	win.once('ready-to-show', () => {
         win.show()
@@ -53,8 +58,8 @@ function CreateFirstWindow() {
 
 
 app.on('ready', () => {
-	//CreateSplashScreen()
-	CreateFirstWindow()
+	CreateSplashScreen()
+	//CreateFirstWindow()
 })
 
 app.on('window-all-closed', () => {
@@ -65,8 +70,8 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
 	if (win === null) {
-		//CreateSplashScreen()
-		CreateFirstWindow()
+		CreateSplashScreen()
+		//CreateFirstWindow()
 	}
 })
 

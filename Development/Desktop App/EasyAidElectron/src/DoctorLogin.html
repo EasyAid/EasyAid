@@ -9,187 +9,40 @@
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="custom.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script>
+
+        const electron = require('electron')
+        const BrowserWindow = electron.remote.BrowserWindow
+
         function CloseWindow() {
-            const electron = require('electron')
-            const BrowserWindow = electron.remote.BrowserWindow
             BrowserWindow.getFocusedWindow().close()
         }
 
         function MinimizeWindow() {
-            const electron = require('electron')
-            const BrowserWindow = electron.remote.BrowserWindow
             BrowserWindow.getFocusedWindow().minimize()
         }
+
+        function BackWindow() {
+            BrowserWindow.getFocusedWindow().loadFile("src/SelectAccount.html")
+        }
     </script>
-    <style>
-        #circle {
-            width: 200px;
-            height: 200px;
-            -webkit-border-radius: 100px;
-            -moz-border-radius: 100px;
-            border-radius: 100px;
-            background: #00796A;
-        }
 
-        .btn-func:hover {
-            background-color: #00695C;
-        }
-
-        .draggable {
-            -webkit-app-region: drag;
-        }
-
-        .inputWithIcon input[type="text"]::placeholder,
-        .inputWithIcon input[type="password"]::placeholder {
-            color: #00796A;
-            opacity: 1;
-        }
-
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            border: 2px solid #fff;
-            border-bottom: 2px solid #00796A;
-            border-radius: 4px;
-            margin: 8px 0;
-            outline: none;
-            padding: 8px;
-            box-sizing: border-box;
-            transition: 0.25s;
-        }
-
-        input[type="text"]:focus,
-        input[type="password"]:focus {
-            color: #004d40;
-            border-color: #00695C;
-            box-shadow: 0 0 5px 0 #00695C;
-        }
-
-        .inputWithIcon input[type="text"],
-        .inputWithIcon input[type="password"] {
-            padding-left: 40px;
-        }
-
-        .inputWithIcon {
-            position: relative;
-        }
-
-        .inputWithIcon i {
-            position: absolute;
-            left: 0;
-            top: 8px;
-            padding: 14px 17px;
-            color: #00796A;
-            transition: 0.25s;
-        }
-
-        .inputWithIcon input[type="text"]:focus+i,
-        .inputWithIcon input[type="password"]:focus+i {
-            color: #00695C;
-        }
-
-        .inputWithIcon.inputIconBg i {
-            background-color: #00796A;
-            color: #fff;
-            padding: 9px 4px;
-            border-radius: 4px 0 0 4px;
-        }
-
-        .inputWithIcon.inputIconBg input[type="text"]:focus+i,
-        .inputWithIcon.inputIconBg input[type="password"]:focus+i {
-            color: #fff;
-            background-color: #00695C;
-        }
-
-        /* Customize the label (the container) */
-        .container {
-            display: block;
-            position: relative;
-            padding-left: 40px;
-            margin-bottom: 12px;
-            margin-left: 13px;
-            margin-top: 7px;
-            cursor: pointer;
-            font-size: 22px;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            font-size: 90%;
-            width: 170px;
-            color: #004d40;
-        }
-
-        /* Hide the browser's default checkbox */
-        .container input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-            height: 0;
-            width: 0;
-        }
-
-        /* Create a custom checkbox */
-        .checkmark {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 20px;
-            width: 20px;
-            background-color: #eee;
-        }
-
-        /* On mouse-over, add a grey background color */
-        .container:hover input~.checkmark {
-            background-color: #ccc;
-        }
-
-        /* When the checkbox is checked, add a blue background */
-        .container input:checked~.checkmark {
-            background-color: #00695C;
-        }
-
-        /* Create the checkmark/indicator (hidden when not checked) */
-        .checkmark:after {
-            content: "";
-            position: absolute;
-            display: none;
-        }
-
-        /* Show the checkmark when checked */
-        .container input:checked~.checkmark:after {
-            display: block;
-        }
-
-        /* Style the checkmark/indicator */
-        .container .checkmark:after {
-            left: 7px;
-            top: 4px;
-            width: 5px;
-            height: 10px;
-            border: solid white;
-            border-width: 0 3px 3px 0;
-            -webkit-transform: rotate(45deg);
-            -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
-        }
-
-        #AccediButton:hover,
-        #RegistratiButton:hover {
-            background-color: #004d40 !important;
-        }
-    </style>
 </head>
 
 <body style="font-family: 'Raleway', Arial, Helvetica, sans-serif; color: #ffffff; cursor: default;">
     <div class="container-fluid" style="text-align: center; background-color: #00796A; height: 40px !important">
         <div class="row align-items-center" style="padding: 0px;">
-            <div class="col-10 draggable">
-                <img draggable="false" src="../img/LogoTextWhite.png" style="margin-left: 165px; margin-top: -10px; height: 60px; width: 169px" />
+            <div class="col btn-func" onclick="BackWindow()" style="line-height: 2.5; margin-top: -10px;">
+                <img draggable="false" src="../img/BackArrowIcon.svg" style="width: 25px; height: 25px;" />
             </div>
-            <div class="col btn-func" id="btn-minimize" onclick="MinimizeWindow()" style="line-height: 2.4; margin-top: -10px;">
+            <div class="col-9 draggable">
+                <img draggable="false" src="../img/LogoTextWhite.png"
+                    style="margin-left: 83px; margin-top: -10px; height: 60px; width: 169px" />
+            </div>
+            <div class="col btn-func" id="btn-minimize" onclick="MinimizeWindow()"
+                style="line-height: 2.4; margin-top: -10px;">
                 <img draggable="false" src="../img/MinimizeIcon.svg"
                     style="width: 39px; height: 39px; padding-top:15px" />
             </div>
@@ -223,7 +76,8 @@
                     <input type="password" placeholder="Password" id="TextPassword">
                     <i class="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
                 </div>
-                <label class="container"><div style="margin-left:-11px;">Resta connesso</div>
+                <label class="container">
+                    <div style="margin-left:-11px;">Resta connesso</div>
                     <input type="checkbox" checked="checked">
                     <span class="checkmark"></span>
                 </label>

@@ -1,86 +1,75 @@
 <!DOCTYPE html>
 <html>
 <!-- FIXME hover bug on minimize-->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="custom.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script>
+        const electron = require('electron')
+        const BrowserWindow = electron.remote.BrowserWindow
+
         function CloseWindow() {
-            const electron = require('electron')
-            const BrowserWindow = electron.remote.BrowserWindow
             BrowserWindow.getFocusedWindow().close()
         }
 
         function MinimizeWindow() {
-            const electron = require('electron'cd)
-            const BrowserWindow = electron.remote.BrowserWindow
             BrowserWindow.getFocusedWindow().minimize()
         }
         function NavigatePatient() {
-            const electron = require('electron')
-            const BrowserWindow = electron.remote.BrowserWindow
+            //set global: electron.remote.getGlobal("shared").stringa = "ciao";
             BrowserWindow.getFocusedWindow().loadFile('src/PatientLogin.html')
         }
+        function NavigateDoctor() {
+            BrowserWindow.getFocusedWindow().loadFile('src/DoctorLogin.html')
+        }
+        function NavigatePharmacy() {
+            BrowserWindow.getFocusedWindow().loadFile('src/PharmacyLogin.html')
+        }
     </script>
-    <style>
-        #circle {
-            width: 200px;
-            height: 200px;
-            -webkit-border-radius: 100px;
-            -moz-border-radius: 100px;
-            border-radius: 100px;
-            background: #00796A;
-        }
-
-        #circle:hover {
-            background: #00695C;
-        }
-
-        .btn-func:hover {
-            background-color: #00695C;
-        }
-
-        .draggable {
-            -webkit-app-region: drag;
-        }
-    </style>
 </head>
 
-<body style="font-family: Arial, Helvetica, sans-serif; color: #ffffff;">
+<body style="font-family: 'Raleway', Arial, Helvetica, sans-serif; color: #ffffff; cursor: default;">
     <div class="container-fluid" style="text-align: center; background-color: #00796A; height: 40px !important">
         <div class="row align-items-center" style="padding: 0px;">
             <div class="col-10 draggable">
-                <h5 style="font-weight: bold; margin-left: 165px; margin-top: 7px">EasyAid</h5>
+                <img draggable="false" src="../img/LogoTextWhite.png"
+                    style="margin-left: 165px; margin-top: -10px; height: 60px; width: 169px" />
             </div>
-            <div class="col btn-func" id="btn-minimize" onclick="MinimizeWindow()" style="line-height: 2.4;">
-                <img src="../img/MinimizeIcon.svg" style="width: 39px; height: 39px; padding-top:15px" />
+            <div class="col btn-func" id="btn-minimize" onclick="MinimizeWindow()"
+                style="line-height: 2.4; margin-top: -10px;">
+                <img draggable="false" src="../img/MinimizeIcon.svg"
+                    style="width: 39px; height: 39px; padding-top:15px" />
             </div>
-            <div class="col btn-func" onclick="CloseWindow()" style="line-height: 2.5;">
-                <img src="../img/CloseIcon.svg" style="width: 25px; height: 25px;" />
+            <div class="col btn-func" onclick="CloseWindow()" style="line-height: 2.5; margin-top: -10px;">
+                <img draggable="false" src="../img/CloseIcon.svg" style="width: 25px; height: 25px;" />
             </div>
         </div>
     </div>
+
     <div class="container-fluid">
         <div class="row align-items-center" style="margin-top:150px; margin-left: 50px">
             <div class="col">
-                <div id="circle" style="text-align: center;">
-                    <img src="../img/MedicoWhite.png" width="30%" height="40%" style="margin-top: 30px" /><br>
+                <div id="selectcircle" style="text-align: center; cursor: pointer;" onclick="NavigateDoctor()">
+                    <img draggable="false" src="../img/MedicoWhite.png" width="30%" height="40%" style="margin-top: 30px" /><br>
                     <h5 style="font-weight: bold; margin-top: 25px">MEDICO</h5>
                 </div>
             </div>
             <div class="col">
-                <div id="circle" style="text-align: center;" onclick="NavigatePatient()">
-                    <img src="../img/PazienteWhite.png" width="30%" height="40%" style="margin-top: 30px" /><br>
+                <div id="selectcircle" style="text-align: center; cursor: pointer;" onclick="NavigatePatient()">
+                    <img draggable="false" src="../img/PazienteWhite.png" width="30%" height="40%" style="margin-top: 30px" /><br>
                     <h5 style="font-weight: bold; margin-top: 25px">PAZIENTE</h5>
                 </div>
             </div>
             <div class="col">
-                <div id="circle" style="text-align: center;">
-                    <img src="../img/FarmaciaWhite.png" width="30%" height="40%" style="margin-top: 30px" /><br>
+                <div id="selectcircle" style="text-align: center; cursor: pointer;" onclick="NavigatePharmacy()">
+                    <img draggable="false" src="../img/FarmaciaWhite.png" width="30%" height="40%" style="margin-top: 30px" /><br>
                     <h5 style="font-weight: bold; margin-top: 25px">FARMACIA</h5>
                 </div>
             </div>

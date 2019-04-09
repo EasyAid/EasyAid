@@ -1,0 +1,232 @@
+#circle {
+    width: 200px;
+    height: 200px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    background-color: #00796A;
+}
+
+#selectcircle {
+    width: 200px;
+    height: 200px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    background-color: #00796A;
+}
+
+.btn-func:hover {
+    background-color: #00695C;
+}
+
+.draggable {
+    -webkit-app-region: drag;
+}
+
+#selectcircle:hover {
+    background-color: #00695C;
+}
+
+.inputWithIcon input[type="text"]::placeholder, .inputWithIcon input[type="date"]::placeholder, .inputWithIcon input[type="password"]::placeholder {
+    color: #00796A;
+    opacity: 1;
+}
+
+input[type="text"]::placeholder, input[type="password"]::placeholder, input[type="date"]::placeholder {
+    color: #00796A;
+    opacity: 1;
+}
+
+.leftalign input {
+    margin: 2px 0 !important;
+    padding: 8px !important;
+}
+
+input[type="text"], input[type="password"], input[type="date"] {
+    color: #00796A;
+    width: 100%;
+    border: 2px solid #fff;
+    border-bottom: 2px solid #00796A;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: 0.25s;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus {
+    color: #004d40;
+    border-color: #00695C;
+    box-shadow: 0 0 5px 0 #00695C;
+}
+
+.inputWithIcon input[type="text"], .inputWithIcon input[type="password"], .inputWithIcon input[type="date"] {
+    padding-left: 40px;
+}
+
+.inputWithIcon {
+    position: relative;
+}
+
+.inputWithIcon i {
+    position: absolute;
+    left: 0;
+    top: 8px;
+    padding: 14px 17px;
+    color: #00796A;
+    transition: 0.25s;
+}
+
+.inputWithIcon input[type="text"]:focus+i, .inputWithIcon input[type="password"]:focus+i, .inputWithIcon input[type="date"]:focus+i {
+    color: #00695C;
+}
+
+.inputWithIcon.inputIconBg i {
+    background-color: #00796A;
+    color: #fff;
+    padding: 9px 4px;
+    border-radius: 4px 0 0 4px;
+}
+
+.inputWithIcon.inputIconBg input[type="text"]:focus+i, .inputWithIcon.inputIconBg input[type="password"]:focus+i, .inputWithIcon.inputIconBg input[type="date"]:focus+i {
+    color: #fff;
+    background-color: #00695C;
+}
+
+/* Customize the label (the container) */
+
+.container {
+    display: block;
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 12px;
+    margin-left: 13px;
+    margin-top: 7px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-size: 90%;
+    width: 170px;
+    color: #004d40;
+}
+
+/* Hide the browser's default checkbox */
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+
+.container:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+
+.container input:checked~.checkmark {
+    background-color: #00695C;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+
+.container input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+
+.container .checkmark:after {
+    left: 7px;
+    top: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+#AccediButton:hover, #RegistratiButton:hover {
+    background-color: #004d40 !important;
+}
+
+[type="radio"]:checked, [type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+
+[type="radio"]:checked+label, [type="radio"]:not(:checked)+label {
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #666;
+}
+
+[type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+
+[type="radio"]:checked+label:after, [type="radio"]:not(:checked)+label:after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: #00796A;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+[type="radio"]:not(:checked)+label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+[type="radio"]:checked+label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
