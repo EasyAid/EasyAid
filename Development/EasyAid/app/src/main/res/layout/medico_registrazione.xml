@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
+        android:layout_marginBottom="8dp"
         android:orientation="vertical">
         <!--top bar-->
         <LinearLayout
@@ -54,13 +55,11 @@
         android:layout_above="@+id/continuaMed"
         android:layout_below="@id/topbarRegistrazioneMedico"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:visibility="gone">
+        android:layout_marginBottom="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/topbarRegistrazioneMedico">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -374,8 +373,9 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/continuaMed"
         android:layout_below="@+id/topbarRegistrazioneMedico"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="-2dp"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -491,7 +491,7 @@
                         android:layout_margin="15dp"
                         android:background="@drawable/all_empty_round"
                         android:orientation="vertical"
-                        android:padding="5dp">
+                        android:padding="8dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -953,14 +953,15 @@
     <ScrollView
         android:id="@+id/registrazione3Med"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/topbarRegistrazioneMedico"
+        android:layout_above="@id/continuaMed"
         android:layout_marginTop="30dp"
         android:visibility="gone">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"

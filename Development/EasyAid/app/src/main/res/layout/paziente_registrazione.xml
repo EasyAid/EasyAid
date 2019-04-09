@@ -55,7 +55,7 @@
         android:layout_below="@id/topbarRegistrazionePaziente"
         android:layout_above="@+id/continuaPaziente"
         android:layout_marginBottom="10dp"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_marginTop="20dp">
 
         <RelativeLayout
@@ -367,6 +367,7 @@
         android:layout_height="match_parent"
         android:layout_below="@id/topbarRegistrazionePaziente"
         android:layout_above="@+id/continuaPaziente"
+        android:visibility="gone"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="20dp">
 

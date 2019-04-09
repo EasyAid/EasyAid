@@ -28,7 +28,7 @@ public class RegistrazioneFarmacia extends AppCompatActivity implements TimePick
     private Intent intent;
     private Button continuaReg;
     private ImageView back;
-    private LinearLayout Reg1, Reg2;
+    private LinearLayout registrazione1, registrazione2;
     private TextView[] settimanaMattina, settimanaSera;
     private CheckBox[] lavoro, pausa;
 
@@ -51,8 +51,8 @@ public class RegistrazioneFarmacia extends AppCompatActivity implements TimePick
         continuaReg = (Button) findViewById(R.id.continuaRegistrazioneFarmacia);
         back = (ImageView) findViewById(R.id.backRegistrazioneFarmacia);
 
-        Reg1 = (LinearLayout) findViewById(R.id.registrazione1Farmacia);
-        Reg2 = (LinearLayout) findViewById(R.id.registrazione2Farmacia);
+        registrazione1 = (LinearLayout) findViewById(R.id.registrazione1Farmacia);
+        registrazione2 = (LinearLayout) findViewById(R.id.registrazione2Farmacia);
 
         //elementi pagina1
         mail = (EditText) findViewById(R.id.editEmailFarmacia);
@@ -174,8 +174,8 @@ public class RegistrazioneFarmacia extends AppCompatActivity implements TimePick
                             error = true;
                         }
                         if (!error) {
-                            Reg1.setVisibility(View.GONE);
-                            Reg2.setVisibility(View.VISIBLE);
+                            registrazione1.setVisibility(View.GONE);
+                            registrazione2.setVisibility(View.VISIBLE);
                             continuaReg.setText(txtTerminaReg);
                             status = 1;
                         }
@@ -193,9 +193,29 @@ public class RegistrazioneFarmacia extends AppCompatActivity implements TimePick
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                checkBack();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        checkBack();
+    }
+
+    private void checkBack(){
+        switch (status) {
+            case 0: {
+                finish();
+                break;
+            }
+            case 1: {
+                status--;
+                registrazione2.setVisibility(View.GONE);
+                registrazione1.setVisibility(View.VISIBLE);
+                break;
+            }
+        }
     }
 
     @Override
@@ -344,6 +364,7 @@ public class RegistrazioneFarmacia extends AppCompatActivity implements TimePick
                     disable(6,false);
                 }
                 break;
+                default:break;
         }
     }
 
@@ -386,10 +407,25 @@ public class RegistrazioneFarmacia extends AppCompatActivity implements TimePick
             else settimanaSera[idGiorno].setText(hourOfDay + ":" + minute);
             count = 1;
         } else {
-            String prevText = settimanaMattina[idGiorno].getText().toString();
-            if (mattina)
-                settimanaMattina[idGiorno].setText(prevText + "\n" + hourOfDay + ":" + minute);
-            else settimanaSera[idGiorno].setText(prevText + "\n" + hourOfDay + ":" + minute);
+            String prevText;
+
+            if(mattina) { prevText = settimanaMattina[idGiorno].getText().toString(); }
+            else { prevText = settimanaSera[idGiorno].getText().toString(); }
+
+            String nextText = hourOfDay + ":" + minute;
+
+            int[] temp = new int[2];
+            temp[0] = Integer.parseInt(prevText.split(":")[0]);
+            temp[1] = Integer.parseInt(prevText.split(":")[1]);
+
+            if (temp[0] > hourOfDay || (temp[0] == hourOfDay && temp[1] > minute)) {
+                String aux = prevText;
+                prevText = nextText;
+                nextText = aux;
+            }
+
+            if (mattina) settimanaMattina[idGiorno].setText(prevText + "\n" + nextText);
+            else settimanaSera[idGiorno].setText(prevText + "\n" + nextText);
         }
     }
 }

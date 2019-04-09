@@ -46,6 +46,7 @@
             android:background="@color/greenDark" />
     </LinearLayout>
 
+    <!-- prima pagina -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -59,7 +60,6 @@
             android:layout_height="match_parent"
             android:visibility="visible">
 
-            <!-- prima pagina -->
             <LinearLayout
                 android:id="@+id/registrazione1Farmacia"
                 android:layout_width="match_parent"
@@ -69,7 +69,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <!-- DATI DI CONTATTO -->
                 <LinearLayout
@@ -266,8 +266,9 @@
                             android:layout_height="wrap_content"
                             android:background="@null"
                             android:hint="VIA|PIAZZA"
-                            android:imeOptions="actionGo"
+                            android:imeOptions="actionDone"
                             android:inputType="text"
+                            android:ems="10"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:textColor="@color/greenDark" />
                     </android.support.design.widget.TextInputLayout>
@@ -280,15 +281,33 @@
 
             </LinearLayout>
 
-            <!-- seconda pagina -->
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <!-- seconda pagina -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/continuaRegistrazioneFarmacia"
+        android:layout_below="@id/topbarRegistrazioneFarmacia"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        android:layout_marginBottom="20dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
             <LinearLayout
                 android:id="@+id/registrazione2Farmacia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:orientation="vertical"
                 android:visibility="visible">
 
@@ -307,7 +326,7 @@
                     android:layout_margin="15dp"
                     android:background="@drawable/all_empty_round"
                     android:orientation="vertical"
-                    android:padding="5dp">
+                    android:padding="8dp">
 
                     <!-- header riga -->
                     <LinearLayout
@@ -328,7 +347,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.2"
+                            android:layout_weight="0.19"
                             android:fontFamily="serif"
                             android:text="TURNO 1"
                             android:textAlignment="center"
@@ -337,7 +356,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.2"
+                            android:layout_weight="0.21"
                             android:fontFamily="serif"
                             android:text="ORARI"
                             android:textAlignment="center"
@@ -346,7 +365,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.2"
+                            android:layout_weight="0.19"
                             android:fontFamily="serif"
                             android:text="TURNO 2"
                             android:textAlignment="center"
@@ -355,7 +374,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.2"
+                            android:layout_weight="0.21"
                             android:fontFamily="serif"
                             android:text="ORARI"
                             android:textAlignment="center"
@@ -769,9 +788,9 @@
 
                 </LinearLayout>
             </LinearLayout>
+
         </RelativeLayout>
     </ScrollView>
-
 
     <Button
         android:id="@+id/continuaRegistrazioneFarmacia"

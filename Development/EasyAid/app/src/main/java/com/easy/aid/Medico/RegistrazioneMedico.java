@@ -7,6 +7,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -331,27 +332,36 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (status) {
-                    case 0: {
-                        finish();
-                        break;
-                    }
-                    case 1: {
-                        status = 0;
-                        registrazione2.setVisibility(View.GONE);
-                        registrazione1.setVisibility(View.VISIBLE);
-                        break;
-                    }
-                    case 2: {
-                        continua1.setText(btnTextContinua);
-                        status = 1;
-                        registrazione3.setVisibility(View.GONE);
-                        registrazione2.setVisibility(View.VISIBLE);
-                        break;
-                    }
-                }
+                checkBack();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        checkBack();
+    }
+
+    private void checkBack(){
+        switch (status) {
+            case 0: {
+                finish();
+                break;
+            }
+            case 1: {
+                status--;
+                registrazione2.setVisibility(View.GONE);
+                registrazione1.setVisibility(View.VISIBLE);
+                break;
+            }
+            case 2: {
+                continua1.setText(btnTextContinua);
+                status--;
+                registrazione3.setVisibility(View.GONE);
+                registrazione2.setVisibility(View.VISIBLE);
+                break;
+            }
+        }
     }
 
     @Override
@@ -542,11 +552,17 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
             else settimanaSera[idGiorno].setText(hourOfDay + ":" + minute);
             count = 1;
         } else {
-            String prevText = settimanaMattina[idGiorno].getText().toString();
+            String prevText;
+
+            if(mattina) { prevText = settimanaMattina[idGiorno].getText().toString(); }
+            else { prevText = settimanaSera[idGiorno].getText().toString(); }
+
             String nextText = hourOfDay + ":" + minute;
+
             int[] temp = new int[2];
             temp[0] = Integer.parseInt(prevText.split(":")[0]);
             temp[1] = Integer.parseInt(prevText.split(":")[1]);
+
             if (temp[0] > hourOfDay || (temp[0] == hourOfDay && temp[1] > minute)) {
                 String aux = prevText;
                 prevText = nextText;
