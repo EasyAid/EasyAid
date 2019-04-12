@@ -7,6 +7,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/background"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
     tools:context=".Paziente.RegistrazionePaziente">
 
     <!-- mettere la topBar in tutti i layout -->
@@ -50,6 +52,7 @@
 
     <!--prima pagina-->
     <ScrollView
+        android:id="@+id/layout0RegistrazionePaziente"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/topbarRegistrazionePaziente"
@@ -62,7 +65,6 @@
             android:id="@+id/registrazione1Paziente"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/topbarRegistrazionePaziente"
             android:visibility="visible">
 
             <LinearLayout
@@ -92,6 +94,7 @@
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
+
                         <EditText
                             android:id="@+id/editNomePaziente"
                             android:layout_width="match_parent"
@@ -149,41 +152,41 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
                         <ImageView
+                            android:id="@+id/showCalendarPaziente"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:src="@drawable/calendar"/>
 
-                        <TextView
+                        <EditText
                             android:id="@+id/editDataNascitaPaziente"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_marginLeft="5dp"
                             android:hint="DATA DI NASCITA"
                             android:fontFamily="serif"
+                            android:inputType="date"
+                            android:imeOptions="actionGo"
                             android:gravity="center_vertical"
                             android:textColor="@color/greenDark"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:background="@null"/>
                     </LinearLayout>
 
-                    <CalendarView
-                        android:id="@+id/calendarioRegistrazionePaziente"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:visibility="gone"/>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="20dp"
-                        android:background="@color/greenDark"/>
                 </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/greenDark"/>
 
                 <!--maschio / femmina-->
 
@@ -241,7 +244,7 @@
                             android:fontFamily="serif"
                             android:inputType="text"
                             android:hint="PROVINCIA"
-                            android:imeOptions="actionGo"
+                            android:imeOptions="actionNext"
                             android:textColor="@color/black"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:background="@null"
@@ -267,14 +270,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <EditText
+                        <AutoCompleteTextView
                             android:id="@+id/editCittaNascPaziente"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="CITTA|COMUNE"
                             android:inputType="text"
                             android:fontFamily="serif"
-                            android:imeOptions="actionGo"
+                            android:imeOptions="actionNext"
                             android:textColor="@color/greenDark"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:background="@null"/>
@@ -338,7 +341,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <EditText
-                            android:id="@+id/editCodiceFiscaleMed"
+                            android:id="@+id/editCodiceFiscaleRegistrazionePaziente"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="CODICE|FISCALE"
@@ -363,6 +366,7 @@
 
     <!--seconda pagina-->
     <ScrollView
+        android:id="@+id/layout1RegistrazionePaziente"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/topbarRegistrazionePaziente"
@@ -374,7 +378,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/topbarRegistrazionePaziente"
             android:visibility="visible">
 
             <LinearLayout
@@ -385,6 +388,52 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="MEDICO DI BASE"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/greenDark"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <AutoCompleteTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="serif"
+                            android:inputType="text"
+                            android:hint="MEDICO DI BASE"
+                            android:imeOptions="actionGo"
+                            android:textColor="@color/black"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:background="@null"
+                            android:ems="10" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/greenDark"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -407,6 +456,7 @@
                         android:layout_height="wrap_content">
 
                         <AutoCompleteTextView
+                            android:id="@+id/editProvinciaResidenzaPaziente"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="serif"
@@ -439,6 +489,7 @@
                         android:layout_height="wrap_content">
 
                         <EditText
+                            android:id="@+id/editCittaRegistrazionePaziente"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="CITTA|COMUNE"
@@ -470,6 +521,7 @@
                         android:layout_height="wrap_content">
 
                         <EditText
+                            android:id="@+id/editViaRegistrazionePaziente"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="VIA|PIAZZA"
@@ -490,6 +542,34 @@
                         android:background="@color/greenDark"/>
                 </LinearLayout>
 
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <!--terza pagina-->
+    <ScrollView
+        android:id="@+id/layout2RegistrazionePaziente"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/topbarRegistrazionePaziente"
+        android:layout_above="@+id/continuaPaziente"
+        android:visibility="gone"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -606,6 +686,7 @@
                         android:layout_marginBottom="10dp"
                         android:background="@color/greenDark"/>
                 </LinearLayout>
+
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>
