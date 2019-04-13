@@ -142,7 +142,7 @@ public class MainPaziente extends AppCompatActivity {
                                     Indirizzo nascita = new Indirizzo(provinciaNascita,cittaNascita,null,null);
                                     Indirizzo residenza = new Indirizzo(provinciaResidenza,cittaResidenza,viaResidenza,null);
                                     paziente = new Paziente(id, nome,cognome,dataNascita,codiceFiscale,nascita,residenza,null,null);
-                                    nomeCognome.setText(nome + " " + cognome);
+                                    nomeCognome.setText(("BENVENUTO\n" + nome.toUpperCase() + " " + cognome.toUpperCase()));
                                 }
                             }
                         } catch (JSONException e) {

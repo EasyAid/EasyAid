@@ -1,23 +1,67 @@
 <?php
+require_once 'connect.php';
 
 if ($_SERVER['REQUEST_METHOD']=='POST'){
 
-    $Nome = $_REQUEST['nome'];
-    $Cognome = $_REQUEST['cognome'];
-    $CodiceFiscale = $_REQUEST['codicefiscale'];
-    $DataNascita = $_REQUEST['datanascita'];
-    $Sesso = $_REQUEST['sesso'];
-    $ProvinciaNascita = $_REQUEST['provincianascita'];
-    $CittaNascita = $_REQUEST['cittanascita'];
-    $ProvinciaResidenza = $_REQUEST['provinciaresidenza'];
-    $CittaResidenza = $_REQUEST['cittaresidenza'];
-    $ViaResidenza = $_REQUEST['viaresidenza'];
-    $IdMedicoBase = $_REQUEST['idmedicobase'];
-    $Password = $_REQUEST['password'];
+    $table = $_REQUEST['table'];
 
-    require_once 'connect.php';
+    if($table == 0){
+    	$Nome = $_REQUEST['nome'];
+	    $Cognome = $_REQUEST['cognome'];
+	    $CodiceFiscale = $_REQUEST['codicefiscale'];
+	    $DataNascita = $_REQUEST['datanascita'];
+	    $Sesso = $_REQUEST['sesso'];
+	    $ProvinciaNascita = $_REQUEST['provincianascita'];
+	    $CittaNascita = $_REQUEST['cittanascita'];
+	    $ProvinciaResidenza = $_REQUEST['provinciaresidenza'];
+	    $CittaResidenza = $_REQUEST['cittaresidenza'];
+	    $ViaResidenza = $_REQUEST['viaresidenza'];
+	    $IdMedicoBase = $_REQUEST['idmedicobase'];
+	    $Password = $_REQUEST['password'];
+	    
+	    $sql = "
+	    INSERT INTO Paziente (Nome, Cognome, CodiceFiscale, DataNascita, Sesso, ProvinciaNascita, CittaNascita, ProvinciaResidenza, CittaResidenza, ViaResidenza, IdMedicoBase, Password) 
+	    VALUES ('$Nome', '$Cognome', '$CodiceFiscale', '$DataNascita', '$Sesso', '$ProvinciaNascita', '$CittaNascita', '$ProvinciaResidenza', '$CittaResidenza', '$ViaResidenza', '$IdMedicoBase', '$Password')";
+    }
 
-    $sql = "INSERT INTO Paziente (Nome, Cognome, CodiceFiscale, DataNascita, Sesso, ProvinciaNascita, CittaNascita, ProvinciaResidenza, CittaResidenza, ViaResidenza, IdMedicoBase, Password) VALUES ('$Nome', '$Cognome', '$CodiceFiscale', '$DataNascita', '$Sesso', '$ProvinciaNascita', '$CittaNascita', '$ProvinciaResidenza', '$CittaResidenza', '$ViaResidenza', '$IdMedicoBase', '$Password')";
+    else if($table == 1){
+
+		$CodiceFiscale = $_REQUEST['codicefiscale'];
+	    $Password = $_REQUEST['password'];
+	    $Nome = $_REQUEST['nome'];
+	    $Cognome = $_REQUEST['cognome'];
+	    $DataNascita = $_REQUEST['datanascita'];
+	    $Sesso = $_REQUEST['sesso'];
+	    $ProvinciaNascita = $_REQUEST['provincianascita'];
+	    $CittaNascita = $_REQUEST['cittanascita'];
+	    $ProvinciaStudio = $_REQUEST['provinciastudio'];
+	    $CittaStudio = $_REQUEST['cittastudio'];
+	    $ViaStudio = $_REQUEST['viastudio'];
+	    $Email = $_REQUEST['email'];
+	    $Telefono = $_REQUEST['telefono'];
+
+	    //INSERIMENTO NUOVO MEDICO
+
+		$sql = "
+	    INSERT INTO Medico (CodiceFiscale, Password, Nome, Cognome, DataNascita, Sesso, ProvinciaNascita, CittaNascita, ProvinciaStudio, CittaStudio, ViaStudio, Email, Telefono)
+	    VALUES ('$CodiceFiscale', '$Password', '$Nome', '$Cognome', '$DataNascita', '$Sesso', '$ProvinciaNascita', '$CittaNascita',
+	    	'$ProvinciaStudio', '$CittaStudio', '$ViaStudio', '$Email', '$Telefono')";
+
+	    //IMPORTANTE//
+	    //LETTURA ID MEDICO
+	    /*
+	    $sql = "SELECT IdMedico FROM Medico WHERE CodiceFiscale = '$CodiceFiscale' ";
+    	$response = mysqli_query($conn, $sql);
+    	$id = mysqli_fetch_assoc($response);
+
+		$settimanaOrari = $_REQUEST['settimanaorari'];
+
+		for($i = 0; $i < 6; $i++){
+			$sql = "
+		    INSERT INTO MedicoCalendario (IdMedico, Giorno, OraInizioMattina, OraFineMattina, OraInizioPomeriggio, OraFinePomeriggio)
+		    VALUES ('$id['IdMedico']', $i, $settimanaOrari['$i']['0']['0'], $settimanaOrari['$i']['0']['1'], $settimanaOrari['$i']['1']['0'], $settimanaOrari['$i']['1']['1'])";
+		}*/
+    }
 
     if ( mysqli_query($conn, $sql) ) {
         $result["success"] = "1";

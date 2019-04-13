@@ -128,6 +128,7 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 if(c.farmaci.containsKey(autoComp.getText().toString())){
                     autoCompleteUsoEQuantita(0);
+                    hideKeyboard();
                 }else{
                     autoCompleteUsoEQuantita(-2);
                 }
@@ -174,7 +175,7 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
             prezzoFarmaco.setText(Html.fromHtml(supp));
         }else {
             set = true;
-            String[] nullo = {"QUANTITÀ e UTILIZZO"};
+            String[] nullo = {"QUANTITÀ & UTILIZZO"};
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, nullo);
             dropdown.setAdapter(adapter);
             prezzoFarmaco.setText("PREZZO:");
@@ -214,5 +215,13 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
 
         finish();
 
+    }
+
+    private void hideKeyboard(){
+        View view = this.getCurrentFocus();
+        if(view!=null){
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 }

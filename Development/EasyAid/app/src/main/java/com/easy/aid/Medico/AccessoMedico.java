@@ -93,6 +93,7 @@ public class AccessoMedico extends AppCompatActivity {
                 }
             }
         });
+
         registrazione.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

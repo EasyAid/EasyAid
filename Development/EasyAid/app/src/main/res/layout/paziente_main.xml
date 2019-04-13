@@ -29,9 +29,9 @@
         <TextView
             android:id="@+id/nomeCognomePaz"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="NOME COGNOME "
+            android:text="BENVENUTO\nNOME COGNOME "
             android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
             android:textColor="@color/greenDark" />
     </LinearLayout>
