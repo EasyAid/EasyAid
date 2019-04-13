@@ -65,13 +65,13 @@
                                 console.log(error, cookies);
                             })
 
-                            alert("Login success!");
+                            BrowserWindow.getFocusedWindow().loadFile("src/PatientHome.html");
                         }
 
                     }
                     else {
                         if (response.message == "ErrorUsername") {
-                            alert("Lo username inserito è errato. Vuoi registrarti?");
+                            alert("Lo username inserito è errato.");
                         }
                         else if (response.message == "ErrorPassword") {
                             alert("La password inserita è errata.");
