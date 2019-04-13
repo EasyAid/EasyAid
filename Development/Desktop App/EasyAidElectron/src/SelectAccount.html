@@ -12,12 +12,14 @@
     <link rel="stylesheet" href="custom.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script>
+        //session.defaultSession.clearStorageData({storages: "cookie"}); *to delete cookies*
         const electron = require('electron');
         const BrowserWindow = electron.remote.BrowserWindow;
         const session = electron.remote.session;
 
         function CloseWindow() {
             BrowserWindow.getFocusedWindow().close();
+
         }
 
         function MinimizeWindow() {
@@ -26,34 +28,49 @@
         function NavigatePatient() {
             //set global: electron.remote.getGlobal("shared").stringa = "ciao";
             session.defaultSession.cookies.get({ name: 'type' }, (error, cookies) => {
-                if (cookies[0].value == "patient") {
-                    BrowserWindow.getFocusedWindow().loadFile("src/PatientHome.html");
+                if (cookies.length != 0) {
+                    if (cookies[0].value == "patient") {
+                        BrowserWindow.getFocusedWindow().loadFile("src/PatientHome.html");
+                    }
+                    else {
+                        BrowserWindow.getFocusedWindow().loadFile("src/PatientLogin.html");
+                    }
                 }
                 else {
                     BrowserWindow.getFocusedWindow().loadFile("src/PatientLogin.html");
                 }
-            })
+            });
             //BrowserWindow.getFocusedWindow().loadFile('src/PatientLogin.html')
         }
         function NavigateDoctor() {
             session.defaultSession.cookies.get({ name: 'type' }, (error, cookies) => {
-                if (cookies[0].value == "doctor") {
-                    BrowserWindow.getFocusedWindow().loadFile("src/DoctorHome.html");
+                if (cookies.length != 0) {
+                    if (cookies[0].value == "doctor") {
+                        BrowserWindow.getFocusedWindow().loadFile("src/DoctorHome.html");
+                    }
+                    else {
+                        BrowserWindow.getFocusedWindow().loadFile("src/DoctorLogin.html");
+                    }
                 }
                 else {
                     BrowserWindow.getFocusedWindow().loadFile("src/DoctorLogin.html");
                 }
-            })
+            });
         }
         function NavigatePharmacy() {
             session.defaultSession.cookies.get({ name: 'type' }, (error, cookies) => {
-                if (cookies[0].value == "pharmacy") {
-                    BrowserWindow.getFocusedWindow().loadFile("src/PharmacyHome.html");
+                if (cookies.length != 0) {
+                    if (cookies[0].value == "pharmacy") {
+                        BrowserWindow.getFocusedWindow().loadFile("src/PharmacyHome.html");
+                    }
+                    else {
+                        BrowserWindow.getFocusedWindow().loadFile("src/PharmacyLogin.html");
+                    }
                 }
                 else {
                     BrowserWindow.getFocusedWindow().loadFile("src/PharmacyLogin.html");
                 }
-            })
+            });
         }
     </script>
 </head>
