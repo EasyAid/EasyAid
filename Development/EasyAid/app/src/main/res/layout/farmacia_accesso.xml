@@ -32,6 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center"
+                android:fontFamily="@font/raleway_bold"
                 android:text="ACCESSO FARMACIA"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                 android:textColor="@color/greenDark" />
@@ -80,9 +81,10 @@
                         android:layout_height="40dp"
                         android:layout_marginLeft="5dp"
                         android:background="@null"
-                        android:hint=" Codice Farmacia"
+                        android:hint="Codice Farmacia"
                         android:imeOptions="actionGo"
                         android:inputType="text"
+                        android:fontFamily="@font/raleway_regular"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         android:textColor="@color/greenDark" />
 
@@ -124,7 +126,8 @@
                         android:layout_height="40dp"
                         android:layout_marginLeft="5dp"
                         android:background="@null"
-                        android:hint=" Password"
+                        android:hint="Password"
+                        android:fontFamily="@font/raleway_regular"
                         android:inputType="textPassword"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         android:textColor="@color/greenDark" />
@@ -146,6 +149,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="RESTA CONNESSO"
+            android:fontFamily="@font/raleway_regular"
             android:layout_marginBottom="5dp"
             android:textColor="@color/greenDark" />
 
@@ -156,6 +160,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/all_round"
             android:text="@string/accedi"
+            android:fontFamily="@font/raleway_bold"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
             android:textColor="@color/white" />
     </LinearLayout>
@@ -168,6 +173,7 @@
         android:layout_marginBottom="15dp"
         android:text="Non hai ancora un profilo?"
         android:textAlignment="center"
+        android:fontFamily="@font/raleway_regular"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         android:textColor="@color/greenDark" />
 
@@ -178,6 +184,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/greenDark"
         android:text="@string/registrati"
+        android:fontFamily="@font/raleway_bold"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
         android:textColor="@color/white" />
 

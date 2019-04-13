@@ -35,6 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center"
+                android:fontFamily="@font/raleway_bold"
                 android:textColor="@color/greenDark"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                 android:text="ORDINA FARMACO"/>
@@ -168,16 +169,12 @@
 
         </LinearLayout>
 
-        <LinearLayout
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/my_recycler_view"
+            android:scrollbars="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:orientation="vertical">
-
-
-
-
-        </LinearLayout>
+            android:layout_height="wrap_content"/>
 
 
     </RelativeLayout>
@@ -210,7 +207,7 @@
                 android:text="SCEGLI RICETTA"
                 android:textAlignment="center"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                android:textStyle="bold"
+                android:fontFamily="@font/raleway_bold"
                 android:textColor="@color/greenDark"/>
         </LinearLayout>
 
@@ -226,6 +223,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
+                android:fontFamily="@font/raleway_bold"
                 android:text="CONTINUA ORDINE"
                 android:textColor="@color/white"
                 android:background="@drawable/all_round"/>

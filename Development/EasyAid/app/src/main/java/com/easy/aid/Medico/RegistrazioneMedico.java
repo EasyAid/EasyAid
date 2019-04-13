@@ -87,7 +87,7 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
                     .getColor(getApplicationContext(),R.color.colorAccent));
         }
 
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN); //nasconde tastiera
 
         back = (ImageView) findViewById(R.id.backRegistrazioneMed);
         registrazione1 = (ScrollView) findViewById(R.id.registrazione1Med);
@@ -257,7 +257,6 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
                             viaStudio.setError("inserire via");
                         }
 
-                        // TODO: 09/04/2019 controllo calendario
 
                         //page = 1
 

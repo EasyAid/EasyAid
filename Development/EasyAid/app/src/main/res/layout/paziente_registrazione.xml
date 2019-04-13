@@ -37,6 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center"
+                android:fontFamily="@font/raleway_bold"
                 android:textAlignment="center"
                 android:text="REGISTRAZIONE PAZIENTE"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
@@ -87,6 +88,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:text="DATI ANAGRAFICI"
+                        android:fontFamily="@font/raleway_bold"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                         android:textColor="@color/greenDark"/>
 
@@ -100,9 +102,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="NOME"
-                            android:fontFamily="serif"
                             android:inputType="text"
                             android:imeOptions="actionGo"
+                            android:fontFamily="@font/raleway_regular"
                             android:textColor="@color/greenDark"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:background="@null"/>
@@ -130,7 +132,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="COGNOME"
-                            android:fontFamily="serif"
+                            android:fontFamily="@font/raleway_regular"
                             android:inputType="text"
                             android:imeOptions="actionGo"
                             android:textColor="@color/greenDark"
@@ -169,7 +171,7 @@
                             android:layout_height="40dp"
                             android:layout_marginLeft="5dp"
                             android:hint="DATA DI NASCITA"
-                            android:fontFamily="serif"
+                            android:fontFamily="@font/raleway_regular"
                             android:inputType="date"
                             android:imeOptions="actionGo"
                             android:gravity="center_vertical"
@@ -204,6 +206,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="10dp"
+                            android:fontFamily="@font/raleway_regular"
                             android:textColor="@color/greenDark"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:text="Maschio"/>
@@ -213,6 +216,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/greenDark"
+                            android:fontFamily="@font/raleway_regular"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:text="Femmina"/>
                     </RadioGroup>
@@ -233,6 +237,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
                     android:textColor="@color/greenDark"
+                    android:fontFamily="@font/raleway_bold"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"/>
 
 
@@ -249,7 +254,7 @@
                             android:id="@+id/editProvinciaNascPaziente"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="serif"
+                            android:fontFamily="@font/raleway_regular"
                             android:inputType="text"
                             android:hint="PROVINCIA"
                             android:imeOptions="actionNext"
@@ -284,7 +289,7 @@
                             android:layout_height="wrap_content"
                             android:hint="COMUNE"
                             android:inputType="text"
-                            android:fontFamily="serif"
+                            android:fontFamily="@font/raleway_regular"
                             android:imeOptions="actionNext"
                             android:textColor="@color/greenDark"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
@@ -315,6 +320,7 @@
                         android:layout_height="wrap_content"
                         android:text="CODICE FISCALE"
                         android:gravity="left"
+                        android:fontFamily="@font/raleway_bold"
                         android:textColor="@color/greenDark"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"/>
 
@@ -328,7 +334,7 @@
                             android:hint="CODICE FISCALE"
                             android:imeOptions="actionDone"
                             android:inputType="text"
-                            android:fontFamily="serif"
+                            android:fontFamily="@font/raleway_regular"
                             android:textColor="@color/greenDark"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:background="@null"/>
@@ -375,6 +381,7 @@
                     android:gravity="left"
                     android:text="INDIRIZZO DI RESIDENZA *"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/raleway_bold"
                     android:layout_marginBottom="5dp"
                     android:textColor="@color/greenDark"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"/>
@@ -393,9 +400,9 @@
                             android:id="@+id/editProvinciaResidenzaRegistrazionePaziente"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="serif"
                             android:inputType="text"
                             android:hint="PROVINCIA"
+                            android:fontFamily="@font/raleway_regular"
                             android:imeOptions="actionNext"
                             android:textColor="@color/black"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
@@ -428,7 +435,7 @@
                             android:layout_height="wrap_content"
                             android:hint="COMUNE"
                             android:inputType="text"
-                            android:fontFamily="serif"
+                            android:fontFamily="@font/raleway_regular"
                             android:imeOptions="actionNext"
                             android:textColor="@color/greenDark"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
@@ -460,7 +467,7 @@
                             android:layout_height="wrap_content"
                             android:hint="VIA"
                             android:inputType="text"
-                            android:fontFamily="serif"
+                            android:fontFamily="@font/raleway_regular"
                             android:imeOptions="actionGo"
                             android:textColor="@color/greenDark"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
@@ -490,6 +497,7 @@
                         android:gravity="left"
                         android:text="MEDICO DI BASE"
                         android:layout_marginTop="10dp"
+                        android:fontFamily="@font/raleway_bold"
                         android:layout_marginBottom="5dp"
                         android:textColor="@color/greenDark"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"/>
@@ -688,6 +696,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/greenDark"
+        android:fontFamily="@font/raleway_bold"
         android:text="@string/continua"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
         android:textColor="@color/white" />

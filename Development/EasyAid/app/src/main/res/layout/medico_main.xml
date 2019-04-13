@@ -32,6 +32,7 @@
             android:layout_height="40dp"
             android:gravity="center"
             android:text="NOME COGNOME "
+            android:fontFamily="@font/raleway_bold"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
             android:textColor="@color/greenDark" />
     </LinearLayout>
@@ -73,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:textColor="@color/greenDark"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/raleway_bold"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:text="RICHIESTE\nRICETTE"/>
 
@@ -98,7 +99,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:textColor="@color/greenDark"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/raleway_bold"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:text="CALENDARIO"/>
 
@@ -132,7 +133,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:textColor="@color/greenDark"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/raleway_bold"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:text="CRONOLOGIA"/>
 
@@ -156,7 +157,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/raleway_bold"
                     android:textColor="@color/greenDark"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:text="IMPOSTAZIONI"/>

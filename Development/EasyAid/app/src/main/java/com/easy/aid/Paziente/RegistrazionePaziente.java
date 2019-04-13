@@ -336,6 +336,7 @@ public class RegistrazionePaziente extends AppCompatActivity {
                         // The dialog is automatically dismissed when a dialog button is clicked.
                         .setPositiveButton("SI", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
+                                hideKeyboard();
                                 finish();
                             }
                         })

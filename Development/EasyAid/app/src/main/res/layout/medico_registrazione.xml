@@ -38,6 +38,7 @@
                 android:gravity="center"
                 android:text="REGISTRAZIONE MEDICO"
                 android:textAlignment="center"
+                android:fontFamily="@font/raleway_bold"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                 android:textColor="@color/greenDark" />
 
@@ -83,6 +84,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:text="DATI ANAGRAFICI"
+                        android:fontFamily="@font/raleway_bold"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                         android:textColor="@color/greenDark" />
 
@@ -99,6 +101,7 @@
                             android:layout_height="wrap_content"
                             android:background="@null"
                             android:hint="NOME"
+                            android:fontFamily="@font/raleway_regular"
                             android:imeOptions="actionGo"
                             android:inputType="text"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
@@ -130,6 +133,7 @@
                             android:background="@null"
                             android:hint="COGNOME"
                             android:imeOptions="actionGo"
+                            android:fontFamily="@font/raleway_regular"
                             android:inputType="text"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:textColor="@color/greenDark" />
@@ -168,6 +172,7 @@
                             android:hint="DATA DI NASCITA"
                             android:imeOptions="actionGo"
                             android:inputType="text"
+                            android:fontFamily="@font/raleway_regular"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:textColor="@color/greenDark" />
                     </LinearLayout>
@@ -204,6 +209,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginRight="10dp"
                             android:text="Maschio"
+                            android:fontFamily="@font/raleway_regular"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:textColor="@color/greenDark" />
 
@@ -212,6 +218,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Femmina"
+                            android:fontFamily="@font/raleway_regular"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:textColor="@color/greenDark" />
                     </RadioGroup>
@@ -225,6 +232,7 @@
                     android:layout_marginBottom="5dp"
                     android:gravity="left"
                     android:text="LUOGO DI NASCITA"
+                    android:fontFamily="@font/raleway_bold"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                     android:textColor="@color/greenDark" />
 
@@ -247,6 +255,7 @@
                             android:hint="PROVINCIA"
                             android:imeOptions="actionGo"
                             android:inputType="text"
+                            android:fontFamily="@font/raleway_regular"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:textColor="@color/greenDark" />
 
@@ -279,6 +288,7 @@
                             android:hint="CITTA|COMUNE"
                             android:imeOptions="actionGo"
                             android:inputType="text"
+                            android:fontFamily="@font/raleway_regular"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:textColor="@color/greenDark" />
 
@@ -311,6 +321,7 @@
                             android:hint="VIA|PIAZZA"
                             android:imeOptions="actionGo"
                             android:inputType="text"
+                            android:fontFamily="@font/raleway_regular"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:textColor="@color/greenDark" />
 
@@ -336,6 +347,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="left"
                         android:text="CODICE FISCALE"
+                        android:fontFamily="@font/raleway_bold"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                         android:textColor="@color/greenDark" />
 
@@ -352,6 +364,7 @@
                             android:hint="CODICE|FISCALE"
                             android:imeOptions="actionDone"
                             android:inputType="text"
+                            android:fontFamily="@font/raleway_regular"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:textColor="@color/greenDark" />
                     </android.support.design.widget.TextInputLayout>
@@ -1120,6 +1133,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/greenDark"
         android:text="@string/continua"
+        android:fontFamily="@font/raleway_bold"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
         android:textColor="@color/white" />
 </RelativeLayout>

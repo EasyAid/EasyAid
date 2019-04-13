@@ -34,6 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center"
+                android:fontFamily="@font/raleway_bold"
                 android:textColor="@color/greenDark"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                 android:text="ACCESSO PAZIENTE"/>
@@ -89,8 +90,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_marginLeft="5dp"
-                            android:hint=" Codice Fiscale"
+                            android:hint="Codice Fiscale"
                             android:inputType="text"
+                            android:fontFamily="@font/raleway_regular"
                             android:imeOptions="actionGo"
                             android:textColor="@color/greenDark"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
@@ -133,7 +135,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_marginLeft="5dp"
-                            android:hint=" Password"
+                            android:hint="Password"
+                            android:fontFamily="@font/raleway_regular"
                             android:inputType="textPassword"
                             android:textColor="@color/greenDark"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
@@ -170,6 +173,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/all_round"
                 android:text="@string/accedi"
+                android:fontFamily="@font/raleway_bold"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                 android:textColor="@color/white" />
 
@@ -191,6 +195,7 @@
             android:layout_marginBottom="15dp"
             android:text="Non hai ancora un profilo?"
             android:textAlignment="center"
+            android:fontFamily="@font/raleway_regular"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:textColor="@color/greenDark" />
 
@@ -200,6 +205,7 @@
             android:layout_height="wrap_content"
             android:background="@color/greenDark"
             android:text="@string/registrati"
+            android:fontFamily="@font/raleway_bold"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
             android:textColor="@color/white" />
 

@@ -36,6 +36,7 @@
                 android:gravity="center"
                 android:textAlignment="center"
                 android:text="IMPOSTAZIONI"
+                android:fontFamily="@font/raleway_bold"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                 android:textColor="@color/greenDark" />
 
