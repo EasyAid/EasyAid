@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
     tools:context=".Medico.RegistrazioneMedico">
 
     <!-- mettere la topBar in tutti i layout -->

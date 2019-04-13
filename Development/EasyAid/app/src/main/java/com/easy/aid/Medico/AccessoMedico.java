@@ -139,6 +139,7 @@ public class AccessoMedico extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
+                params.put("table", "1");
                 params.put("cf", sCF);
                 params.put("password", sPass);
 

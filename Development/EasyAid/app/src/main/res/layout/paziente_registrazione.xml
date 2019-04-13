@@ -178,15 +178,14 @@
                             android:background="@null"/>
                     </LinearLayout>
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@color/greenDark"/>
 
                 </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="20dp"
-                    android:background="@color/greenDark"/>
 
                 <!--maschio / femmina-->
 
@@ -195,11 +194,13 @@
                     android:layout_height="wrap_content">
 
                     <RadioGroup
+                        android:id="@+id/sessoRadioRegistrazionewPaziente"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <RadioButton
+                            android:id="@+id/maschioRegistrazionePaziente"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="10dp"
@@ -208,6 +209,7 @@
                             android:text="Maschio"/>
 
                         <RadioButton
+                            android:id="@+id/femminaRegistrazionePaziente"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/greenDark"
@@ -215,6 +217,12 @@
                             android:text="Femmina"/>
                     </RadioGroup>
                 </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
                 <!--luogo di nascita-->
 
                 <TextView
@@ -274,7 +282,7 @@
                             android:id="@+id/editCittaNascPaziente"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="CITTA|COMUNE"
+                            android:hint="COMUNE"
                             android:inputType="text"
                             android:fontFamily="serif"
                             android:imeOptions="actionNext"
@@ -293,36 +301,9 @@
                         android:background="@color/greenDark"/>
                 </LinearLayout>
 
-                <LinearLayout
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <EditText
-                            android:id="@+id/editViaNascPaziente"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="VIA|PIAZZA"
-                            android:inputType="text"
-                            android:fontFamily="serif"
-                            android:imeOptions="actionGo"
-                            android:textColor="@color/greenDark"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:background="@null"/>
-
-                    </android.support.design.widget.TextInputLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="10dp"
-                        android:background="@color/greenDark"/>
-                </LinearLayout>
+                    android:layout_height="wrap_content" />
                 <!--Codice fiscale-->
 
                 <LinearLayout
@@ -344,7 +325,7 @@
                             android:id="@+id/editCodiceFiscaleRegistrazionePaziente"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="CODICE|FISCALE"
+                            android:hint="CODICE FISCALE"
                             android:imeOptions="actionDone"
                             android:inputType="text"
                             android:fontFamily="serif"
@@ -377,8 +358,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="visible">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -393,53 +373,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left"
-                    android:text="MEDICO DI BASE"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:textColor="@color/greenDark"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <AutoCompleteTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="serif"
-                            android:inputType="text"
-                            android:hint="MEDICO DI BASE"
-                            android:imeOptions="actionGo"
-                            android:textColor="@color/black"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:background="@null"
-                            android:ems="10" />
-
-                    </android.support.design.widget.TextInputLayout>
-
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="10dp"
-                        android:background="@color/greenDark"/>
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:text="INDIRIZZO DI RESIDENZA"
+                    android:text="INDIRIZZO DI RESIDENZA *"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
                     android:textColor="@color/greenDark"
@@ -456,13 +390,13 @@
                         android:layout_height="wrap_content">
 
                         <AutoCompleteTextView
-                            android:id="@+id/editProvinciaResidenzaPaziente"
+                            android:id="@+id/editProvinciaResidenzaRegistrazionePaziente"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="serif"
                             android:inputType="text"
                             android:hint="PROVINCIA"
-                            android:imeOptions="actionGo"
+                            android:imeOptions="actionNext"
                             android:textColor="@color/black"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:background="@null"
@@ -488,14 +422,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <EditText
-                            android:id="@+id/editCittaRegistrazionePaziente"
+                        <AutoCompleteTextView
+                            android:id="@+id/editCittaResidenzaRegistrazionePaziente"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="CITTA|COMUNE"
                             android:inputType="text"
                             android:fontFamily="serif"
-                            android:imeOptions="actionGo"
+                            android:imeOptions="actionNext"
                             android:textColor="@color/greenDark"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:background="@null"/>
@@ -521,7 +455,7 @@
                         android:layout_height="wrap_content">
 
                         <EditText
-                            android:id="@+id/editViaRegistrazionePaziente"
+                            android:id="@+id/editViaResidenzaRegistrazionePaziente"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="VIA|PIAZZA"
@@ -540,6 +474,60 @@
                         android:layout_marginTop="2dp"
                         android:layout_marginBottom="10dp"
                         android:background="@color/greenDark"/>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:text="MEDICO DI BASE"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:textColor="@color/greenDark"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/medicoBaseRegistrazionePaziente"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="serif"
+                                android:inputType="text"
+                                android:hint="MEDICO DI BASE"
+                                android:imeOptions="actionDone"
+                                android:textColor="@color/black"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                android:background="@null"
+                                android:ems="10" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@color/greenDark"/>
+                    </LinearLayout>
+
+
                 </LinearLayout>
 
             </LinearLayout>
@@ -590,7 +578,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <AutoCompleteTextView
+                        <EditText
+                            android:id="@+id/indirizzoEmailRegistrazionePaziente"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="serif"
@@ -632,7 +621,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <AutoCompleteTextView
+                        <EditText
+                            android:id="@+id/editPasswordRegistrazionePaziente"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="serif"
@@ -664,7 +654,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <AutoCompleteTextView
+                        <EditText
+                            android:id="@+id/editConfermaPasswordRegistrazionePaziente"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="serif"

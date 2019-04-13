@@ -166,6 +166,7 @@ public class AccessoPaziente extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
+                params.put("table", "0");
                 params.put("cf", sCF);
                 params.put("password", sPass);
 

@@ -1,8 +1,10 @@
 package com.easy.aid.Paziente;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Build;
@@ -23,15 +25,27 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.easy.aid.Class.NetVariables;
 import com.easy.aid.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class RegistrazionePaziente extends AppCompatActivity {
 
@@ -39,16 +53,19 @@ public class RegistrazionePaziente extends AppCompatActivity {
     private String btnTextContinua = "CONTINUA";
     private String btnTextFinisci = "CONFERMA REGISTRAZIONE";
 
-    private EditText nome, cognome, cittaNascit, viaNascita;
+    private EditText nome, cognome;
     private EditText codiceFiscale, viaResidenza;
-    private EditText medicoBase, password, confermaPassword, dataNascita;
-    private AutoCompleteTextView provinciaNascita, cittaNascita, provinciaResidenza, cittaResidenza;
+    private EditText email, password, confermaPassword, dataNascita;
+    private AutoCompleteTextView provinciaNascita, cittaNascita, provinciaResidenza, cittaResidenza, medicoBase;
     private Button registrazioneButton;
     private ImageView showCalendar;
     private ImageView back;
     private NetVariables c;
     private DatePickerDialog.OnDateSetListener date;
     private Calendar myCalendar;
+    private RadioGroup sessoRadio;
+    private RadioButton maschio, femmina;
+    private String sesso;
 
     private ScrollView[] registrazione;
     private int step=0;
@@ -87,11 +104,19 @@ public class RegistrazionePaziente extends AppCompatActivity {
         dataNascita = (EditText) findViewById(R.id.editDataNascitaPaziente);
         provinciaNascita = (AutoCompleteTextView) findViewById(R.id.editProvinciaNascPaziente);
         cittaNascita = (AutoCompleteTextView) findViewById(R.id.editCittaNascPaziente);
-        viaNascita = (EditText) findViewById(R.id.editViaNascPaziente);
         back = (ImageView)findViewById(R.id.backRegistrazionePaziente);
         showCalendar = (ImageView) findViewById(R.id.showCalendarPaziente);
         codiceFiscale = (EditText) findViewById(R.id.editCodiceFiscaleRegistrazionePaziente);
-
+        maschio = (RadioButton) findViewById(R.id.maschioRegistrazionePaziente);
+        femmina = (RadioButton) findViewById(R.id.femminaRegistrazionePaziente);
+        sessoRadio = (RadioGroup) findViewById(R.id.sessoRadioRegistrazionewPaziente);
+        provinciaResidenza = (AutoCompleteTextView) findViewById(R.id.editProvinciaResidenzaRegistrazionePaziente);
+        cittaResidenza = (AutoCompleteTextView) findViewById(R.id.editCittaResidenzaRegistrazionePaziente);
+        medicoBase = (AutoCompleteTextView) findViewById(R.id.medicoBaseRegistrazionePaziente);
+        viaResidenza = (EditText) findViewById(R.id.editViaResidenzaRegistrazionePaziente);
+        email = (EditText) findViewById(R.id.indirizzoEmailRegistrazionePaziente);
+        password = (EditText) findViewById(R.id.editPasswordRegistrazionePaziente);
+        confermaPassword = (EditText) findViewById(R.id.editConfermaPasswordRegistrazionePaziente);
 
         myCalendar = Calendar.getInstance();
         date = new DatePickerDialog.OnDateSetListener() {
@@ -128,12 +153,48 @@ public class RegistrazionePaziente extends AppCompatActivity {
         provinciaNascita.setThreshold(1);//will start working from first character
         provinciaNascita.setAdapter(adapter);
 
+        dataNascita.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(start==1||start==4){
+                    dataNascita.setText((dataNascita.getText().toString()+"/"));
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
         registrazioneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(step == 2){
-
                     error = false;
+                    if(confermaPassword.getText().toString().isEmpty()){
+                        confermaPassword.setError("Inserisci password di controllo");
+                        showError(2);
+                    }
+                    if(password.getText().toString().isEmpty()){
+                        password.setError("Inserisci password");
+                        showError(2);
+                    }
+                    if(email.getText().toString().isEmpty()){
+                        email.setError("Inserisci un email");
+                        showError(2);
+                    }
+
+                    if(medicoBase.getText().toString().isEmpty()){
+                        medicoBase.setError("Inserisci un medico di base");
+                        showError(1);
+                    }
+
                     if(nome.getText().toString().isEmpty()){
                         nome.setError("Inserisci nome");
                         showError(0);
@@ -154,17 +215,16 @@ public class RegistrazionePaziente extends AppCompatActivity {
                         cittaNascita.setError("Inserisci città di nascita");
                         showError(0);
                     }
-                    if(viaNascita.getText().toString().isEmpty()){
-                        viaNascita.setError("Inserisci via di nascita");
-                        showError(0);
-                    }
                     if(codiceFiscale.getText().toString().isEmpty()){
                         codiceFiscale.setError("Inserisci il codice fiscale");
                         showError(0);
                     }
 
+                    /**
+                     * REGISTRAZIONE
+                     */
                     if(!error){
-
+                        Registrazione();
                     }
                 }else if(step == 1){
                     hideKeyboard();
@@ -242,10 +302,20 @@ public class RegistrazionePaziente extends AppCompatActivity {
         if(st == 0){
             error = true;
             registrazione[2].setVisibility(View.GONE);
+            registrazione[1].setVisibility(View.GONE);
             registrazione[0].setVisibility(View.VISIBLE);
+            registrazioneButton.setText(btnTextContinua);
             step = 0;
         }else if(st == 1){
-
+            error = true;
+            registrazione[2].setVisibility(View.GONE);
+            registrazione[0].setVisibility(View.GONE);
+            registrazione[1].setVisibility(View.VISIBLE);
+            registrazioneButton.setText(btnTextContinua);
+            step = 0;
+        }else if(st == 2){
+            error = true;
+            step = 2;
         }
     }
 
@@ -257,7 +327,24 @@ public class RegistrazionePaziente extends AppCompatActivity {
     private void checkBack(){
         switch (step) {
             case 0: {
-                finish();
+
+                new AlertDialog.Builder(this)
+                        .setTitle("Annulla registrazione")
+                        .setMessage("Sei sicuro di voler annullare la registrazione?")
+
+                        // Specifying a listener allows you to take an action before dismissing the dialog.
+                        // The dialog is automatically dismissed when a dialog button is clicked.
+                        .setPositiveButton("SI", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+                            }
+                        })
+
+                        // A null listener allows the button to dismiss the dialog and take no further action.
+                        .setNegativeButton("NO", null)
+                        .setIcon(R.drawable.icon_alert)
+                        .show();
+
                 break;
             }
             case 1: {
@@ -283,5 +370,55 @@ public class RegistrazionePaziente extends AppCompatActivity {
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+    }
+
+    private void Registrazione(){
+
+        if(sessoRadio.getCheckedRadioButtonId() == maschio.getId()){
+            sesso = "Maschio";
+        }else{
+            sesso = "Femmina";
+        }
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, NetVariables.URL_REGISTER,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(RegistrazionePaziente.this, "Error " + error.toString() , Toast.LENGTH_SHORT).show();
+                    }
+                })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("nome", nome.getText().toString());
+                params.put("cognome", cognome.getText().toString());
+                params.put("datanascita", "2019-03-13");
+                params.put("sesso", sesso);
+                params.put("provincianascita", provinciaNascita.getText().toString());
+                params.put("cittanascita", cittaNascita.getText().toString());
+                params.put("codicefiscale", codiceFiscale.getText().toString());
+
+                params.put("provinciaresidenza", provinciaResidenza.getText().toString());
+                params.put("cittaresidenza", cittaResidenza.getText().toString());
+                params.put("viaresidenza", viaResidenza.getText().toString());
+                params.put("idmedicobase", "1");
+
+                params.put("email", email.getText().toString());
+                params.put("password", password.getText().toString());
+
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
     }
 }

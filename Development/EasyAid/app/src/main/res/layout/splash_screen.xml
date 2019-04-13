@@ -8,6 +8,8 @@
     android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
     android:layout_gravity="center"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
     tools:context=".InitialSplashScreen">
 
     <LinearLayout

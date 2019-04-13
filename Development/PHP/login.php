@@ -2,14 +2,28 @@
 
 if ($_SERVER['REQUEST_METHOD']=='POST'|| $_SERVER['REQUEST_METHOD']=='GET') {
 
+    $table = $_REQUEST['table'];
     $cf = $_REQUEST['cf'];
     $password = $_REQUEST['password'];
 
     require_once 'connect.php';
 
-    $sql = "SELECT * FROM Paziente WHERE CodiceFiscale = '$cf' ";
+    //PAZIENTE
+    if($table == 0){
+    	$sql = "SELECT * FROM Paziente WHERE CodiceFiscale = '$cf' ";
+    	$response = mysqli_query($conn, $sql);
+    }
+    //MEDICO
+    else if($table == 1){
+		$sql = "SELECT * FROM Medico WHERE CodiceFiscale = '$cf' ";
+    	$response = mysqli_query($conn, $sql);
+    }
 
-    $response = mysqli_query($conn, $sql);
+    //FARMACIA
+    else if($table == 2){
+		$sql = "SELECT * FROM Farmacia WHERE CodiceFiscale = '$cf' ";
+    	$response = mysqli_query($conn, $sql);
+    }
 
     $result = array();
     $result['login'] = array();
@@ -18,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST'|| $_SERVER['REQUEST_METHOD']=='GET') {
 
         $row = mysqli_fetch_assoc($response);
 
-        if ( password_verify($password, $row['Password']) == 0 ) {
+        if ($password == $row['Password']) {
             
             $index['nome'] = $row['Nome'];
             $index['cognome'] = $row['Cognome'];
@@ -33,14 +47,20 @@ if ($_SERVER['REQUEST_METHOD']=='POST'|| $_SERVER['REQUEST_METHOD']=='GET') {
 
         } else {
             $result['success'] = "0";
-            $result['message'] = "error";
+            $result['message'] = "ErrorPassword";
             echo json_encode($result);
 
             mysqli_close($conn);
 
         }
 
-    }
+    }else{
+		$result['success'] = "0";
+        $result['message'] = "ErrorUsername";
+        echo json_encode($result);
+
+        mysqli_close($conn);
+	}
 
 }
 

@@ -10,8 +10,10 @@ if ($_SERVER['REQUEST_METHOD']=='POST'|| $_SERVER['REQUEST_METHOD']=='GET') {
 
     $result = array();
     $result['read'] = array();
+    $result['data'] = $response;
 
     $result["success"] = "1";
+    echo json_encode($result);
  
  }else {
  
