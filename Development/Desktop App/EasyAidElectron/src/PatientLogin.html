@@ -59,12 +59,14 @@
                                 if (error) console.error(error);
                             });
                             
-                            /* get cookies */
+                            /* get cookies - TO BE REMOVED*/
 
                             session.defaultSession.cookies.get({}, (error, cookies) => {
                                 console.log(error, cookies);
                             })
 
+                            BrowserWindow.getFocusedWindow().loadFile("src/PatientHome.html");
+                        }else{
                             BrowserWindow.getFocusedWindow().loadFile("src/PatientHome.html");
                         }
 

@@ -1,11 +1,14 @@
 const electron = require('electron')
 const BrowserWindow = electron.BrowserWindow
 const app = electron.app
+const session = electron.session;
 
 let SplashScreen = null
 global.shared = {
 	type: "patient",
 	id: "6",
+	name: "Mario",
+	surname: "Rossi",
 	password: "ElectronPassword"
 }
 
@@ -44,11 +47,12 @@ function CreateFirstWindow() {
 		}*/
 	})
 	
-	//win.loadFile('src/SelectAccount.html')
+	win.loadFile('src/SelectAccount.html')
 	//win.loadFile('src/DoctorLogin.html')
 	//win.loadFile('src/PatientLogin.html')
 	//win.loadFile('src/PharmacyLogin.html')
 	//win.loadFile('src/PatientRegistration.html')
+	//win.loadFile('src/PatientHome.html')
 
 	win.once('ready-to-show', () => {
         win.show()
@@ -60,20 +64,21 @@ function CreateFirstWindow() {
 
 
 app.on('ready', () => {
-	CreateSplashScreen()
-	//CreateFirstWindow()
+	//CreateSplashScreen()
+	CreateFirstWindow()
 })
 
 app.on('window-all-closed', () => {
 	if (process.platform !== 'darwin') {
+		session.defaultSession.clearStorageData({storages: "cookie"});
 		app.quit()
 	}
 })
 
 app.on('activate', () => {
 	if (win === null) {
-		CreateSplashScreen()
-		//CreateFirstWindow()
+		//CreateSplashScreen()
+		CreateFirstWindow()
 	}
 })
 
