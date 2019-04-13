@@ -4,7 +4,9 @@ const app = electron.app
 
 let SplashScreen = null
 global.shared = {
-	stringa: "lol"
+	type: "patient",
+	id: "6",
+	password: "ElectronPassword"
 }
 
 function CreateSplashScreen() {
