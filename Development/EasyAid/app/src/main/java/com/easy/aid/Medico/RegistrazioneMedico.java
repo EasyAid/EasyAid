@@ -1,6 +1,9 @@
 package com.easy.aid.Medico;
 
+import android.app.AlertDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.support.design.widget.TextInputLayout;
@@ -13,6 +16,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -39,7 +43,8 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
     private String btnTextContinua = "CONTINUA";
     private String btnTextFinisci = "CONFERMA REGISTRAZIONE";
 
-    private Calendario calendario; private Time temp;
+    private Calendario calendario;
+    private Time temp;
     private ScrollView registrazione1, registrazione2, registrazione3;
     private Button continua1;
     private ImageView back;
@@ -81,10 +86,10 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        }else {
+        } else {
             Window window = getWindow();
             window.setStatusBarColor(ContextCompat
-                    .getColor(getApplicationContext(),R.color.colorAccent));
+                    .getColor(getApplicationContext(), R.color.colorAccent));
         }
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN); //nasconde tastiera
@@ -119,19 +124,19 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
 
         //lavoro
         lavoro = new CheckBox[7];
-        lavoro[0] = (CheckBox)findViewById(R.id.lavoroLunMed);
+        lavoro[0] = (CheckBox) findViewById(R.id.lavoroLunMed);
         lavoro[0].setOnClickListener(this);
-        lavoro[1] = (CheckBox)findViewById(R.id.lavoroMarMed);
+        lavoro[1] = (CheckBox) findViewById(R.id.lavoroMarMed);
         lavoro[1].setOnClickListener(this);
-        lavoro[2] = (CheckBox)findViewById(R.id.lavoroMerMed);
+        lavoro[2] = (CheckBox) findViewById(R.id.lavoroMerMed);
         lavoro[2].setOnClickListener(this);
-        lavoro[3] = (CheckBox)findViewById(R.id.lavoroGioMed);
+        lavoro[3] = (CheckBox) findViewById(R.id.lavoroGioMed);
         lavoro[3].setOnClickListener(this);
-        lavoro[4] = (CheckBox)findViewById(R.id.lavoroVenMed);
+        lavoro[4] = (CheckBox) findViewById(R.id.lavoroVenMed);
         lavoro[4].setOnClickListener(this);
-        lavoro[5] = (CheckBox)findViewById(R.id.lavoroSabMed);
+        lavoro[5] = (CheckBox) findViewById(R.id.lavoroSabMed);
         lavoro[5].setOnClickListener(this);
-        lavoro[6] = (CheckBox)findViewById(R.id.lavoroDomMed);
+        lavoro[6] = (CheckBox) findViewById(R.id.lavoroDomMed);
         lavoro[6].setOnClickListener(this);
 
         //pausa
@@ -356,21 +361,37 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
         checkBack();
     }
 
-    private void checkBack(){
+    private void checkBack() {
         switch (status) {
             case 0: {
-                finish();
+                new AlertDialog.Builder(this)
+                        .setTitle("Annulla registrazione")
+                        .setMessage("Sei sicuro di voler annullare la registrazione?")
+
+                        // Specifying a listener allows you to take an action before dismissing the dialog.
+                        // The dialog is automatically dismissed when a dialog button is clicked.
+                        .setPositiveButton("SI", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                hideKeyboard();
+                                finish();
+                            }
+                        })
+
+                        // A null listener allows the button to dismiss the dialog and take no further action.
+                        .setNegativeButton("NO", null)
+                        .setIcon(R.drawable.icon_alert)
+                        .show();
                 break;
             }
             case 1: {
-                status--;
+                status = 0;
                 registrazione2.setVisibility(View.GONE);
                 registrazione1.setVisibility(View.VISIBLE);
                 break;
             }
             case 2: {
                 continua1.setText(btnTextContinua);
-                status--;
+                status = 1;
                 registrazione3.setVisibility(View.GONE);
                 registrazione2.setVisibility(View.VISIBLE);
                 break;
@@ -428,100 +449,100 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
 
             case R.id.lavoroLunMed:
                 if (lavoro[0].isChecked()) {
-                    enable(0,true);
+                    enable(0, true);
                 } else {
-                    disable(0,true);
+                    disable(0, true);
                 }
                 break;
             case R.id.lavoroMarMed:
                 if (lavoro[1].isChecked()) {
-                    enable(1,true);
+                    enable(1, true);
                 } else {
-                    disable(1,true);
+                    disable(1, true);
                 }
                 break;
             case R.id.lavoroMerMed:
                 if (lavoro[2].isChecked()) {
-                    enable(2,true);
+                    enable(2, true);
                 } else {
-                    disable(2,true);
+                    disable(2, true);
                 }
                 break;
             case R.id.lavoroGioMed:
                 if (lavoro[3].isChecked()) {
-                    enable(3,true);
+                    enable(3, true);
                 } else {
-                    disable(3,true);
+                    disable(3, true);
                 }
                 break;
             case R.id.lavoroVenMed:
                 if (lavoro[4].isChecked()) {
-                    enable(4,true);
+                    enable(4, true);
                 } else {
-                    disable(4,true);
+                    disable(4, true);
                 }
                 break;
             case R.id.lavoroSabMed:
                 if (lavoro[5].isChecked()) {
-                    enable(5,true);
+                    enable(5, true);
                 } else {
-                    disable(5,true);
+                    disable(5, true);
                 }
                 break;
             case R.id.lavoroDomMed:
                 if (lavoro[6].isChecked()) {
-                    enable(6,true);
+                    enable(6, true);
                 } else {
-                    disable(6,true);
+                    disable(6, true);
                 }
                 break;
             case R.id.pausaLunMed:
                 if (pausa[0].isChecked()) {
-                    enable(0,false);
+                    enable(0, false);
                 } else {
-                    disable(0,false);
+                    disable(0, false);
                 }
                 break;
             case R.id.pausaMarMed:
                 if (pausa[1].isChecked()) {
-                    enable(1,false);
+                    enable(1, false);
                 } else {
-                    disable(1,false);
+                    disable(1, false);
                 }
                 break;
             case R.id.pausaMerMed:
                 if (pausa[2].isChecked()) {
-                    enable(2,false);
+                    enable(2, false);
                 } else {
-                    disable(2,false);
+                    disable(2, false);
                 }
                 break;
             case R.id.pausaGioMed:
                 if (pausa[3].isChecked()) {
-                    enable(3,false);
+                    enable(3, false);
                 } else {
-                    disable(3,false);
+                    disable(3, false);
                 }
                 break;
             case R.id.pausaVenMed:
                 if (pausa[4].isChecked()) {
-                    enable(4,false);
+                    enable(4, false);
                 } else {
-                    disable(4,false);
+                    disable(4, false);
                 }
                 break;
             case R.id.pausaSabMed:
                 if (pausa[5].isChecked()) {
-                    enable(5,false);
+                    enable(5, false);
                 } else {
                     disable(5, false);
                 }
                 break;
             case R.id.pausaDomMed:
                 if (pausa[6].isChecked()) {
-                    enable(6,false);
+                    enable(6, false);
                 } else {
-                    disable(6,false);
+                    disable(6, false);
                 }
                 break;
         }
@@ -537,9 +558,9 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
         timePicker.show(getSupportFragmentManager(), "time picker");
     }
 
-    private void enable(int i, boolean lavoro){
+    private void enable(int i, boolean lavoro) {
 
-        if(lavoro){
+        if (lavoro) {
             settimanaMattina[i].setEnabled(true);
             settimanaMattina[i].setTextColor(getResources().getColor(R.color.greenDark));
         }
@@ -548,9 +569,9 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
         settimanaSera[i].setTextColor(getResources().getColor(R.color.greenDark));
     }
 
-    private void disable(int i,boolean lavoro){
+    private void disable(int i, boolean lavoro) {
 
-        if(lavoro){
+        if (lavoro) {
             settimanaMattina[i].setEnabled(false);
             settimanaMattina[i].setTextColor(getResources().getColor(R.color.def));
             pausa[i].setChecked(false);
@@ -565,11 +586,18 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
             if (mattina) settimanaMattina[idGiorno].setText(hourOfDay + ":" + minute);
             else settimanaSera[idGiorno].setText(hourOfDay + ":" + minute);
             count = 1;
-        } else {
+        }
+
+        else {
             String prevText;
 
-            if(mattina) { prevText = settimanaMattina[idGiorno].getText().toString(); }
-            else { prevText = settimanaSera[idGiorno].getText().toString(); }
+            if (mattina) {
+                prevText = settimanaMattina[idGiorno].getText().toString();
+            }
+
+            else {
+                prevText = settimanaSera[idGiorno].getText().toString();
+            }
 
             String nextText = hourOfDay + ":" + minute;
 
@@ -585,6 +613,13 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
 
             if (mattina) settimanaMattina[idGiorno].setText(prevText + "\n" + nextText);
             else settimanaSera[idGiorno].setText(prevText + "\n" + nextText);
+        }
+    }
+    private void hideKeyboard(){
+        View view = this.getCurrentFocus();
+        if(view!=null){
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
 }
