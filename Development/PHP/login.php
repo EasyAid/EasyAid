@@ -8,29 +8,6 @@ if ($_SERVER['REQUEST_METHOD']=='POST'|| $_SERVER['REQUEST_METHOD']=='GET') {
 
     require_once 'connect.php';
 
-    switch ($table){
-        case 0:{
-            //PAZIENTE
-            $sql = "SELECT * FROM Paziente WHERE CodiceFiscale = '$cf' ";
-    	    $response = mysqli_query($conn, $sql);
-            break;
-        }
-        case 1:{
-            //MEDICO
-            else if($table == 1){
-                $sql = "SELECT * FROM Medico WHERE CodiceFiscale = '$cf' ";
-                $response = mysqli_query($conn, $sql);
-            break;
-        }
-        case 2:{
-            //FARMACIA
-            else if($table == 2){
-                $sql = "SELECT * FROM Farmacia WHERE CodiceFiscale = '$cf' ";
-                $response = mysqli_query($conn, $sql);
-            break;
-        }
-    }
-/*
     //PAZIENTE
     if($table == 0){
     	$sql = "SELECT * FROM Paziente WHERE CodiceFiscale = '$cf' ";
@@ -47,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST'|| $_SERVER['REQUEST_METHOD']=='GET') {
 		$sql = "SELECT * FROM Farmacia WHERE CodiceFiscale = '$cf' ";
     	$response = mysqli_query($conn, $sql);
     }
-*/
+
     $result = array();
     $result['login'] = array();
     

@@ -1,9 +1,6 @@
 package com.easy.aid.Farmacia;
 
-import android.app.AlertDialog;
 import android.app.TimePickerDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.opengl.Visibility;
 import android.os.Build;
@@ -14,7 +11,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -36,8 +32,7 @@ public class RegistrazioneFarmacia extends AppCompatActivity implements TimePick
     private Intent intent;
     private Button continuaReg;
     private ImageView back;
-    private ScrollView registrazione1;
-    private ScrollView registrazione2;
+    private LinearLayout registrazione1, registrazione2;
     private TextView[] settimanaMattina, settimanaSera;
     private CheckBox[] lavoro, pausa;
 
@@ -62,18 +57,18 @@ public class RegistrazioneFarmacia extends AppCompatActivity implements TimePick
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        } else {
+        }else {
             Window window = getWindow();
             window.setStatusBarColor(ContextCompat
-                    .getColor(getApplicationContext(), R.color.colorAccent));
+                    .getColor(getApplicationContext(),R.color.colorAccent));
         }
 
         status = 0;
         continuaReg = (Button) findViewById(R.id.continuaRegistrazioneFarmacia);
         back = (ImageView) findViewById(R.id.backRegistrazioneFarmacia);
 
-        registrazione1 = (ScrollView) findViewById(R.id.registrazione1Farmacia);
-        registrazione2 = (ScrollView) findViewById(R.id.registrazione2Farmacia);
+        registrazione1 = (LinearLayout) findViewById(R.id.registrazione1Farmacia);
+        registrazione2 = (LinearLayout) findViewById(R.id.registrazione2Farmacia);
 
         //elementi pagina1
         mail = (EditText) findViewById(R.id.editEmailFarmacia);
@@ -157,15 +152,9 @@ public class RegistrazioneFarmacia extends AppCompatActivity implements TimePick
         continuaReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 switch (status) {
-                    case 0: {
-                        registrazione1.setVisibility(View.GONE);
-                        registrazione2.setVisibility(View.VISIBLE);
-                        continuaReg.setText(txtTerminaReg);
-                        status = 1;
-                        break;
-                    }
-                    case 1: {
+                    case 0: /* prima pagina, bottone ha "continua" */ {
                         boolean error = false;
                         if (mail.getText().toString().isEmpty()) {
                             mail.setError("Inserisci mail");
@@ -201,16 +190,17 @@ public class RegistrazioneFarmacia extends AppCompatActivity implements TimePick
                             error = true;
                         }
                         if (!error) {
-                            //TODO niente errore invia dati a server
-                        } else {
-                            //errore segnalo errori e torno alla pagina iniziale
-                            registrazione1.setVisibility(View.VISIBLE);
-                            registrazione2.setVisibility(View.GONE);
-                            continuaReg.setText(txtContinuaReg);
-                            status = 0;
+                            registrazione1.setVisibility(View.GONE);
+                            registrazione2.setVisibility(View.VISIBLE);
+                            continuaReg.setText(txtTerminaReg);
+                            status = 1;
                         }
-                        break;
                     }
+                    break;
+                    case 1: /* pagina 2, bottone ha "Registrati" */ {
+                        /* registrazione dell'utente */
+                    }
+                    break;
                 }
             }
         });
@@ -229,33 +219,16 @@ public class RegistrazioneFarmacia extends AppCompatActivity implements TimePick
         checkBack();
     }
 
-    private void checkBack() {
+    private void checkBack(){
         switch (status) {
             case 0: {
-                new AlertDialog.Builder(this)
-                        .setTitle("Annulla registrazione")
-                        .setMessage("Sei sicuro di voler annullare la registrazione?")
-
-                        // Specifying a listener allows you to take an action before dismissing the dialog.
-                        // The dialog is automatically dismissed when a dialog button is clicked.
-                        .setPositiveButton("SI", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                hideKeyboard();
-                                finish();
-                            }
-                        })
-
-                        // A null listener allows the button to dismiss the dialog and take no further action.
-                        .setNegativeButton("NO", null)
-                        .setIcon(R.drawable.icon_alert)
-                        .show();
+                finish();
                 break;
             }
             case 1: {
                 status--;
                 registrazione2.setVisibility(View.GONE);
                 registrazione1.setVisibility(View.VISIBLE);
-                continuaReg.setText(txtContinuaReg);
                 break;
             }
         }
@@ -307,108 +280,107 @@ public class RegistrazioneFarmacia extends AppCompatActivity implements TimePick
                 orologio(6, false);
                 break;
 
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             case R.id.lavoroLunFarmacia:
                 if (lavoro[0].isChecked()) {
-                    enable(0, true);
+                    enable(0,true);
                 } else {
-                    disable(0, true);
+                    disable(0,true);
                 }
                 break;
             case R.id.lavoroMarFarmacia:
                 if (lavoro[1].isChecked()) {
-                    enable(1, true);
+                    enable(1,true);
                 } else {
-                    disable(1, true);
+                    disable(1,true);
                 }
                 break;
             case R.id.lavoroMerFarmacia:
                 if (lavoro[2].isChecked()) {
-                    enable(2, true);
+                    enable(2,true);
                 } else {
-                    disable(2, true);
+                    disable(2,true);
                 }
                 break;
             case R.id.lavoroGioFarmacia:
                 if (lavoro[3].isChecked()) {
-                    enable(3, true);
+                    enable(3,true);
                 } else {
-                    disable(3, true);
+                    disable(3,true);
                 }
                 break;
             case R.id.lavoroVenFarmacia:
                 if (lavoro[4].isChecked()) {
-                    enable(4, true);
+                    enable(4,true);
                 } else {
-                    disable(4, true);
+                    disable(4,true);
                 }
                 break;
             case R.id.lavoroSabFarmacia:
                 if (lavoro[5].isChecked()) {
-                    enable(5, true);
+                    enable(5,true);
                 } else {
-                    disable(5, true);
+                    disable(5,true);
                 }
                 break;
             case R.id.lavoroDomFarmacia:
                 if (lavoro[6].isChecked()) {
-                    enable(6, true);
+                    enable(6,true);
                 } else {
-                    disable(6, true);
+                    disable(6,true);
                 }
                 break;
             case R.id.pausaLunFarmacia:
                 if (pausa[0].isChecked()) {
-                    enable(0, false);
+                    enable(0,false);
                 } else {
-                    disable(0, false);
+                    disable(0,false);
                 }
                 break;
             case R.id.pausaMarFarmacia:
                 if (pausa[1].isChecked()) {
-                    enable(1, false);
+                    enable(1,false);
                 } else {
-                    disable(1, false);
+                    disable(1,false);
                 }
                 break;
             case R.id.pausaMerFarmacia:
                 if (pausa[2].isChecked()) {
-                    enable(2, false);
+                    enable(2,false);
                 } else {
-                    disable(2, false);
+                    disable(2,false);
                 }
                 break;
             case R.id.pausaGioFarmacia:
                 if (pausa[3].isChecked()) {
-                    enable(3, false);
+                    enable(3,false);
                 } else {
-                    disable(3, false);
+                    disable(3,false);
                 }
                 break;
             case R.id.pausaVenFarmacia:
                 if (pausa[4].isChecked()) {
-                    enable(4, false);
+                    enable(4,false);
                 } else {
-                    disable(4, false);
+                    disable(4,false);
                 }
                 break;
             case R.id.pausaSabFarmacia:
                 if (pausa[5].isChecked()) {
-                    enable(5, false);
+                    enable(5,false);
                 } else {
                     disable(5, false);
                 }
                 break;
             case R.id.pausaDomFarmacia:
                 if (pausa[6].isChecked()) {
-                    enable(6, false);
+                    enable(6,false);
                 } else {
-                    disable(6, false);
+                    disable(6,false);
                 }
                 break;
-            default:
-                break;
+                default:break;
         }
     }
 
@@ -422,9 +394,9 @@ public class RegistrazioneFarmacia extends AppCompatActivity implements TimePick
         timePicker.show(getSupportFragmentManager(), "time picker");
     }
 
-    private void enable(int i, boolean work) {
+    private void enable(int i, boolean work){
 
-        if (work) {
+        if(work){
             settimanaMattina[i].setEnabled(true);
             settimanaMattina[i].setTextColor(getResources().getColor(R.color.greenDark));
         }
@@ -433,9 +405,9 @@ public class RegistrazioneFarmacia extends AppCompatActivity implements TimePick
         settimanaSera[i].setTextColor(getResources().getColor(R.color.greenDark));
     }
 
-    private void disable(int i, boolean work) {
+    private void disable(int i,boolean work){
 
-        if (work) {
+        if(work){
             settimanaMattina[i].setEnabled(false);
             settimanaMattina[i].setTextColor(getResources().getColor(R.color.def));
         }
@@ -453,11 +425,8 @@ public class RegistrazioneFarmacia extends AppCompatActivity implements TimePick
         } else {
             String prevText;
 
-            if (mattina) {
-                prevText = settimanaMattina[idGiorno].getText().toString();
-            } else {
-                prevText = settimanaSera[idGiorno].getText().toString();
-            }
+            if(mattina) { prevText = settimanaMattina[idGiorno].getText().toString(); }
+            else { prevText = settimanaSera[idGiorno].getText().toString(); }
 
             String nextText = hourOfDay + ":" + minute;
 
@@ -473,14 +442,6 @@ public class RegistrazioneFarmacia extends AppCompatActivity implements TimePick
 
             if (mattina) settimanaMattina[idGiorno].setText(prevText + "\n" + nextText);
             else settimanaSera[idGiorno].setText(prevText + "\n" + nextText);
-        }
-    }
-
-    private void hideKeyboard() {
-        View view = this.getCurrentFocus();
-        if (view != null) {
-            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
 }

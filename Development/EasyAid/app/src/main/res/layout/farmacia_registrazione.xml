@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
+    android:orientation="vertical"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
-    android:orientation="vertical"
     tools:context=".Farmacia.RegistrazioneFarmacia">
 
     <!-- mettere la topBar in tutti i layout -->
@@ -34,8 +34,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:fontFamily="@font/raleway_bold"
                 android:gravity="center"
+                android:fontFamily="@font/raleway_bold"
                 android:text="REGISTRAZIONE FARMACIA"
                 android:textAlignment="center"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
@@ -51,14 +51,12 @@
 
     <!-- prima pagina -->
     <ScrollView
-        android:id="@+id/registrazione1Farmacia"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/continuaRegistrazioneFarmacia"
         android:layout_below="@id/topbarRegistrazioneFarmacia"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:visibility="visible">
+        android:layout_marginBottom="20dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -66,6 +64,7 @@
             android:visibility="visible">
 
             <LinearLayout
+                android:id="@+id/registrazione1Farmacia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -86,8 +85,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
-                        android:fontFamily="@font/raleway_bold"
                         android:text="DATI DI CONTATTO"
+                        android:fontFamily="@font/raleway_bold"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                         android:textColor="@color/greenDark" />
 
@@ -101,8 +100,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
-                            android:fontFamily="@font/raleway_regular"
                             android:hint="EMAIL"
+                            android:fontFamily="@font/raleway_regular"
                             android:imeOptions="actionGo"
                             android:inputType="textEmailAddress"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
@@ -125,8 +124,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
-                            android:fontFamily="@font/raleway_regular"
                             android:hint="TELEFONO"
+                            android:fontFamily="@font/raleway_regular"
                             android:imeOptions="actionGo"
                             android:inputType="phone"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
@@ -150,8 +149,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
-                        android:fontFamily="@font/raleway_bold"
                         android:text="IMPOSTAZIONE PASSWORD"
+                        android:fontFamily="@font/raleway_bold"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                         android:textColor="@color/greenDark" />
 
@@ -165,8 +164,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
-                            android:fontFamily="@font/raleway_regular"
                             android:hint="PASSWORD"
+                            android:fontFamily="@font/raleway_regular"
                             android:imeOptions="actionGo"
                             android:inputType="textPassword"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
@@ -190,9 +189,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
-                            android:fontFamily="@font/raleway_regular"
                             android:hint="CONFERMA PASSWORD"
                             android:imeOptions="actionGo"
+                            android:fontFamily="@font/raleway_regular"
                             android:inputType="textPassword"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:textColor="@color/greenDark" />
@@ -215,8 +214,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
-                        android:fontFamily="@font/raleway_bold"
                         android:text="INDIRIZZO FARMACIA"
+                        android:fontFamily="@font/raleway_bold"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                         android:textColor="@color/greenDark" />
 
@@ -230,9 +229,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
-                            android:fontFamily="@font/raleway_regular"
                             android:hint="PROVINCIA"
                             android:imeOptions="actionGo"
+                            android:fontFamily="@font/raleway_regular"
                             android:inputType="text"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:textColor="@color/greenDark" />
@@ -254,9 +253,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
-                            android:fontFamily="@font/raleway_regular"
                             android:hint="CITTA|COMUNE"
                             android:imeOptions="actionGo"
+                            android:fontFamily="@font/raleway_regular"
                             android:inputType="text"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:textColor="@color/greenDark" />
@@ -278,11 +277,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
-                            android:ems="10"
-                            android:fontFamily="@font/raleway_regular"
                             android:hint="VIA|PIAZZA"
                             android:imeOptions="actionDone"
                             android:inputType="text"
+                            android:fontFamily="@font/raleway_regular"
+                            android:ems="10"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:textColor="@color/greenDark" />
                     </android.support.design.widget.TextInputLayout>
@@ -301,14 +300,13 @@
 
     <!-- seconda pagina -->
     <ScrollView
-        android:id="@+id/registrazione2Farmacia"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/continuaRegistrazioneFarmacia"
         android:layout_below="@id/topbarRegistrazioneFarmacia"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:visibility="gone">
+        android:visibility="gone"
+        android:layout_marginBottom="20dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -316,6 +314,7 @@
 
 
             <LinearLayout
+                android:id="@+id/registrazione2Farmacia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -542,7 +541,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="0.142"
-                                android:checked="false" />
+                                android:checked="false"/>
 
                         </LinearLayout>
 
@@ -629,12 +628,12 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="0.142"
-                                android:enabled="false"
                                 android:fontFamily="serif"
                                 android:gravity="center"
+                                android:enabled="false"
+                                android:textColor="@color/def"
                                 android:text="@string/default_Hour"
-                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                                android:textColor="@color/def" />
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
                         </LinearLayout>
 
@@ -654,49 +653,49 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="0.142"
-                                android:checked="false" />
+                                android:checked="false"/>
 
                             <CheckBox
                                 android:id="@+id/pausaMarFarmacia"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="0.142"
-                                android:checked="false" />
+                                android:checked="false"/>
 
                             <CheckBox
                                 android:id="@+id/pausaMerFarmacia"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="0.142"
-                                android:checked="false" />
+                                android:checked="false"/>
 
                             <CheckBox
                                 android:id="@+id/pausaGioFarmacia"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="0.142"
-                                android:checked="false" />
+                                android:checked="false"/>
 
                             <CheckBox
                                 android:id="@+id/pausaVenFarmacia"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="0.142"
-                                android:checked="false" />
+                                android:checked="false"/>
 
                             <CheckBox
                                 android:id="@+id/pausaSabFarmacia"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="0.142"
-                                android:checked="false" />
+                                android:checked="false"/>
 
                             <CheckBox
                                 android:id="@+id/pausaDomFarmacia"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="0.142"
-                                android:checked="false" />
+                                android:checked="false"/>
 
                         </LinearLayout>
 
@@ -716,84 +715,84 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="0.142"
-                                android:enabled="false"
                                 android:fontFamily="serif"
                                 android:gravity="center"
+                                android:enabled="false"
+                                android:textColor="@color/def"
                                 android:text="@string/default_Hour"
-                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                                android:textColor="@color/def" />
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
                             <TextView
                                 android:id="@+id/seraMarFarmacia"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="0.142"
-                                android:enabled="false"
                                 android:fontFamily="serif"
                                 android:gravity="center"
+                                android:enabled="false"
+                                android:textColor="@color/def"
                                 android:text="@string/default_Hour"
-                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                                android:textColor="@color/def" />
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
                             <TextView
                                 android:id="@+id/seraMerFarmacia"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="0.142"
-                                android:enabled="false"
                                 android:fontFamily="serif"
                                 android:gravity="center"
+                                android:enabled="false"
+                                android:textColor="@color/def"
                                 android:text="@string/default_Hour"
-                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                                android:textColor="@color/def" />
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
                             <TextView
                                 android:id="@+id/seraGioFarmacia"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="0.142"
-                                android:enabled="false"
                                 android:fontFamily="serif"
                                 android:gravity="center"
+                                android:enabled="false"
+                                android:textColor="@color/def"
                                 android:text="@string/default_Hour"
-                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                                android:textColor="@color/def" />
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
                             <TextView
                                 android:id="@+id/seraVenFarmacia"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="0.142"
-                                android:enabled="false"
                                 android:fontFamily="serif"
                                 android:gravity="center"
+                                android:enabled="false"
+                                android:textColor="@color/def"
                                 android:text="@string/default_Hour"
-                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                                android:textColor="@color/def" />
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
                             <TextView
                                 android:id="@+id/seraSabFarmacia"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="0.142"
-                                android:enabled="false"
                                 android:fontFamily="serif"
                                 android:gravity="center"
+                                android:enabled="false"
+                                android:textColor="@color/def"
                                 android:text="@string/default_Hour"
-                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                                android:textColor="@color/def" />
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
                             <TextView
                                 android:id="@+id/seraDomFarmacia"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="0.142"
-                                android:enabled="false"
                                 android:fontFamily="serif"
                                 android:gravity="center"
+                                android:enabled="false"
+                                android:textColor="@color/def"
                                 android:text="@string/default_Hour"
-                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                                android:textColor="@color/def" />
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
                         </LinearLayout>
 
@@ -812,8 +811,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/greenDark"
-        android:fontFamily="@font/raleway_bold"
         android:text="@string/continua"
+        android:fontFamily="@font/raleway_bold"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
         android:textColor="@color/white" />
 
