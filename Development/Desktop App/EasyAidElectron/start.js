@@ -20,6 +20,7 @@ function CreateSplashScreen() {
 		resizable: false,
 		show: false,
 		backgroundColor: '#00796A',
+		icon: 'img/Icon.png'
 		/*webPreferences: {
 			devTools: false
 		}*/
@@ -42,17 +43,18 @@ function CreateFirstWindow() {
 		frame: false,
 		resizable: false,
 		show: false,
+		icon: 'img/Icon.png'
 		/*webPreferences: {
 			devTools: false
 		}*/
 	})
 	
 	win.loadFile('src/SelectAccount.html')
-	//win.loadFile('src/DoctorLogin.html')
-	//win.loadFile('src/PatientLogin.html')
-	//win.loadFile('src/PharmacyLogin.html')
-	//win.loadFile('src/PatientRegistration.html')
-	//win.loadFile('src/PatientHome.html')
+	//win.loadFile('src/Doctor/DoctorLogin.html')
+	//win.loadFile('src/Patient/PatientLogin.html')
+	//win.loadFile('src/Pharmacy/PharmacyLogin.html')
+	//win.loadFile('src/Patient/PatientRegistration.html')
+	//win.loadFile('src/Patient/PatientHome.html')
 
 	win.once('ready-to-show', () => {
         win.show()
@@ -64,8 +66,8 @@ function CreateFirstWindow() {
 
 
 app.on('ready', () => {
-	//CreateSplashScreen()
-	CreateFirstWindow()
+	CreateSplashScreen()
+	//CreateFirstWindow()
 })
 
 app.on('window-all-closed', () => {
@@ -77,8 +79,8 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
 	if (win === null) {
-		//CreateSplashScreen()
-		CreateFirstWindow()
+		CreateSplashScreen()
+		//CreateFirstWindow()
 	}
 })
 

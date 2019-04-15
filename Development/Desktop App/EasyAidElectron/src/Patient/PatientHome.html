@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Paziente</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../node_modules/font-awesome/css/font-awesome.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="custom.css">
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../custom.css">
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script>
         const electron = require('electron')
         const BrowserWindow = electron.remote.BrowserWindow
@@ -31,19 +31,19 @@
         }
 
         function Richiesta() {
-            BrowserWindow.getFocusedWindow().loadFile("src/PatientRichiesta.html");
+            BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientRichiesta.html");
         }
 
         function Ordina() {
-            BrowserWindow.getFocusedWindow().loadFile("src/PatientOrdina.html");
+            BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientOrdina.html");
         }
 
         function Cronologia() {
-            BrowserWindow.getFocusedWindow().loadFile("src/PatientCronologia.html");
+            BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientCronologia.html");
         }
 
         function Impostazioni() {
-            BrowserWindow.getFocusedWindow().loadFile("src/PatientImpostazioni.html");
+            BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientImpostazioni.html");
         }
     </script>
 </head>
@@ -52,19 +52,19 @@
     <div class="container-fluid" style="text-align: center; background-color: #00796A; height: 40px !important">
         <div class="row align-items-center" style="padding: 0px;">
             <div class="col btn-func" onclick="BackWindow()" style="line-height: 2.5; margin-top: -10px;">
-                <img draggable="false" src="../img/BackArrowIcon.svg" style="width: 25px; height: 25px;" />
+                <img draggable="false" src="../../img/BackArrowIcon.svg" style="width: 25px; height: 25px;" />
             </div>
             <div class="col-9 draggable">
-                <img draggable="false" src="../img/LogoTextWhite.png"
+                <img draggable="false" src="../../img/LogoTextWhite.png"
                     style="margin-left: 83px; margin-top: -10px; height: 60px; width: 169px" />
             </div>
             <div class="col btn-func" id="btn-minimize" onclick="MinimizeWindow()"
                 style="line-height: 2.4; margin-top: -10px;">
-                <img draggable="false" src="../img/MinimizeIcon.svg"
+                <img draggable="false" src="../../img/MinimizeIcon.svg"
                     style="width: 39px; height: 39px; padding-top:15px" />
             </div>
             <div class="col btn-func" onclick="CloseWindow()" style="line-height: 2.5; margin-top: -10px;">
-                <img draggable="false" src="../img/CloseIcon.svg" style="width: 25px; height: 25px;" />
+                <img draggable="false" src="../../img/CloseIcon.svg" style="width: 25px; height: 25px;" />
             </div>
         </div>
     </div>
@@ -73,7 +73,7 @@
         <div class="row align-items-center" style="height: 280px;">
             <div class="col-6">
                 <div id="circle" style="text-align: center; margin-left:155px">
-                    <img draggable="false" src="../img/PazienteWhite.png" width="30%" height="40%"
+                    <img draggable="false" src="../../img/PazienteWhite.png" width="30%" height="40%"
                         style="margin-top: 30px" /><br>
                     <h5 style="font-weight: bold; margin-top: 25px">PAZIENTE</h5>
                 </div>
@@ -88,28 +88,28 @@
         <div class="row align-items-center" style="height: 250px;">
             <div class="col-3" style="padding-left: 25px">
                 <div id="circle-white" style="text-align: center;" onclick="Richiesta()">
-                    <img draggable="false" src="../img/RicettaGreen.png" width="32%" height="40%"
+                    <img draggable="false" src="../../img/RicettaGreen.png" width="32%" height="40%"
                         style="margin-top: 30px" /><br>
                     <h5 style="font-weight: bold; margin-top: 25px">RICHIESTA<br>MEDICA</h5>
                 </div>
             </div>
             <div class="col-3" style="padding-left: 25px">
                 <div id="circle-white" style="text-align: center;" onclick="Ordina()">
-                    <img draggable="false" src="../img/FarmacoGreen.png" width="25%" height="40%"
+                    <img draggable="false" src="../../img/FarmacoGreen.png" width="25%" height="40%"
                         style="margin-top: 30px" /><br>
                     <h5 style="font-weight: bold; margin-top: 25px">ORDINA<br>FARMACO</h5>
                 </div>
             </div>
             <div class="col-3" style="padding-left: 25px">
                 <div id="circle-white" style="text-align: center;" onclick="Cronologia()">
-                    <img draggable="false" src="../img/CronologiaGreen.png" width="37%" height="40%"
+                    <img draggable="false" src="../../img/CronologiaGreen.png" width="37%" height="40%"
                         style="margin-top: 30px" /><br>
                     <h5 style="font-weight: bold; margin-top: 25px">CRONOLOGIA EVENTI</h5>
                 </div>
             </div>
             <div class="col-3" style="padding-left: 25px">
                 <div id="circle-white" style="text-align: center;" onclick="Impostazioni()">
-                    <img draggable="false" src="../img/ImpostazioniGreen.png" width="40%" height="40%"
+                    <img draggable="false" src="../../img/ImpostazioniGreen.png" width="40%" height="40%"
                         style="margin-top: 30px" /><br>
                     <h5 style="font-weight: bold; margin-top: 25px">IMPOSTAZIONI</h5>
                 </div>

@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Seleziona profilo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
@@ -30,14 +30,14 @@
             session.defaultSession.cookies.get({ name: 'type' }, (error, cookies) => {
                 if (cookies.length != 0) {
                     if (cookies[0].value == "patient") {
-                        BrowserWindow.getFocusedWindow().loadFile("src/PatientHome.html");
+                        BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientHome.html");
                     }
                     else {
-                        BrowserWindow.getFocusedWindow().loadFile("src/PatientLogin.html");
+                        BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientLogin.html");
                     }
                 }
                 else {
-                    BrowserWindow.getFocusedWindow().loadFile("src/PatientLogin.html");
+                    BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientLogin.html");
                 }
             });
             //BrowserWindow.getFocusedWindow().loadFile('src/PatientLogin.html')
@@ -46,14 +46,14 @@
             session.defaultSession.cookies.get({ name: 'type' }, (error, cookies) => {
                 if (cookies.length != 0) {
                     if (cookies[0].value == "doctor") {
-                        BrowserWindow.getFocusedWindow().loadFile("src/DoctorHome.html");
+                        BrowserWindow.getFocusedWindow().loadFile("src/Doctor/DoctorHome.html");
                     }
                     else {
-                        BrowserWindow.getFocusedWindow().loadFile("src/DoctorLogin.html");
+                        BrowserWindow.getFocusedWindow().loadFile("src/Doctor/DoctorLogin.html");
                     }
                 }
                 else {
-                    BrowserWindow.getFocusedWindow().loadFile("src/DoctorLogin.html");
+                    BrowserWindow.getFocusedWindow().loadFile("src/Doctor/DoctorLogin.html");
                 }
             });
         }
@@ -61,14 +61,14 @@
             session.defaultSession.cookies.get({ name: 'type' }, (error, cookies) => {
                 if (cookies.length != 0) {
                     if (cookies[0].value == "pharmacy") {
-                        BrowserWindow.getFocusedWindow().loadFile("src/PharmacyHome.html");
+                        BrowserWindow.getFocusedWindow().loadFile("src/Pharmacy/PharmacyHome.html");
                     }
                     else {
-                        BrowserWindow.getFocusedWindow().loadFile("src/PharmacyLogin.html");
+                        BrowserWindow.getFocusedWindow().loadFile("src/Pharmacy/PharmacyLogin.html");
                     }
                 }
                 else {
-                    BrowserWindow.getFocusedWindow().loadFile("src/PharmacyLogin.html");
+                    BrowserWindow.getFocusedWindow().loadFile("src/Pharmacy/PharmacyLogin.html");
                 }
             });
         }
