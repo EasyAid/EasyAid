@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Esame">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif"
+        android:layout_marginTop="8dp"
+        android:text="VERIFICA CONOSCENZE SICUREZZA"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/domanda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:textAlignment="center"
+        android:fontFamily="serif"
+        android:textColor="#000"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+        android:text="Migliorare la sicurezza nei luoghi di lavoro è compito:"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <FrameLayout
+            android:id="@+id/frame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottombar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/indietro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/all_empty_round"
+            android:fontFamily="@font/raleway_bold"
+            android:text="INDIETRO"
+            android:textColor="@color/colorPrimaryDark" />
+
+
+        <Button
+            android:id="@+id/avanti"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/all_empty_round"
+            android:fontFamily="@font/raleway_bold"
+            android:text="AVANTI"
+            android:textColor="@color/colorPrimaryDark" />
+
+    </LinearLayout>
+
+</RelativeLayout>
