@@ -38,6 +38,8 @@ import org.w3c.dom.Text;
 
 import java.sql.Time;
 
+import static com.easy.aid.Class.Calendario.stringToTime;
+
 public class RegistrazioneMedico extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, View.OnClickListener {
 
     private String btnTextContinua = "CONTINUA";
@@ -52,7 +54,7 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
     private Intent intent;
 
     private TextView[] settimanaMattina, settimanaSera;
-    private CheckBox[] lavoro, pausa;
+    private CheckBox[] turno1, turno2;
 
     private EditText nome;
     private EditText cognome;
@@ -123,38 +125,38 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
         passwordConferma = (EditText) findViewById(R.id.editConfermaPasswordMed);
 
         //lavoro
-        lavoro = new CheckBox[7];
-        lavoro[0] = (CheckBox) findViewById(R.id.lavoroLunMed);
-        lavoro[0].setOnClickListener(this);
-        lavoro[1] = (CheckBox) findViewById(R.id.lavoroMarMed);
-        lavoro[1].setOnClickListener(this);
-        lavoro[2] = (CheckBox) findViewById(R.id.lavoroMerMed);
-        lavoro[2].setOnClickListener(this);
-        lavoro[3] = (CheckBox) findViewById(R.id.lavoroGioMed);
-        lavoro[3].setOnClickListener(this);
-        lavoro[4] = (CheckBox) findViewById(R.id.lavoroVenMed);
-        lavoro[4].setOnClickListener(this);
-        lavoro[5] = (CheckBox) findViewById(R.id.lavoroSabMed);
-        lavoro[5].setOnClickListener(this);
-        lavoro[6] = (CheckBox) findViewById(R.id.lavoroDomMed);
-        lavoro[6].setOnClickListener(this);
+        turno1 = new CheckBox[7];
+        turno1[0] = (CheckBox) findViewById(R.id.lavoroLunMed);
+        turno1[0].setOnClickListener(this);
+        turno1[1] = (CheckBox) findViewById(R.id.lavoroMarMed);
+        turno1[1].setOnClickListener(this);
+        turno1[2] = (CheckBox) findViewById(R.id.lavoroMerMed);
+        turno1[2].setOnClickListener(this);
+        turno1[3] = (CheckBox) findViewById(R.id.lavoroGioMed);
+        turno1[3].setOnClickListener(this);
+        turno1[4] = (CheckBox) findViewById(R.id.lavoroVenMed);
+        turno1[4].setOnClickListener(this);
+        turno1[5] = (CheckBox) findViewById(R.id.lavoroSabMed);
+        turno1[5].setOnClickListener(this);
+        turno1[6] = (CheckBox) findViewById(R.id.lavoroDomMed);
+        turno1[6].setOnClickListener(this);
 
         //pausa
-        pausa = new CheckBox[7];
-        pausa[0] = (CheckBox) findViewById(R.id.pausaLunMed);
-        pausa[0].setOnClickListener(this);
-        pausa[1] = (CheckBox) findViewById(R.id.pausaMarMed);
-        pausa[1].setOnClickListener(this);
-        pausa[2] = (CheckBox) findViewById(R.id.pausaMerMed);
-        pausa[2].setOnClickListener(this);
-        pausa[3] = (CheckBox) findViewById(R.id.pausaGioMed);
-        pausa[3].setOnClickListener(this);
-        pausa[4] = (CheckBox) findViewById(R.id.pausaVenMed);
-        pausa[4].setOnClickListener(this);
-        pausa[5] = (CheckBox) findViewById(R.id.pausaSabMed);
-        pausa[5].setOnClickListener(this);
-        pausa[6] = (CheckBox) findViewById(R.id.pausaDomMed);
-        pausa[6].setOnClickListener(this);
+        turno2 = new CheckBox[7];
+        turno2[0] = (CheckBox) findViewById(R.id.pausaLunMed);
+        turno2[0].setOnClickListener(this);
+        turno2[1] = (CheckBox) findViewById(R.id.pausaMarMed);
+        turno2[1].setOnClickListener(this);
+        turno2[2] = (CheckBox) findViewById(R.id.pausaMerMed);
+        turno2[2].setOnClickListener(this);
+        turno2[3] = (CheckBox) findViewById(R.id.pausaGioMed);
+        turno2[3].setOnClickListener(this);
+        turno2[4] = (CheckBox) findViewById(R.id.pausaVenMed);
+        turno2[4].setOnClickListener(this);
+        turno2[5] = (CheckBox) findViewById(R.id.pausaSabMed);
+        turno2[5].setOnClickListener(this);
+        turno2[6] = (CheckBox) findViewById(R.id.pausaDomMed);
+        turno2[6].setOnClickListener(this);
 
         //timepicker
         settimanaMattina = new TextView[7];
@@ -364,23 +366,42 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
     private void checkBack() {
         switch (status) {
             case 0: {
-                new AlertDialog.Builder(this)
-                        .setTitle("Annulla registrazione")
-                        .setMessage("Sei sicuro di voler annullare la registrazione?")
+                //se sono tutti vuoti non mandare l'avviso
+                if (nome.getText().toString().isEmpty() &&
+                        cognome.getText().toString().isEmpty() &&
+                        dataNascita.getText().toString().isEmpty() &&
+                        sesso.getCheckedRadioButtonId() == -1 &&
+                        provincia.getText().toString().isEmpty() &&
+                        citta.getText().toString().isEmpty() &&
+                        via.getText().toString().isEmpty() &&
+                        cf.getText().toString().isEmpty() &&
+                        provinciaStudio.getText().toString().isEmpty() &&
+                        cittaStudio.getText().toString().isEmpty() &&
+                        viaStudio.getText().toString().isEmpty() &&
+                        email.getText().toString().isEmpty() &&
+                        telefono.getText().toString().isEmpty() &&
+                        password.getText().toString().isEmpty() &&
+                        passwordConferma.getText().toString().isEmpty()
+                ) finish();
+                else {
+                    new AlertDialog.Builder(this)
+                            .setTitle("Annulla registrazione")
+                            .setMessage("Sei sicuro di voler annullare la registrazione?")
 
-                        // Specifying a listener allows you to take an action before dismissing the dialog.
-                        // The dialog is automatically dismissed when a dialog button is clicked.
-                        .setPositiveButton("SI", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                hideKeyboard();
-                                finish();
-                            }
-                        })
+                            // Specifying a listener allows you to take an action before dismissing the dialog.
+                            // The dialog is automatically dismissed when a dialog button is clicked.
+                            .setPositiveButton("SI", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    hideKeyboard();
+                                    finish();
+                                }
+                            })
 
-                        // A null listener allows the button to dismiss the dialog and take no further action.
-                        .setNegativeButton("NO", null)
-                        .setIcon(R.drawable.icon_alert)
-                        .show();
+                            // A null listener allows the button to dismiss the dialog and take no further action.
+                            .setNegativeButton("NO", null)
+                            .setIcon(R.drawable.icon_alert)
+                            .show();
+                }
                 break;
             }
             case 1: {
@@ -448,98 +469,98 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
 
 
             case R.id.lavoroLunMed:
-                if (lavoro[0].isChecked()) {
+                if (turno1[0].isChecked()) {
                     enable(0, true);
                 } else {
                     disable(0, true);
                 }
                 break;
             case R.id.lavoroMarMed:
-                if (lavoro[1].isChecked()) {
+                if (turno1[1].isChecked()) {
                     enable(1, true);
                 } else {
                     disable(1, true);
                 }
                 break;
             case R.id.lavoroMerMed:
-                if (lavoro[2].isChecked()) {
+                if (turno1[2].isChecked()) {
                     enable(2, true);
                 } else {
                     disable(2, true);
                 }
                 break;
             case R.id.lavoroGioMed:
-                if (lavoro[3].isChecked()) {
+                if (turno1[3].isChecked()) {
                     enable(3, true);
                 } else {
                     disable(3, true);
                 }
                 break;
             case R.id.lavoroVenMed:
-                if (lavoro[4].isChecked()) {
+                if (turno1[4].isChecked()) {
                     enable(4, true);
                 } else {
                     disable(4, true);
                 }
                 break;
             case R.id.lavoroSabMed:
-                if (lavoro[5].isChecked()) {
+                if (turno1[5].isChecked()) {
                     enable(5, true);
                 } else {
                     disable(5, true);
                 }
                 break;
             case R.id.lavoroDomMed:
-                if (lavoro[6].isChecked()) {
+                if (turno1[6].isChecked()) {
                     enable(6, true);
                 } else {
                     disable(6, true);
                 }
                 break;
             case R.id.pausaLunMed:
-                if (pausa[0].isChecked()) {
+                if (turno2[0].isChecked()) {
                     enable(0, false);
                 } else {
                     disable(0, false);
                 }
                 break;
             case R.id.pausaMarMed:
-                if (pausa[1].isChecked()) {
+                if (turno2[1].isChecked()) {
                     enable(1, false);
                 } else {
                     disable(1, false);
                 }
                 break;
             case R.id.pausaMerMed:
-                if (pausa[2].isChecked()) {
+                if (turno2[2].isChecked()) {
                     enable(2, false);
                 } else {
                     disable(2, false);
                 }
                 break;
             case R.id.pausaGioMed:
-                if (pausa[3].isChecked()) {
+                if (turno2[3].isChecked()) {
                     enable(3, false);
                 } else {
                     disable(3, false);
                 }
                 break;
             case R.id.pausaVenMed:
-                if (pausa[4].isChecked()) {
+                if (turno2[4].isChecked()) {
                     enable(4, false);
                 } else {
                     disable(4, false);
                 }
                 break;
             case R.id.pausaSabMed:
-                if (pausa[5].isChecked()) {
+                if (turno2[5].isChecked()) {
                     enable(5, false);
                 } else {
                     disable(5, false);
                 }
                 break;
             case R.id.pausaDomMed:
-                if (pausa[6].isChecked()) {
+                if (turno2[6].isChecked()) {
                     enable(6, false);
                 } else {
                     disable(6, false);
@@ -558,54 +579,51 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
         timePicker.show(getSupportFragmentManager(), "time picker");
     }
 
-    private void enable(int i, boolean lavoro) {
+    private void enable(int i, boolean turno) {
 
-        if (lavoro) {
+        if (turno) {
             settimanaMattina[i].setEnabled(true);
             settimanaMattina[i].setTextColor(getResources().getColor(R.color.greenDark));
+        } else {
+            turno2[i].setChecked(true);
+            settimanaSera[i].setEnabled(true);
+            settimanaSera[i].setTextColor(getResources().getColor(R.color.greenDark));
         }
-        pausa[i].setChecked(true);
-        settimanaSera[i].setEnabled(true);
-        settimanaSera[i].setTextColor(getResources().getColor(R.color.greenDark));
     }
 
-    private void disable(int i, boolean lavoro) {
+    private void disable(int i, boolean turno) {
 
-        if (lavoro) {
+        if (turno) {
             settimanaMattina[i].setEnabled(false);
             settimanaMattina[i].setTextColor(getResources().getColor(R.color.def));
-            pausa[i].setChecked(false);
+        } else {
+            turno2[i].setChecked(false);
+            settimanaSera[i].setEnabled(false);
+            settimanaSera[i].setTextColor(getResources().getColor(R.color.def));
         }
-        settimanaSera[i].setEnabled(false);
-        settimanaSera[i].setTextColor(getResources().getColor(R.color.def));
     }
 
     @Override
-    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+    public void onTimeSet(TimePicker view, int intHourOfDay, int intMinute) {
+        String hourOfDay = String.valueOf(intHourOfDay), minute = String.valueOf(intMinute);
+        if(intHourOfDay < 10) hourOfDay = '0' + String.valueOf(intHourOfDay);
+        if(intMinute < 10) minute = '0' + String.valueOf(intMinute);
         if (count == 0) {
             if (mattina) settimanaMattina[idGiorno].setText(hourOfDay + ":" + minute);
             else settimanaSera[idGiorno].setText(hourOfDay + ":" + minute);
             count = 1;
-        }
-
-        else {
+        } else {
             String prevText;
 
             if (mattina) {
                 prevText = settimanaMattina[idGiorno].getText().toString();
-            }
-
-            else {
+            } else {
                 prevText = settimanaSera[idGiorno].getText().toString();
             }
 
             String nextText = hourOfDay + ":" + minute;
 
-            int[] temp = new int[2];
-            temp[0] = Integer.parseInt(prevText.split(":")[0]);
-            temp[1] = Integer.parseInt(prevText.split(":")[1]);
-
-            if (temp[0] > hourOfDay || (temp[0] == hourOfDay && temp[1] > minute)) {
+            if(stringToTime(nextText).before(stringToTime(prevText))){
                 String aux = prevText;
                 prevText = nextText;
                 nextText = aux;
@@ -615,9 +633,10 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
             else settimanaSera[idGiorno].setText(prevText + "\n" + nextText);
         }
     }
-    private void hideKeyboard(){
+
+    private void hideKeyboard() {
         View view = this.getCurrentFocus();
-        if(view!=null){
+        if (view != null) {
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }

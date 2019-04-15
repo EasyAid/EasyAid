@@ -22,8 +22,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.easy.aid.Class.NetVariables;
-import com.easy.aid.Paziente.AccessoPaziente;
-import com.easy.aid.Paziente.MainPaziente;
+import com.easy.aid.Medico.AccessoMedico;
+import com.easy.aid.Medico.MainMedico;
 import com.easy.aid.R;
 
 import org.json.JSONArray;
@@ -58,20 +58,20 @@ public class AccessoMedico extends AppCompatActivity {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        }else {
+        } else {
             Window window = getWindow();
             window.setStatusBarColor(ContextCompat
-                    .getColor(getApplicationContext(),R.color.colorAccent));
+                    .getColor(getApplicationContext(), R.color.colorAccent));
         }
 
-        accedi = (Button)findViewById(R.id.accessoButtonMed);
-        registrazione = (Button)findViewById(R.id.registrazioneButtonMed);
+        accedi = (Button) findViewById(R.id.accessoButtonMed);
+        registrazione = (Button) findViewById(R.id.registrazioneButtonMed);
 
-        pwd         = (EditText)findViewById(R.id.accessoPasswordMed);
-        cf          = (EditText)findViewById(R.id.accessoCodiceFiscaleMed);
+        pwd = (EditText) findViewById(R.id.accessoPasswordMed);
+        cf = (EditText) findViewById(R.id.accessoCodiceFiscaleMed);
 
-        layoutPass  = (TextInputLayout) findViewById(R.id.layoutAccessoPasswordPaz);
-        back        = (ImageView) findViewById(R.id.backAccessoMed);
+        layoutPass = (TextInputLayout) findViewById(R.id.layoutAccessoPasswordPaz);
+        back = (ImageView) findViewById(R.id.backAccessoMed);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,11 +82,11 @@ public class AccessoMedico extends AppCompatActivity {
         accedi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!cf.getText().toString().isEmpty() && !pwd.getText().toString().isEmpty()){
+                if (!cf.getText().toString().isEmpty() && !pwd.getText().toString().isEmpty()) {
                     //giusto
                     Login(cf.getText().toString(), pwd.getText().toString());
 
-                }else{
+                } else {
                     layoutPass.setPasswordVisibilityToggleEnabled(false);
                     cf.setError("Inserire codice fiscale");
                     pwd.setError("Inserire password");
@@ -103,6 +103,7 @@ public class AccessoMedico extends AppCompatActivity {
         });
 
     }
+
     private void Login(final String sCF, final String sPass) {
         intent = new Intent(AccessoMedico.this, MainMedico.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -114,14 +115,14 @@ public class AccessoMedico extends AppCompatActivity {
                         JSONObject jsonObject = null;
                         try {
                             jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString( "success");
+                            String success = jsonObject.getString("success");
                             JSONArray jsonArray = jsonObject.getJSONArray("login");
 
-                            if (success.equals("1")){
+                            if (success.equals("1")) {
                                 intent.putExtra("CF", sCF);
                                 startActivity(intent);
                                 finish();
-                            }else{
+                            } else {
                                 Toast.makeText(AccessoMedico.this, "Dati errati", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
@@ -133,10 +134,9 @@ public class AccessoMedico extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(AccessoMedico.this, "Error " + error.toString() , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AccessoMedico.this, "Error " + error.toString(), Toast.LENGTH_SHORT).show();
                     }
-                })
-        {
+                }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();

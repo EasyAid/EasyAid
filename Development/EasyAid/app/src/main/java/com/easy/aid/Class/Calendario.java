@@ -16,7 +16,7 @@ public class Calendario {
     5 = Sabato
     6 = Domenica
      */
-    static boolean verifyTimeString(String timestring) {
+    public static boolean verifyTimeString(String timestring) {
         if (timestring.length() != 5) return false;
         if (timestring.charAt(2) != ':') return false;
         for (int i = 0; i < 5; i++) {
@@ -30,7 +30,7 @@ public class Calendario {
         if (minute < 0 || minute >= 60) return false;
         return true;
     }
-    static Time stringToTime(String timestring){ //trasforma una sequenza di caratteri hh:mm in variabile time
+    public static Time stringToTime(String timestring){ //trasforma una sequenza di caratteri hh:mm in variabile time
         return new Time(Integer.parseInt(timestring.split(":")[0]), Integer.parseInt(timestring.split(":")[1]), 0);
     }
 }

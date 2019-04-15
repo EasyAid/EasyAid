@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    android:layout_height="match_parent"
+    tools:context=".Medico.MainMedico">
+
+    <LinearLayout
+        android:id="@+id/topbarMainMedico"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/greenDark" />
+
+        <TextView
+            android:id="@+id/nomeCognomeMed"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="NOME COGNOME"
+            android:fontFamily="@font/raleway_bold"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+            android:textColor="@color/greenDark" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_below="@+id/topbarMainMedico"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <!-- Icone sinistra -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="33.3333"
+            android:weightSum="1"
+            android:gravity="center"
+            android:layout_marginBottom="3dp"
+            android:orientation="horizontal">
+
+            <!--icona ricette-->
+            <LinearLayout
+                android:id="@+id/RichiestaMedicaMed"
+                android:layout_weight="0.3"
+                android:layout_width="155dp"
+                android:layout_height="155dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/empty_circle"
+                android:gravity="center"
+                android:layout_marginRight="3dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/richiesta_medica"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="@color/greenDark"
+                    android:fontFamily="@font/raleway_bold"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:text="RICHIESTE\nRICETTE"/>
+
+            </LinearLayout>
+
+            <!--icona calendario-->
+            <LinearLayout
+                android:id="@+id/calendarioMed"
+                android:layout_weight="0.3"
+                android:layout_width="155dp"
+                android:layout_height="155dp"
+                android:layout_marginLeft="3dp"
+                android:background="@drawable/empty_circle"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/hd_calendar"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="@color/greenDark"
+                    android:fontFamily="@font/raleway_bold"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:text="CALENDARIO"/>
+
+            </LinearLayout>
+
+            <!--icona cronologia-->
+            <LinearLayout
+                android:id="@+id/cronologiaMed"
+                android:layout_width="155dp"
+                android:layout_height="155dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/empty_circle"
+                android:gravity="center"
+                android:layout_marginRight="3dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="75dp"
+                    android:src="@drawable/cronologia"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="@color/greenDark"
+                    android:fontFamily="@font/raleway_bold"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:text="CRONOLOGIA"/>
+
+            </LinearLayout>
+
+            <!--icona impostazioni-->
+            <LinearLayout
+                android:id="@+id/impostazioniMed"
+                android:layout_width="155dp"
+                android:layout_height="155dp"
+                android:layout_marginLeft="3dp"
+                android:background="@drawable/empty_circle"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/impostazioni"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/raleway_bold"
+                    android:textColor="@color/greenDark"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:text="IMPOSTAZIONI"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -28,6 +28,8 @@ import android.widget.TimePicker;
 import com.easy.aid.Class.TimePickerFragment;
 import com.easy.aid.R;
 
+import static com.easy.aid.Class.Calendario.stringToTime;
+
 public class RegistrazioneFarmacia extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, View.OnClickListener {
 
     private String txtContinuaReg = "CONTINUA";
@@ -445,7 +447,10 @@ public class RegistrazioneFarmacia extends AppCompatActivity implements TimePick
     }
 
     @Override
-    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+    public void onTimeSet(TimePicker view, int intHourOfDay, int intMinute) {
+        String hourOfDay = String.valueOf(intHourOfDay), minute = String.valueOf(intMinute);
+        if(intHourOfDay < 10) hourOfDay = '0' + String.valueOf(intHourOfDay);
+        if(intMinute < 10) minute = '0' + String.valueOf(intMinute);
         if (count == 0) {
             if (mattina) settimanaMattina[idGiorno].setText(hourOfDay + ":" + minute);
             else settimanaSera[idGiorno].setText(hourOfDay + ":" + minute);
@@ -461,11 +466,7 @@ public class RegistrazioneFarmacia extends AppCompatActivity implements TimePick
 
             String nextText = hourOfDay + ":" + minute;
 
-            int[] temp = new int[2];
-            temp[0] = Integer.parseInt(prevText.split(":")[0]);
-            temp[1] = Integer.parseInt(prevText.split(":")[1]);
-
-            if (temp[0] > hourOfDay || (temp[0] == hourOfDay && temp[1] > minute)) {
+            if(stringToTime(nextText).before(stringToTime(prevText))){
                 String aux = prevText;
                 prevText = nextText;
                 nextText = aux;

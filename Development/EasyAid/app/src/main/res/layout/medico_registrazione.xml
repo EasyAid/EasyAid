@@ -82,7 +82,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="8dp"
                         android:text="DATI ANAGRAFICI"
                         android:fontFamily="@font/raleway_bold"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
@@ -228,7 +228,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginBottom="5dp"
                     android:gravity="left"
                     android:text="LUOGO DI NASCITA"
@@ -411,8 +411,8 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="10dp"
                         android:text="INDIRIZZO STUDIO MEDICO"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                         android:textColor="@color/greenDark" />
@@ -503,10 +503,12 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_margin="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
                         android:background="@drawable/all_empty_round"
                         android:orientation="vertical"
-                        android:padding="8dp">
+                        android:padding="8dp"
+                        android:paddingBottom="10dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -718,14 +720,15 @@
                                 android:layout_weight="0.2"
                                 android:gravity="center"
                                 android:orientation="vertical"
-                                android:weightSum="1">
+                                android:weightSum="1"
+                                android:layout_marginBottom="3dp">
 
 
                                 <TextView
                                     android:id="@+id/mattinaLunMedico"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="0.142"
+                                    android:layout_weight="0.144"
                                     android:fontFamily="serif"
                                     android:gravity="center"
                                     android:text="@string/default_Hour"
@@ -792,7 +795,7 @@
                                     android:id="@+id/mattinaDomMedico"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="0.142"
+                                    android:layout_weight="0.14"
                                     android:enabled="false"
                                     android:textColor="@color/def"
                                     android:fontFamily="serif"
@@ -872,7 +875,7 @@
                                     android:id="@+id/seraLunMedico"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="0.142"
+                                    android:layout_weight="0.144"
                                     android:enabled="false"
                                     android:textColor="@color/def"
                                     android:fontFamily="serif"
@@ -944,7 +947,7 @@
                                     android:id="@+id/seraDomMedico"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="0.142"
+                                    android:layout_weight="0.14"
                                     android:enabled="false"
                                     android:textColor="@color/def"
                                     android:fontFamily="serif"

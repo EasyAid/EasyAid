@@ -40,13 +40,5 @@ public class MainMedico extends AppCompatActivity {
             window.setStatusBarColor(ContextCompat
                     .getColor(getApplicationContext(),R.color.colorAccent));
         }
-
-        back = (ImageView) findViewById(R.id.backAccessoMed);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
     }
 }
