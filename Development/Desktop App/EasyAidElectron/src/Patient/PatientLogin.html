@@ -34,7 +34,7 @@
                     var response = JSON.parse(this.responseText);
 
                     if (response.success == "1") {
-                        electron.remote.getGlobal("shared").password = document.getElementById("TextPassword").value;
+                        electron.remote.getGlobal("PatientShared").password = document.getElementById("TextPassword").value;
                         if(document.getElementById("StayConnected").checked) {
                             var expiration = new Date();
                             expiration.setFullYear(2200);

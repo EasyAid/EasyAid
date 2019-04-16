@@ -12,7 +12,7 @@ let SplashScreen = null
 	password: "ElectronPassword"
 }*/
 
-global.shared = {
+global.PatientShared = {
 	type: "patient",
 	id: "null",
 	nome: "null",
