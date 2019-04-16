@@ -53,7 +53,7 @@ public class MainMedico extends AppCompatActivity {
         }
 
         nomeCognome = findViewById(R.id.nomeCognomeMed);
-        //nomeCognome.setText((global.medico.getNome() + " " + global.medico.getCognome()));
+        nomeCognome.setText(global.medico.getNome() + ' ' + global.medico.getCognome());
 
         richiesteRicette = (LinearLayout) findViewById(R.id.richiestaRicettaMed);
         richiesteRicette.setOnClickListener(new View.OnClickListener() {

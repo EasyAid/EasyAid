@@ -121,6 +121,7 @@ public class AccessoMedico extends AppCompatActivity {
                             if (success.equals("1")) {
                                 intent.putExtra("CF", sCF);
                                 startActivity(intent);
+                                finish();
                             } else {
                                 Toast.makeText(AccessoMedico.this, "Dati errati", Toast.LENGTH_SHORT).show();
                             }

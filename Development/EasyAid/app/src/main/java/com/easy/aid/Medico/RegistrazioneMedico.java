@@ -328,11 +328,15 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
                                 }
                                 Indirizzo luogoNascita = new Indirizzo(provincia.getText().toString(), citta.getText().toString(), via.getText().toString());
                                 Indirizzo studio = new Indirizzo(provinciaStudio.getText().toString(), cittaStudio.getText().toString(), viaStudio.getText().toString());
-                                global.medico = new Medico(nome.getText().toString(), cognome.getText().toString(),
-                                        dataNascita.getText().toString(), boolMaschio, cf.getText().toString(),
-                                        luogoNascita, studio, password.getText().toString(),
-                                        email.getText().toString(), telefono.getText().toString());
+                                global.medico = new Medico(nome.getText().toString(), cognome.getText().toString(), dataNascita.getText().toString(), boolMaschio, cf.getText().toString(), luogoNascita, studio, password.getText().toString(), email.getText().toString(), telefono.getText().toString());
+                                intent = new Intent(RegistrazioneMedico.this, MainMedico.class);
+                                startActivity(intent);
+                                // TODO: 08/04/2019 crea il medico nel database
+
                                 registra();
+
+
+                                finish();
                                 break;
 
                             case 1:
@@ -658,9 +662,7 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        intent = new Intent(RegistrazioneMedico.this, MainMedico.class);
-                        startActivity(intent);
-                        finish();
+
                     }
                 },
                 new Response.ErrorListener() {
@@ -676,7 +678,7 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
                 params.put("password", global.medico.getPassword());
                 params.put("nome", global.medico.getNome());
                 params.put("cognome", global.medico.getCognome());
-                params.put("datanascita", "2009-01-01");
+                params.put("datanascita", global.medico.getDataNascita());
                 params.put("sesso", global.medico.getStringSesso());
                 params.put("provincianascita", global.medico.getIndirizzoNascita().getProvincia());
                 params.put("cittanascita", global.medico.getIndirizzoNascita().getCitta());
@@ -685,10 +687,8 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
                 params.put("cittastudio", global.medico.getIndirizzoStudio().getCitta());
                 params.put("viastudio", global.medico.getIndirizzoStudio().getVia());
 
-                params.put("email", global.medico.getEmail());
+                params.put("email", email.getText().toString());
                 params.put("telefono", global.medico.getTelefono());
-
-                params.put("table", "1");
 
 
                 return params;
