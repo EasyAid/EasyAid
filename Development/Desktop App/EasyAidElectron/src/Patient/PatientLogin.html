@@ -95,10 +95,24 @@
         function Registration() {
             BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientRegistration.html");
         }
+
+        function sendLogin() {
+            var coso = event.which || event.keyCode;
+            if(coso == 13) {
+                var cf = document.getElementById("TextCodiceFiscale");
+                var psw= document.getElementById("TextPassword");
+                if(cf.value != "" && psw.value != "") {
+                    connectDatabase();
+                }
+                else {
+                    //cf.i
+                }
+            }
+        }
     </script>
 </head>
 
-<body style="font-family: 'Raleway', Arial, Helvetica, sans-serif; color: #ffffff; cursor: default;">
+<body style="font-family: 'Raleway', Arial, Helvetica, sans-serif; color: #ffffff; cursor: default;" onkeypress="sendLogin()">
     <div class="container-fluid" style="text-align: center; background-color: #00796A; height: 40px !important">
         <div class="row align-items-center" style="padding: 0px;">
             <div class="col btn-func" onclick="BackWindow()" style="line-height: 2.5; margin-top: -10px;">
