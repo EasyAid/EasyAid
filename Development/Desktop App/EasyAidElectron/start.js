@@ -4,13 +4,29 @@ const app = electron.app
 const session = electron.session;
 
 let SplashScreen = null
-global.shared = {
+/*global.shared = {
 	type: "patient",
 	id: "6",
 	name: "Mario",
 	surname: "Rossi",
 	password: "ElectronPassword"
-}
+}*/
+
+global.shared = {
+	type: "patient",
+	id: "null",
+	nome: "null",
+	cognome: "null",
+	dataNascita: "00-00-0000",
+	CodiceFiscale: "null",
+	provinciaNascita: "null",
+	cittaNascita: "null",
+	viaNascita: "null",
+	provinciaResidenza: "null",
+	cittaResidenza: "null",
+	viaResidenza: "null",
+	password: "null"
+};
 
 function CreateSplashScreen() {
 	SplashScreen = new BrowserWindow({
