@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../custom.css">
     <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script>
-        
+
         const electron = require('electron')
         const BrowserWindow = electron.remote.BrowserWindow
         const session = electron.remote.session;
@@ -35,7 +35,8 @@
 
                     if (response.success == "1") {
                         electron.remote.getGlobal("PatientShared").password = document.getElementById("TextPassword").value;
-                        if(document.getElementById("StayConnected").checked) {
+                        electron.remote.getGlobal("PatientShared").codiceFiscale = document.getElementById("TextCodiceFiscale").value;
+                        if (document.getElementById("StayConnected").checked) {
                             var expiration = new Date();
                             expiration.setFullYear(2200);
 
@@ -43,7 +44,7 @@
 
                             const cookieType = { url: 'BaseURL', name: 'type', value: 'patient', expirationDate: expiration.getTime() };
                             session.defaultSession.cookies.set(cookieType, (error) => {
-                                if(error) console.error(error);
+                                if (error) console.error(error);
                             });
 
                             /* user cookie */
@@ -59,7 +60,7 @@
                             session.defaultSession.cookies.set(cookiePassword, (error) => {
                                 if (error) console.error(error);
                             });
-                            
+
                             /* get cookies - TO BE REMOVED*/
 
                             session.defaultSession.cookies.get({}, (error, cookies) => {
@@ -67,17 +68,22 @@
                             })
 
                             BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientHome.html");
-                        }else{
+                        } else {
                             BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientHome.html");
                         }
-
                     }
                     else {
+                        var cf = document.getElementById("TextCodiceFiscale");
+                        var psw = document.getElementById("TextPassword");
                         if (response.message == "ErrorUsername") {
-                            alert("Lo username inserito è errato.");
+                            cf.value = "";
+                            cf.placeholder = "Username errato";
+                            psw.value = "";
+                            psw.placeholder = "Password errata";
                         }
                         else if (response.message == "ErrorPassword") {
-                            alert("La password inserita è errata.");
+                            psw.value = "";
+                            psw.placeholder = "Password errata";
                         }
                         else {
                             alert("Errore sconosciuto!");
@@ -99,14 +105,15 @@
 
         function sendLogin() {
             var eventoInvio = event.which || event.keyCode;
-            if(eventoInvio == 13) {
+            if (eventoInvio == 13) {
                 connectDatabase();
             }
         }
     </script>
 </head>
 
-<body style="font-family: 'Raleway', Arial, Helvetica, sans-serif; color: #ffffff; cursor: default;" onkeypress="sendLogin()">
+<body style="font-family: 'Raleway', Arial, Helvetica, sans-serif; color: #ffffff; cursor: default;"
+    onkeypress="sendLogin()">
     <div class="container-fluid" style="text-align: center; background-color: #00796A; height: 40px !important">
         <div class="row align-items-center" style="padding: 0px;">
             <div class="col btn-func" onclick="BackWindow()" style="line-height: 2.5; margin-top: -10px;">

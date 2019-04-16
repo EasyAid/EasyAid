@@ -18,10 +18,10 @@ global.PatientShared = {
 	nome: "null",
 	cognome: "null",
 	dataNascita: "00-00-0000",
-	CodiceFiscale: "null",
+	codiceFiscale: "null",
+	sesso: "null",
 	provinciaNascita: "null",
 	cittaNascita: "null",
-	viaNascita: "null",
 	provinciaResidenza: "null",
 	cittaResidenza: "null",
 	viaResidenza: "null",
@@ -65,9 +65,9 @@ function CreateFirstWindow() {
 		}*/
 	})
 	
-	win.loadFile('src/SelectAccount.html')
+	//win.loadFile('src/SelectAccount.html')
 	//win.loadFile('src/Doctor/DoctorLogin.html')
-	//win.loadFile('src/Patient/PatientLogin.html')
+	win.loadFile('src/Patient/PatientLogin.html')
 	//win.loadFile('src/Pharmacy/PharmacyLogin.html')
 	//win.loadFile('src/Patient/PatientRegistration.html')
 	//win.loadFile('src/Patient/PatientHome.html')
@@ -82,8 +82,8 @@ function CreateFirstWindow() {
 
 
 app.on('ready', () => {
-	CreateSplashScreen()
-	//CreateFirstWindow()
+	//CreateSplashScreen()
+	CreateFirstWindow()
 })
 
 app.on('window-all-closed', () => {
@@ -95,8 +95,8 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
 	if (win === null) {
-		CreateSplashScreen()
-		//CreateFirstWindow()
+		//CreateSplashScreen()
+		CreateFirstWindow()
 	}
 })
 

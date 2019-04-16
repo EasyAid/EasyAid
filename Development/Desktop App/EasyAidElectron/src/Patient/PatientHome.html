@@ -45,10 +45,34 @@
         function Impostazioni() {
             BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientImpostazioni.html");
         }
+
+        function getData(){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var response = JSON.parse(this.responseText);
+                    if (response.success == "1") {
+                        electron.remote.getGlobal("PatientShared").id = response.read[0].id;
+                        electron.remote.getGlobal("PatientShared").nome = response.read[0].nome;
+                        electron.remote.getGlobal("PatientShared").cognome = response.read[0].cognome;
+                        electron.remote.getGlobal("PatientShared").dataNascita = response.read[0].dataNascita;
+                        electron.remote.getGlobal("PatientShared").sesso = response.read[0].sesso;
+                        electron.remote.getGlobal("PatientShared").provinciaNascita = response.read[0].provinciaNascita;
+                        electron.remote.getGlobal("PatientShared").cittaNascita = response.read[0].cittaNascita;
+                        electron.remote.getGlobal("PatientShared").provinciaResidenza = response.read[0].provinciaResidenza;
+                        electron.remote.getGlobal("PatientShared").cittaResidenza = response.read[0].cittaResidenza;
+                        electron.remote.getGlobal("PatientShared").viaResidenza = response.read[0].viaResidenza;
+                        document.getElementById("name_surname").innerHTML = electron.remote.getGlobal("PatientShared").nome + " " + electron.remote.getGlobal("PatientShared").cognome;
+                    }
+                }
+            };
+            xhttp.open("GET", "http://99.80.72.24/read.php?table=Paziente&cf=" + electron.remote.getGlobal("PatientShared").codiceFiscale + "&password=" + electron.remote.getGlobal("PatientShared").password, true);
+            xhttp.send();
+        }
     </script>
 </head>
 
-<body style="font-family: 'Raleway', Arial, Helvetica, sans-serif; color: #ffffff; cursor: default;" onload="getName()">
+<body style="font-family: 'Raleway', Arial, Helvetica, sans-serif; color: #ffffff; cursor: default;" onload="getData()">
     <div class="container-fluid" style="text-align: center; background-color: #00796A; height: 40px !important">
         <div class="row align-items-center" style="padding: 0px;">
             <div class="col btn-func" onclick="BackWindow()" style="line-height: 2.5; margin-top: -10px;">
@@ -80,8 +104,8 @@
             </div>
             <div class="col-6">
                 <div style="color:#00796A; text-align: center; font-weight: bolder; font-size: 45px; margin-right:130px">
-                    <span>Benvenuto,</span>
-                    <p id="name_surname"><script>document.getElementById("name_surname").innerHTML = electron.remote.getGlobal("PatientShared").nome + " " + electron.remote.getGlobal("PatientShared").cognome</script></p>
+                    <span>Benvenuto</span>
+                    <p id="name_surname"></p>
                 </div>
             </div>
         </div>

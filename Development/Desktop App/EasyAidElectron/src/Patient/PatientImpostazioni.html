@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
+<!-- TODO MAXLENGTH-->
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Impostazioni paziente</title>
+    <title>Impostazioni Paziente</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="../../node_modules/font-awesome/css/font-awesome.css">
@@ -12,11 +13,8 @@
     <link rel="stylesheet" href="../custom.css">
     <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script>
-        
         const electron = require('electron');
         const BrowserWindow = electron.remote.BrowserWindow;
-
-        //global: console.log(electron.remote.getGlobal("shared").stringa);
 
         function CloseWindow() {
             BrowserWindow.getFocusedWindow().close();
@@ -25,11 +23,34 @@
         function MinimizeWindow() {
             BrowserWindow.getFocusedWindow().minimize();
         }
-        
+
         function BackWindow() {
-            BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientHome.html");
+            BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientHome.html")
+        }
+
+        function PasswordVisibility() {
+            if (document.getElementById("PasswordLogo").className == "fa fa-eye fa-lg fa-fw") {
+                document.getElementById("PasswordLogo").className = "fa fa-eye-slash fa-lg fa-fw";
+                document.getElementById("TextPassword").type = "text";
+            }
+            else {
+                document.getElementById("PasswordLogo").className = "fa fa-eye fa-lg fa-fw";
+                document.getElementById("TextPassword").type = "password";
+            }
+        }
+
+        function ConfirmPasswordVisibility() {
+            if (document.getElementById("ConfirmPasswordLogo").className == "fa fa-eye fa-lg fa-fw") {
+                document.getElementById("ConfirmPasswordLogo").className = "fa fa-eye-slash fa-lg fa-fw";
+                document.getElementById("TextPasswordConfirm").type = "text";
+            }
+            else {
+                document.getElementById("ConfirmPasswordLogo").className = "fa fa-eye fa-lg fa-fw";
+                document.getElementById("TextPasswordConfirm").type = "password";
+            }
         }
     </script>
+
 </head>
 
 <body style="font-family: 'Raleway', Arial, Helvetica, sans-serif; color: #ffffff; cursor: default;">
@@ -53,7 +74,74 @@
         </div>
     </div>
 
-    <h1 style="color:#00796A">IMPOSTAZIONI</h1>
+    <div class="container-fluid">
+        <div class="row"
+            style="height: 40px; border-bottom: 1px solid #00796A; color: #00796A; margin-left: 20px; margin-right: 20px;">
+            <div class="col-12" style="text-align: center; line-height: 40px;">
+                <p style="text-align: center; vertical-align: middle; font-weight: bold">IMPOSTAZIONI
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row" style="height: 460px; padding: 10px; color: #00796A">
+            <div class="col-7" style="text-align: center;">
+                <span style="font-weight:bold">CAMBIO PASSWORD</span><br><br>
+                <div class="inputWithIcon leftalign">
+                    <input type="password" placeholder="Vecchia password" id="TextVecchiaPassword">
+                    <i id="PasswordLogo" class="fa fa-eye fa-lg fa-fw" aria-hidden="true"
+                        style="margin-left: 490px; margin-top: -6px;" onclick="PasswordVisibility()"></i>
+                </div><br>
+                <div class="inputWithIcon leftalign">
+                    <input type="password" placeholder="Nuova password" id="TextNuovaPassword">
+                    <i id="PasswordLogo" class="fa fa-eye fa-lg fa-fw" aria-hidden="true"
+                        style="margin-left: 490px; margin-top: -6px;" onclick="PasswordVisibility()"></i>
+                </div><br>
+                <div class="inputWithIcon leftalign">
+                    <input type="password" placeholder="Conferma nuova password" id="TextConfermaPassword">
+                    <i id="PasswordLogo" class="fa fa-eye fa-lg fa-fw" aria-hidden="true"
+                        style="margin-left: 490px; margin-top: -6px;" onclick="PasswordVisibility()"></i>
+                </div><br>
+                <div class="row" style="margin-left: 5px; height:60px; width: 525px">
+                    <div class="col-12" id="RegistratiButton" onclick="changePassword()"
+                        style="text-align:center; font-weight: bold; background-color: #00796A; cursor: pointer; color: white;">
+                        <p style="margin-top: 18px;">REGISTRATI</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-5" style="text-align: center;">
+                <span style="font-weight:bold">LUOGO DI NASCITA</span>
+                <div class="input">
+                    <input type="text" placeholder="Provincia" id="TextProvinciaNascita">
+                </div>
+                <div class="input">
+                    <input type="text" placeholder="Citta/Comune" id="TextComuneNascita">
+                </div>
+                <span style="font-weight:bold; line-height: 50px;">INDIRIZZO DI RESIDENZA</span>
+                <div class="input">
+                    <input type="text" placeholder="Provincia" id="TextProvinciaResidenza">
+                </div>
+                <div class="input">
+                    <input type="text" placeholder="Citta/Comune" id="TextComuneResidenza">
+                </div>
+                <div class="input">
+                    <input type="text" placeholder="Via/Piazza" id="TextViaResidenza">
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row" style="height:60px">
+            <div class="col-12" id="RegistratiButton" onclick="registration()"
+                style="text-align:center; font-weight: bold; background-color: #00796A; cursor: pointer;">
+                <p style="margin-top: 18px;">REGISTRATI</p>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
