@@ -72,12 +72,12 @@ public class AccessoPaziente extends AppCompatActivity {
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-        cf              = (EditText) findViewById(R.id.accessoCodiceFiscalePaz);
-        pwd             = (EditText) findViewById(R.id.accessoPasswordPaz);
-        accedi          = (Button)   findViewById(R.id.accessoButtonPaz);
-        registrazione   = (Button)    findViewById(R.id.registrazioneButtonPaz);
-        back            = (ImageView) findViewById(R.id.backAccessoPaz);
-        layoutPass      = (TextInputLayout) findViewById(R.id.layoutAccessoPasswordPaz);
+        cf              = findViewById(R.id.accessoCodiceFiscalePaz);
+        pwd             = findViewById(R.id.accessoPasswordPaz);
+        accedi          = findViewById(R.id.accessoButtonPaz);
+        registrazione   = findViewById(R.id.registrazioneButtonPaz);
+        back            = findViewById(R.id.backAccessoPaz);
+        layoutPass      = findViewById(R.id.layoutAccessoPasswordPaz);
 
         pwd.addTextChangedListener(new TextWatcher() {
             @Override
@@ -164,7 +164,7 @@ public class AccessoPaziente extends AppCompatActivity {
                 })
         {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("table", "0");
                 params.put("cf", sCF);

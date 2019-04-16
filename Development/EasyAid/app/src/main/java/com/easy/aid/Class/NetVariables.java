@@ -1,6 +1,7 @@
 package com.easy.aid.Class;
 
 import android.app.Application;
+import android.os.SystemClock;
 
 import java.util.ArrayList;
 import java.util.Dictionary;
@@ -17,5 +18,13 @@ public class NetVariables extends Application {
     public Map<String, Farmaco> farmaci;
     public List<String> province;
 
+    public Medico medico;
+    public Paziente paziente;
+    public long mLastClickTime;
+    public boolean checktime(){
+        boolean time = (SystemClock.elapsedRealtime() - mLastClickTime) < 800;
+        mLastClickTime = SystemClock.elapsedRealtime();
+        return time;
+    };
 
 }

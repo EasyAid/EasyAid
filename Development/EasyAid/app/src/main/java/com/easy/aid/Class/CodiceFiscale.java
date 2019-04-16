@@ -314,9 +314,8 @@ public class CodiceFiscale {
      * Calcola il codice del comune.
      * @param comune il comune da cui calcolare il codice.
      * @return Il codice del comune del codice fiscale.
-     * @throws Exception
      */
-    private String calcolaCodiceComune(String comune) throws Exception{
+    private String calcolaCodiceComune(String comune) {
         return null;
     }
 
@@ -325,9 +324,8 @@ public class CodiceFiscale {
      * Calcola il codice di controllo.
      * @param codice il codice fiscale senza l'ultima cifra.
      * @return Il codice di controllo del codice fiscale.
-     * @throws Exception
      */
-    private String calcolaCarattereDiControllo(String codice) throws Exception{
+    private String calcolaCarattereDiControllo(String codice) {
 
         //Passaggio 1 (suddivisione dispari e pari)
         String pari = UtilsParole.getStringaPari(codice);
@@ -339,7 +337,7 @@ public class CodiceFiscale {
 
         //Passaggio 3 (somma, divisione e conversione finale)
         int somma = sommaDispari + sommaPari;
-        int resto = (int) somma % 26;
+        int resto = somma % 26;
         char restoConvertito = conversioneResto(resto);
 
 

@@ -88,12 +88,12 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
 
         c  = ((NetVariables) this.getApplication());
 
-        nomeCognomePaz  = (TextView) findViewById(R.id.nomeCognomePazienteRichiediRicettaPaz);
-        nomeCognomeMed  = (TextView) findViewById(R.id.nomeCognomeMedicoRichiediRicettaPaz);
-        dropdown        = (Spinner) findViewById(R.id.usoFarmacoRichiediRicettaPaz);
-        prezzoFarmaco   = (TextView) findViewById(R.id.prezzoFarmacoRichiediRicettaPaz);
-        invia           = (Button) findViewById(R.id.inviaRichiestaPaz);
-        descPatologia = (EditText) findViewById(R.id.descPatologiaRichiediRicettaPaz);
+        nomeCognomePaz  = findViewById(R.id.nomeCognomePazienteRichiediRicettaPaz);
+        nomeCognomeMed  = findViewById(R.id.nomeCognomeMedicoRichiediRicettaPaz);
+        dropdown        = findViewById(R.id.usoFarmacoRichiediRicettaPaz);
+        prezzoFarmaco   = findViewById(R.id.prezzoFarmacoRichiediRicettaPaz);
+        invia           = findViewById(R.id.inviaRichiestaPaz);
+        descPatologia = findViewById(R.id.descPatologiaRichiediRicettaPaz);
 
         Set<String> keys = c.farmaci.keySet();
         String[] nomeFarmaci = keys.toArray(new String[keys.size()]);
@@ -101,7 +101,7 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (this, android.R.layout.select_dialog_item, nomeFarmaci);
 
-        autoComp = (AutoCompleteTextView) findViewById(R.id.autoCompleteNomeFarmacoRichiediRicettaPaz);
+        autoComp = findViewById(R.id.autoCompleteNomeFarmacoRichiediRicettaPaz);
         autoComp.setThreshold(1);//will start working from first character
         autoComp.setAdapter(adapter);
         autoCompleteUsoEQuantita(-2);
@@ -203,7 +203,7 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
                 })
         {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("sql", sql);
                 return params;

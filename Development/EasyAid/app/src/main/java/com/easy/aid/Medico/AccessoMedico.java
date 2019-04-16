@@ -64,14 +64,14 @@ public class AccessoMedico extends AppCompatActivity {
                     .getColor(getApplicationContext(), R.color.colorAccent));
         }
 
-        accedi = (Button) findViewById(R.id.accessoButtonMed);
-        registrazione = (Button) findViewById(R.id.registrazioneButtonMed);
+        accedi = findViewById(R.id.accessoButtonMed);
+        registrazione = findViewById(R.id.registrazioneButtonMed);
 
-        pwd = (EditText) findViewById(R.id.accessoPasswordMed);
-        cf = (EditText) findViewById(R.id.accessoCodiceFiscaleMed);
+        pwd = findViewById(R.id.accessoPasswordMed);
+        cf = findViewById(R.id.accessoCodiceFiscaleMed);
 
-        layoutPass = (TextInputLayout) findViewById(R.id.layoutAccessoPasswordPaz);
-        back = (ImageView) findViewById(R.id.backAccessoMed);
+        layoutPass = findViewById(R.id.layoutAccessoPasswordPaz);
+        back = findViewById(R.id.backAccessoMed);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,7 +121,6 @@ public class AccessoMedico extends AppCompatActivity {
                             if (success.equals("1")) {
                                 intent.putExtra("CF", sCF);
                                 startActivity(intent);
-                                finish();
                             } else {
                                 Toast.makeText(AccessoMedico.this, "Dati errati", Toast.LENGTH_SHORT).show();
                             }
@@ -138,7 +137,7 @@ public class AccessoMedico extends AppCompatActivity {
                     }
                 }) {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("table", "1");
                 params.put("cf", sCF);

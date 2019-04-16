@@ -75,11 +75,11 @@ public class MainPaziente extends AppCompatActivity {
 
         Read(sCF);
 
-        richiediVisRic = (LinearLayout) findViewById(R.id.richiediVisitaRicettaPaz);
-        ordinaRicetta = (LinearLayout) findViewById(R.id.ordinaRicettaPaz);
-        impostazioni = (LinearLayout) findViewById(R.id.impostazioniPaz);
-        cronologia = (LinearLayout) findViewById(R.id.cronologiaPaz);
-        nomeCognome = (TextView) findViewById(R.id.nomeCognomePaz);
+        richiediVisRic = findViewById(R.id.richiediVisitaRicettaPaz);
+        ordinaRicetta = findViewById(R.id.ordinaRicettaPaz);
+        impostazioni = findViewById(R.id.impostazioniPaz);
+        cronologia = findViewById(R.id.cronologiaPaz);
+        nomeCognome = findViewById(R.id.nomeCognomePaz);
 
         richiediVisRic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,7 +159,7 @@ public class MainPaziente extends AppCompatActivity {
                 })
         {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("cf", sCF);
                 params.put("table", "Paziente");

@@ -45,9 +45,9 @@ public class RichiediVisitaRicettaPaziente extends AppCompatActivity {
 
 
         //BUTTON per cambiare pagina
-        richiediRicetta = (LinearLayout) findViewById(R.id.richiediRicetta);
-        richiediVisita = (LinearLayout) findViewById(R.id.richiediVisita);
-        back = (ImageView) findViewById(R.id.backRichiediVisRicPaz);
+        richiediRicetta = findViewById(R.id.richiediRicetta);
+        richiediVisita = findViewById(R.id.richiediVisita);
+        back = findViewById(R.id.backRichiediVisRicPaz);
 
         richiediRicetta.setOnClickListener(new View.OnClickListener() {
             @Override

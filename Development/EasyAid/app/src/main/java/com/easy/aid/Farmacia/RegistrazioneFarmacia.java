@@ -71,88 +71,88 @@ public class RegistrazioneFarmacia extends AppCompatActivity implements TimePick
         }
 
         status = 0;
-        continuaReg = (Button) findViewById(R.id.continuaRegistrazioneFarmacia);
-        back = (ImageView) findViewById(R.id.backRegistrazioneFarmacia);
+        continuaReg = findViewById(R.id.continuaRegistrazioneFarmacia);
+        back = findViewById(R.id.backRegistrazioneFarmacia);
 
-        registrazione1 = (ScrollView) findViewById(R.id.registrazione1Farmacia);
-        registrazione2 = (ScrollView) findViewById(R.id.registrazione2Farmacia);
+        registrazione1 = findViewById(R.id.registrazione1Farmacia);
+        registrazione2 = findViewById(R.id.registrazione2Farmacia);
 
         //elementi pagina1
-        mail = (EditText) findViewById(R.id.editEmailFarmacia);
-        telefono = (EditText) findViewById(R.id.editTelFarmacia);
-        psw = (EditText) findViewById(R.id.editPswFarmacia);
-        confPsw = (EditText) findViewById(R.id.confPswFarmacia);
-        provincia = (EditText) findViewById(R.id.editProvinciaFarmacia);
-        citta = (EditText) findViewById(R.id.editCittaFarmacia);
-        via = (EditText) findViewById(R.id.editViaFarmacia);
+        mail = findViewById(R.id.editEmailFarmacia);
+        telefono = findViewById(R.id.editTelFarmacia);
+        psw = findViewById(R.id.editPswFarmacia);
+        confPsw = findViewById(R.id.confPswFarmacia);
+        provincia = findViewById(R.id.editProvinciaFarmacia);
+        citta = findViewById(R.id.editCittaFarmacia);
+        via = findViewById(R.id.editViaFarmacia);
 
         //elementi pagina2
         // check lavoro
         lavoro = new CheckBox[7];
-        lavoro[0] = (CheckBox) findViewById(R.id.lavoroLunFarmacia);
+        lavoro[0] = findViewById(R.id.lavoroLunFarmacia);
         lavoro[0].setOnClickListener(this);
-        lavoro[1] = (CheckBox) findViewById(R.id.lavoroMarFarmacia);
+        lavoro[1] = findViewById(R.id.lavoroMarFarmacia);
         lavoro[1].setOnClickListener(this);
-        lavoro[2] = (CheckBox) findViewById(R.id.lavoroMerFarmacia);
+        lavoro[2] = findViewById(R.id.lavoroMerFarmacia);
         lavoro[2].setOnClickListener(this);
-        lavoro[3] = (CheckBox) findViewById(R.id.lavoroGioFarmacia);
+        lavoro[3] = findViewById(R.id.lavoroGioFarmacia);
         lavoro[3].setOnClickListener(this);
-        lavoro[4] = (CheckBox) findViewById(R.id.lavoroVenFarmacia);
+        lavoro[4] = findViewById(R.id.lavoroVenFarmacia);
         lavoro[4].setOnClickListener(this);
-        lavoro[5] = (CheckBox) findViewById(R.id.lavoroSabFarmacia);
+        lavoro[5] = findViewById(R.id.lavoroSabFarmacia);
         lavoro[5].setOnClickListener(this);
-        lavoro[6] = (CheckBox) findViewById(R.id.lavoroDomFarmacia);
+        lavoro[6] = findViewById(R.id.lavoroDomFarmacia);
         lavoro[6].setOnClickListener(this);
 
         // orari primo turno
         settimanaMattina = new TextView[7];
-        settimanaMattina[0] = (TextView) findViewById(R.id.mattinaLunFarmacia);
+        settimanaMattina[0] = findViewById(R.id.mattinaLunFarmacia);
         settimanaMattina[0].setOnClickListener(this);
-        settimanaMattina[1] = (TextView) findViewById(R.id.mattinaMarFarmacia);
+        settimanaMattina[1] = findViewById(R.id.mattinaMarFarmacia);
         settimanaMattina[1].setOnClickListener(this);
-        settimanaMattina[2] = (TextView) findViewById(R.id.mattinaMerFarmacia);
+        settimanaMattina[2] = findViewById(R.id.mattinaMerFarmacia);
         settimanaMattina[2].setOnClickListener(this);
-        settimanaMattina[3] = (TextView) findViewById(R.id.mattinaGioFarmacia);
+        settimanaMattina[3] = findViewById(R.id.mattinaGioFarmacia);
         settimanaMattina[3].setOnClickListener(this);
-        settimanaMattina[4] = (TextView) findViewById(R.id.mattinaVenFarmacia);
+        settimanaMattina[4] = findViewById(R.id.mattinaVenFarmacia);
         settimanaMattina[4].setOnClickListener(this);
-        settimanaMattina[5] = (TextView) findViewById(R.id.mattinaSabFarmacia);
+        settimanaMattina[5] = findViewById(R.id.mattinaSabFarmacia);
         settimanaMattina[5].setOnClickListener(this);
-        settimanaMattina[6] = (TextView) findViewById(R.id.mattinaDomFarmacia);
+        settimanaMattina[6] = findViewById(R.id.mattinaDomFarmacia);
         settimanaMattina[6].setOnClickListener(this);
 
         // check pausa
         pausa = new CheckBox[7];   //pausaGiornoFarmacia
-        pausa[0] = (CheckBox) findViewById(R.id.pausaLunFarmacia);
+        pausa[0] = findViewById(R.id.pausaLunFarmacia);
         pausa[0].setOnClickListener(this);
-        pausa[1] = (CheckBox) findViewById(R.id.pausaMarFarmacia);
+        pausa[1] = findViewById(R.id.pausaMarFarmacia);
         pausa[1].setOnClickListener(this);
-        pausa[2] = (CheckBox) findViewById(R.id.pausaMerFarmacia);
+        pausa[2] = findViewById(R.id.pausaMerFarmacia);
         pausa[2].setOnClickListener(this);
-        pausa[3] = (CheckBox) findViewById(R.id.pausaGioFarmacia);
+        pausa[3] = findViewById(R.id.pausaGioFarmacia);
         pausa[3].setOnClickListener(this);
-        pausa[4] = (CheckBox) findViewById(R.id.pausaVenFarmacia);
+        pausa[4] = findViewById(R.id.pausaVenFarmacia);
         pausa[4].setOnClickListener(this);
-        pausa[5] = (CheckBox) findViewById(R.id.pausaSabFarmacia);
+        pausa[5] = findViewById(R.id.pausaSabFarmacia);
         pausa[5].setOnClickListener(this);
-        pausa[6] = (CheckBox) findViewById(R.id.pausaDomFarmacia);
+        pausa[6] = findViewById(R.id.pausaDomFarmacia);
         pausa[6].setOnClickListener(this);
 
         // orari secondo turno
         settimanaSera = new TextView[7];
-        settimanaSera[0] = (TextView) findViewById(R.id.seraLunFarmacia);
+        settimanaSera[0] = findViewById(R.id.seraLunFarmacia);
         settimanaSera[0].setOnClickListener(this);
-        settimanaSera[1] = (TextView) findViewById(R.id.seraMarFarmacia);
+        settimanaSera[1] = findViewById(R.id.seraMarFarmacia);
         settimanaSera[1].setOnClickListener(this);
-        settimanaSera[2] = (TextView) findViewById(R.id.seraMerFarmacia);
+        settimanaSera[2] = findViewById(R.id.seraMerFarmacia);
         settimanaSera[2].setOnClickListener(this);
-        settimanaSera[3] = (TextView) findViewById(R.id.seraGioFarmacia);
+        settimanaSera[3] = findViewById(R.id.seraGioFarmacia);
         settimanaSera[3].setOnClickListener(this);
-        settimanaSera[4] = (TextView) findViewById(R.id.seraVenFarmacia);
+        settimanaSera[4] = findViewById(R.id.seraVenFarmacia);
         settimanaSera[4].setOnClickListener(this);
-        settimanaSera[5] = (TextView) findViewById(R.id.seraSabFarmacia);
+        settimanaSera[5] = findViewById(R.id.seraSabFarmacia);
         settimanaSera[5].setOnClickListener(this);
-        settimanaSera[6] = (TextView) findViewById(R.id.seraDomFarmacia);
+        settimanaSera[6] = findViewById(R.id.seraDomFarmacia);
         settimanaSera[6].setOnClickListener(this);
 
         /* passaggio a seconda pagina di registrazione */

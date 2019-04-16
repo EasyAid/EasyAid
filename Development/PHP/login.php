@@ -17,14 +17,12 @@ if ($_SERVER['REQUEST_METHOD']=='POST'|| $_SERVER['REQUEST_METHOD']=='GET') {
         }
         case 1:{
             //MEDICO
-            else if($table == 1){
                 $sql = "SELECT * FROM Medico WHERE CodiceFiscale = '$cf' ";
                 $response = mysqli_query($conn, $sql);
             break;
         }
         case 2:{
             //FARMACIA
-            else if($table == 2){
                 $sql = "SELECT * FROM Farmacia WHERE CodiceFiscale = '$cf' ";
                 $response = mysqli_query($conn, $sql);
             break;

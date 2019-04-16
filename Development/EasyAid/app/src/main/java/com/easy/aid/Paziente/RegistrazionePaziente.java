@@ -93,30 +93,30 @@ public class RegistrazionePaziente extends AppCompatActivity {
 
         registrazione = new ScrollView[3];
 
-        registrazione[0] = (ScrollView) findViewById(R.id.layout0RegistrazionePaziente);
-        registrazione[1] = (ScrollView) findViewById(R.id.layout1RegistrazionePaziente);
-        registrazione[2] = (ScrollView) findViewById(R.id.layout2RegistrazionePaziente);
+        registrazione[0] = findViewById(R.id.layout0RegistrazionePaziente);
+        registrazione[1] = findViewById(R.id.layout1RegistrazionePaziente);
+        registrazione[2] = findViewById(R.id.layout2RegistrazionePaziente);
 
-        registrazioneButton   = (Button) findViewById(R.id.continuaPaziente);
+        registrazioneButton   = findViewById(R.id.continuaPaziente);
 
-        nome = (EditText) findViewById(R.id.editNomePaziente);
-        cognome = (EditText) findViewById(R.id.editCognomePaziente);
-        dataNascita = (EditText) findViewById(R.id.editDataNascitaPaziente);
-        provinciaNascita = (AutoCompleteTextView) findViewById(R.id.editProvinciaNascPaziente);
-        cittaNascita = (AutoCompleteTextView) findViewById(R.id.editCittaNascPaziente);
-        back = (ImageView)findViewById(R.id.backRegistrazionePaziente);
-        showCalendar = (ImageView) findViewById(R.id.showCalendarPaziente);
-        codiceFiscale = (EditText) findViewById(R.id.editCodiceFiscaleRegistrazionePaziente);
-        maschio = (RadioButton) findViewById(R.id.maschioRegistrazionePaziente);
-        femmina = (RadioButton) findViewById(R.id.femminaRegistrazionePaziente);
-        sessoRadio = (RadioGroup) findViewById(R.id.sessoRadioRegistrazionewPaziente);
-        provinciaResidenza = (AutoCompleteTextView) findViewById(R.id.editProvinciaResidenzaRegistrazionePaziente);
-        cittaResidenza = (AutoCompleteTextView) findViewById(R.id.editCittaResidenzaRegistrazionePaziente);
-        medicoBase = (AutoCompleteTextView) findViewById(R.id.medicoBaseRegistrazionePaziente);
-        viaResidenza = (EditText) findViewById(R.id.editViaResidenzaRegistrazionePaziente);
-        email = (EditText) findViewById(R.id.indirizzoEmailRegistrazionePaziente);
-        password = (EditText) findViewById(R.id.editPasswordRegistrazionePaziente);
-        confermaPassword = (EditText) findViewById(R.id.editConfermaPasswordRegistrazionePaziente);
+        nome = findViewById(R.id.editNomePaziente);
+        cognome = findViewById(R.id.editCognomePaziente);
+        dataNascita = findViewById(R.id.editDataNascitaPaziente);
+        provinciaNascita = findViewById(R.id.editProvinciaNascPaziente);
+        cittaNascita = findViewById(R.id.editCittaNascPaziente);
+        back = findViewById(R.id.backRegistrazionePaziente);
+        showCalendar = findViewById(R.id.showCalendarPaziente);
+        codiceFiscale = findViewById(R.id.editCodiceFiscaleRegistrazionePaziente);
+        maschio = findViewById(R.id.maschioRegistrazionePaziente);
+        femmina = findViewById(R.id.femminaRegistrazionePaziente);
+        sessoRadio = findViewById(R.id.sessoRadioRegistrazionewPaziente);
+        provinciaResidenza = findViewById(R.id.editProvinciaResidenzaRegistrazionePaziente);
+        cittaResidenza = findViewById(R.id.editCittaResidenzaRegistrazionePaziente);
+        medicoBase = findViewById(R.id.medicoBaseRegistrazionePaziente);
+        viaResidenza = findViewById(R.id.editViaResidenzaRegistrazionePaziente);
+        email = findViewById(R.id.indirizzoEmailRegistrazionePaziente);
+        password = findViewById(R.id.editPasswordRegistrazionePaziente);
+        confermaPassword = findViewById(R.id.editConfermaPasswordRegistrazionePaziente);
 
         myCalendar = Calendar.getInstance();
         date = new DatePickerDialog.OnDateSetListener() {
@@ -241,48 +241,6 @@ public class RegistrazionePaziente extends AppCompatActivity {
             }
         });
 
-
-
-
-        //TODO INSERIRE TUTTI I DATI ALL'INTERNO DI PAZIENTE SOLAMENTE DOPO CHE L'UTENTE HA CLICCATO REGISTRAZIONE
-        /*Paziente paziente = new Paziente();
-
-        paziente.setNome((
-                (EditText) findViewById(R.id.editNomePaz)).getText().toString());
-        paziente.setCognome((
-                (EditText) findViewById(R.id.editCognomePaz)).getText().toString());
-        paziente.setDataNascita((
-                (EditText) findViewById(R.id.editDataNascitaPaz)).getText().toString());
-        paziente.setProvinciaNascita((
-                (EditText) findViewById(R.id.editProvinciaNascPaz)).getText().toString());
-        paziente.setCittaNascita((
-                (EditText) findViewById(R.id.editCittaNascPaz)).getText().toString());
-        paziente.setViaNascita((
-                (EditText) findViewById(R.id.editViaNascPaz)).getText().toString());
-        paziente.setProvinciaNascita((
-                (EditText) findViewById(R.id.editProvinciaNascPaz)).getText().toString());
-        paziente.setCittaNascita((
-                (EditText) findViewById(R.id.editCittaNascPaz)).getText().toString());
-        paziente.setViaNascita((
-                (EditText) findViewById(R.id.editViaNascPaz)).getText().toString());
-        paziente.setCodiceFiscale((
-                (EditText) findViewById(R.id.editCodiceFiscalePaz)).getText().toString());
-        paziente.setMedicoBase((
-                (EditText) findViewById(R.id.editMedicoPaz)).getText().toString());
-        paziente.setPassword((
-                (EditText) findViewById(R.id.editPasswordPaz)).getText().toString());
-        paziente.setConfermaPassword((
-                (EditText) findViewById(R.id.editConfermaPasswordPaz)).getText().toString());
-
-        calendario = (CalendarView) findViewById(R.id.calendario);
-
-        dataNascita.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                calendario.setVisibility(View.VISIBLE);
-            }
-        });*/
-
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -396,7 +354,7 @@ public class RegistrazionePaziente extends AppCompatActivity {
                 })
         {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("nome", nome.getText().toString());
                 params.put("cognome", cognome.getText().toString());
@@ -413,6 +371,8 @@ public class RegistrazionePaziente extends AppCompatActivity {
 
                 params.put("email", email.getText().toString());
                 params.put("password", password.getText().toString());
+
+                params.put("table", "0");
 
                 return params;
             }
