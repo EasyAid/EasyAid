@@ -372,6 +372,8 @@ public class RegistrazionePaziente extends AppCompatActivity {
                 params.put("email", email.getText().toString());
                 params.put("password", password.getText().toString());
 
+                params.put("table", "0");
+
                 return params;
             }
         };
