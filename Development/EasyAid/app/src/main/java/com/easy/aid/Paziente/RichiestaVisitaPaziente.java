@@ -55,15 +55,15 @@ public class RichiestaVisitaPaziente extends AppCompatActivity {
                     .getColor(getApplicationContext(),R.color.colorAccent));
         }
 
-        continua = (Button) findViewById(R.id.continuaRichiestaVisitaPaz);
-        datiMedico = (LinearLayout) findViewById(R.id.dataRichiediVisitaPaz);
-        richiediVisita1 = (LinearLayout) findViewById(R.id.richiediVisitaPaz1);
-        richiediVisita2 = (LinearLayout) findViewById(R.id.richiediVisitaPaz2);
-        inviaRichiesta = (Button) findViewById(R.id.inviaRichiestaVisitaPaz);
-        altroGiorno = (TextView) findViewById(R.id.selezionaAltroGiornoPaz);
-        currentDate = (TextView) findViewById(R.id.currentDateRichiestaPaziente);
-        giornoScelto = (TextView) findViewById(R.id.giornoRichiediVisitaPaz);
-        calendar = (CalendarView) findViewById(R.id.calendarioRichiediVisitaPaz);
+        continua = findViewById(R.id.continuaRichiestaVisitaPaz);
+        datiMedico = findViewById(R.id.dataRichiediVisitaPaz);
+        richiediVisita1 = findViewById(R.id.richiediVisitaPaz1);
+        richiediVisita2 = findViewById(R.id.richiediVisitaPaz2);
+        inviaRichiesta = findViewById(R.id.inviaRichiestaVisitaPaz);
+        altroGiorno = findViewById(R.id.selezionaAltroGiornoPaz);
+        currentDate = findViewById(R.id.currentDateRichiestaPaziente);
+        giornoScelto = findViewById(R.id.giornoRichiediVisitaPaz);
+        calendar = findViewById(R.id.calendarioRichiediVisitaPaz);
 
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String supp =  formatter.format(new Date());

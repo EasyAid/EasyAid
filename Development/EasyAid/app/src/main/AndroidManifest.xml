@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Medico.RichiesteRicetteMedico"></activity>
+        <activity android:name=".Medico.CalendarioMedico"></activity>
+        <activity android:name=".Medico.CronologiaMedico" />
+        <activity android:name=".Medico.RichiesteRicetteMedico" />
         <activity android:name=".Farmacia.RegistrazioneFarmacia" />
         <activity android:name=".Medico.ImpostazioniMedico" />
         <activity

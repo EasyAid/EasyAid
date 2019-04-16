@@ -87,6 +87,11 @@ public class Medico {
         return sesso;
     }
 
+    public String getStringSesso() {
+        if (sesso) return "Maschio";
+        return "Femmina";
+    }
+
     public String getCodiceFiscale() {
         return codiceFiscale;
     }

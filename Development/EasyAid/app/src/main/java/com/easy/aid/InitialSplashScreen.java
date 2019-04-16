@@ -17,6 +17,7 @@ import com.easy.aid.Class.NetVariables;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -49,7 +50,7 @@ public class InitialSplashScreen extends AppCompatActivity {
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(
-                    new InputStreamReader(getAssets().open("elenco_farmaci.CSV"), "UTF-8"));
+                    new InputStreamReader(getAssets().open("elenco_farmaci.CSV"), StandardCharsets.UTF_8));
 
             // do reading, usually loop until end of file reading
             String mLine;
@@ -70,7 +71,7 @@ public class InitialSplashScreen extends AppCompatActivity {
             }
 
             reader = new BufferedReader(
-                    new InputStreamReader(getAssets().open("province.txt"), "UTF-8"));
+                    new InputStreamReader(getAssets().open("province.txt"), StandardCharsets.UTF_8));
 
             // do reading, usually loop until end of file reading
 

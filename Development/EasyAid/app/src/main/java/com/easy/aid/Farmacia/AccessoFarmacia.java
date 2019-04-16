@@ -44,8 +44,8 @@ public class AccessoFarmacia extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.farmacia_accesso);
-        accedi = (Button)findViewById(R.id.accessoButtonFarm);
-        registrazione = (Button)findViewById(R.id.registrazioneButtonFarm);
+        accedi = findViewById(R.id.accessoButtonFarm);
+        registrazione = findViewById(R.id.registrazioneButtonFarm);
 
         //CONTROLLA LE API DEL TELEFONO, SE MAGGIORI DI MARSHMELLOW MODIFICA IL COLORE DEL TESTO DELLA NOTIFICATION BAR IN CHIARO
         //ALTRIMENTI SE E' INFERIORE ALLE API 23 MODIFICA LA NOTIFICATION BAR IN COLORE SCURO (IN QUANTO NON PUO MODIFICARE IL COLORE DEL TESTO)
@@ -59,11 +59,11 @@ public class AccessoFarmacia extends AppCompatActivity {
                     .getColor(getApplicationContext(),R.color.colorAccent));
         }
 
-        pwd         = (EditText)findViewById(R.id.accessoPasswordFarm);
-        cf          = (EditText)findViewById(R.id.accessoCodiceFarmacia);
-        back        = (ImageView)findViewById(R.id.backAccessoFarm);
-        layoutPass  = (TextInputLayout) findViewById(R.id.layoutAccessoPasswordPaz);
-        back        = (ImageView) findViewById(R.id.backAccessoFarm);
+        pwd         = findViewById(R.id.accessoPasswordFarm);
+        cf          = findViewById(R.id.accessoCodiceFarmacia);
+        back        = findViewById(R.id.backAccessoFarm);
+        layoutPass  = findViewById(R.id.layoutAccessoPasswordPaz);
+        back        = findViewById(R.id.backAccessoFarm);
 
         accedi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,7 +131,7 @@ public class AccessoFarmacia extends AppCompatActivity {
                 })
         {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("table", "2");
                 params.put("cf", sCF);

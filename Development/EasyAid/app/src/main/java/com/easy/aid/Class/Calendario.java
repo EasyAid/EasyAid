@@ -27,8 +27,7 @@ public class Calendario {
         if (hour < 0 || hour >= 24) return false;
 
         int minute = Integer.parseInt(timestring.split(":")[1]);
-        if (minute < 0 || minute >= 60) return false;
-        return true;
+        return minute >= 0 && minute < 60;
     }
     public static Time stringToTime(String timestring){ //trasforma una sequenza di caratteri hh:mm in variabile time
         return new Time(Integer.parseInt(timestring.split(":")[0]), Integer.parseInt(timestring.split(":")[1]), 0);

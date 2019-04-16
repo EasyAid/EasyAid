@@ -55,7 +55,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/RichiestaMedicaMed"
+                android:id="@+id/richiestaRicettaMed"
                 android:layout_width="155dp"
                 android:layout_height="155dp"
                 android:layout_marginLeft="5dp"

@@ -6,13 +6,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
-import android.support.design.widget.TextInputLayout;
+import android.os.SystemClock;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -23,20 +22,28 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.easy.aid.Class.Calendario;
 import com.easy.aid.Class.Indirizzo;
 import com.easy.aid.Class.Medico;
+import com.easy.aid.Class.NetVariables;
 import com.easy.aid.Class.TimePickerFragment;
+import com.easy.aid.Paziente.RegistrazionePaziente;
 import com.easy.aid.R;
 
-import org.w3c.dom.Text;
-
 import java.sql.Time;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.easy.aid.Class.Calendario.stringToTime;
 
@@ -44,6 +51,7 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
 
     private String btnTextContinua = "CONTINUA";
     private String btnTextFinisci = "CONFERMA REGISTRAZIONE";
+    private NetVariables global;
 
     private Calendario calendario;
     private Time temp;
@@ -82,6 +90,8 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
         super.onCreate(savedInstanceState);
         setContentView(R.layout.medico_registrazione);
 
+        global = (NetVariables) this.getApplication();
+
         //CONTROLLA LE API DEL TELEFONO, SE MAGGIORI DI MARSHMELLOW MODIFICA IL COLORE DEL TESTO DELLA NOTIFICATION BAR IN CHIARO
         //ALTRIMENTI SE E' INFERIORE ALLE API 23 MODIFICA LA NOTIFICATION BAR IN COLORE SCURO (IN QUANTO NON PUO MODIFICARE IL COLORE DEL TESTO)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -96,99 +106,99 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN); //nasconde tastiera
 
-        back = (ImageView) findViewById(R.id.backRegistrazioneMed);
-        registrazione1 = (ScrollView) findViewById(R.id.registrazione1Med);
-        registrazione2 = (ScrollView) findViewById(R.id.registrazione2Med);
-        registrazione3 = (ScrollView) findViewById(R.id.registrazione3Med);
-        continua1 = (Button) findViewById(R.id.continuaMed);
+        back = findViewById(R.id.backRegistrazioneMed);
+        registrazione1 = findViewById(R.id.registrazione1Med);
+        registrazione2 = findViewById(R.id.registrazione2Med);
+        registrazione3 = findViewById(R.id.registrazione3Med);
+        continua1 = findViewById(R.id.continuaMed);
         status = 0;
 
         //elementi della prima pagina
-        nome = (EditText) findViewById(R.id.editNomeMed);
-        cognome = (EditText) findViewById(R.id.editCognomeMed);
-        dataNascita = (EditText) findViewById(R.id.editDataNascitaMed);
-        sesso = (RadioGroup) findViewById(R.id.editSessoMed);
-        maschio = (RadioButton) findViewById(R.id.maschioMed);
-        femmina = (RadioButton) findViewById(R.id.femminaMed);
-        provincia = (EditText) findViewById(R.id.editProvinciaNascMed);
-        citta = (EditText) findViewById(R.id.editCittaNascMed);
-        via = (EditText) findViewById(R.id.editViaNascMed);
-        cf = (EditText) findViewById(R.id.editCodiceFiscaleMed);
+        nome = findViewById(R.id.editNomeMed);
+        cognome = findViewById(R.id.editCognomeMed);
+        dataNascita = findViewById(R.id.editDataNascitaMed);
+        sesso = findViewById(R.id.editSessoMed);
+        maschio = findViewById(R.id.maschioMed);
+        femmina = findViewById(R.id.femminaMed);
+        provincia = findViewById(R.id.editProvinciaNascMed);
+        citta = findViewById(R.id.editCittaNascMed);
+        via = findViewById(R.id.editViaNascMed);
+        cf = findViewById(R.id.editCodiceFiscaleMed);
         //elementi della seconda pagina
-        provinciaStudio = (EditText) findViewById(R.id.editProvinciaStudMed);
-        cittaStudio = (EditText) findViewById(R.id.editCittaStudMed);
-        viaStudio = (EditText) findViewById(R.id.editViaStudMed);
+        provinciaStudio = findViewById(R.id.editProvinciaStudMed);
+        cittaStudio = findViewById(R.id.editCittaStudMed);
+        viaStudio = findViewById(R.id.editViaStudMed);
         //elementi della terza pagina
-        email = (EditText) findViewById(R.id.editEmailMed);
-        telefono = (EditText) findViewById(R.id.editTelMed);
-        password = (EditText) findViewById(R.id.editPasswordMed);
-        passwordConferma = (EditText) findViewById(R.id.editConfermaPasswordMed);
+        email = findViewById(R.id.editEmailMed);
+        telefono = findViewById(R.id.editTelMed);
+        password = findViewById(R.id.editPasswordMed);
+        passwordConferma = findViewById(R.id.editConfermaPasswordMed);
 
         //lavoro
         turno1 = new CheckBox[7];
-        turno1[0] = (CheckBox) findViewById(R.id.lavoroLunMed);
+        turno1[0] = findViewById(R.id.lavoroLunMed);
         turno1[0].setOnClickListener(this);
-        turno1[1] = (CheckBox) findViewById(R.id.lavoroMarMed);
+        turno1[1] = findViewById(R.id.lavoroMarMed);
         turno1[1].setOnClickListener(this);
-        turno1[2] = (CheckBox) findViewById(R.id.lavoroMerMed);
+        turno1[2] = findViewById(R.id.lavoroMerMed);
         turno1[2].setOnClickListener(this);
-        turno1[3] = (CheckBox) findViewById(R.id.lavoroGioMed);
+        turno1[3] = findViewById(R.id.lavoroGioMed);
         turno1[3].setOnClickListener(this);
-        turno1[4] = (CheckBox) findViewById(R.id.lavoroVenMed);
+        turno1[4] = findViewById(R.id.lavoroVenMed);
         turno1[4].setOnClickListener(this);
-        turno1[5] = (CheckBox) findViewById(R.id.lavoroSabMed);
+        turno1[5] = findViewById(R.id.lavoroSabMed);
         turno1[5].setOnClickListener(this);
-        turno1[6] = (CheckBox) findViewById(R.id.lavoroDomMed);
+        turno1[6] = findViewById(R.id.lavoroDomMed);
         turno1[6].setOnClickListener(this);
 
         //pausa
         turno2 = new CheckBox[7];
-        turno2[0] = (CheckBox) findViewById(R.id.pausaLunMed);
+        turno2[0] = findViewById(R.id.pausaLunMed);
         turno2[0].setOnClickListener(this);
-        turno2[1] = (CheckBox) findViewById(R.id.pausaMarMed);
+        turno2[1] = findViewById(R.id.pausaMarMed);
         turno2[1].setOnClickListener(this);
-        turno2[2] = (CheckBox) findViewById(R.id.pausaMerMed);
+        turno2[2] = findViewById(R.id.pausaMerMed);
         turno2[2].setOnClickListener(this);
-        turno2[3] = (CheckBox) findViewById(R.id.pausaGioMed);
+        turno2[3] = findViewById(R.id.pausaGioMed);
         turno2[3].setOnClickListener(this);
-        turno2[4] = (CheckBox) findViewById(R.id.pausaVenMed);
+        turno2[4] = findViewById(R.id.pausaVenMed);
         turno2[4].setOnClickListener(this);
-        turno2[5] = (CheckBox) findViewById(R.id.pausaSabMed);
+        turno2[5] = findViewById(R.id.pausaSabMed);
         turno2[5].setOnClickListener(this);
-        turno2[6] = (CheckBox) findViewById(R.id.pausaDomMed);
+        turno2[6] = findViewById(R.id.pausaDomMed);
         turno2[6].setOnClickListener(this);
 
         //timepicker
         settimanaMattina = new TextView[7];
-        settimanaMattina[0] = (TextView) findViewById(R.id.mattinaLunMedico);
+        settimanaMattina[0] = findViewById(R.id.mattinaLunMedico);
         settimanaMattina[0].setOnClickListener(this);
-        settimanaMattina[1] = (TextView) findViewById(R.id.mattinaMarMedico);
+        settimanaMattina[1] = findViewById(R.id.mattinaMarMedico);
         settimanaMattina[1].setOnClickListener(this);
-        settimanaMattina[2] = (TextView) findViewById(R.id.mattinaMerMedico);
+        settimanaMattina[2] = findViewById(R.id.mattinaMerMedico);
         settimanaMattina[2].setOnClickListener(this);
-        settimanaMattina[3] = (TextView) findViewById(R.id.mattinaGioMedico);
+        settimanaMattina[3] = findViewById(R.id.mattinaGioMedico);
         settimanaMattina[3].setOnClickListener(this);
-        settimanaMattina[4] = (TextView) findViewById(R.id.mattinaVenMedico);
+        settimanaMattina[4] = findViewById(R.id.mattinaVenMedico);
         settimanaMattina[4].setOnClickListener(this);
-        settimanaMattina[5] = (TextView) findViewById(R.id.mattinaSabMedico);
+        settimanaMattina[5] = findViewById(R.id.mattinaSabMedico);
         settimanaMattina[5].setOnClickListener(this);
-        settimanaMattina[6] = (TextView) findViewById(R.id.mattinaDomMedico);
+        settimanaMattina[6] = findViewById(R.id.mattinaDomMedico);
         settimanaMattina[6].setOnClickListener(this);
 
         settimanaSera = new TextView[7];
-        settimanaSera[0] = (TextView) findViewById(R.id.seraLunMedico);
+        settimanaSera[0] = findViewById(R.id.seraLunMedico);
         settimanaSera[0].setOnClickListener(this);
-        settimanaSera[1] = (TextView) findViewById(R.id.seraMarMedico);
+        settimanaSera[1] = findViewById(R.id.seraMarMedico);
         settimanaSera[1].setOnClickListener(this);
-        settimanaSera[2] = (TextView) findViewById(R.id.seraMerMedico);
+        settimanaSera[2] = findViewById(R.id.seraMerMedico);
         settimanaSera[2].setOnClickListener(this);
-        settimanaSera[3] = (TextView) findViewById(R.id.seraGioMedico);
+        settimanaSera[3] = findViewById(R.id.seraGioMedico);
         settimanaSera[3].setOnClickListener(this);
-        settimanaSera[4] = (TextView) findViewById(R.id.seraVenMedico);
+        settimanaSera[4] = findViewById(R.id.seraVenMedico);
         settimanaSera[4].setOnClickListener(this);
-        settimanaSera[5] = (TextView) findViewById(R.id.seraSabMedico);
+        settimanaSera[5] = findViewById(R.id.seraSabMedico);
         settimanaSera[5].setOnClickListener(this);
-        settimanaSera[6] = (TextView) findViewById(R.id.seraDomMedico);
+        settimanaSera[6] = findViewById(R.id.seraDomMedico);
         settimanaSera[6].setOnClickListener(this);
 
         continua1.setOnClickListener(new View.OnClickListener() {
@@ -209,6 +219,7 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
                         break;
                     }
                     case 2: {
+                        if (global.checktime()) return;
                         //controllo su tutti i campi
                         //page = 1 torna alla prima pagina
                         //page = 2 torna alla seconda pagina etc...
@@ -317,10 +328,14 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
                                 }
                                 Indirizzo luogoNascita = new Indirizzo(provincia.getText().toString(), citta.getText().toString(), via.getText().toString());
                                 Indirizzo studio = new Indirizzo(provinciaStudio.getText().toString(), cittaStudio.getText().toString(), viaStudio.getText().toString());
-                                Medico nuovoMed = new Medico(nome.getText().toString(), cognome.getText().toString(), dataNascita.getText().toString(), boolMaschio, cf.getText().toString(), luogoNascita, studio, password.getText().toString(), email.getText().toString(), telefono.getText().toString());
+                                global.medico = new Medico(nome.getText().toString(), cognome.getText().toString(), dataNascita.getText().toString(), boolMaschio, cf.getText().toString(), luogoNascita, studio, password.getText().toString(), email.getText().toString(), telefono.getText().toString());
                                 intent = new Intent(RegistrazioneMedico.this, MainMedico.class);
                                 startActivity(intent);
                                 // TODO: 08/04/2019 crea il medico nel database
+
+                                registra();
+
+
                                 finish();
                                 break;
 
@@ -606,8 +621,8 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
     @Override
     public void onTimeSet(TimePicker view, int intHourOfDay, int intMinute) {
         String hourOfDay = String.valueOf(intHourOfDay), minute = String.valueOf(intMinute);
-        if(intHourOfDay < 10) hourOfDay = '0' + String.valueOf(intHourOfDay);
-        if(intMinute < 10) minute = '0' + String.valueOf(intMinute);
+        if (intHourOfDay < 10) hourOfDay = '0' + String.valueOf(intHourOfDay);
+        if (intMinute < 10) minute = '0' + String.valueOf(intMinute);
         if (count == 0) {
             if (mattina) settimanaMattina[idGiorno].setText(hourOfDay + ":" + minute);
             else settimanaSera[idGiorno].setText(hourOfDay + ":" + minute);
@@ -623,7 +638,7 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
 
             String nextText = hourOfDay + ":" + minute;
 
-            if(stringToTime(nextText).before(stringToTime(prevText))){
+            if (stringToTime(nextText).before(stringToTime(prevText))) {
                 String aux = prevText;
                 prevText = nextText;
                 nextText = aux;
@@ -641,4 +656,47 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
+
+    private void registra() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, NetVariables.URL_REGISTER,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(RegistrazioneMedico.this, "Error " + error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("codicefiscale", global.medico.getCodiceFiscale());
+                params.put("password", global.medico.getPassword());
+                params.put("nome", global.medico.getNome());
+                params.put("cognome", global.medico.getCognome());
+                params.put("datanascita", global.medico.getDataNascita());
+                params.put("sesso", global.medico.getStringSesso());
+                params.put("provincianascita", global.medico.getIndirizzoNascita().getProvincia());
+                params.put("cittanascita", global.medico.getIndirizzoNascita().getCitta());
+
+                params.put("provinciastudio", global.medico.getIndirizzoStudio().getProvincia());
+                params.put("cittastudio", global.medico.getIndirizzoStudio().getCitta());
+                params.put("viastudio", global.medico.getIndirizzoStudio().getVia());
+
+                params.put("email", email.getText().toString());
+                params.put("telefono", global.medico.getTelefono());
+
+
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
 }
