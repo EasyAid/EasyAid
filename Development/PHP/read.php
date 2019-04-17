@@ -7,7 +7,16 @@ if ($_SERVER['REQUEST_METHOD']=='POST'|| $_SERVER['REQUEST_METHOD']=='GET') {
 
     require_once 'connect.php';
 
-    $sql = "SELECT * FROM $table WHERE CodiceFiscale ='$cf' ";
+    if($table == 0){
+        $sql = "SELECT * FROM Paziente WHERE CodiceFiscale ='$cf' ";
+
+    }else if($table == 1){
+        $sql = "SELECT * FROM Medico WHERE CodiceFiscale ='$cf' ";
+
+    }else if($table == 2){
+        $sql = "SELECT * FROM Farmacia WHERE CodiceFiscale ='$cf' ";
+        
+    }
 
     $response = mysqli_query($conn, $sql);
 

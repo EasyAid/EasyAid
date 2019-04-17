@@ -1,53 +1,33 @@
 <?php
 
+require_once 'connect.php';
+
 if ($_SERVER['REQUEST_METHOD']=='POST'|| $_SERVER['REQUEST_METHOD']=='GET') {
 
     $table = $_REQUEST['table'];
     $cf = $_REQUEST['cf'];
     $password = $_REQUEST['password'];
 
-    require_once 'connect.php';
-
     switch ($table){
         case 0:{
             //PAZIENTE
             $sql = "SELECT * FROM Paziente WHERE CodiceFiscale = '$cf' ";
-    	    $response = mysqli_query($conn, $sql);
             break;
         }
         case 1:{
             //MEDICO
-            else if($table == 1){
-                $sql = "SELECT * FROM Medico WHERE CodiceFiscale = '$cf' ";
-                $response = mysqli_query($conn, $sql);
+            $sql = "SELECT * FROM Medico WHERE CodiceFiscale = '$cf' ";
             break;
-        }
         case 2:{
             //FARMACIA
-            else if($table == 2){
-                $sql = "SELECT * FROM Farmacia WHERE CodiceFiscale = '$cf' ";
-                $response = mysqli_query($conn, $sql);
+            $sql = "SELECT * FROM Farmacia WHERE CodiceFiscale = '$cf' ";
             break;
         }
     }
-/*
-    //PAZIENTE
-    if($table == 0){
-    	$sql = "SELECT * FROM Paziente WHERE CodiceFiscale = '$cf' ";
-    	$response = mysqli_query($conn, $sql);
-    }
-    //MEDICO
-    else if($table == 1){
-		$sql = "SELECT * FROM Medico WHERE CodiceFiscale = '$cf' ";
-    	$response = mysqli_query($conn, $sql);
-    }
 
-    //FARMACIA
-    else if($table == 2){
-		$sql = "SELECT * FROM Farmacia WHERE CodiceFiscale = '$cf' ";
-    	$response = mysqli_query($conn, $sql);
-    }
-*/
+
+    $response = mysqli_query($conn, $sql);
+
     $result = array();
     $result['login'] = array();
     

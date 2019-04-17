@@ -37,6 +37,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.easy.aid.Class.NetVariables.URL_LOGIN;
+import static com.easy.aid.Class.NetVariables.URL_READ;
 
 /**
  * @author pagina principale delle azioni di un medico
@@ -113,7 +114,7 @@ public class MainMedico extends AppCompatActivity {
 
  private void Read(final String sCF) {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_READ,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -170,7 +171,7 @@ public class MainMedico extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("cf", sCF);
-                params.put("table", "Medico");
+                params.put("table", "1");
                 return params;
             }
         };

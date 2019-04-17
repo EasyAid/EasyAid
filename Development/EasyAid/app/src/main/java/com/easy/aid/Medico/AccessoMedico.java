@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,6 +53,7 @@ public class AccessoMedico extends AppCompatActivity {
     private Intent intent;
     private ImageView back;
     private NetVariables global;
+    private LinearLayout lineaPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +79,7 @@ public class AccessoMedico extends AppCompatActivity {
         pwd = findViewById(R.id.accessoPasswordMed);
         cf = findViewById(R.id.accessoCodiceFiscaleMed);
         restaConnesso = findViewById(R.id.restaConnessoMed);
+        lineaPass = findViewById(R.id.layoutAccessoPasswordMed);
 
         back = findViewById(R.id.backAccessoMed);
         back.setOnClickListener(new View.OnClickListener() {
