@@ -4,13 +4,6 @@ const app = electron.app
 const session = electron.session;
 
 let SplashScreen = null
-/*global.shared = {
-	type: "patient",
-	id: "6",
-	name: "Mario",
-	surname: "Rossi",
-	password: "ElectronPassword"
-}*/
 
 global.PatientShared = {
 	type: "patient",

@@ -29,6 +29,14 @@
         function BackWindow() {
             BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientHome.html");
         }
+
+        function NavigateRicetta() {
+            BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientRicetta.html");
+        }
+
+        function NavigateVisita() {
+            BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientVisita.html");
+        }
     </script>
 </head>
 
@@ -53,7 +61,24 @@
         </div>
     </div>
 
-   <h1 style="color:#00796A">RICHIESTA</h1>
+    <div class="container-fluid">
+        <div class="row align-items-center" style="margin-top:150px; margin-left: 50px" id="contentdiv">
+            <div class="col-6">
+                <div id="selectcircle" style="text-align: center; cursor: pointer; margin-left: 120px;" onclick="NavigateRicetta()">
+                    <img draggable="false" src="../../img/RicettaWhite.png" width="30%" height="40%"
+                        style="margin-top: 30px" /><br>
+                    <h5 style="font-weight: bold; margin-top: 25px">RICHIEDI<br>RICETTA</h5>
+                </div>
+            </div>
+            <div class="col-6">
+                <div id="selectcircle" style="text-align: center; cursor: pointer; margin-left: 50px;" onclick="NavigateVisita()">
+                    <img draggable="false" src="../../img/VisitaWhite.png" width="30%" height="40%"
+                        style="margin-top: 30px" /><br>
+                    <h5 style="font-weight: bold; margin-top: 25px">RICHIEDI<br>VISITA</h5>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
