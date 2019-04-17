@@ -4,6 +4,7 @@ require_once 'connect.php';
 if ($_SERVER['REQUEST_METHOD']=='POST'){
 
     $table = $_REQUEST['table'];
+    $sql = null;
 
     if($table == 0){
     	$Nome = $_REQUEST['nome'];
@@ -46,6 +47,38 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
 	    INSERT INTO Medico (CodiceFiscale, Password, Nome, Cognome, DataNascita, Sesso, ProvinciaNascita, CittaNascita, ProvinciaStudio, CittaStudio, ViaStudio, Email, Telefono)
 	    VALUES ('$CodiceFiscale', '$Password', '$Nome', '$Cognome', '$DataNascita', '$Sesso', '$ProvinciaNascita', '$CittaNascita',
 	    	'$ProvinciaStudio', '$CittaStudio', '$ViaStudio', '$Email', '$Telefono')";
+
+	    //IMPORTANTE//
+	    //LETTURA ID MEDICO
+	    /*
+	    $sql = "SELECT IdMedico FROM Medico WHERE CodiceFiscale = '$CodiceFiscale' ";
+    	$response = mysqli_query($conn, $sql);
+    	$id = mysqli_fetch_assoc($response);
+
+		$settimanaOrari = $_REQUEST['settimanaorari'];
+
+		for($i = 0; $i < 6; $i++){
+			$sql = "
+		    INSERT INTO MedicoCalendario (IdMedico, Giorno, OraInizioMattina, OraFineMattina, OraInizioPomeriggio, OraFinePomeriggio)
+		    VALUES ('$id['IdMedico']', $i, $settimanaOrari['$i']['0']['0'], $settimanaOrari['$i']['0']['1'], $settimanaOrari['$i']['1']['0'], $settimanaOrari['$i']['1']['1'])";
+		}*/
+    }
+
+    else if($table == 2){
+
+		$NomeFarmacia = $_REQUEST['nomefarmacia'];
+	    $Telefono = $_REQUEST['telefono'];
+	    $Email = $_REQUEST['email'];
+	    $Provincia = $_REQUEST['provincia'];
+	    $Citta = $_REQUEST['citta'];
+	    $Via = $_REQUEST['via'];
+	    $Password = $_REQUEST['password'];
+
+	    //INSERIMENTO NUOVA FARMACIA
+
+		$sql = "
+	    INSERT INTO Farmacia (NomeFarmacia, Telefono, Email, Provincia, Citta, Via, Password)
+	    VALUES ('$NomeFarmacia', '$Telefono', '$Email', '$Provincia', '$Citta', '$Via', '$Password')";
 
 	    //IMPORTANTE//
 	    //LETTURA ID MEDICO

@@ -92,6 +92,16 @@ public class Medico {
         return "Femmina";
     }
 
+    static public boolean getStringSesso(String sesso) {
+        if (sesso.toUpperCase() == "MASCHIO") return true;
+        return false;
+    }
+
+    public void setStringSesso(String sesso) {
+        if (sesso.toUpperCase() == "MASCHIO") this.sesso = true;
+        else this.sesso = false;
+    }
+
     public String getCodiceFiscale() {
         return codiceFiscale;
     }

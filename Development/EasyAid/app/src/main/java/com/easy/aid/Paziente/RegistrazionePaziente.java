@@ -13,9 +13,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -68,7 +70,7 @@ public class RegistrazionePaziente extends AppCompatActivity {
     private String sesso;
 
     private ScrollView[] registrazione;
-    private int step=0;
+    private int step = 0;
     private boolean error;
 
     @Override
@@ -82,14 +84,14 @@ public class RegistrazionePaziente extends AppCompatActivity {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        }else {
+        } else {
             Window window = getWindow();
             window.setStatusBarColor(ContextCompat
-                    .getColor(getApplicationContext(),R.color.colorAccent));
+                    .getColor(getApplicationContext(), R.color.colorAccent));
         }
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-        c  = ((NetVariables) this.getApplication());
+        c = ((NetVariables) this.getApplication());
 
         registrazione = new ScrollView[3];
 
@@ -97,7 +99,7 @@ public class RegistrazionePaziente extends AppCompatActivity {
         registrazione[1] = findViewById(R.id.layout1RegistrazionePaziente);
         registrazione[2] = findViewById(R.id.layout2RegistrazionePaziente);
 
-        registrazioneButton   = findViewById(R.id.continuaPaziente);
+        registrazioneButton = findViewById(R.id.continuaPaziente);
 
         nome = findViewById(R.id.editNomePaziente);
         cognome = findViewById(R.id.editCognomePaziente);
@@ -124,7 +126,7 @@ public class RegistrazionePaziente extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
-                // TODO Auto-generated method stub
+
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
@@ -161,8 +163,8 @@ public class RegistrazionePaziente extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(start==1||start==4){
-                    dataNascita.setText((dataNascita.getText().toString()+"/"));
+                if (start == 1 || start == 4) {
+                    dataNascita.setText((dataNascita.getText().toString() + "/"));
                 }
             }
 
@@ -172,72 +174,44 @@ public class RegistrazionePaziente extends AppCompatActivity {
             }
         });
 
+        codiceFiscale.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    continuaFUN();
+                }
+
+                return true;
+            }
+        });
+
+        medicoBase.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    continuaFUN();
+                }
+
+                return true;
+            }
+        });
+
+        confermaPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    continuaFUN();
+                }
+
+                return true;
+            }
+        });
+
         registrazioneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(step == 2){
-                    error = false;
-                    if(confermaPassword.getText().toString().isEmpty()){
-                        confermaPassword.setError("Inserisci password di controllo");
-                        showError(2);
-                    }
-                    if(password.getText().toString().isEmpty()){
-                        password.setError("Inserisci password");
-                        showError(2);
-                    }
-                    if(email.getText().toString().isEmpty()){
-                        email.setError("Inserisci un email");
-                        showError(2);
-                    }
-
-                    if(medicoBase.getText().toString().isEmpty()){
-                        medicoBase.setError("Inserisci un medico di base");
-                        showError(1);
-                    }
-
-                    if(nome.getText().toString().isEmpty()){
-                        nome.setError("Inserisci nome");
-                        showError(0);
-                    }
-                    if(cognome.getText().toString().isEmpty()){
-                        cognome.setError("Inserisci cognome");
-                        showError(0);
-                    }
-                    if(dataNascita.getText().toString().isEmpty()){
-                        dataNascita.setError("Inserisci data di nascita");
-                        showError(0);
-                    }
-                    if(provinciaNascita.getText().toString().isEmpty()){
-                        provinciaNascita.setError("Inserisci provincia di nascita");
-                        showError(0);
-                    }
-                    if(cittaNascita.getText().toString().isEmpty()){
-                        cittaNascita.setError("Inserisci città di nascita");
-                        showError(0);
-                    }
-                    if(codiceFiscale.getText().toString().isEmpty()){
-                        codiceFiscale.setError("Inserisci il codice fiscale");
-                        showError(0);
-                    }
-
-                    /**
-                     * REGISTRAZIONE
-                     */
-                    if(!error){
-                        Registrazione();
-                    }
-                }else if(step == 1){
-                    hideKeyboard();
-                    registrazioneButton.setText(btnTextFinisci);
-                    registrazione[1].setVisibility(View.GONE);
-                    registrazione[2].setVisibility(View.VISIBLE);
-                    step++;
-                }else if(step == 0){
-                    hideKeyboard();
-                    registrazione[0].setVisibility(View.GONE);
-                    registrazione[1].setVisibility(View.VISIBLE);
-                    step++;
-                }
+                continuaFUN();
             }
         });
 
@@ -256,22 +230,22 @@ public class RegistrazionePaziente extends AppCompatActivity {
         dataNascita.setText(sdf.format(myCalendar.getTime()));
     }
 
-    private void showError(int st){
-        if(st == 0){
+    private void showError(int st) {
+        if (st == 0) {
             error = true;
             registrazione[2].setVisibility(View.GONE);
             registrazione[1].setVisibility(View.GONE);
             registrazione[0].setVisibility(View.VISIBLE);
             registrazioneButton.setText(btnTextContinua);
             step = 0;
-        }else if(st == 1){
+        } else if (st == 1) {
             error = true;
             registrazione[2].setVisibility(View.GONE);
             registrazione[0].setVisibility(View.GONE);
             registrazione[1].setVisibility(View.VISIBLE);
             registrazioneButton.setText(btnTextContinua);
             step = 0;
-        }else if(st == 2){
+        } else if (st == 2) {
             error = true;
             step = 2;
         }
@@ -282,27 +256,111 @@ public class RegistrazionePaziente extends AppCompatActivity {
         checkBack();
     }
 
-    private void checkBack(){
+
+    private void continuaFUN() {
+        if (step == 2) {
+            error = false;
+            if (confermaPassword.getText().toString().isEmpty()) {
+                confermaPassword.setError("Inserisci password di controllo");
+                showError(2);
+            }
+            if (password.getText().toString().isEmpty()) {
+                password.setError("Inserisci password");
+                showError(2);
+            }
+            if (email.getText().toString().isEmpty()) {
+                email.setError("Inserisci un email");
+                showError(2);
+            }
+
+            if (medicoBase.getText().toString().isEmpty()) {
+                medicoBase.setError("Inserisci un medico di base");
+                showError(1);
+            }
+
+            if (nome.getText().toString().isEmpty()) {
+                nome.setError("Inserisci nome");
+                showError(0);
+            }
+            if (cognome.getText().toString().isEmpty()) {
+                cognome.setError("Inserisci cognome");
+                showError(0);
+            }
+            if (dataNascita.getText().toString().isEmpty()) {
+                dataNascita.setError("Inserisci data di nascita");
+                showError(0);
+            }
+            if (provinciaNascita.getText().toString().isEmpty()) {
+                provinciaNascita.setError("Inserisci provincia di nascita");
+                showError(0);
+            }
+            if (cittaNascita.getText().toString().isEmpty()) {
+                cittaNascita.setError("Inserisci città di nascita");
+                showError(0);
+            }
+            if (codiceFiscale.getText().toString().isEmpty()) {
+                codiceFiscale.setError("Inserisci il codice fiscale");
+                showError(0);
+            }
+
+            /**
+             * REGISTRAZIONE
+             */
+            if (!error) {
+                Registrazione();
+            }
+        } else if (step == 1) {
+            hideKeyboard();
+            registrazioneButton.setText(btnTextFinisci);
+            registrazione[1].setVisibility(View.GONE);
+            registrazione[2].setVisibility(View.VISIBLE);
+            step++;
+        } else if (step == 0) {
+            hideKeyboard();
+            registrazione[0].setVisibility(View.GONE);
+            registrazione[1].setVisibility(View.VISIBLE);
+            step++;
+        }
+    }
+
+    private void checkBack() {
         switch (step) {
             case 0: {
 
-                new AlertDialog.Builder(this)
-                        .setTitle("Annulla registrazione")
-                        .setMessage("Sei sicuro di voler annullare la registrazione?")
+                if (    nome.getText().toString().isEmpty() &&
+                        cognome.getText().toString().isEmpty() &&
+                        dataNascita.getText().toString().isEmpty() &&
+                        sessoRadio.getCheckedRadioButtonId() == -1 &&
+                        provinciaNascita.getText().toString().isEmpty() &&
+                        cittaNascita.getText().toString().isEmpty() &&
+                        codiceFiscale.getText().toString().isEmpty() &&
+                        provinciaResidenza.getText().toString().isEmpty() &&
+                        cittaResidenza.getText().toString().isEmpty() &&
+                        viaResidenza.getText().toString().isEmpty() &&
+                        medicoBase.getText().toString().isEmpty() &&
+                        email.getText().toString().isEmpty() &&
+                        password.getText().toString().isEmpty() &&
+                        confermaPassword.getText().toString().isEmpty()
+                ) finish();
+                else {
+                    new AlertDialog.Builder(this)
+                            .setTitle("Annulla registrazione")
+                            .setMessage("Sei sicuro di voler annullare la registrazione?")
 
-                        // Specifying a listener allows you to take an action before dismissing the dialog.
-                        // The dialog is automatically dismissed when a dialog button is clicked.
-                        .setPositiveButton("SI", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                hideKeyboard();
-                                finish();
-                            }
-                        })
+                            // Specifying a listener allows you to take an action before dismissing the dialog.
+                            // The dialog is automatically dismissed when a dialog button is clicked.
+                            .setPositiveButton("SI", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    hideKeyboard();
+                                    finish();
+                                }
+                            })
 
-                        // A null listener allows the button to dismiss the dialog and take no further action.
-                        .setNegativeButton("NO", null)
-                        .setIcon(R.drawable.icon_alert)
-                        .show();
+                            // A null listener allows the button to dismiss the dialog and take no further action.
+                            .setNegativeButton("NO", null)
+                            .setIcon(R.drawable.icon_alert)
+                            .show();
+                }
 
                 break;
             }
@@ -323,19 +381,19 @@ public class RegistrazionePaziente extends AppCompatActivity {
     }
 
 
-    private void hideKeyboard(){
+    private void hideKeyboard() {
         View view = this.getCurrentFocus();
-        if(view!=null){
+        if (view != null) {
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
 
-    private void Registrazione(){
+    private void Registrazione() {
 
-        if(sessoRadio.getCheckedRadioButtonId() == maschio.getId()){
+        if (sessoRadio.getCheckedRadioButtonId() == maschio.getId()) {
             sesso = "Maschio";
-        }else{
+        } else {
             sesso = "Femmina";
         }
 
@@ -349,10 +407,9 @@ public class RegistrazionePaziente extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(RegistrazionePaziente.this, "Error " + error.toString() , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegistrazionePaziente.this, "Error " + error.toString(), Toast.LENGTH_SHORT).show();
                     }
-                })
-        {
+                }) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();

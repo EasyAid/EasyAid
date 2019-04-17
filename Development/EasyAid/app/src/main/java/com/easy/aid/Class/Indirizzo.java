@@ -33,6 +33,11 @@ public class Indirizzo {
         this.via = via;
     }
 
+    public Indirizzo(String provincia, String citta) {
+        this.provincia = provincia;
+        this.citta = citta;
+    }
+
     public String getProvincia() {
         return provincia;
     }

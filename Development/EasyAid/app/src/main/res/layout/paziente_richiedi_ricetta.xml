@@ -67,13 +67,17 @@
                     android:layout_marginBottom="30dp">
 
                     <TextView
-                        android:id="@+id/nomeCognomePazienteRichiediRicettaPaz"
+                        android:id="@+id/nomeCognomePazienteRichiediRicettaPaziente"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="serif"
-                        android:text="PAZIENTE: NOME COGNOME"
+                        android:text="PAZIENTE"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         android:textColor="@color/greenDark" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
                     <TextView
                         android:id="@+id/nomeCognomeMedicoRichiediRicettaPaz"
@@ -83,7 +87,7 @@
                         android:layout_marginBottom="10dp"
                         android:textColor="@color/greenDark"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                        android:text="MEDICO DI BASE: NOME COGNOME"/>
+                        android:text="MEDICO DI BASE"/>
 
                 </LinearLayout>
 

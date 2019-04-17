@@ -6,12 +6,16 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -21,6 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.easy.aid.Class.Medico;
 import com.easy.aid.Class.NetVariables;
 import com.easy.aid.Medico.AccessoMedico;
 import com.easy.aid.Medico.MainMedico;
@@ -42,14 +47,16 @@ public class AccessoMedico extends AppCompatActivity {
 
     private EditText cf, pwd;
     private Button accedi, registrazione;
+    private CheckBox restaConnesso;
     private static String URL_LOGIN = NetVariables.URL_LOGIN;
     private Intent intent;
     private ImageView back;
-    private TextInputLayout layoutPass;
+    private NetVariables global;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        global = (NetVariables)this.getApplication();
         setContentView(R.layout.medico_accesso);
 
         //CONTROLLA LE API DEL TELEFONO, SE MAGGIORI DI MARSHMELLOW MODIFICA IL COLORE DEL TESTO DELLA NOTIFICATION BAR IN CHIARO
@@ -69,8 +76,8 @@ public class AccessoMedico extends AppCompatActivity {
 
         pwd = findViewById(R.id.accessoPasswordMed);
         cf = findViewById(R.id.accessoCodiceFiscaleMed);
+        restaConnesso = findViewById(R.id.restaConnessoMed);
 
-        layoutPass = findViewById(R.id.layoutAccessoPasswordPaz);
         back = findViewById(R.id.backAccessoMed);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,21 +89,15 @@ public class AccessoMedico extends AppCompatActivity {
         accedi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!cf.getText().toString().isEmpty() && !pwd.getText().toString().isEmpty()) {
-                    //giusto
-                    Login(cf.getText().toString(), pwd.getText().toString());
-
-                } else {
-                    layoutPass.setPasswordVisibilityToggleEnabled(false);
-                    cf.setError("Inserire codice fiscale");
-                    pwd.setError("Inserire password");
-                }
+                if (global.checktime()) return;
+                accedi();
             }
         });
 
         registrazione.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (global.checktime()) return;
                 intent = new Intent(AccessoMedico.this, RegistrazioneMedico.class);
                 startActivity(intent);
             }
@@ -119,6 +120,12 @@ public class AccessoMedico extends AppCompatActivity {
                             JSONArray jsonArray = jsonObject.getJSONArray("login");
 
                             if (success.equals("1")) {
+
+                                if(restaConnesso.isChecked()){
+                                    global.prefs.edit().putString("CF", sCF).apply();
+                                    global.prefs.edit().putString("settore", "Medico").apply();
+                                }
+
                                 intent.putExtra("CF", sCF);
                                 startActivity(intent);
                                 finish();
@@ -151,5 +158,16 @@ public class AccessoMedico extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
 
+    }
+
+    private void accedi(){
+        if (!cf.getText().toString().isEmpty() && !pwd.getText().toString().isEmpty()) {
+            //giusto
+            Login(cf.getText().toString(), pwd.getText().toString());
+
+        } else {
+            cf.setError("Inserire codice fiscale");
+            pwd.setError("Inserire password");
+        }
     }
 }

@@ -24,9 +24,28 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.easy.aid.Class.Indirizzo;
+import com.easy.aid.Class.NetVariables;
+import com.easy.aid.Class.Paziente;
 import com.easy.aid.Class.TimePickerFragment;
+import com.easy.aid.Paziente.MainPaziente;
+import com.easy.aid.Paziente.RegistrazionePaziente;
 import com.easy.aid.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.easy.aid.Class.Calendario.stringToTime;
 
@@ -203,7 +222,7 @@ public class RegistrazioneFarmacia extends AppCompatActivity implements TimePick
                             error = true;
                         }
                         if (!error) {
-                            //TODO niente errore invia dati a server
+                            Registrazione();
                         } else {
                             //errore segnalo errori e torno alla pagina iniziale
                             registrazione1.setVisibility(View.VISIBLE);
@@ -254,7 +273,7 @@ public class RegistrazioneFarmacia extends AppCompatActivity implements TimePick
                 break;
             }
             case 1: {
-                status--;
+                status = 0;
                 registrazione2.setVisibility(View.GONE);
                 registrazione1.setVisibility(View.VISIBLE);
                 continuaReg.setText(txtContinuaReg);
@@ -449,8 +468,8 @@ public class RegistrazioneFarmacia extends AppCompatActivity implements TimePick
     @Override
     public void onTimeSet(TimePicker view, int intHourOfDay, int intMinute) {
         String hourOfDay = String.valueOf(intHourOfDay), minute = String.valueOf(intMinute);
-        if(intHourOfDay < 10) hourOfDay = '0' + String.valueOf(intHourOfDay);
-        if(intMinute < 10) minute = '0' + String.valueOf(intMinute);
+        if (intHourOfDay < 10) hourOfDay = '0' + String.valueOf(intHourOfDay);
+        if (intMinute < 10) minute = '0' + String.valueOf(intMinute);
         if (count == 0) {
             if (mattina) settimanaMattina[idGiorno].setText(hourOfDay + ":" + minute);
             else settimanaSera[idGiorno].setText(hourOfDay + ":" + minute);
@@ -466,7 +485,7 @@ public class RegistrazioneFarmacia extends AppCompatActivity implements TimePick
 
             String nextText = hourOfDay + ":" + minute;
 
-            if(stringToTime(nextText).before(stringToTime(prevText))){
+            if (stringToTime(nextText).before(stringToTime(prevText))) {
                 String aux = prevText;
                 prevText = nextText;
                 nextText = aux;
@@ -483,5 +502,56 @@ public class RegistrazioneFarmacia extends AppCompatActivity implements TimePick
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+    }
+
+
+    private void Registrazione() {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, NetVariables.URL_REGISTER,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        JSONObject jsonObject = null;
+                        try {
+                            jsonObject = new JSONObject(response);
+                            String success = jsonObject.getString("success");
+
+                            if (success.equals("1")) {
+                                startActivity(new Intent(RegistrazioneFarmacia.this, MainFarmacia.class));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(RegistrazioneFarmacia.this, "Error " + e.toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(RegistrazioneFarmacia.this, "Error " + error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+
+                params.put("table", "2");
+                params.put("nomefarmacia", "NomeGenericoFarmacia");
+                params.put("email", mail.getText().toString());
+                params.put("telefono", telefono.getText().toString());
+
+                params.put("password", psw.getText().toString());
+
+                params.put("provincia", provincia.getText().toString());
+                params.put("citta", citta.getText().toString());
+                params.put("via", via.getText().toString());
+
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
     }
 }

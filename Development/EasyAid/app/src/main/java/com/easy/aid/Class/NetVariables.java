@@ -1,6 +1,7 @@
 package com.easy.aid.Class;
 
 import android.app.Application;
+import android.content.SharedPreferences;
 import android.os.SystemClock;
 
 import java.util.ArrayList;
@@ -21,10 +22,14 @@ public class NetVariables extends Application {
     public Medico medico;
     public Paziente paziente;
     public long mLastClickTime;
+
     public boolean checktime(){
         boolean time = (SystemClock.elapsedRealtime() - mLastClickTime) < 800;
         mLastClickTime = SystemClock.elapsedRealtime();
         return time;
     };
+
+
+    public SharedPreferences prefs;
 
 }

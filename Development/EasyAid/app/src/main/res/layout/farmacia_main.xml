@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
-    tools:context=".Paziente.MainPaziente">
+    tools:context=".Farmacia.MainFarmacia">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,13 +26,12 @@
             android:background="@color/greenDark" />
 
         <TextView
-            android:id="@+id/nomeCognomePaz"
+            android:id="@+id/nomeFarmaciaHead"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_height="40dp"
             android:fontFamily="@font/raleway_bold"
-            android:text="BENVENUTO\nNOME COGNOME "
+            android:gravity="center"
+            android:text="NOME FARMACIA"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
             android:textColor="@color/greenDark" />
     </LinearLayout>
@@ -41,48 +39,50 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:gravity="center"
         android:orientation="vertical"
-        android:gravity="center">
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginBottom="3dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
+            <!-- Richiesta farmaco -->
             <LinearLayout
-                android:id="@+id/richiediVisitaRicettaPaz"
+                android:id="@+id/richiestaFarmacoFarm"
                 android:layout_width="155dp"
                 android:layout_height="155dp"
                 android:layout_marginLeft="5dp"
+                android:layout_marginRight="3dp"
                 android:background="@drawable/empty_circle"
                 android:gravity="center"
-                android:layout_marginRight="3dp"
                 android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="70dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/richiesta_medica"/>
+                    android:src="@drawable/ordina_farmaco" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:textColor="@color/greenDark"
                     android:fontFamily="@font/raleway_bold"
+                    android:text="RICHIESTE\nFARMACI"
+                    android:textAlignment="center"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:text="RICHIESTA\nMEDICA"/>
+                    android:textColor="@color/greenDark" />
 
             </LinearLayout>
 
+            <!-- Calendario -->
             <LinearLayout
-                android:id="@+id/ordinaRicettaPaz"
+                android:id="@+id/calendarioFarm"
                 android:layout_width="155dp"
                 android:layout_height="155dp"
                 android:layout_marginLeft="3dp"
@@ -91,18 +91,18 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="50dp"
+                    android:layout_width="70dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/ordina_farmaco"/>
+                    android:src="@drawable/hd_calendar" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:textColor="@color/greenDark"
                     android:fontFamily="@font/raleway_bold"
+                    android:text="CALENDARIO"
+                    android:textAlignment="center"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:text="ORDINA\nFARMACO"/>
+                    android:textColor="@color/greenDark" />
 
             </LinearLayout>
         </LinearLayout>
@@ -110,38 +110,40 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="3dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
+            <!-- Cronologia -->
             <LinearLayout
-                android:id="@+id/cronologiaPaz"
+                android:id="@+id/cronologiaFarm"
                 android:layout_width="155dp"
                 android:layout_height="155dp"
                 android:layout_marginLeft="5dp"
+                android:layout_marginRight="3dp"
                 android:background="@drawable/empty_circle"
                 android:gravity="center"
-                android:layout_marginRight="3dp"
                 android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="75dp"
-                    android:src="@drawable/cronologia"/>
+                    android:src="@drawable/cronologia" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:textColor="@color/greenDark"
                     android:fontFamily="@font/raleway_bold"
+                    android:text="CRONOLOGIA"
+                    android:textAlignment="center"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:text="CRONOLOGIA"/>
+                    android:textColor="@color/greenDark" />
 
             </LinearLayout>
 
+            <!-- Imposstazioni -->
             <LinearLayout
-                android:id="@+id/impostazioniPaz"
+                android:id="@+id/impostazioniFarm"
                 android:layout_width="155dp"
                 android:layout_height="155dp"
                 android:layout_marginLeft="3dp"
@@ -152,18 +154,19 @@
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="70dp"
-                    android:src="@drawable/impostazioni"/>
+                    android:src="@drawable/impostazioni" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
                     android:fontFamily="@font/raleway_bold"
-                    android:textColor="@color/greenDark"
+                    android:text="IMPOSTAZIONI"
+                    android:textAlignment="center"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:text="IMPOSTAZIONI"/>
+                    android:textColor="@color/greenDark" />
 
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
 </RelativeLayout>

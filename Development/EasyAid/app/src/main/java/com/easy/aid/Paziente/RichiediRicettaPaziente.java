@@ -88,12 +88,14 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
 
         c  = ((NetVariables) this.getApplication());
 
-        nomeCognomePaz  = findViewById(R.id.nomeCognomePazienteRichiediRicettaPaz);
+        nomeCognomePaz  = findViewById(R.id.nomeCognomePazienteRichiediRicettaPaziente);
         nomeCognomeMed  = findViewById(R.id.nomeCognomeMedicoRichiediRicettaPaz);
         dropdown        = findViewById(R.id.usoFarmacoRichiediRicettaPaz);
         prezzoFarmaco   = findViewById(R.id.prezzoFarmacoRichiediRicettaPaz);
         invia           = findViewById(R.id.inviaRichiestaPaz);
         descPatologia = findViewById(R.id.descPatologiaRichiediRicettaPaz);
+
+        nomeCognomePaz.setText(Html.fromHtml(nomeCognomePaz.getText().toString() + "<br><b>" + c.paziente.getCognome().toUpperCase() +" " + c.paziente.getNome().toUpperCase() + "<b>"));
 
         Set<String> keys = c.farmaci.keySet();
         String[] nomeFarmaci = keys.toArray(new String[keys.size()]);
@@ -175,7 +177,7 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
             prezzoFarmaco.setText(Html.fromHtml(supp));
         }else {
             set = true;
-            String[] nullo = {"QUANTITÀ & UTILIZZO"};
+            String[] nullo = {"UTILIZZO E QUANTITÀ"};
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, nullo);
             dropdown.setAdapter(adapter);
             prezzoFarmaco.setText("PREZZO:");

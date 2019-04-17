@@ -13,10 +13,30 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.easy.aid.Class.Indirizzo;
+import com.easy.aid.Class.Medico;
 import com.easy.aid.Class.NetVariables;
+import com.easy.aid.Class.Paziente;
 import com.easy.aid.MainActivity;
+import com.easy.aid.Paziente.MainPaziente;
 import com.easy.aid.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.easy.aid.Class.NetVariables.URL_LOGIN;
 
 /**
  * @author pagina principale delle azioni di un medico
@@ -39,6 +59,8 @@ public class MainMedico extends AppCompatActivity {
         setContentView(R.layout.medico_main);
 
         global = (NetVariables) this.getApplication();
+        Bundle bundle = getIntent().getExtras();
+        Read(bundle.getString("CF"));
 
         //CONTROLLA LE API DEL TELEFONO, SE MAGGIORI DI MARSHMELLOW MODIFICA IL COLORE DEL TESTO DELLA NOTIFICATION BAR IN CHIARO
         //ALTRIMENTI SE E' INFERIORE ALLE API 23 MODIFICA LA NOTIFICATION BAR IN COLORE SCURO (IN QUANTO NON PUO MODIFICARE IL COLORE DEL TESTO)
@@ -53,7 +75,6 @@ public class MainMedico extends AppCompatActivity {
         }
 
         nomeCognome = findViewById(R.id.nomeCognomeMed);
-        nomeCognome.setText(global.medico.getNome() + ' ' + global.medico.getCognome());
 
         richiesteRicette = (LinearLayout) findViewById(R.id.richiestaRicettaMed);
         richiesteRicette.setOnClickListener(new View.OnClickListener() {
@@ -84,8 +105,77 @@ public class MainMedico extends AppCompatActivity {
             public void onClick(View v) {
                 intent = new Intent(MainMedico.this, CalendarioMedico.class);
             }
-        });
+
+   });
 
 
+    }
+
+ private void Read(final String sCF) {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        JSONObject jsonObject = null;
+                        try {
+                            jsonObject = new JSONObject(response);
+                            String success = jsonObject.getString( "success");
+                            JSONArray jsonArray = jsonObject.getJSONArray("read");
+
+
+                            if (success.equals("1")){
+                                JSONObject object = jsonArray.getJSONObject(0);
+
+                                int id = object.getInt("id");
+                                String resultCf = object.getString("codicefiscale");
+                                String resultPassword = object.getString("password");
+                                String resultNome = object.getString("nome");
+                                String resultCognome = object.getString("cognome");
+                                String resultDatanascita = object.getString("datanascita");
+                                String resultSesso = object.getString("sesso");
+                                String resultProvincianascita = object.getString("provincianascita");
+                                String resultCittanascita = object.getString("cittanascita");
+                                String resultProvinciastudio = object.getString("provinciastudio");
+                                String resultCittastudio = object.getString("cittastudio");
+                                String resultViastudio = object.getString("viastudio");
+                                String resultEmail = object.getString("email");
+                                String resultTelefono= object.getString("telefono");
+
+                                Indirizzo resultLuogonascita = new Indirizzo(resultProvincianascita, resultCittanascita);
+                                Indirizzo resultLuogostudio = new Indirizzo(resultProvinciastudio, resultCittastudio);
+
+                                global.medico = new Medico(id, resultNome, resultCognome, resultDatanascita,
+                                        global.medico.getStringSesso(resultSesso),
+                                        resultCf, resultLuogonascita, resultLuogostudio,
+                                        resultPassword, resultEmail, resultTelefono);
+
+                                nomeCognome.setText(("BENVENUTO\n" + resultNome.toUpperCase() + " " + resultCognome.toUpperCase()));
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(MainMedico.this, "Error " + e.toString() , Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(MainMedico.this, "Error " + error.toString() , Toast.LENGTH_SHORT).show();
+                    }
+                })
+        {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("cf", sCF);
+                params.put("table", "Medico");
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 }

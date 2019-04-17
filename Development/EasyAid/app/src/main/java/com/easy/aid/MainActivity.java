@@ -1,5 +1,6 @@
 package com.easy.aid;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.SystemClock;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import com.easy.aid.Class.NetVariables;
 import com.easy.aid.Farmacia.AccessoFarmacia;
 import com.easy.aid.Medico.AccessoMedico;
+import com.easy.aid.Medico.MainMedico;
 import com.easy.aid.Paziente.AccessoPaziente;
 import com.easy.aid.Paziente.MainPaziente;
 
@@ -28,10 +30,37 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout sceltaPaziente;
     private LinearLayout sceltaFarmacia;
     private NetVariables global;
+    private NetVariables netVariables;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //RESTA CONNESSO
+        netVariables = (NetVariables) this.getApplication();
+
+        netVariables.prefs = this.getSharedPreferences(
+                "com.easy.aid.Paziente", Context.MODE_PRIVATE);
+
+        if(netVariables.prefs.getString("CF", null) != null){
+
+            if(netVariables.prefs.getString("settore", null).equals("Paziente")){
+                intent = new Intent(MainActivity.this, MainPaziente.class);
+
+            }else if(netVariables.prefs.getString("settore", null).equals("Medico")){
+                intent = new Intent(MainActivity.this, MainMedico.class);
+
+            }else if(netVariables.prefs.getString("settore", null).equals("Farmacia")){
+
+            }
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("CF", netVariables.prefs.getString("CF", null));
+            startActivity(intent);
+            finish();
+        }
+
+
         setContentView(R.layout.activity_main);
         global = (NetVariables)this.getApplication();
 

@@ -21,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.easy.aid.Class.NetVariables;
 import com.easy.aid.R;
 
 import org.json.JSONArray;
@@ -37,6 +38,7 @@ public class AccessoFarmacia extends AppCompatActivity {
     private static String URL_LOGIN = "http://99.80.72.24/login.php";
     private Intent intent;
     private TextInputLayout layoutPass;
+    private NetVariables global;
 
     private ImageView back;
 
@@ -44,6 +46,9 @@ public class AccessoFarmacia extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.farmacia_accesso);
+
+        global = (NetVariables) (this).getApplication();
+
         accedi = findViewById(R.id.accessoButtonFarm);
         registrazione = findViewById(R.id.registrazioneButtonFarm);
 
@@ -62,19 +67,22 @@ public class AccessoFarmacia extends AppCompatActivity {
         pwd         = findViewById(R.id.accessoPasswordFarm);
         cf          = findViewById(R.id.accessoCodiceFarmacia);
         back        = findViewById(R.id.backAccessoFarm);
-        layoutPass  = findViewById(R.id.layoutAccessoPasswordPaz);
+        layoutPass  = findViewById(R.id.layoutAccessoPasswordFarm);
         back        = findViewById(R.id.backAccessoFarm);
 
         accedi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!cf.getText().toString().isEmpty() && !pwd.getText().toString().isEmpty()){
-                    //giusto
-                    Login(cf.getText().toString(), pwd.getText().toString());
+                if (global.checktime()) return;
 
+                String sCF = cf.getText().toString().trim();
+                String sPass = pwd.getText().toString().trim();
+
+                if(!sCF.isEmpty() && !sPass.isEmpty()){
+                    Login(sCF,sPass);
                 }else{
                     layoutPass.setPasswordVisibilityToggleEnabled(false);
-                    cf.setError("Inserire codice farmacia");
+                    cf.setError("Inserire mail");
                     pwd.setError("Inserire password");
                 }
             }

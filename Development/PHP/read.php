@@ -18,16 +18,41 @@ if ($_SERVER['REQUEST_METHOD']=='POST'|| $_SERVER['REQUEST_METHOD']=='GET') {
         
         if ($row = mysqli_fetch_assoc($response)) {
  
-             $h['id']                   = $row['IdPaziente'] ;
-             $h['nome']                 = $row['Nome'] ;
-             $h['cognome']              = $row['Cognome'] ;
-             $h['dataNascita']          = $row['DataNascita'] ;
-             $h['codiceFiscale']        = $row['CodiceFiscale'] ;
-             $h['provinciaNascita']     = $row['ProvinciaNascita'] ;
-             $h['cittaNascita']         = $row['CittaNascita'] ;
-             $h['provinciaResidenza']   = $row['ProvinciaResidenza'] ;
-             $h['cittaResidenza']       = $row['CittaResidenza'] ;
-             $h['viaResidenza']         = $row['ViaResidenza'] ;
+            switch ($table) {
+                case 0:
+
+                    $h['id']                   = $row['IdPaziente'] ;
+                    $h['nome']                 = $row['Nome'] ;
+                    $h['cognome']              = $row['Cognome'] ;
+                    $h['dataNascita']          = $row['DataNascita'] ;
+                    $h['codiceFiscale']        = $row['CodiceFiscale'] ;
+                    $h['provinciaNascita']     = $row['ProvinciaNascita'] ;
+                    $h['cittaNascita']         = $row['CittaNascita'] ;
+                    $h['provinciaResidenza']   = $row['ProvinciaResidenza'] ;
+                    $h['cittaResidenza']       = $row['CittaResidenza'] ;
+                    $h['viaResidenza']         = $row['ViaResidenza'] ;
+                    break;
+                
+                case 1:
+
+                    $h['id']                        = $row['IdMedico'] ;
+                    $h['codicefiscale']             = $row['CodiceFiscale'] ;
+                    $h['password']                  = $row['Password'] ;
+                    $h['nome']                      = $row['Nome'] ;
+                    $h['cognome']                   = $row['Cognome'] ;
+                    $h['datanascita']               = $row['DataNascita'] ;
+                    $h['sesso']                     = $row['Sesso'] ;
+                    $h['provincianascita']          = $row['ProvinciaNascita'] ;
+                    $h['cittanascita']              = $row['CittaNascita'] ;
+                    $h['provinciastudio']           = $row['ProvinciaStudio'] ;
+                    $h['cittastudio']               = $row['CittaStudio'] ;
+                    $h['viastudio']                 = $row['ViaStudio'] ;
+                    $h['email']                     = $row['Email'] ;
+                    $h['telefono']                  = $row['Telefono'] ;
+
+                    break;
+            }
+             
  
              array_push($result["read"], $h);
  

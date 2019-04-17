@@ -1,6 +1,8 @@
 package com.easy.aid.Paziente;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -25,6 +28,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.easy.aid.Class.NetVariables;
+import com.easy.aid.Class.NetVariables;
 import com.easy.aid.R;
 
 import org.json.JSONArray;
@@ -50,12 +55,20 @@ public class AccessoPaziente extends AppCompatActivity {
     private static String URL_LOGIN = "http://99.80.72.24/login.php";
     private TextInputLayout layoutPass;
     private Intent intent;
-
+    private NetVariables global;
     private ImageView back;
+    private CheckBox restaConnesso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        global = (NetVariables) this.getApplication();
+
+        global.prefs = this.getSharedPreferences(
+                "com.easy.aid.Paziente", Context.MODE_PRIVATE);
+
+
         setContentView(R.layout.paziente_accesso);
 
         //CONTROLLA LE API DEL TELEFONO, SE MAGGIORI DI MARSHMELLOW MODIFICA IL COLORE DEL TESTO DELLA NOTIFICATION BAR IN CHIARO
@@ -78,6 +91,7 @@ public class AccessoPaziente extends AppCompatActivity {
         registrazione   = findViewById(R.id.registrazioneButtonPaz);
         back            = findViewById(R.id.backAccessoPaz);
         layoutPass      = findViewById(R.id.layoutAccessoPasswordPaz);
+        restaConnesso   = findViewById(R.id.restaConnessoPaziente);
 
         pwd.addTextChangedListener(new TextWatcher() {
             @Override
@@ -99,6 +113,8 @@ public class AccessoPaziente extends AppCompatActivity {
         accedi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (global.checktime()) return;
+
                 String sCF = cf.getText().toString().trim();
                 String sPass = pwd.getText().toString().trim();
 
@@ -116,6 +132,8 @@ public class AccessoPaziente extends AppCompatActivity {
         registrazione.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (global.checktime()) return;
+
                 Intent i = new Intent(AccessoPaziente.this, RegistrazionePaziente.class);
                 startActivity(i);
             }
@@ -124,6 +142,7 @@ public class AccessoPaziente extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (global.checktime()) return;
                 finish();
             }
         });
@@ -144,6 +163,12 @@ public class AccessoPaziente extends AppCompatActivity {
                             JSONArray jsonArray = jsonObject.getJSONArray("login");
 
                             if (success.equals("1")){
+
+                                if(restaConnesso.isChecked()){
+                                    global.prefs.edit().putString("CF", sCF).apply();
+                                    global.prefs.edit().putString("settore", "Paziente").apply();
+                                }
+
                                 intent.putExtra("CF", sCF);
                                 startActivity(intent);
                                 finish();

@@ -25,6 +25,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.easy.aid.Class.Indirizzo;
+import com.easy.aid.Class.NetVariables;
 import com.easy.aid.Class.Paziente;
 import com.easy.aid.MainActivity;
 import com.easy.aid.R;
@@ -49,13 +50,15 @@ public class MainPaziente extends AppCompatActivity {
     private TextView nomeCognome;
     private static String URL_LOGIN = "http://99.80.72.24/read.php";
 
-    public Paziente paziente;
+    public NetVariables netVariables;
     private String sCF;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.paziente_main);
+
+        netVariables = (NetVariables) this.getApplication();
 
         //CONTROLLA LE API DEL TELEFONO, SE MAGGIORI DI MARSHMELLOW MODIFICA IL COLORE DEL TESTO DELLA NOTIFICATION BAR IN CHIARO
         //ALTRIMENTI SE E' INFERIORE ALLE API 23 MODIFICA LA NOTIFICATION BAR IN COLORE SCURO (IN QUANTO NON PUO MODIFICARE IL COLORE DEL TESTO)
@@ -132,16 +135,16 @@ public class MainPaziente extends AppCompatActivity {
                                     int id = object.getInt("id");
                                     String nome = object.getString("nome");
                                     String cognome = object.getString("cognome");
-                                    String dataNascita = object.getString("dataNascita");
-                                    String codiceFiscale = object.getString("codiceFiscale");
-                                    String provinciaNascita = object.getString("provinciaNascita");
-                                    String cittaNascita = object.getString("cittaNascita");
-                                    String provinciaResidenza = object.getString("provinciaResidenza");
-                                    String cittaResidenza = object.getString("cittaResidenza");
-                                    String viaResidenza = object.getString("viaResidenza");
+                                    String dataNascita = object.getString("datanascita");
+                                    String codiceFiscale = object.getString("codicefiscale");
+                                    String provinciaNascita = object.getString("provincianascita");
+                                    String cittaNascita = object.getString("cittanascita");
+                                    String provinciaResidenza = object.getString("provinciaresidenza");
+                                    String cittaResidenza = object.getString("cittaresidenza");
+                                    String viaResidenza = object.getString("viaresidenza");
                                     Indirizzo nascita = new Indirizzo(provinciaNascita,cittaNascita,null,null);
                                     Indirizzo residenza = new Indirizzo(provinciaResidenza,cittaResidenza,viaResidenza,null);
-                                    paziente = new Paziente(id, nome,cognome,dataNascita,codiceFiscale,nascita,residenza,null,null);
+                                    netVariables.paziente = new Paziente(id, nome,cognome,dataNascita,codiceFiscale,nascita,residenza,null,null);
                                     nomeCognome.setText(("BENVENUTO\n" + nome.toUpperCase() + " " + cognome.toUpperCase()));
                                 }
                             }
@@ -162,7 +165,7 @@ public class MainPaziente extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("cf", sCF);
-                params.put("table", "Paziente");
+                params.put("table", "0");
                 return params;
             }
         };

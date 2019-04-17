@@ -403,90 +403,6 @@
                 android:layout_marginRight="20dp"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="10dp"
-                        android:text="INDIRIZZO STUDIO MEDICO"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
-                        android:textColor="@color/greenDark" />
-                    <!--provincia-->
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/layoutEditProvinciaStudMed"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <EditText
-                            android:id="@+id/editProvinciaStudMed"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@null"
-                            android:hint="PROVINCIA"
-                            android:imeOptions="actionGo"
-                            android:inputType="text"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:textColor="@color/greenDark" />
-                    </android.support.design.widget.TextInputLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_marginBottom="10dp"
-                        android:background="@color/greenDark" />
-                    <!--citta-->
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/layoutEditCittaStudMed"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <EditText
-                            android:id="@+id/editCittaStudMed"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@null"
-                            android:hint="CITTA|PROVINCIA"
-                            android:imeOptions="actionGo"
-                            android:inputType="text"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:textColor="@color/greenDark" />
-                    </android.support.design.widget.TextInputLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_marginBottom="10dp"
-                        android:background="@color/greenDark" />
-                    <!--via-->
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/layoutEditViaStudMed"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <EditText
-                            android:id="@+id/editViaStudMed"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@null"
-                            android:hint="VIA|PIAZZA"
-                            android:imeOptions="actionDone"
-                            android:inputType="text"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:textColor="@color/greenDark" />
-                    </android.support.design.widget.TextInputLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_marginBottom="20dp"
-                        android:background="@color/greenDark" />
-                </LinearLayout>
-
                 <!--orari-->
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -497,6 +413,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="ORARI DI LAVORO"
+                        android:fontFamily="@font/raleway_bold"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                         android:textColor="@color/greenDark" />
                     <!--calendario-->
@@ -963,6 +880,96 @@
                     </LinearLayout>
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="INDIRIZZO STUDIO MEDICO"
+                        android:fontFamily="@font/raleway_bold"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                        android:textColor="@color/greenDark" />
+                    <!--provincia-->
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/layoutEditProvinciaStudMed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editProvinciaStudMed"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="PROVINCIA"
+                            android:fontFamily="@font/raleway_regular"
+                            android:imeOptions="actionGo"
+                            android:inputType="text"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/greenDark" />
+                    <!--citta-->
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/layoutEditCittaStudMed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editCittaStudMed"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="CITTA|PROVINCIA"
+                            android:fontFamily="@font/raleway_regular"
+                            android:imeOptions="actionGo"
+                            android:inputType="text"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/greenDark" />
+                    <!--via-->
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/layoutEditViaStudMed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editViaStudMed"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="VIA|PIAZZA"
+                            android:fontFamily="@font/raleway_regular"
+                            android:imeOptions="actionDone"
+                            android:inputType="text"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@color/greenDark" />
+                </LinearLayout>
+
+
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>
@@ -1001,6 +1008,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="left"
                         android:text="DATI DI CONTATTO"
+                        android:fontFamily="@font/raleway_bold"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                         android:textColor="@color/greenDark" />
 
@@ -1022,6 +1030,7 @@
                             android:layout_height="wrap_content"
                             android:background="@null"
                             android:hint="EMAIL"
+                            android:fontFamily="@font/raleway_regular"
                             android:imeOptions="actionGo"
                             android:inputType="textEmailAddress"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
@@ -1046,6 +1055,7 @@
                             android:layout_height="wrap_content"
                             android:background="@null"
                             android:hint="TELEFONO"
+                            android:fontFamily="@font/raleway_regular"
                             android:imeOptions="actionGo"
                             android:inputType="phone"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
@@ -1070,6 +1080,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="left"
                         android:text="IMPOSTAZIONE PASSWORD"
+                        android:fontFamily="@font/raleway_bold"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                         android:textColor="@color/greenDark" />
 
@@ -1091,6 +1102,7 @@
                             android:background="@null"
                             android:hint="PASSWORD"
                             android:imeOptions="actionGo"
+                            android:fontFamily="@font/raleway_regular"
                             android:inputType="textPassword"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:textColor="@color/greenDark" />
@@ -1114,6 +1126,7 @@
                             android:background="@null"
                             android:hint="CONFERMA PASSWORD"
                             android:imeOptions="actionDone"
+                            android:fontFamily="@font/raleway_regular"
                             android:inputType="textPassword"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:textColor="@color/greenDark" />

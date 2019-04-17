@@ -159,7 +159,7 @@
                 android:layout_height="wrap_content">
 
                 <CheckBox
-                    android:id="@+id/restaConnessoPaz"
+                    android:id="@+id/restaConnessoPaziente"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="RESTA CONNESSO"

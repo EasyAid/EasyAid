@@ -12,9 +12,11 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -38,8 +40,14 @@ import com.easy.aid.Class.Indirizzo;
 import com.easy.aid.Class.Medico;
 import com.easy.aid.Class.NetVariables;
 import com.easy.aid.Class.TimePickerFragment;
+import com.easy.aid.Farmacia.MainFarmacia;
+import com.easy.aid.Farmacia.RegistrazioneFarmacia;
 import com.easy.aid.Paziente.RegistrazionePaziente;
 import com.easy.aid.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.sql.Time;
 import java.util.HashMap;
@@ -201,166 +209,30 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
         settimanaSera[6] = findViewById(R.id.seraDomMedico);
         settimanaSera[6].setOnClickListener(this);
 
+        cf.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    continua();
+                }
+                return true;
+            }
+        });
+
+        passwordConferma.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    continua();
+                }
+                return true;
+            }
+        });
+
         continua1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (status) {
-                    case 0: {
-                        registrazione1.setVisibility(View.GONE);
-                        registrazione2.setVisibility(View.VISIBLE);
-                        status = 1;
-                        break;
-                    }
-                    case 1: {
-                        registrazione2.setVisibility(View.GONE);
-                        registrazione3.setVisibility(View.VISIBLE);
-                        status = 2;
-                        continua1.setText(btnTextFinisci);
-                        break;
-                    }
-                    case 2: {
-                        if (global.checktime()) return;
-                        //controllo su tutti i campi
-                        //page = 1 torna alla prima pagina
-                        //page = 2 torna alla seconda pagina etc...
-                        int page = 0;
-
-                        //page = 3
-                        if (email.getText().toString().isEmpty()) {
-                            page = 3;
-                            email.setError("inserire email");
-                        } else if (!Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()) {
-                            email.setError("email non valida");
-                        }
-
-                        if (telefono.getText().toString().isEmpty()) {
-                            page = 3;
-                            telefono.setError("inserire numero di telefono");
-                        } else if (!Patterns.PHONE.matcher(telefono.getText().toString()).matches()) {
-                            page = 3;
-                            telefono.setError("numero di telefono errato");
-                        }
-
-                        if (password.getText().toString().isEmpty()) {
-                            page = 3;
-                            password.setError("inserire password");
-                        }
-                        if (password.getText().toString().length() > 20) {
-                            page = 3;
-                            password.setError("massimo 20 caratteri");
-                        }
-
-                        if (passwordConferma.getText().toString().isEmpty()) {
-                            page = 3;
-                            passwordConferma.setError("confermare la password");
-                        } else if (!passwordConferma.getText().toString().equals(password.getText().toString())) {
-                            page = 3;
-                            passwordConferma.setError("le password non coincidono");
-                        }
-
-
-                        //page = 2
-                        if (provinciaStudio.getText().toString().isEmpty()) {
-                            page = 2;
-                            provinciaStudio.setError("inserire provincia");
-                        }
-
-                        if (cittaStudio.getText().toString().isEmpty()) {
-                            page = 2;
-                            cittaStudio.setError("inserire città");
-                        }
-
-                        if (viaStudio.getText().toString().isEmpty()) {
-                            page = 2;
-                            viaStudio.setError("inserire via");
-                        }
-
-
-                        //page = 1
-
-                        if (nome.getText().toString().isEmpty()) {
-                            page = 1;
-                            nome.setError("Inserisci nome");
-                        }
-
-                        if (cognome.getText().toString().isEmpty()) {
-                            page = 1;
-                            cognome.setError("Inserisci cognome");
-                        }
-
-                        if (dataNascita.getText().toString().isEmpty()) {
-                            page = 1;
-                            dataNascita.setError("Inserisci data di nascita");
-                        }
-
-                        if (sesso.getCheckedRadioButtonId() == -1) {
-                            page = 1;
-                            maschio.setError("selezionare");
-                            femmina.setError("selezionare");
-                        }
-
-                        if (provincia.getText().toString().isEmpty()) {
-                            page = 1;
-                            provincia.setError("Inserisci provincia");
-                        }
-
-                        if (citta.getText().toString().isEmpty()) {
-                            page = 1;
-                            citta.setError("Inserisci città");
-                        }
-
-                        if (via.getText().toString().isEmpty()) {
-                            page = 1;
-                            via.setError("Inserisci via");
-                        }
-
-                        if (cf.getText().toString().isEmpty()) {
-                            page = 1;
-                            cf.setError("Inserisci codice fiscale");
-                        }
-
-                        switch (page) {
-                            case 0:
-                                //tutto giusto
-                                boolean boolMaschio = true;
-                                if (femmina.isChecked()) {
-                                    boolMaschio = false;
-                                }
-                                Indirizzo luogoNascita = new Indirizzo(provincia.getText().toString(), citta.getText().toString(), via.getText().toString());
-                                Indirizzo studio = new Indirizzo(provinciaStudio.getText().toString(), cittaStudio.getText().toString(), viaStudio.getText().toString());
-                                global.medico = new Medico(nome.getText().toString(), cognome.getText().toString(), dataNascita.getText().toString(), boolMaschio, cf.getText().toString(), luogoNascita, studio, password.getText().toString(), email.getText().toString(), telefono.getText().toString());
-                                intent = new Intent(RegistrazioneMedico.this, MainMedico.class);
-                                startActivity(intent);
-                                // TODO: 08/04/2019 crea il medico nel database
-
-                                registra();
-
-
-                                finish();
-                                break;
-
-                            case 1:
-                                //torna alla prima pagina di registrazione
-                                continua1.setText(btnTextContinua);
-                                status = 0;
-                                registrazione3.setVisibility(View.GONE);
-                                registrazione2.setVisibility(View.GONE);
-                                registrazione1.setVisibility(View.VISIBLE);
-                                break;
-
-                            case 2:
-                                //torna alla seconda pagina di registrazione
-                                continua1.setText(btnTextContinua);
-                                status = 1;
-                                registrazione3.setVisibility(View.GONE);
-                                registrazione2.setVisibility(View.VISIBLE);
-                                registrazione1.setVisibility(View.GONE);
-                                break;
-                        }
-
-                    }
-                }
-
+                continua();
             }
 
         });
@@ -662,7 +534,19 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        JSONObject jsonObject = null;
+                        try {
+                            jsonObject = new JSONObject(response);
+                            String success = jsonObject.getString("success");
+                            JSONArray jsonArray = jsonObject.getJSONArray("read");
 
+                            if (success.equals("1")) {
+                                startActivity(new Intent(RegistrazioneMedico.this, MainFarmacia.class));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(RegistrazioneMedico.this, "Error " + e.toString(), Toast.LENGTH_SHORT).show();
+                        }
                     }
                 },
                 new Response.ErrorListener() {
@@ -674,6 +558,7 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
+                params.put("table", "1");
                 params.put("codicefiscale", global.medico.getCodiceFiscale());
                 params.put("password", global.medico.getPassword());
                 params.put("nome", global.medico.getNome());
@@ -699,4 +584,159 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
         requestQueue.add(stringRequest);
     }
 
+    private void continua() {
+        switch (status) {
+            case 0: {
+                registrazione1.setVisibility(View.GONE);
+                registrazione2.setVisibility(View.VISIBLE);
+                status = 1;
+                break;
+            }
+            case 1: {
+                registrazione2.setVisibility(View.GONE);
+                registrazione3.setVisibility(View.VISIBLE);
+                status = 2;
+                continua1.setText(btnTextFinisci);
+                break;
+            }
+            case 2: {
+                //controllo su tutti i campi
+                //page = 1 torna alla prima pagina
+                //page = 2 torna alla seconda pagina etc...
+                int page = 0;
+
+                //page = 3
+                if (email.getText().toString().isEmpty()) {
+                    page = 3;
+                    email.setError("inserire email");
+                } else if (!Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()) {
+                    email.setError("email non valida");
+                }
+
+                if (telefono.getText().toString().isEmpty()) {
+                    page = 3;
+                    telefono.setError("inserire numero di telefono");
+                } else if (!Patterns.PHONE.matcher(telefono.getText().toString()).matches()) {
+                    page = 3;
+                    telefono.setError("numero di telefono errato");
+                }
+
+                if (password.getText().toString().isEmpty()) {
+                    page = 3;
+                    password.setError("inserire password");
+                }
+                if (password.getText().toString().length() > 20) {
+                    page = 3;
+                    password.setError("massimo 20 caratteri");
+                }
+
+                if (passwordConferma.getText().toString().isEmpty()) {
+                    page = 3;
+                    passwordConferma.setError("confermare la password");
+                } else if (!passwordConferma.getText().toString().equals(password.getText().toString())) {
+                    page = 3;
+                    passwordConferma.setError("le password non coincidono");
+                }
+
+
+                //page = 2
+                if (provinciaStudio.getText().toString().isEmpty()) {
+                    page = 2;
+                    provinciaStudio.setError("inserire provincia");
+                }
+
+                if (cittaStudio.getText().toString().isEmpty()) {
+                    page = 2;
+                    cittaStudio.setError("inserire città");
+                }
+
+                if (viaStudio.getText().toString().isEmpty()) {
+                    page = 2;
+                    viaStudio.setError("inserire via");
+                }
+
+
+                //page = 1
+
+                if (nome.getText().toString().isEmpty()) {
+                    page = 1;
+                    nome.setError("Inserisci nome");
+                }
+
+                if (cognome.getText().toString().isEmpty()) {
+                    page = 1;
+                    cognome.setError("Inserisci cognome");
+                }
+
+                if (dataNascita.getText().toString().isEmpty()) {
+                    page = 1;
+                    dataNascita.setError("Inserisci data di nascita");
+                }
+
+                if (sesso.getCheckedRadioButtonId() == -1) {
+                    page = 1;
+                    maschio.setError("selezionare");
+                    femmina.setError("selezionare");
+                }
+
+                if (provincia.getText().toString().isEmpty()) {
+                    page = 1;
+                    provincia.setError("Inserisci provincia");
+                }
+
+                if (citta.getText().toString().isEmpty()) {
+                    page = 1;
+                    citta.setError("Inserisci città");
+                }
+
+                if (via.getText().toString().isEmpty()) {
+                    page = 1;
+                    via.setError("Inserisci via");
+                }
+
+                if (cf.getText().toString().isEmpty()) {
+                    page = 1;
+                    cf.setError("Inserisci codice fiscale");
+                }
+
+                switch (page) {
+                    case 0:
+                        //tutto giusto
+                        boolean boolMaschio = true;
+                        if (femmina.isChecked()) {
+                            boolMaschio = false;
+                        }
+                        Indirizzo luogoNascita = new Indirizzo(provincia.getText().toString(), citta.getText().toString(), via.getText().toString());
+                        Indirizzo studio = new Indirizzo(provinciaStudio.getText().toString(), cittaStudio.getText().toString(), viaStudio.getText().toString());
+                        global.medico = new Medico(nome.getText().toString(), cognome.getText().toString(),
+                                dataNascita.getText().toString(), boolMaschio, cf.getText().toString().toUpperCase(),
+                                luogoNascita, studio, password.getText().toString(),
+                                email.getText().toString(), telefono.getText().toString());
+                        intent = new Intent(RegistrazioneMedico.this, MainMedico.class);
+                        startActivity(intent);
+                        registra();
+                        finish();
+                        break;
+
+                    case 1:
+                        //torna alla prima pagina di registrazione
+                        continua1.setText(btnTextContinua);
+                        status = 0;
+                        registrazione3.setVisibility(View.GONE);
+                        registrazione2.setVisibility(View.GONE);
+                        registrazione1.setVisibility(View.VISIBLE);
+                        break;
+
+                    case 2:
+                        //torna alla seconda pagina di registrazione
+                        continua1.setText(btnTextContinua);
+                        status = 1;
+                        registrazione3.setVisibility(View.GONE);
+                        registrazione2.setVisibility(View.VISIBLE);
+                        registrazione1.setVisibility(View.GONE);
+                        break;
+                }
+            }
+        }
+    }
 }
