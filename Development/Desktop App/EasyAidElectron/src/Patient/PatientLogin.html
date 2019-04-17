@@ -78,12 +78,18 @@
                         if (response.message == "ErrorUsername") {
                             cf.value = "";
                             cf.placeholder = "Username errato";
+                            cf.classList.add("wrong");
+                            document.getElementsByClassName("inputWithIcon")[0].classList.add("wrong");
                             psw.value = "";
-                            psw.placeholder = "Password errata";
+                            psw.placeholder = "Inserire Password";
+                            psw.classList.add("wrong");
+                            document.getElementsByClassName("inputWithIcon")[1].classList.add("wrong");
                         }
                         else if (response.message == "ErrorPassword") {
                             psw.value = "";
                             psw.placeholder = "Password errata";
+                            psw.classList.add("wrong");
+                            document.getElementsByClassName("inputWithIcon")[1].classList.add("wrong");
                         }
                         else {
                             alert("Errore sconosciuto!");
@@ -108,6 +114,10 @@
             if (eventoInvio == 13) {
                 connectDatabase();
             }
+        }
+
+        function checkInput() {
+            //non lo so ancora fare :D
         }
     </script>
 </head>
@@ -150,11 +160,11 @@
     <div class="container-fluid">
         <div class="row align-items-center" style="height:250px">
             <div class="col-6">
-                <div class="inputWithIcon">
+                <div class="inputWithIcon" onclick="checkInput()">
                     <input type="text" placeholder="Codice Fiscale" id="TextCodiceFiscale">
                     <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
                 </div>
-                <div class="inputWithIcon">
+                <div class="inputWithIcon" onclick="checkInput()">
                     <input type="password" placeholder="Password" id="TextPassword">
                     <i class="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
                 </div>

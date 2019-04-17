@@ -39,6 +39,19 @@
     background-color: #00695C;
 }
 
+.wrong {
+    color: red !important;
+    border-color: red !important;
+}
+
+.wrong::placeholder {
+    color: red !important;
+}
+
+.wrong i {
+    color: red !important;
+}
+
 .inputWithIcon input[type="text"]::placeholder, .inputWithIcon input[type="date"]::placeholder, .inputWithIcon input[type="password"]::placeholder {
     color: #00796A;
     opacity: 1;
@@ -188,6 +201,11 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus
 }
 
 #AccediButton:hover, #RegistratiButton:hover {
+    background-color: #004d40 !important;
+}
+
+#CambioPswButton:hover{
+    border-color: #004d40 !important;
     background-color: #004d40 !important;
 }
 
