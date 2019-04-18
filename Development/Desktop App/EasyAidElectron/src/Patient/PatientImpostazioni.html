@@ -15,6 +15,7 @@
     <script>
         const electron = require('electron');
         const BrowserWindow = electron.remote.BrowserWindow;
+        const session = electron.remote.session;
 
         function CloseWindow() {
             BrowserWindow.getFocusedWindow().close();
@@ -28,26 +29,42 @@
             BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientHome.html")
         }
 
-        function PasswordVisibility() {
-            if (document.getElementById("PasswordLogo").className == "fa fa-eye fa-lg fa-fw") {
-                document.getElementById("PasswordLogo").className = "fa fa-eye-slash fa-lg fa-fw";
-                document.getElementById("TextPassword").type = "text";
+        function OldPasswordVisibility() {
+            if (document.getElementById("OldPasswordLogo").className == "fa fa-eye fa-lg fa-fw") {
+                document.getElementById("OldPasswordLogo").className = "fa fa-eye-slash fa-lg fa-fw";
+                document.getElementById("TextVecchiaPassword").type = "text";
             }
             else {
-                document.getElementById("PasswordLogo").className = "fa fa-eye fa-lg fa-fw";
-                document.getElementById("TextPassword").type = "password";
+                document.getElementById("OldPasswordLogo").className = "fa fa-eye fa-lg fa-fw";
+                document.getElementById("TextVecchiaPassword").type = "password";
+            }
+        }
+
+        function NewPasswordVisibility() {
+            if (document.getElementById("NewPasswordLogo").className == "fa fa-eye fa-lg fa-fw") {
+                document.getElementById("NewPasswordLogo").className = "fa fa-eye-slash fa-lg fa-fw";
+                document.getElementById("TextNuovaPassword").type = "text";
+            }
+            else {
+                document.getElementById("NewPasswordLogo").className = "fa fa-eye fa-lg fa-fw";
+                document.getElementById("TextNuovaPassword").type = "password";
             }
         }
 
         function ConfirmPasswordVisibility() {
             if (document.getElementById("ConfirmPasswordLogo").className == "fa fa-eye fa-lg fa-fw") {
                 document.getElementById("ConfirmPasswordLogo").className = "fa fa-eye-slash fa-lg fa-fw";
-                document.getElementById("TextPasswordConfirm").type = "text";
+                document.getElementById("TextConfermaPassword").type = "text";
             }
             else {
                 document.getElementById("ConfirmPasswordLogo").className = "fa fa-eye fa-lg fa-fw";
-                document.getElementById("TextPasswordConfirm").type = "password";
+                document.getElementById("TextConfermaPassword").type = "password";
             }
+        }
+
+        function logout(){
+            session.defaultSession.clearStorageData({storages: "cookie"});
+            BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientLogin.html");
         }
     </script>
 
@@ -90,18 +107,18 @@
                 <span style="font-weight:bold">CAMBIO PASSWORD</span><br><br>
                 <div class="inputWithIcon leftalign">
                     <input type="password" placeholder="Vecchia password" id="TextVecchiaPassword">
-                    <i id="PasswordLogo" class="fa fa-eye fa-lg fa-fw" aria-hidden="true"
-                        style="margin-left: 490px; margin-top: -6px;" onclick="PasswordVisibility()"></i>
+                    <i id="OldPasswordLogo" class="fa fa-eye fa-lg fa-fw" aria-hidden="true"
+                        style="margin-left: 490px; margin-top: -6px;" onclick="OldPasswordVisibility()"></i>
                 </div><br>
                 <div class="inputWithIcon leftalign">
                     <input type="password" placeholder="Nuova password" id="TextNuovaPassword">
-                    <i id="PasswordLogo" class="fa fa-eye fa-lg fa-fw" aria-hidden="true"
-                        style="margin-left: 490px; margin-top: -6px;" onclick="PasswordVisibility()"></i>
+                    <i id="NewPasswordLogo" class="fa fa-eye fa-lg fa-fw" aria-hidden="true"
+                        style="margin-left: 490px; margin-top: -6px;" onclick="NewPasswordVisibility()"></i>
                 </div><br>
                 <div class="inputWithIcon leftalign">
                     <input type="password" placeholder="Conferma nuova password" id="TextConfermaPassword">
-                    <i id="PasswordLogo" class="fa fa-eye fa-lg fa-fw" aria-hidden="true"
-                        style="margin-left: 490px; margin-top: -6px;" onclick="PasswordVisibility()"></i>
+                    <i id="ConfirmPasswordLogo" class="fa fa-eye fa-lg fa-fw" aria-hidden="true"
+                        style="margin-left: 490px; margin-top: -6px;" onclick="ConfirmPasswordVisibility()"></i>
                 </div><br>
                 <div class="row" id="CambioPswButton" style="margin-left: 5px;  background-color: #00796A; height:60px; width: 525px; border: 3px solid; border-radius: 5px !important">
                     <div class="col-12" onclick="changePassword()"
@@ -135,10 +152,10 @@
     </div>
 
     <div class="container-fluid">
-        <div class="row" style="height:60px">
-            <div class="col-12" id="RegistratiButton" onclick="registration()"
+        <div class="row" style="height:60px" onclick="logout()">
+            <div class="col-12" id="LogoutButton" 
                 style="text-align:center; font-weight: bold; background-color: #00796A; cursor: pointer;">
-                <p style="margin-top: 18px;">REGISTRATI</p>
+                <p style="margin-top: 18px;">LOGOUT</p>
             </div>
         </div>
     </div>

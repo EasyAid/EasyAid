@@ -85,7 +85,8 @@
                             var response = JSON.parse(this.responseText);
 
                             if (response.success == "1") {
-                                BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientHome.html");
+                                alert("Registrazione completata con successo. Effettua il login");
+                                BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientLogin.html");
                             }
                             else {
                                 alert("C'è stato un errore durante la registrazione, contattaci per saperne di più");

@@ -30,6 +30,12 @@
             session.defaultSession.cookies.get({ name: 'type' }, (error, cookies) => {
                 if (cookies.length != 0) {
                     if (cookies[0].value == "patient") {
+                        session.defaultSession.cookies.get({ name: 'username' }, (error, usercookies) => {
+                            electron.remote.getGlobal("PatientShared").codiceFiscale = usercookies[0].value;
+                        });
+                        session.defaultSession.cookies.get({ name: 'password' }, (error, pwdcookies) => {
+                            electron.remote.getGlobal("PatientShared").password = pwdcookies[0].value;
+                        });
                         BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientHome.html");
                     }
                     else {

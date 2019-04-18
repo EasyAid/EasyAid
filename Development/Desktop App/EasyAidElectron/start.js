@@ -75,21 +75,21 @@ function CreateFirstWindow() {
 
 
 app.on('ready', () => {
-	//CreateSplashScreen()
-	CreateFirstWindow()
+	CreateSplashScreen()
+	//CreateFirstWindow()
 })
 
 app.on('window-all-closed', () => {
 	if (process.platform !== 'darwin') {
-		session.defaultSession.clearStorageData({storages: "cookie"});
+		//session.defaultSession.clearStorageData({storages: "cookie"});
 		app.quit()
 	}
 })
 
 app.on('activate', () => {
 	if (win === null) {
-		//CreateSplashScreen()
-		CreateFirstWindow()
+		CreateSplashScreen()
+		//CreateFirstWindow()
 	}
 })
 

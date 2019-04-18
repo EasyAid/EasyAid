@@ -55,18 +55,18 @@
                         electron.remote.getGlobal("PatientShared").id = response.read[0].id;
                         electron.remote.getGlobal("PatientShared").nome = response.read[0].nome;
                         electron.remote.getGlobal("PatientShared").cognome = response.read[0].cognome;
-                        electron.remote.getGlobal("PatientShared").dataNascita = response.read[0].dataNascita;
+                        electron.remote.getGlobal("PatientShared").dataNascita = response.read[0].datanascita;
                         electron.remote.getGlobal("PatientShared").sesso = response.read[0].sesso;
-                        electron.remote.getGlobal("PatientShared").provinciaNascita = response.read[0].provinciaNascita;
-                        electron.remote.getGlobal("PatientShared").cittaNascita = response.read[0].cittaNascita;
-                        electron.remote.getGlobal("PatientShared").provinciaResidenza = response.read[0].provinciaResidenza;
-                        electron.remote.getGlobal("PatientShared").cittaResidenza = response.read[0].cittaResidenza;
-                        electron.remote.getGlobal("PatientShared").viaResidenza = response.read[0].viaResidenza;
+                        electron.remote.getGlobal("PatientShared").provinciaNascita = response.read[0].provincianascita;
+                        electron.remote.getGlobal("PatientShared").cittaNascita = response.read[0].cittanascita;
+                        electron.remote.getGlobal("PatientShared").provinciaResidenza = response.read[0].provinciaresidenza;
+                        electron.remote.getGlobal("PatientShared").cittaResidenza = response.read[0].cittaresidenza;
+                        electron.remote.getGlobal("PatientShared").viaResidenza = response.read[0].viaresidenza;
                         document.getElementById("name_surname").innerHTML = electron.remote.getGlobal("PatientShared").nome + " " + electron.remote.getGlobal("PatientShared").cognome;
                     }
                 }
             };
-            xhttp.open("GET", "http://99.80.72.24/read.php?table=Paziente&cf=" + electron.remote.getGlobal("PatientShared").codiceFiscale + "&password=" + electron.remote.getGlobal("PatientShared").password, true);
+            xhttp.open("GET", "http://99.80.72.24/read.php?table=0&cf=" + electron.remote.getGlobal("PatientShared").codiceFiscale + "&password=" + electron.remote.getGlobal("PatientShared").password, true);
             xhttp.send();
         }
     </script>
