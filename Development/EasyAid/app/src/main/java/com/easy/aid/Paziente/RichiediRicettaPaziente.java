@@ -220,7 +220,8 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
                 params.put("table", "3");
                 params.put("idmedico", "1");
                 params.put("idpaziente", String.valueOf(global.paziente.getID()));
-                params.put("idfarmaco", global.farmaci.get(autoComp.getText().toString()).getID());
+                params.put("idpaziente", String.valueOf(global.paziente.getID()));
+                params.put("idfarmaco", String.valueOf(global.farmaci.get(autoComp.getText().toString()).getId().get(dropdown.getSelectedItemPosition())));
                 params.put("numeroscatole", "1");
                 params.put("descrizione", descPatologia.getText().toString());
                 params.put("esenzionepatologia", "false");

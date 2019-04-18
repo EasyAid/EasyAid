@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public class Farmaco {
 
-    private String id;
+    private ArrayList id;
     private String nome;
     private ArrayList quatitaEuso;
     private ArrayList prezzo;
 
-
     public Farmaco(String id, String nome, String quantitaEuso, String prezzo) {
-        this.id = id;
+        this.id = new ArrayList();
+        this.id.add(id);
         this.nome = nome;
         this.quatitaEuso = new ArrayList();
         this.quatitaEuso.add(quantitaEuso);
@@ -43,11 +43,11 @@ public class Farmaco {
         this.prezzo.add(prezzo);
     }
 
-    public String getID() {
+    public ArrayList getId() {
         return id;
     }
 
-    public void setID(String id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id.add(id);
     }
 }
