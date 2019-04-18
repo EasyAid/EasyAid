@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
 	    VALUES ('$NomeFarmacia', '$Telefono', '$Email', '$Provincia', '$Citta', '$Via', '$Password')";
 
 	    //IMPORTANTE//
-	    //LETTURA ID MEDICO
+	    //LETTURA ID FARMACIA
 	    /*
 	    $sql = "SELECT IdMedico FROM Medico WHERE CodiceFiscale = '$CodiceFiscale' ";
     	$response = mysqli_query($conn, $sql);
