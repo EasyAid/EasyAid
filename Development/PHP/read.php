@@ -33,13 +33,13 @@ if ($_SERVER['REQUEST_METHOD']=='POST'|| $_SERVER['REQUEST_METHOD']=='GET') {
                     $h['id']                   = $row['IdPaziente'] ;
                     $h['nome']                 = $row['Nome'] ;
                     $h['cognome']              = $row['Cognome'] ;
-                    $h['dataNascita']          = $row['DataNascita'] ;
-                    $h['codiceFiscale']        = $row['CodiceFiscale'] ;
-                    $h['provinciaNascita']     = $row['ProvinciaNascita'] ;
-                    $h['cittaNascita']         = $row['CittaNascita'] ;
-                    $h['provinciaResidenza']   = $row['ProvinciaResidenza'] ;
-                    $h['cittaResidenza']       = $row['CittaResidenza'] ;
-                    $h['viaResidenza']         = $row['ViaResidenza'] ;
+                    $h['datanascita']          = $row['DataNascita'] ;
+                    $h['codicefiscale']        = $row['CodiceFiscale'] ;
+                    $h['provincianascita']     = $row['ProvinciaNascita'] ;
+                    $h['cittanascita']         = $row['CittaNascita'] ;
+                    $h['provinciaresidenza']   = $row['ProvinciaResidenza'] ;
+                    $h['cittaresidenza']       = $row['CittaResidenza'] ;
+                    $h['viaresidenza']         = $row['ViaResidenza'] ;
                     break;
                 
                 case 1:

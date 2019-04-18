@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
-    tools:context=".Paziente.RichiestaVisitaPaziente">
+    tools:context=".Paziente.RichiediVisitaPaziente">
 
 
     <LinearLayout
@@ -61,12 +61,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:visibility="gone"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginBottom="20dp">
 
             <TextView
+                android:id="@+id/nomeCognomeMedicoRichiediVisitaPaziente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
@@ -74,16 +74,17 @@
                 android:layout_marginBottom="10dp"
                 android:textColor="@color/greenDark"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                android:text="MEDICO DI BASE: NOME COGNOME"/>
+                android:text="MEDICO DI BASE:"/>
 
             <TextView
+                android:id="@+id/nomeCognomePazienteRichiediVisitaPaziente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:fontFamily="serif"
                 android:textColor="@color/greenDark"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                android:text="PAZIENTE: NOME COGNOME"/>
+                android:text="PAZIENTE:"/>
         </LinearLayout>
 
         <LinearLayout

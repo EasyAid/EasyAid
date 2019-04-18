@@ -41,6 +41,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.easy.aid.Class.NetVariables;
+import com.easy.aid.Medico.MainMedico;
+import com.easy.aid.Medico.RegistrazioneMedico;
 import com.easy.aid.R;
 
 import java.text.SimpleDateFormat;
@@ -68,6 +70,7 @@ public class RegistrazionePaziente extends AppCompatActivity {
     private RadioGroup sessoRadio;
     private RadioButton maschio, femmina;
     private String sesso;
+    private Intent intent;
 
     private ScrollView[] registrazione;
     private int step = 0;
@@ -391,6 +394,9 @@ public class RegistrazionePaziente extends AppCompatActivity {
 
     private void Registrazione() {
 
+        intent = new Intent(RegistrazionePaziente.this, MainPaziente.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+
         if (sessoRadio.getCheckedRadioButtonId() == maschio.getId()) {
             sesso = "Maschio";
         } else {
@@ -401,7 +407,9 @@ public class RegistrazionePaziente extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
+                        intent.putExtra("CF", codiceFiscale.getText().toString());
+                        startActivity(intent);
+                        finish();
                     }
                 },
                 new Response.ErrorListener() {

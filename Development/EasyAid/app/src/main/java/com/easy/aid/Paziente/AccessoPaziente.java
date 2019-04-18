@@ -65,9 +65,6 @@ public class AccessoPaziente extends AppCompatActivity {
 
         global = (NetVariables) this.getApplication();
 
-        global.prefs = this.getSharedPreferences(
-                "com.easy.aid.Paziente", Context.MODE_PRIVATE);
-
 
         setContentView(R.layout.paziente_accesso);
 

@@ -28,6 +28,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.easy.aid.Class.Medico;
 import com.easy.aid.Class.NetVariables;
+import com.easy.aid.Farmacia.MainFarmacia;
+import com.easy.aid.InitialSplashScreen;
 import com.easy.aid.Medico.AccessoMedico;
 import com.easy.aid.Medico.MainMedico;
 import com.easy.aid.R;

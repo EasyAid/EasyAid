@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/all_empty_round"
-        android:padding="5dp"
+        android:padding="10dp"
         android:orientation="vertical"
         android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
@@ -20,13 +20,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/greenDark"
+            android:fontFamily="@font/raleway_bold"
+            android:layout_marginBottom="10dp"
+            android:textAlignment="center"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:text="RICETTA 1"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RICETTA 1"/>
+            android:layout_marginBottom="10dp"
+            android:text="NOME FARMACO"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="DESCRIZIONE"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PREZZO: "/>
 
 
     </LinearLayout>

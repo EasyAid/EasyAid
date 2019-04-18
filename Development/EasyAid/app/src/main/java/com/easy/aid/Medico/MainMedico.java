@@ -3,6 +3,7 @@ package com.easy.aid.Medico;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Build;
+import android.os.CountDownTimer;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +27,7 @@ import com.easy.aid.Class.Indirizzo;
 import com.easy.aid.Class.Medico;
 import com.easy.aid.Class.NetVariables;
 import com.easy.aid.Class.Paziente;
+import com.easy.aid.InitialSplashScreen;
 import com.easy.aid.MainActivity;
 import com.easy.aid.Paziente.MainPaziente;
 import com.easy.aid.R;
@@ -52,6 +55,10 @@ public class MainMedico extends AppCompatActivity {
     private LinearLayout impostazioni;
     private LinearLayout cronologia;
     private LinearLayout calendario;
+
+    private LinearLayout splash;
+    private RelativeLayout noSplash;
+
     private Intent intent;
 
     @Override
@@ -59,9 +66,35 @@ public class MainMedico extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.medico_main);
 
+        splash = findViewById(R.id.splashMainMedico);
+        noSplash = findViewById(R.id.noSplahMainMedico);
+
+        nomeCognome = findViewById(R.id.nomeCognomeMed);
+
         global = (NetVariables) this.getApplication();
         Bundle bundle = getIntent().getExtras();
-        Read(bundle.getString("CF"));
+
+        if(global.medico != null){
+            nomeCognome.setText(("BENVENUTO\n" + global.medico.getNome().toUpperCase() + " " + global.medico.getCognome().toUpperCase()));
+        }else{
+            splash.setVisibility(View.VISIBLE);
+            noSplash.setVisibility(View.GONE);
+
+            Read(bundle.getString("CF"));
+
+            new CountDownTimer(1000, 1000) {
+
+                public void onTick(long millisUntilFinished) {
+                }
+
+                public void onFinish() {
+
+                }
+
+            }.start();
+
+        }
+
 
         //CONTROLLA LE API DEL TELEFONO, SE MAGGIORI DI MARSHMELLOW MODIFICA IL COLORE DEL TESTO DELLA NOTIFICATION BAR IN CHIARO
         //ALTRIMENTI SE E' INFERIORE ALLE API 23 MODIFICA LA NOTIFICATION BAR IN COLORE SCURO (IN QUANTO NON PUO MODIFICARE IL COLORE DEL TESTO)
@@ -75,9 +108,8 @@ public class MainMedico extends AppCompatActivity {
                     .getColor(getApplicationContext(), R.color.colorAccent));
         }
 
-        nomeCognome = findViewById(R.id.nomeCognomeMed);
-
         richiesteRicette = (LinearLayout) findViewById(R.id.richiestaRicettaMed);
+
         richiesteRicette.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +117,7 @@ public class MainMedico extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         impostazioni = (LinearLayout) findViewById(R.id.impostazioniMed);
         impostazioni.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +126,7 @@ public class MainMedico extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         cronologia = (LinearLayout) findViewById(R.id.cronologiaMed);
         cronologia.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,6 +134,7 @@ public class MainMedico extends AppCompatActivity {
                 intent = new Intent(MainMedico.this, CronologiaMedico.class);
             }
         });
+
         calendario = (LinearLayout) findViewById(R.id.calendarioMed);
         calendario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,6 +187,8 @@ public class MainMedico extends AppCompatActivity {
                                         resultPassword, resultEmail, resultTelefono);
 
                                 nomeCognome.setText(("BENVENUTO\n" + resultNome.toUpperCase() + " " + resultCognome.toUpperCase()));
+                                splash.setVisibility(View.GONE);
+                                noSplash.setVisibility(View.VISIBLE);
                             }
 
                         } catch (JSONException e) {

@@ -119,7 +119,7 @@ public class AccessoFarmacia extends AppCompatActivity {
                             JSONArray jsonArray = jsonObject.getJSONArray("login");
 
                             if (success.equals("1")){
-                                intent.putExtra("CF", sCF);
+                                intent.putExtra("Email", sCF);
                                 startActivity(intent);
                                 finish();
                             }else{

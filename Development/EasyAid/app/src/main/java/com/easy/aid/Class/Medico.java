@@ -93,7 +93,7 @@ public class Medico {
     }
 
     static public boolean getStringSesso(String sesso) {
-        if (sesso.toUpperCase() == "MASCHIO") return true;
+        if (sesso.toUpperCase().equals("MASCHIO")) return true;
         return false;
     }
 

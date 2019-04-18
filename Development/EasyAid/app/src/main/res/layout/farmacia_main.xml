@@ -77,7 +77,6 @@
                     android:textAlignment="center"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:textColor="@color/greenDark" />
-
             </LinearLayout>
 
             <!-- Calendario -->

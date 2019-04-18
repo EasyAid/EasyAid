@@ -2,6 +2,7 @@ package com.easy.aid.Paziente;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -61,11 +62,10 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
     private TextView nomeCognomePaz, nomeCognomeMed, usoFarmaco, prezzoFarmaco;
     private EditText descPatologia;
     private AutoCompleteTextView autoComp;
-    private NetVariables c;
+    private NetVariables global;
     private Spinner dropdown;
     private boolean set = false;
     private Button invia;
-    private String sql;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +86,7 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-        c  = ((NetVariables) this.getApplication());
+        global  = ((NetVariables) this.getApplication());
 
         nomeCognomePaz  = findViewById(R.id.nomeCognomePazienteRichiediRicettaPaziente);
         nomeCognomeMed  = findViewById(R.id.nomeCognomeMedicoRichiediRicettaPaz);
@@ -95,9 +95,9 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
         invia           = findViewById(R.id.inviaRichiestaPaz);
         descPatologia = findViewById(R.id.descPatologiaRichiediRicettaPaz);
 
-        nomeCognomePaz.setText(Html.fromHtml(nomeCognomePaz.getText().toString() + "<br><b>" + c.paziente.getCognome().toUpperCase() +" " + c.paziente.getNome().toUpperCase() + "<b>"));
+        nomeCognomePaz.setText(Html.fromHtml(nomeCognomePaz.getText().toString() + "<br><b>" + global.paziente.getCognome().toUpperCase() +" " + global.paziente.getNome().toUpperCase() + "<b>"));
 
-        Set<String> keys = c.farmaci.keySet();
+        Set<String> keys = global.farmaci.keySet();
         String[] nomeFarmaci = keys.toArray(new String[keys.size()]);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
@@ -128,7 +128,7 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(c.farmaci.containsKey(autoComp.getText().toString())){
+                if(global.farmaci.containsKey(autoComp.getText().toString())){
                     autoCompleteUsoEQuantita(0);
                     hideKeyboard();
                 }else{
@@ -156,9 +156,20 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
         invia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //if(!autoComp.getText().toString().isEmpty()&&!descPatologia.getText().toString().isEmpty()){
-                Invia();
-                //}
+                if(!autoComp.getText().toString().isEmpty()&&!descPatologia.getText().toString().isEmpty()&&global.farmaci.containsKey(autoComp.getText().toString())){
+                    Invia();
+                }else{
+                    if(autoComp.getText().toString().isEmpty()){
+                        autoComp.setError("Inserisci farmaco");
+                    }else if(!global.farmaci.containsKey(autoComp.getText().toString())){
+                        autoComp.setText("");
+                        autoComp.setError("Inserisci un farmaco valido");
+                    }
+
+                    if(descPatologia.getText().toString().isEmpty()){
+                        descPatologia.setError("Inserisci una descrizione");
+                    }
+                }
             }
         });
 
@@ -168,12 +179,12 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
 
         if(pos == 0){
             set = true;
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, c.farmaci.get(autoComp.getText().toString()).getQuatitaEuso());
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, global.farmaci.get(autoComp.getText().toString()).getQuatitaEuso());
             dropdown.setAdapter(adapter);
-            String supp  = "PREZZO: <b>" + c.farmaci.get(autoComp.getText().toString()).getPrezzo().get(dropdown.getSelectedItemPosition()) + "€</b>";
+            String supp  = "PREZZO: <b>" + global.farmaci.get(autoComp.getText().toString()).getPrezzo().get(dropdown.getSelectedItemPosition()) + "€</b>";
             prezzoFarmaco.setText(Html.fromHtml(supp));
         }else if(pos == -1) {
-            String supp  = "PREZZO: <b>" + c.farmaci.get(autoComp.getText().toString()).getPrezzo().get(dropdown.getSelectedItemPosition()) + "€</b>";
+            String supp  = "PREZZO: <b>" + global.farmaci.get(autoComp.getText().toString()).getPrezzo().get(dropdown.getSelectedItemPosition()) + "€</b>";
             prezzoFarmaco.setText(Html.fromHtml(supp));
         }else {
             set = true;
@@ -187,14 +198,12 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
 
     private void Invia() {
 
-        sql = "INSERT INTO Ricetta (IdMedico, IdPaziente, IdFarmaco, NumeroScatole, Descrizione, EsenzionePatologia, EsenzioneReddito, StatoRichiesta, Data, Ora) " +
-                "VALUES (1, 1, 1, 2, 'Sto morendo', 1, 0, 'IN ATTESA', '2019-03-12', '16:42');";
-
         StringRequest stringRequest = new StringRequest(Request.Method.POST, NetVariables.URL_INSERT,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
+                        Toast.makeText(getApplicationContext(), "Richiesta inviata", Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 },
                 new Response.ErrorListener() {
@@ -207,7 +216,18 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("sql", sql);
+                //todo migliora
+                params.put("table", "3");
+                params.put("idmedico", "1");
+                params.put("idpaziente", String.valueOf(global.paziente.getID()));
+                params.put("idfarmaco", global.farmaci.get(autoComp.getText().toString()).getID());
+                params.put("numeroscatole", "1");
+                params.put("descrizione", descPatologia.getText().toString());
+                params.put("esenzionepatologia", "false");
+                params.put("esenzionereddito", "false");
+                params.put("statorichiesta", "IN ATTESA");
+                params.put("data", "2019-04-19");
+                params.put("ora", "11:11");
                 return params;
             }
         };
@@ -215,7 +235,6 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
 
-        finish();
 
     }
 

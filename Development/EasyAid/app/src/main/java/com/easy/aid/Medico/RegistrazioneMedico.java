@@ -42,6 +42,9 @@ import com.easy.aid.Class.NetVariables;
 import com.easy.aid.Class.TimePickerFragment;
 import com.easy.aid.Farmacia.MainFarmacia;
 import com.easy.aid.Farmacia.RegistrazioneFarmacia;
+import com.easy.aid.InitialSplashScreen;
+import com.easy.aid.Paziente.AccessoPaziente;
+import com.easy.aid.Paziente.MainPaziente;
 import com.easy.aid.Paziente.RegistrazionePaziente;
 import com.easy.aid.R;
 
@@ -530,6 +533,10 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
     }
 
     private void registra() {
+
+        intent = new Intent(RegistrazioneMedico.this, MainMedico.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, NetVariables.URL_REGISTER,
                 new Response.Listener<String>() {
                     @Override
@@ -538,10 +545,11 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
                         try {
                             jsonObject = new JSONObject(response);
                             String success = jsonObject.getString("success");
-                            JSONArray jsonArray = jsonObject.getJSONArray("read");
 
                             if (success.equals("1")) {
-                                startActivity(new Intent(RegistrazioneMedico.this, MainFarmacia.class));
+                                intent.putExtra("CF", global.medico.getCodiceFiscale());
+                                startActivity(intent);
+                                finish();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -563,8 +571,11 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
                 params.put("password", global.medico.getPassword());
                 params.put("nome", global.medico.getNome());
                 params.put("cognome", global.medico.getCognome());
-                params.put("datanascita", global.medico.getDataNascita());
-                params.put("sesso", global.medico.getStringSesso());
+                params.put("datanascita", "2000-03-18");
+
+                if(global.medico.getSesso()) params.put("sesso", "Maschio");
+                else params.put("sesso", "Femmina");
+
                 params.put("provincianascita", global.medico.getIndirizzoNascita().getProvincia());
                 params.put("cittanascita", global.medico.getIndirizzoNascita().getCitta());
 
@@ -706,16 +717,15 @@ public class RegistrazioneMedico extends AppCompatActivity implements TimePicker
                         if (femmina.isChecked()) {
                             boolMaschio = false;
                         }
+
                         Indirizzo luogoNascita = new Indirizzo(provincia.getText().toString(), citta.getText().toString(), via.getText().toString());
                         Indirizzo studio = new Indirizzo(provinciaStudio.getText().toString(), cittaStudio.getText().toString(), viaStudio.getText().toString());
                         global.medico = new Medico(nome.getText().toString(), cognome.getText().toString(),
                                 dataNascita.getText().toString(), boolMaschio, cf.getText().toString().toUpperCase(),
                                 luogoNascita, studio, password.getText().toString(),
                                 email.getText().toString(), telefono.getText().toString());
-                        intent = new Intent(RegistrazioneMedico.this, MainMedico.class);
-                        startActivity(intent);
+
                         registra();
-                        finish();
                         break;
 
                     case 1:

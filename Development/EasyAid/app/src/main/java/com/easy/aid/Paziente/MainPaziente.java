@@ -2,6 +2,7 @@ package com.easy.aid.Paziente;
 
 import android.content.Intent;
 import android.os.Build;
+import android.os.CountDownTimer;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,17 +50,16 @@ public class MainPaziente extends AppCompatActivity {
     private LinearLayout richiediVisRic, ordinaRicetta, impostazioni, cronologia;
     private int close=0;
     private TextView nomeCognome;
-    private static String URL_LOGIN = "http://99.80.72.24/read.php";
 
-    public NetVariables netVariables;
+    private LinearLayout splash;
+    private RelativeLayout noSplash;
+    public NetVariables global;
     private String sCF;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.paziente_main);
-
-        netVariables = (NetVariables) this.getApplication();
 
         //CONTROLLA LE API DEL TELEFONO, SE MAGGIORI DI MARSHMELLOW MODIFICA IL COLORE DEL TESTO DELLA NOTIFICATION BAR IN CHIARO
         //ALTRIMENTI SE E' INFERIORE ALLE API 23 MODIFICA LA NOTIFICATION BAR IN COLORE SCURO (IN QUANTO NON PUO MODIFICARE IL COLORE DEL TESTO)
@@ -72,17 +73,40 @@ public class MainPaziente extends AppCompatActivity {
                     .getColor(getApplicationContext(),R.color.colorAccent));
         }
 
+        splash = findViewById(R.id.splashMainPaziente);
+        noSplash = findViewById(R.id.noSplahMainPaziente);
+        nomeCognome = findViewById(R.id.nomeCognomePaz);
 
         Bundle bundle = getIntent().getExtras();
-        sCF = bundle.getString("CF");
 
-        Read(sCF);
+        global = (NetVariables) this.getApplication();
+
+        if(global.paziente != null){
+            nomeCognome.setText(("BENVENUTO\n" + global.paziente.getNome().toUpperCase() + " " + global.paziente.getCognome().toUpperCase()));
+        }else{
+            splash.setVisibility(View.VISIBLE);
+            noSplash.setVisibility(View.GONE);
+
+            Read(bundle.getString("CF"));
+
+            new CountDownTimer(1000, 1000) {
+
+                public void onTick(long millisUntilFinished) {
+                }
+
+                public void onFinish() {
+
+                }
+
+            }.start();
+
+        }
 
         richiediVisRic = findViewById(R.id.richiediVisitaRicettaPaz);
         ordinaRicetta = findViewById(R.id.ordinaRicettaPaz);
         impostazioni = findViewById(R.id.impostazioniPaz);
         cronologia = findViewById(R.id.cronologiaPaz);
-        nomeCognome = findViewById(R.id.nomeCognomePaz);
+
 
         richiediVisRic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,7 +142,7 @@ public class MainPaziente extends AppCompatActivity {
 
     private void Read(final String sCF) {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, global.URL_READ,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -130,24 +154,26 @@ public class MainPaziente extends AppCompatActivity {
 
                             if (success.equals("1")){
 
-                                for(int i=0; i<1;i++){
-                                    JSONObject object = jsonArray.getJSONObject(i);
-                                    int id = object.getInt("id");
-                                    String nome = object.getString("nome");
-                                    String cognome = object.getString("cognome");
-                                    String dataNascita = object.getString("datanascita");
-                                    String codiceFiscale = object.getString("codicefiscale");
-                                    String provinciaNascita = object.getString("provincianascita");
-                                    String cittaNascita = object.getString("cittanascita");
-                                    String provinciaResidenza = object.getString("provinciaresidenza");
-                                    String cittaResidenza = object.getString("cittaresidenza");
-                                    String viaResidenza = object.getString("viaresidenza");
-                                    Indirizzo nascita = new Indirizzo(provinciaNascita,cittaNascita,null,null);
-                                    Indirizzo residenza = new Indirizzo(provinciaResidenza,cittaResidenza,viaResidenza,null);
-                                    netVariables.paziente = new Paziente(id, nome,cognome,dataNascita,codiceFiscale,nascita,residenza,null,null);
-                                    nomeCognome.setText(("BENVENUTO\n" + nome.toUpperCase() + " " + cognome.toUpperCase()));
-                                }
+                                JSONObject object = jsonArray.getJSONObject(0);
+                                int id = object.getInt("id");
+                                String nome = object.getString("nome");
+                                String cognome = object.getString("cognome");
+                                String dataNascita = object.getString("datanascita");
+                                String codiceFiscale = object.getString("codicefiscale");
+                                String provinciaNascita = object.getString("provincianascita");
+                                String cittaNascita = object.getString("cittanascita");
+                                String provinciaResidenza = object.getString("provinciaresidenza");
+                                String cittaResidenza = object.getString("cittaresidenza");
+                                String viaResidenza = object.getString("viaresidenza");
+                                Indirizzo nascita = new Indirizzo(provinciaNascita,cittaNascita,null,null);
+                                Indirizzo residenza = new Indirizzo(provinciaResidenza,cittaResidenza,viaResidenza,null);
+                                global.paziente = new Paziente(id, nome,cognome,dataNascita,codiceFiscale,nascita,residenza,null,null);
+                                nomeCognome.setText(("BENVENUTO\n" + nome.toUpperCase() + " " + cognome.toUpperCase()));
+
                             }
+                            splash.setVisibility(View.GONE);
+                            noSplash.setVisibility(View.VISIBLE);
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(MainPaziente.this, "Error " + e.toString() , Toast.LENGTH_SHORT).show();

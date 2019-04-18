@@ -8,12 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
-import com.easy.aid.Class.Paziente;
 import com.easy.aid.R;
 
 /**
@@ -61,7 +58,7 @@ public class RichiediVisitaRicettaPaziente extends AppCompatActivity {
         richiediVisita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(RichiediVisitaRicettaPaziente.this, RichiestaVisitaPaziente.class);
+                Intent i = new Intent(RichiediVisitaRicettaPaziente.this, RichiediVisitaPaziente.class);
                 startActivity(i);
                 finish();
             }

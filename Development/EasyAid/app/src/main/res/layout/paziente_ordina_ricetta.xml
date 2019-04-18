@@ -67,10 +67,10 @@
 
 
         <LinearLayout
+            android:id="@+id/linearAddFarmacoOrdinaFarmacoPaziente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:visibility="gone"
             android:orientation="vertical">
 
             <LinearLayout
@@ -83,8 +83,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <EditText
-                        android:id="@+id/nomeFarmacoOrdinaFarmacoPaziente"
+                    <AutoCompleteTextView
+                        android:id="@+id/autoCompleteNomeFarmacoOrdinaPaziente"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
@@ -135,6 +135,7 @@
                         android:text="-"/>
 
                     <EditText
+                        android:id="@+id/numeroOrdinaFarmacoPaziente"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@null"
@@ -171,11 +172,11 @@
 
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/my_recycler_view"
+            android:id="@+id/recyclerViewOrdinaFarmaco"
             android:scrollbars="horizontal"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
 
     </RelativeLayout>
 

@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.easy.aid.Class.NetVariables;
 import com.easy.aid.Farmacia.AccessoFarmacia;
+import com.easy.aid.Farmacia.MainFarmacia;
 import com.easy.aid.Medico.AccessoMedico;
 import com.easy.aid.Medico.MainMedico;
 import com.easy.aid.Paziente.AccessoPaziente;
@@ -36,31 +37,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //RESTA CONNESSO
-        netVariables = (NetVariables) this.getApplication();
-
-        netVariables.prefs = this.getSharedPreferences(
-                "com.easy.aid.Paziente", Context.MODE_PRIVATE);
-
-        if(netVariables.prefs.getString("CF", null) != null){
-
-            if(netVariables.prefs.getString("settore", null).equals("Paziente")){
-                intent = new Intent(MainActivity.this, MainPaziente.class);
-
-            }else if(netVariables.prefs.getString("settore", null).equals("Medico")){
-                intent = new Intent(MainActivity.this, MainMedico.class);
-
-            }else if(netVariables.prefs.getString("settore", null).equals("Farmacia")){
-
-            }
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.putExtra("CF", netVariables.prefs.getString("CF", null));
-            startActivity(intent);
-            finish();
-        }
-
-
         setContentView(R.layout.activity_main);
         global = (NetVariables)this.getApplication();
 

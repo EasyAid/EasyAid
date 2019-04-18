@@ -412,7 +412,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="ORARI DI LAVORO"
+                        android:text="IMPOSTA ORARI DI LAVORO"
                         android:fontFamily="@font/raleway_bold"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                         android:textColor="@color/greenDark" />
