@@ -12,6 +12,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import com.easy.aid.Class.NetVariables;
+import com.easy.aid.InitialSplashScreen;
 import com.easy.aid.MainActivity;
 import com.easy.aid.R;
 
@@ -19,12 +21,14 @@ public class ImpostazioniMedico extends AppCompatActivity {
 
     private Button logout;
     private Intent intent;
+    private NetVariables global;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.medico_impostazioni);
 
+        global = (NetVariables) this.getApplication();
         //CONTROLLA LE API DEL TELEFONO, SE MAGGIORI DI MARSHMELLOW MODIFICA IL COLORE DEL TESTO DELLA NOTIFICATION BAR IN CHIARO
         //ALTRIMENTI SE E' INFERIORE ALLE API 23 MODIFICA LA NOTIFICATION BAR IN COLORE SCURO (IN QUANTO NON PUO MODIFICARE IL COLORE DEL TESTO)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -41,10 +45,11 @@ public class ImpostazioniMedico extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                global.medico = null;
                 SharedPreferences settings = getApplicationContext().getSharedPreferences("com.easy.aid", Context.MODE_PRIVATE);
                 settings.edit().clear().apply();
+                intent = new Intent(ImpostazioniMedico.this, InitialSplashScreen.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent = new Intent(ImpostazioniMedico.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }

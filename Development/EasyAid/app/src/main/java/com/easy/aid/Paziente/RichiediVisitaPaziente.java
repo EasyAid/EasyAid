@@ -153,7 +153,7 @@ public class RichiediVisitaPaziente extends AppCompatActivity {
                 //todo migliora
                 params.put("table", "4");
                 params.put("idpaziente", String.valueOf(global.paziente.getID()));
-                params.put("idmedico", "1");
+                params.put("idmedico", "2");
                 params.put("statorichiesta", "IN ATTESA");
                 params.put("data", "2019-04-19");
                 params.put("ora", "11:11");

@@ -144,7 +144,7 @@ public class InitialSplashScreen extends AppCompatActivity {
                                     Indirizzo residenza = new Indirizzo(provinciaResidenza,cittaResidenza,viaResidenza,null);
                                     global.paziente = new Paziente(id, nome,cognome,dataNascita,codiceFiscale,nascita,residenza,null,null);
 
-                                    readRicette();
+                                    readRicette(0);
                                 }else if(settore.equals("Medico")){
 
                                     int id = object.getInt("id");
@@ -170,18 +170,7 @@ public class InitialSplashScreen extends AppCompatActivity {
                                             resultCf, resultLuogonascita, resultLuogostudio,
                                             resultPassword, resultEmail, resultTelefono);
 
-                                    new CountDownTimer(1000, 1000) {
-
-                                        public void onTick(long millisUntilFinished) {
-                                        }
-
-                                        public void onFinish() {
-                                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                            startActivity(intent);
-                                            finish();
-                                        }
-
-                                    }.start();
+                                    readRicette(1);
 
                                 }else if(settore.equals("Farmacia")){
 
@@ -324,7 +313,7 @@ public class InitialSplashScreen extends AppCompatActivity {
         }
     }
 
-    private void readRicette(){
+    private void readRicette(final int r){
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, global.URL_READ,
                 new Response.Listener<String>() {
@@ -383,8 +372,13 @@ public class InitialSplashScreen extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
 
                 params.put("table", "4");
-                params.put("id", "0");
-                params.put("cf", String.valueOf(global.paziente.getID()));
+                if(r == 0){
+                    params.put("id", "0");
+                    params.put("cf", String.valueOf(global.paziente.getID()));
+                }else{
+                    params.put("id", "1");
+                    params.put("cf", "2");
+                }
 
                 return params;
             }

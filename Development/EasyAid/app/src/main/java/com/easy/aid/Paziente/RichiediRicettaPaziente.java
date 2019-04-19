@@ -218,7 +218,7 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 //todo migliora
                 params.put("table", "3");
-                params.put("idmedico", "1");
+                params.put("idmedico", "2");
                 params.put("idpaziente", String.valueOf(global.paziente.getID()));
                 params.put("idfarmaco", String.valueOf(global.farmaci.get(autoComp.getText().toString()).getId().get(dropdown.getSelectedItemPosition())));
                 params.put("numeroscatole", "1");

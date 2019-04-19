@@ -28,8 +28,10 @@ public class AdapterOrdinaFarmaco extends RecyclerView.Adapter<AdapterOrdinaFarm
     private Map<String, Farmaco> farmaci;
     private List<Ricetta> ordine;
     private Context context;
+    private int utente;
 
-    public AdapterOrdinaFarmaco(List<Ricetta> ricette, Map<String, Farmaco> farmaci, Context context, List<Ricetta> ordine) {
+    public AdapterOrdinaFarmaco(int id, List<Ricetta> ricette, Map<String, Farmaco> farmaci, Context context, List<Ricetta> ordine) {
+        this.utente = id;
         this.ricette = new ArrayList<>();
         this.ricette.addAll(ricette);
         this.farmaci = farmaci;
@@ -46,27 +48,40 @@ public class AdapterOrdinaFarmaco extends RecyclerView.Adapter<AdapterOrdinaFarm
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+
         holder.titolo.setText(("RICETTA " + ricette.get(position).getIdRicetta()));
         int id = ricette.get(position).getIdFarmaco();
         Farmaco farmaco = farmaci.get(String.valueOf(id));
         String supp;
         supp = ("NOME<br><b>" + farmaco.getNome()+"</b>");
         holder.nome.setText(Html.fromHtml(supp));
-        supp = ("DESCRIZIONE<br><b>" + farmaco.getQuatitaEusoString(String.valueOf(id))+"</b>");
-        holder.descrizione.setText(Html.fromHtml(supp));
-        supp = ("PREZZO: <b>" + farmaco.getPrezzoString(String.valueOf(id))+"€</b>");
-        holder.prezzo.setText(Html.fromHtml(supp));
 
-        holder.aggiungi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ordine.add(ricette.get(position));
-                ricette.remove(position);
-                notifyItemRemoved(position);
-                notifyItemRangeChanged(position, ricette.size());
-                Toast.makeText(context, "Ordine aggiunto", Toast.LENGTH_SHORT).show();
-            }
-        });
+        if(utente==0){
+
+            holder.accettarifiuta.setVisibility(View.GONE);
+            holder.paziente.setVisibility(View.GONE);
+
+            supp = ("DESCRIZIONE<br><b>" + farmaco.getQuatitaEusoString(String.valueOf(id))+"</b>");
+            holder.descrizione.setText(Html.fromHtml(supp));
+            supp = ("PREZZO: <b>" + farmaco.getPrezzoString(String.valueOf(id))+"€</b>");
+            holder.prezzo.setText(Html.fromHtml(supp));
+
+            holder.aggiungi.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ordine.add(ricette.get(position));
+                    ricette.remove(position);
+                    notifyItemRemoved(position);
+                    notifyItemRangeChanged(position, ricette.size());
+                    Toast.makeText(context, "Ordine aggiunto", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }else if(utente == 1){
+            holder.descrizione.setText((holder.descrizione.getText().toString() + "\n" +ricette.get(position).getDescrizione()));
+            holder.prezzo.setVisibility(View.GONE);
+            holder.aggiungi.setVisibility(View.GONE);
+
+        }
 
     }
 
@@ -77,8 +92,8 @@ public class AdapterOrdinaFarmaco extends RecyclerView.Adapter<AdapterOrdinaFarm
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView titolo, nome, descrizione, prezzo;
-        LinearLayout card;
+        TextView titolo, nome, descrizione, prezzo, paziente;
+        LinearLayout card, accettarifiuta;
         Button aggiungi;
 
         public ViewHolder(View itemView) {
@@ -86,10 +101,12 @@ public class AdapterOrdinaFarmaco extends RecyclerView.Adapter<AdapterOrdinaFarm
 
             titolo = itemView.findViewById(R.id.titoloCard);
             card = itemView.findViewById(R.id.card);
+            paziente = itemView.findViewById(R.id.pazienteCard);
             nome = itemView.findViewById(R.id.nomeCard);
             descrizione = itemView.findViewById(R.id.descrizioneCard);
             prezzo = itemView.findViewById(R.id.prezzoCard);
             aggiungi = itemView.findViewById(R.id.aggiungiCarrelloOrdinaFarmacoPaziente);
+            accettarifiuta = itemView.findViewById(R.id.accettarifiutaCard);
         }
     }
 

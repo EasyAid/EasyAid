@@ -59,7 +59,8 @@ public class RegistrazionePaziente extends AppCompatActivity {
 
     private EditText nome, cognome;
     private EditText codiceFiscale, viaResidenza;
-    private EditText email, password, confermaPassword, dataNascita;
+    private EditText email, password, confermaPassword;
+    private TextView dataNascita;
     private AutoCompleteTextView provinciaNascita, cittaNascita, provinciaResidenza, cittaResidenza, medicoBase;
     private Button registrazioneButton;
     private ImageView showCalendar;
@@ -158,22 +159,14 @@ public class RegistrazionePaziente extends AppCompatActivity {
         provinciaNascita.setThreshold(1);//will start working from first character
         provinciaNascita.setAdapter(adapter);
 
-        dataNascita.addTextChangedListener(new TextWatcher() {
+        dataNascita.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public void onClick(View v) {
+                hideKeyboard();
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (start == 1 || start == 4) {
-                    dataNascita.setText((dataNascita.getText().toString() + "/"));
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
+                new DatePickerDialog(RegistrazionePaziente.this, date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
 
@@ -432,7 +425,7 @@ public class RegistrazionePaziente extends AppCompatActivity {
                 params.put("provinciaresidenza", provinciaResidenza.getText().toString());
                 params.put("cittaresidenza", cittaResidenza.getText().toString());
                 params.put("viaresidenza", viaResidenza.getText().toString());
-                params.put("idmedicobase", "1");
+                params.put("idmedicobase", "2");
 
                 params.put("email", email.getText().toString());
                 params.put("password", password.getText().toString());

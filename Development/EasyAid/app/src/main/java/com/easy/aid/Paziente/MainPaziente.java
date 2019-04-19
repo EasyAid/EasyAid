@@ -129,7 +129,8 @@ public class MainPaziente extends AppCompatActivity {
         impostazioni.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(MainPaziente.this, ImpostazioniPaziente.class);
+                startActivity(i);
             }
         });
 
@@ -212,45 +213,47 @@ public class MainPaziente extends AppCompatActivity {
     }
 
     private void readRicette(){
-
+        global.ricette.clear();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, global.URL_READ,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         JSONObject jsonObject = null;
-                        try {
-                            jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString( "success");
-                            JSONArray jsonArray = jsonObject.getJSONArray("read");
+                        if(response!=null){
+                            try {
+                                jsonObject = new JSONObject(response);
+                                String success = jsonObject.getString( "success");
+                                JSONArray jsonArray = jsonObject.getJSONArray("read");
 
-                            if (success.equals("1")){
+                                if (success.equals("1")){
 
-                                for(int i =0;i < jsonArray.length(); i++){
+                                    for(int i =0;i < jsonArray.length(); i++){
 
-                                    JSONObject object = jsonArray.getJSONObject(i);
+                                        JSONObject object = jsonArray.getJSONObject(i);
 
-                                    String id  = object.getString("idricetta");
-                                    String idMedico  = object.getString("idmedico");
-                                    String idPaziente  = object.getString("idpaziente");
-                                    String idFarmaco  = object.getString("idfarmaco");
-                                    String numeroScatole  = object.getString("numeroscatole");
-                                    String descrizione  = object.getString("descrizione");
-                                    String esenzionePatologia  = object.getString("esenzionepatologia");
-                                    String esenzioneReddito  = object.getString("esenzionereddito");
-                                    String statoRichiesta  = object.getString("statorichiesta");
-                                    String data  = object.getString("data");
-                                    String ora  = object.getString("ora");
+                                        String id  = object.getString("idricetta");
+                                        String idMedico  = object.getString("idmedico");
+                                        String idPaziente  = object.getString("idpaziente");
+                                        String idFarmaco  = object.getString("idfarmaco");
+                                        String numeroScatole  = object.getString("numeroscatole");
+                                        String descrizione  = object.getString("descrizione");
+                                        String esenzionePatologia  = object.getString("esenzionepatologia");
+                                        String esenzioneReddito  = object.getString("esenzionereddito");
+                                        String statoRichiesta  = object.getString("statorichiesta");
+                                        String data  = object.getString("data");
+                                        String ora  = object.getString("ora");
 
-                                    global.ricette.add(new Ricetta(Integer.parseInt(id),Integer.parseInt(idMedico),Integer.parseInt(idPaziente), Integer.parseInt(idFarmaco),Integer.parseInt(numeroScatole), descrizione, statoRichiesta, data, ora, Boolean.parseBoolean(esenzioneReddito), Boolean.parseBoolean(esenzionePatologia)));
+                                        global.ricette.add(new Ricetta(Integer.parseInt(id),Integer.parseInt(idMedico),Integer.parseInt(idPaziente), Integer.parseInt(idFarmaco),Integer.parseInt(numeroScatole), descrizione, statoRichiesta, data, ora, Boolean.parseBoolean(esenzioneReddito), Boolean.parseBoolean(esenzionePatologia)));
+                                    }
                                 }
 
-                                splash.setVisibility(View.GONE);
-                                noSplash.setVisibility(View.VISIBLE);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                Toast.makeText(MainPaziente.this, "Error " + e.toString() , Toast.LENGTH_SHORT).show();
                             }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(MainPaziente.this, "Error " + e.toString() , Toast.LENGTH_SHORT).show();
                         }
+                        splash.setVisibility(View.GONE);
+                        noSplash.setVisibility(View.VISIBLE);
                     }
                 },
                 new Response.ErrorListener() {

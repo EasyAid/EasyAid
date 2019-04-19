@@ -27,6 +27,7 @@ import com.easy.aid.Class.Indirizzo;
 import com.easy.aid.Class.Medico;
 import com.easy.aid.Class.NetVariables;
 import com.easy.aid.Class.Paziente;
+import com.easy.aid.Class.Ricetta;
 import com.easy.aid.InitialSplashScreen;
 import com.easy.aid.MainActivity;
 import com.easy.aid.Paziente.MainPaziente;
@@ -187,8 +188,7 @@ public class MainMedico extends AppCompatActivity {
                                         resultPassword, resultEmail, resultTelefono);
 
                                 nomeCognome.setText(("BENVENUTO\n" + resultNome.toUpperCase() + " " + resultCognome.toUpperCase()));
-                                splash.setVisibility(View.GONE);
-                                noSplash.setVisibility(View.VISIBLE);
+                                readRicette();
                             }
 
                         } catch (JSONException e) {
@@ -216,4 +216,76 @@ public class MainMedico extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
+
+
+    private void readRicette(){
+
+        global.ricette.clear();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, global.URL_READ,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        JSONObject jsonObject = null;
+                        if(response!=null){
+                            try {
+                                jsonObject = new JSONObject(response);
+                                String success = jsonObject.getString( "success");
+                                JSONArray jsonArray = jsonObject.getJSONArray("read");
+
+                                if (success.equals("1")){
+
+                                    for(int i =0;i < jsonArray.length(); i++){
+
+                                        JSONObject object = jsonArray.getJSONObject(i);
+
+                                        String id  = object.getString("idricetta");
+                                        String idMedico  = object.getString("idmedico");
+                                        String idPaziente  = object.getString("idpaziente");
+                                        String idFarmaco  = object.getString("idfarmaco");
+                                        String numeroScatole  = object.getString("numeroscatole");
+                                        String descrizione  = object.getString("descrizione");
+                                        String esenzionePatologia  = object.getString("esenzionepatologia");
+                                        String esenzioneReddito  = object.getString("esenzionereddito");
+                                        String statoRichiesta  = object.getString("statorichiesta");
+                                        String data  = object.getString("data");
+                                        String ora  = object.getString("ora");
+
+                                        global.ricette.add(new Ricetta(Integer.parseInt(id),Integer.parseInt(idMedico),Integer.parseInt(idPaziente), Integer.parseInt(idFarmaco),Integer.parseInt(numeroScatole), descrizione, statoRichiesta, data, ora, Boolean.parseBoolean(esenzioneReddito), Boolean.parseBoolean(esenzionePatologia)));
+                                    }
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                Toast.makeText(MainMedico.this, "Error " + e.toString() , Toast.LENGTH_SHORT).show();
+                            }
+
+                            splash.setVisibility(View.GONE);
+                            noSplash.setVisibility(View.VISIBLE);
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(MainMedico.this, "Error " + error.toString() , Toast.LENGTH_SHORT).show();
+                    }
+                })
+        {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+
+                params.put("table", "4");
+                params.put("id", "1");
+                params.put("cf", "2");
+
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+    }
+
 }

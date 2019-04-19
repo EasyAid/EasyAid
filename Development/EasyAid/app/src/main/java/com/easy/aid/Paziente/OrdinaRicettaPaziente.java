@@ -90,7 +90,7 @@ public class OrdinaRicettaPaziente extends AppCompatActivity {
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
-        adapterOrdinaFarmaco = new AdapterOrdinaFarmaco(global.ricette, global.farmaciID, getApplicationContext(), ordine);
+        adapterOrdinaFarmaco = new AdapterOrdinaFarmaco(0, global.ricette, global.farmaciID, getApplicationContext(), ordine);
         recyclerView.setAdapter(adapterOrdinaFarmaco);
 
         paga.setOnClickListener(new View.OnClickListener() {
@@ -162,7 +162,7 @@ public class OrdinaRicettaPaziente extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                
+
                 params.put("table", "5");
                 params.put("idfarmacia", "1");
                 params.put("idricetta", String.valueOf(ricetta.getIdRicetta()));
