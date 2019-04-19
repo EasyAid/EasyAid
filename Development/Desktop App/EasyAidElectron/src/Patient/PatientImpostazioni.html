@@ -29,6 +29,57 @@
             BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientHome.html")
         }
 
+        function controlOldPassword(){
+            //Controllo correttezza vecchia password
+            if(document.getElementById("TextVecchiaPassword").value == electron.remote.getGlobal("PatientShared").password){
+                changePassword();
+            }else{
+                alert("Controlla che la vecchia password sia inserita correttamente");
+            }
+        }
+
+        function changePassword(){
+            if((document.getElementById("TextNuovaPassword").value == document.getElementById("TextConfermaPassword").value) && document.getElementById("TextNuovaPassword").value != ""){
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var response = JSON.parse(this.responseText);
+                        if (response.success == "1") {
+                            alert("La password è stata modificata con successo");
+                        }else{
+                            alert("Si verificato un errore durante la modifica della password");
+                        }
+                    }
+                };
+                xhttp.open("GET", "http://99.80.72.24/settingsData.php?table=0&option=1&idPaziente=" + electron.remote.getGlobal("PatientShared").id + "&password=" + document.getElementById("TextNuovaPassword").value);
+                xhttp.send();
+            }else{
+                alert("Controlla di aver riscritto correttamente la nuova password");
+            }
+            
+        }
+
+        function changeDoctor(){
+            //Finchè non viene inserito il menù a tendina, controllo che il valore inserito sia un numero
+            if((!isNaN(document.getElementById("TextCambioMedico").value)) && document.getElementById("TextCambioMedico").value != ""){
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var response = JSON.parse(this.responseText);
+                        if (response.success == "1") {
+                            alert("Il medico è stato modificato con successo");
+                        }else{
+                            alert("Si verificato un errore durante la modifica del medico");
+                        }
+                    }
+                };
+                xhttp.open("GET", "http://99.80.72.24/settingsData.php?table=0&option=2&idPaziente=" + electron.remote.getGlobal("PatientShared").id + "&idMedico=" + document.getElementById("TextCambioMedico").value);
+                xhttp.send();
+            }else{
+                alert("Il valore inserito non è un numero oppure il campo è vuoto");
+            }
+        }
+
         function OldPasswordVisibility() {
             if (document.getElementById("OldPasswordLogo").className == "fa fa-eye fa-lg fa-fw") {
                 document.getElementById("OldPasswordLogo").className = "fa fa-eye-slash fa-lg fa-fw";
@@ -121,7 +172,7 @@
                         style="margin-left: 490px; margin-top: -6px;" onclick="ConfirmPasswordVisibility()"></i>
                 </div><br>
                 <div class="row" id="CambioPswButton" style="margin-left: 5px;  background-color: #00796A; height:60px; width: 525px; border: 3px solid; border-radius: 5px !important">
-                    <div class="col-12" onclick="changePassword()"
+                    <div class="col-12" onclick="controlOldPassword()"
                         style="text-align:center; font-weight: bold; cursor: pointer; color: white; margin-top: -2px">
                         <p style="margin-top: 18px;">CAMBIA PASSWORD</p>
                     </div>
@@ -129,22 +180,15 @@
             </div>
 
             <div class="col-5" style="text-align: center;">
-                <span style="font-weight:bold">LUOGO DI NASCITA</span>
+                <span style="font-weight:bold">MODIFICA DOTTORE</span>
                 <div class="input">
-                    <input type="text" placeholder="Provincia" id="TextProvinciaNascita">
-                </div>
-                <div class="input">
-                    <input type="text" placeholder="Citta/Comune" id="TextComuneNascita">
-                </div>
-                <span style="font-weight:bold; line-height: 50px;">INDIRIZZO DI RESIDENZA</span>
-                <div class="input">
-                    <input type="text" placeholder="Provincia" id="TextProvinciaResidenza">
-                </div>
-                <div class="input">
-                    <input type="text" placeholder="Citta/Comune" id="TextComuneResidenza">
-                </div>
-                <div class="input">
-                    <input type="text" placeholder="Via/Piazza" id="TextViaResidenza">
+                    <input type="text" placeholder="Medico di Base" id="TextCambioMedico">
+                </div><br>
+                <div class="row" id="CambioDottoreButton" style="margin-left: 5px;  background-color: #00796A; height:60px; width: 370px; border: 3px solid; border-radius: 5px !important">
+                    <div class="col-12" onclick="changeDoctor()"
+                        style="text-align:center; font-weight: bold; cursor: pointer; color: white; margin-top: -2px">
+                        <p style="margin-top: 18px;">MODIFICA DOTTORE</p>
+                    </div>
                 </div>
             </div>
             

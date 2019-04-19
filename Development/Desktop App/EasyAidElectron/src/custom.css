@@ -204,7 +204,7 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus
     background-color: #004d40 !important;
 }
 
-#CambioPswButton:hover{
+#CambioPswButton:hover, #CambioDottoreButton:hover{
     border-color: #004d40 !important;
     background-color: #004d40 !important;
 }

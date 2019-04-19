@@ -81,7 +81,7 @@ app.on('ready', () => {
 
 app.on('window-all-closed', () => {
 	if (process.platform !== 'darwin') {
-		//session.defaultSession.clearStorageData({storages: "cookie"});
+		session.defaultSession.clearStorageData({storages: "cookie"});
 		app.quit()
 	}
 })
