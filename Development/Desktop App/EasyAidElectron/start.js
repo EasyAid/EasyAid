@@ -29,10 +29,10 @@ function CreateSplashScreen() {
 		resizable: false,
 		show: false,
 		backgroundColor: '#00796A',
-		icon: 'img/Icon.png'
-		/*webPreferences: {
+		icon: 'img/Icon.png',
+		webPreferences: {
 			devTools: false
-		}*/
+		}
 	})
 	
 	SplashScreen.loadFile('src/SplashScreen.html')
@@ -52,10 +52,10 @@ function CreateFirstWindow() {
 		frame: false,
 		resizable: false,
 		show: false,
-		icon: 'img/Icon.png'
-		/*webPreferences: {
+		icon: 'img/Icon.png',
+		webPreferences: {
 			devTools: false
-		}*/
+		}
 	})
 	
 	//win.loadFile('src/SelectAccount.html')
@@ -81,7 +81,7 @@ app.on('ready', () => {
 
 app.on('window-all-closed', () => {
 	if (process.platform !== 'darwin') {
-		session.defaultSession.clearStorageData({storages: "cookie"});
+		//session.defaultSession.clearStorageData({storages: "cookie"});
 		app.quit()
 	}
 })
