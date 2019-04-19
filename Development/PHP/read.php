@@ -24,6 +24,10 @@ if ($_SERVER['REQUEST_METHOD']=='POST'|| $_SERVER['REQUEST_METHOD']=='GET') {
         case 3:
         	$sql = "SELECT * FROM Farmaco";
         	break;
+
+         case 4:
+        	if($_REQUEST['id'] == 0) $sql = "SELECT * FROM Ricetta WHERE IdPaziente ='$cf' ";
+        	break;
     }
 
     $response = mysqli_query($conn, $sql);
@@ -86,6 +90,31 @@ if ($_SERVER['REQUEST_METHOD']=='POST'|| $_SERVER['REQUEST_METHOD']=='GET') {
                         array_push($result["read"], $h);
                     }while ($row = mysqli_fetch_array($response));
                     
+                break;
+
+                case 4:
+
+                	if($_REQUEST['id'] == "0"){
+
+
+                		do{
+
+	                        $h['idricetta']           		= $row['IdRicetta'] ;
+	                        $h['idmedico']         			= $row['IdMedico'] ;
+	                        $h['idpaziente']         		= $row['IdPaziente'] ;
+	                        $h['idfarmaco']         		= $row['IdFarmaco'] ;
+	                        $h['numeroscatole']         	= $row['NumeroScatole'] ;
+	                        $h['descrizione']         		= $row['Descrizione'] ;
+	                        $h['esenzionepatologia']        = $row['EsenzionePatologia'] ;
+	                        $h['esenzionereddito']         	= $row['EsenzioneReddito'] ;
+	                        $h['statorichiesta']         	= $row['StatoRichiesta'] ;
+	                        $h['data']         				= $row['Data'] ;
+	                        $h['ora']         				= $row['Ora'] ;
+	                        
+	                        array_push($result["read"], $h);
+
+                    	}while ($row = mysqli_fetch_array($response));
+                	}
                 break;
              }
  
