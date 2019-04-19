@@ -2,8 +2,10 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:layout_margin="5dp"
+    android:padding="5dp"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true">
 
@@ -34,12 +36,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:fontFamily="@font/raleway_regular"
             android:text="NOME FARMACO"/>
 
         <TextView
             android:id="@+id/descrizioneCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_regular"
             android:layout_marginBottom="10dp"
             android:text="DESCRIZIONE"/>
 
@@ -47,6 +51,7 @@
             android:id="@+id/prezzoCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_regular"
             android:text="PREZZO: "/>
 
     </LinearLayout>
@@ -56,6 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="40dp"
+        android:fontFamily="@font/raleway_bold"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="15dp"
         android:text="AGGIUNGI AL CARRELLO"
