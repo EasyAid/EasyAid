@@ -40,6 +40,20 @@ if ($_SERVER['REQUEST_METHOD']=='POST'|| $_SERVER['REQUEST_METHOD']=='GET') {
             INSERT INTO Visita (IdPaziente, IdMedico, Data, Ora, StatoRichiesta) 
             VALUES ('$IdPaziente', '$IdMedico', '$Data', '$Ora', '$StatoRichiesta')";
         break;
+
+        //ORDINE
+    	case 5:
+
+    		$IdFarmacia = $_REQUEST['idfarmacia'];
+		    $IdRicetta = $_REQUEST['idricetta'];
+		    $Pagato = $_REQUEST['pagato'];
+		    $Totale = $_REQUEST['totale'];
+		    $DataRitiro = $_REQUEST['dataritiro'];
+		    
+		    $sql = "
+		    INSERT INTO Ordine (IdFarmacia, IdRicetta, Pagato, Totale) 
+		    VALUES ('$IdFarmacia', '$IdRicetta', '$Pagato', '$Totale')";
+	    break;
     }
 
     $response = mysqli_query($conn, $sql);
