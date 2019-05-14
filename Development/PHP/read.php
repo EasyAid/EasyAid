@@ -10,15 +10,15 @@ if ($_SERVER['REQUEST_METHOD']=='POST'|| $_SERVER['REQUEST_METHOD']=='GET') {
 
     switch ($table) {
         case 0:
-            $sql = "SELECT * FROM Paziente WHERE CodiceFiscale ='$cf' ";
+            $sql = "SELECT * FROM Paziente WHERE CodiceFiscale ='$cf' LOCK IN SHARE MODE";
             break;
         
         case 1:
-            $sql = "SELECT * FROM Medico WHERE CodiceFiscale ='$cf' ";
+            $sql = "SELECT * FROM Medico WHERE CodiceFiscale ='$cf' LOCK IN SHARE MODE";
             break;
 
         case 2:
-            $sql = "SELECT * FROM Farmacia WHERE CodiceFiscale ='$cf' ";
+            $sql = "SELECT * FROM Farmacia WHERE CodiceFiscale ='$cf' LOCK IN SHARE MODE";
             break;
 
         case 3:
@@ -26,8 +26,8 @@ if ($_SERVER['REQUEST_METHOD']=='POST'|| $_SERVER['REQUEST_METHOD']=='GET') {
         	break;
 
          case 4:
-        	if($_REQUEST['id'] == 0) $sql = "SELECT * FROM Ricetta WHERE IdPaziente ='$cf' ";
-        	else if($_REQUEST['id'] == 1) $sql = "SELECT * FROM Ricetta WHERE IdMedico ='$cf' ";
+        	if($_REQUEST['id'] == 0) $sql = "SELECT * FROM Ricetta WHERE IdPaziente ='$cf' LOCK IN SHARE MODE";
+        	else if($_REQUEST['id'] == 1) $sql = "SELECT * FROM Ricetta WHERE IdMedico ='$cf' LOCK IN SHARE MODE";
         	break;
     }
 

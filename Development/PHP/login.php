@@ -12,19 +12,19 @@ if ($_SERVER['REQUEST_METHOD']=='POST'|| $_SERVER['REQUEST_METHOD']=='GET') {
     switch ($table){
         case 0:{
             //PAZIENTE
-            $sql = "SELECT * FROM Paziente WHERE CodiceFiscale = '$cf' ";
+            $sql = "SELECT * FROM Paziente WHERE CodiceFiscale = '$cf' LOCK IN SHARE MODE";
     	    $response = mysqli_query($conn, $sql);
             break;
         }
         case 1:{
             //MEDICO
-                $sql = "SELECT * FROM Medico WHERE CodiceFiscale = '$cf' ";
+                $sql = "SELECT * FROM Medico WHERE CodiceFiscale = '$cf' LOCK IN SHARE MODE";
                 $response = mysqli_query($conn, $sql);
             break;
         }
         case 2:{
             //FARMACIA
-                $sql = "SELECT * FROM Farmacia WHERE Email = '$cf' ";
+                $sql = "SELECT * FROM Farmacia WHERE Email = '$cf' LOCK IN SHARE MODE";
                 $response = mysqli_query($conn, $sql);
             break;
         }

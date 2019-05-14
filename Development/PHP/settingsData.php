@@ -3,7 +3,8 @@ if ($_SERVER['REQUEST_METHOD']=='POST'|| $_SERVER['REQUEST_METHOD']=='GET') {
 	$table = $_REQUEST['table'];
 	$sql = null;
     
-    require_once 'connect.php';
+	require_once 'connect.php';
+	mysqli_begin_transaction($conn);
 	
 	switch ($table){
 		case 0:
@@ -29,14 +30,23 @@ if ($_SERVER['REQUEST_METHOD']=='POST'|| $_SERVER['REQUEST_METHOD']=='GET') {
 			//Farmacia
 		break;
 	}
-	$response = mysqli_query($conn, $sql);
-
-    $result = array();
-    $result['read'] = array();
-    $result['data'] = $response;
-
-    $result["success"] = "1";
-    echo json_encode($result);
+	if (!$result = mysqli_query($conn, $sql)) {
+		//Error
+		$response["success"] = "0";
+		$response["message"] = $conn->errno . ": " . $conn->error;
+		mysqli_rollback($conn);
+		echo json_encode($response);
+		mysqli_close($conn);
+		exit();
+	}else{
+		mysqli_commit($conn);
+		mysqli_close($conn);
+		$response = array();
+		$response['read'] = array();
+		$response['data'] = $result;
+		$response["success"] = "1";
+		echo json_encode($response);
+	}
 	
 }else{
 	$result["success"] = "0";
