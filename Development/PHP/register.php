@@ -4,7 +4,8 @@ require_once 'connect.php';
 if ($_SERVER['REQUEST_METHOD']=='POST'){
 
     $table = $_REQUEST['table'];
-    $sql = null;
+	$sql = null;
+	mysqli_begin_transaction($conn);
 
     if($table == 0){
     	$Nome = $_REQUEST['nome'];
@@ -99,13 +100,13 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
     if ( mysqli_query($conn, $sql) ) {
         $result["success"] = "1";
         $result["message"] = "success";
-
+		mysqli_commit($conn);
         echo json_encode($result);
     } else {
 
         $result["success"] = "0";
         $result["message"] = "error";
-
+		mysqli_rollback($conn);
         echo json_encode($result);
     }
 
