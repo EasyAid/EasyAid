@@ -47,7 +47,7 @@ public class AdapterOrdinaFarmaco extends RecyclerView.Adapter<AdapterOrdinaFarm
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
         holder.titolo.setText(("RICETTA " + ricette.get(position).getIdRicetta()));
         int id = ricette.get(position).getIdFarmaco();
@@ -77,10 +77,35 @@ public class AdapterOrdinaFarmaco extends RecyclerView.Adapter<AdapterOrdinaFarm
                 }
             });
         }else if(utente == 1){
+            supp = ("PAZIENTE<br><b>ROSSI MARIO</b>");
+            holder.paziente.setText(Html.fromHtml(supp));
             holder.descrizione.setText((holder.descrizione.getText().toString() + "\n" +ricette.get(position).getDescrizione()));
             holder.prezzo.setVisibility(View.GONE);
             holder.aggiungi.setVisibility(View.GONE);
-
+            holder.accetta.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ricette.remove(position);
+                    notifyItemRemoved(position);
+                    notifyItemRangeChanged(position, ricette.size());
+                    Toast.makeText(context, "Richiesta accettata", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }else if(utente == 2){
+            supp = ("CLIENTE<br><b>ROSSI MARIO</b>");
+            holder.paziente.setText(Html.fromHtml(supp));
+            holder.descrizione.setText("LOCALITA<br><b>VIALE EUROPA N°3 (BG)</b>");
+            holder.prezzo.setText("PREZZO<br><b>2,51€</b>");
+            holder.aggiungi.setVisibility(View.GONE);
+            holder.accetta.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ricette.remove(position);
+                    notifyItemRemoved(position);
+                    notifyItemRangeChanged(position, ricette.size());
+                    Toast.makeText(context, "Richiesta accettata", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
 
     }
@@ -94,13 +119,14 @@ public class AdapterOrdinaFarmaco extends RecyclerView.Adapter<AdapterOrdinaFarm
 
         TextView titolo, nome, descrizione, prezzo, paziente;
         LinearLayout card, accettarifiuta;
-        Button aggiungi;
+        Button aggiungi, accetta;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             titolo = itemView.findViewById(R.id.titoloCard);
             card = itemView.findViewById(R.id.card);
+            accetta = itemView.findViewById(R.id.accettaCard);
             paziente = itemView.findViewById(R.id.pazienteCard);
             nome = itemView.findViewById(R.id.nomeCard);
             descrizione = itemView.findViewById(R.id.descrizioneCard);

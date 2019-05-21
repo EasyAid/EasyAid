@@ -96,6 +96,7 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
         descPatologia = findViewById(R.id.descPatologiaRichiediRicettaPaz);
 
         nomeCognomePaz.setText(Html.fromHtml(nomeCognomePaz.getText().toString() + "<br><b>" + global.paziente.getCognome().toUpperCase() +" " + global.paziente.getNome().toUpperCase() + "<b>"));
+        nomeCognomeMed.setText(Html.fromHtml(nomeCognomePaz.getText().toString() + "<br><b>DOTT. LUIGI<b>"));
 
         Set<String> keys = global.farmaci.keySet();
         String[] nomeFarmaci = keys.toArray(new String[keys.size()]);

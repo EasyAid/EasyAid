@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Farmacia.ImpostazioniFarmacia"></activity>
+        <activity android:name=".Farmacia.OrdinaRicetteFarmacia"></activity>
+        <activity android:name=".Farmacia.ImpostazioniFarmacia" />
         <activity android:name=".Medico.ImpostazioniMedico" />
         <activity android:name=".Farmacia.MainFarmacia" />
         <activity android:name=".Medico.CalendarioMedico" />

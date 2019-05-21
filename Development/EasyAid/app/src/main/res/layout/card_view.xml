@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/raleway_regular"
-            android:text="PAZIENTE: TEST TEST" />
+            android:text="PAZIENTE:" />
 
         <TextView
             android:id="@+id/nomeCard"
@@ -94,6 +94,7 @@
             android:textColor="@color/white" />
 
         <Button
+            android:id="@+id/accettaCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
