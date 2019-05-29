@@ -45,6 +45,8 @@ import com.easy.aid.Medico.MainMedico;
 import com.easy.aid.Medico.RegistrazioneMedico;
 import com.easy.aid.R;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -428,7 +430,7 @@ public class RegistrazionePaziente extends AppCompatActivity {
                 params.put("idmedicobase", "2");
 
                 params.put("email", email.getText().toString());
-                params.put("password", password.getText().toString());
+                params.put("password", md5(password.getText().toString()));
 
                 return params;
             }
@@ -437,5 +439,24 @@ public class RegistrazionePaziente extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
 
+    }
+
+    public String md5(String s) {
+        try {
+            // Create MD5 Hash
+            MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
+            digest.update(s.getBytes());
+            byte messageDigest[] = digest.digest();
+
+            // Create Hex String
+            StringBuffer hexString = new StringBuffer();
+            for (int i=0; i<messageDigest.length; i++)
+                hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
+            return hexString.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }

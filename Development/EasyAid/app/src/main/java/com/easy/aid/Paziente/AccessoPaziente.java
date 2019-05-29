@@ -36,6 +36,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -113,7 +115,7 @@ public class AccessoPaziente extends AppCompatActivity {
                 if (global.checktime()) return;
 
                 String sCF = cf.getText().toString().trim();
-                String sPass = pwd.getText().toString().trim();
+                String sPass = md5(pwd.getText().toString().trim());
 
                 if(!sCF.isEmpty() && !sPass.isEmpty()){
                     Login(sCF,sPass);
@@ -199,6 +201,25 @@ public class AccessoPaziente extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
 
+    }
+
+    public String md5(String s) {
+        try {
+            // Create MD5 Hash
+            MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
+            digest.update(s.getBytes());
+            byte messageDigest[] = digest.digest();
+
+            // Create Hex String
+            StringBuffer hexString = new StringBuffer();
+            for (int i=0; i<messageDigest.length; i++)
+                hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
+            return hexString.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }
 

@@ -1,113 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/text"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
-    android:orientation="vertical"
-    android:padding="5dp">
+    android:layout_margin="20dp"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/all_empty_round"
-        android:orientation="vertical"
-        android:padding="10dp">
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/titoloCard"
+        <LinearLayout
+            android:id="@+id/card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/raleway_bold"
-            android:text="RICETTA 1"
-            android:textAlignment="center"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            android:textColor="@color/greenDark" />
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/all_empty_round"
+            android:orientation="vertical"
+            android:padding="10dp">
 
-        <TextView
-            android:id="@+id/pazienteCard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/raleway_regular"
-            android:text="PAZIENTE:" />
+            <TextView
+                android:id="@+id/titoloCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/raleway_bold"
+                android:text="RICETTA 1"
+                android:textAlignment="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/greenDark" />
 
-        <TextView
-            android:id="@+id/nomeCard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/raleway_regular"
-            android:text="NOME FARMACO" />
+            <TextView
+                android:id="@+id/pazienteCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/raleway_regular"
+                android:text="PAZIENTE:" />
 
-        <TextView
-            android:id="@+id/descrizioneCard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/raleway_regular"
-            android:text="DESCRIZIONE" />
+            <TextView
+                android:id="@+id/nomeCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/raleway_regular"
+                android:text="NOME FARMACO" />
 
-        <TextView
-            android:id="@+id/prezzoCard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/raleway_regular"
-            android:text="PREZZO: " />
+            <TextView
+                android:id="@+id/descrizioneCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/raleway_regular"
+                android:text="DESCRIZIONE" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/prezzoCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway_regular"
+                android:text="PREZZO: " />
 
-    <Button
-        android:id="@+id/aggiungiCarrelloOrdinaFarmacoPaziente"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="40dp"
-        android:background="@drawable/all_round"
-        android:fontFamily="@font/raleway_bold"
-        android:text="AGGIUNGI AL CARRELLO"
-        android:textColor="@color/white" />
-
-    <LinearLayout
-        android:id="@+id/accettarifiutaCard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="40dp">
+        </LinearLayout>
 
         <Button
+            android:id="@+id/aggiungiCarrelloOrdinaFarmacoPaziente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:background="@drawable/all_round_read"
-            android:fontFamily="@font/raleway_bold"
-            android:layout_margin="5dp"
-            android:text="RIFIUTA"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/accettaCard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:layout_margin="5dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="40dp"
             android:background="@drawable/all_round"
             android:fontFamily="@font/raleway_bold"
-            android:text="ACCETTA"
+            android:text="AGGIUNGI AL CARRELLO"
             android:textColor="@color/white" />
 
+        <LinearLayout
+            android:id="@+id/accettarifiutaCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="40dp">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:background="@drawable/all_round_read"
+                android:fontFamily="@font/raleway_bold"
+                android:layout_margin="5dp"
+                android:text="RIFIUTA"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/accettaCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:layout_margin="5dp"
+                android:background="@drawable/all_round"
+                android:fontFamily="@font/raleway_bold"
+                android:text="ACCETTA"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
     </LinearLayout>
 
 
-</LinearLayout>
+</android.support.v7.widget.CardView>
 
 
 

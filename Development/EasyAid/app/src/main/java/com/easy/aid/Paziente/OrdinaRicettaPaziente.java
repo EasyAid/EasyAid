@@ -3,6 +3,7 @@ package com.easy.aid.Paziente;
 import android.content.Context;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -31,9 +32,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.easy.aid.Class.AdapterOrdinaFarmaco;
+import com.easy.aid.Class.CardFragmentPagerAdapter;
 import com.easy.aid.Class.Farmaco;
 import com.easy.aid.Class.NetVariables;
 import com.easy.aid.Class.Ricetta;
+import com.easy.aid.Class.ShadowTransformer;
 import com.easy.aid.R;
 
 import java.text.DecimalFormat;
@@ -49,14 +52,12 @@ public class OrdinaRicettaPaziente extends AppCompatActivity {
 
     private boolean pagato = false;
 
-    private RecyclerView recyclerView;
     private RelativeLayout primo, secondo;
     private Button continua, invia;
     private TextView ordinaDocumento;
     private List<Ricetta> ordine;
     private double tot = 0;
     private Button paga;
-    private AdapterOrdinaFarmaco adapterOrdinaFarmaco;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +80,6 @@ public class OrdinaRicettaPaziente extends AppCompatActivity {
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-        recyclerView = findViewById(R.id.recyclerViewOrdinaFarmaco);
         continua = findViewById(R.id.continuaOrdinaFarmacoPaziente);
         primo = findViewById(R.id.primoOrdinaFarmacia);
         secondo = findViewById(R.id.secondoOrdinaFarmacia);
@@ -87,11 +87,16 @@ public class OrdinaRicettaPaziente extends AppCompatActivity {
         paga = findViewById(R.id.pagaOra);
         ordinaDocumento = findViewById(R.id.ordineOrdineRicetta);
 
-        LinearLayoutManager layoutManager
-                = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(layoutManager);
-        adapterOrdinaFarmaco = new AdapterOrdinaFarmaco(0, global.ricette, global.farmaciID, getApplicationContext(), ordine);
-        recyclerView.setAdapter(adapterOrdinaFarmaco);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
+
+        CardFragmentPagerAdapter pagerAdapter = new CardFragmentPagerAdapter(getSupportFragmentManager(), dpToPixels(2, this));
+        ShadowTransformer fragmentCardShadowTransformer = new ShadowTransformer(viewPager, pagerAdapter);
+        fragmentCardShadowTransformer.enableScaling(true);
+
+        viewPager.setAdapter(pagerAdapter);
+        viewPager.setPageTransformer(false, fragmentCardShadowTransformer);
+        viewPager.setOffscreenPageLimit(3);
+
 
         paga.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,6 +138,10 @@ public class OrdinaRicettaPaziente extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public static float dpToPixels(int dp, Context context) {
+        return dp * (context.getResources().getDisplayMetrics().density);
     }
 
     private void hideKeyboard() {
