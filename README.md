@@ -24,4 +24,7 @@ Entrambe le piattaforme si collegano ad un Server Web hostato su Amazon Web Serv
 
 
 ![Gantt Screenshot](https://raw.githubusercontent.com/EasyAid/EasyAid/Windows/Project%20Specs/Screenshot%20Gantt.png)
-* I [Casi d'uso](https://github.com/EasyAid/EasyAid/tree/Windows/Project%20Specs/Casi%20d'uso) si trovano nella cartella "Project Specs" dei branch Windows e Android. A seguire uno screenshot dello stesso.
+* I [Casi d'uso](https://github.com/EasyAid/EasyAid/tree/Windows/Project%20Specs/Casi%20d'uso) si trovano nella cartella "Project Specs" dei branch Windows e Android. A seguire uno screenshot degli stessi.
+
+
+![UseCase Screenshot](https://raw.githubusercontent.com/EasyAid/EasyAid/Windows/Project%20Specs/Casi%20d'uso/casi_uso.png)
