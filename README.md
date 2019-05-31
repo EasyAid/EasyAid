@@ -20,6 +20,7 @@ Entrambe le piattaforme si collegano ad un Server Web hostato su Amazon Web Serv
 
 ### Link utili
 * [Sito Web](https://easyaid.github.io/EasyAid) del progetto
+* [Presentazione](https://prezi.com/view/2sbyngP9BClrqdhERsvo) del progetto
 * Il [progetto Gantt](https://github.com/EasyAid/EasyAid/blob/Windows/Project%20Specs/Project%20EasyAid.gan) è presente nella cartella "Project Specs" dei branch Windows e Android. A seguire uno screenshot dello stesso.
 
 ![Gantt Screenshot](https://raw.githubusercontent.com/EasyAid/EasyAid/Windows/Project%20Specs/Screenshot%20Gantt.png)
