@@ -28,6 +28,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.easy.aid.Class.MCrypt;
 import com.easy.aid.Class.NetVariables;
 import com.easy.aid.Class.NetVariables;
 import com.easy.aid.R;
@@ -40,6 +41,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.easy.aid.Class.NetVariables.URL_LOGIN_AES;
 
 /**
  *
@@ -60,13 +63,15 @@ public class AccessoPaziente extends AppCompatActivity {
     private NetVariables global;
     private ImageView back;
     private CheckBox restaConnesso;
+    private MCrypt crypt;
+    private String s;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         global = (NetVariables) this.getApplication();
-
+        crypt = new MCrypt();
 
         setContentView(R.layout.paziente_accesso);
 
@@ -151,7 +156,7 @@ public class AccessoPaziente extends AppCompatActivity {
         intent = new Intent(AccessoPaziente.this, MainPaziente.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN_AES,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -190,9 +195,18 @@ public class AccessoPaziente extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("table", "0");
-                params.put("cf", sCF);
-                params.put("password", sPass);
+
+                try {
+                    s = MCrypt.bytesToHex( crypt.encrypt("0") );
+                    params.put("table", s);
+                    s = MCrypt.bytesToHex( crypt.encrypt(sCF) );
+                    params.put("cf", s);
+                    s = MCrypt.bytesToHex( crypt.encrypt(sPass) );
+                    params.put("password", s);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 return params;
             }
