@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Paziente</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../node_modules/font-awesome/css/font-awesome.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="../custom.css">
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script>
+        const electron = require('electron')
+        const BrowserWindow = electron.remote.BrowserWindow
+        const session = electron.remote.session;
+
+        //global: console.log(electron.remote.getGlobal("shared").stringa);
+
+        function CloseWindow() {
+            BrowserWindow.getFocusedWindow().close();
+        }
+
+        function MinimizeWindow() {
+            BrowserWindow.getFocusedWindow().minimize();
+        }
+
+        function BackWindow() {
+            BrowserWindow.getFocusedWindow().loadFile("src/SelectAccount.html");
+        }
+
+        function Richiesta() {
+            BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientRichiesta.html");
+        }
+
+        function Ordina() {
+            BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientOrdina.html");
+        }
+
+        function Cronologia() {
+            BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientCronologia.html");
+        }
+
+        function Impostazioni() {
+            BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientImpostazioni.html");
+        }
+
+        function getData(){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var response = JSON.parse(this.responseText);
+                    if (response.success == "1") {
+                        electron.remote.getGlobal("PatientShared").id = response.read[0].id;
+                        electron.remote.getGlobal("PatientShared").nome = response.read[0].nome;
+                        electron.remote.getGlobal("PatientShared").cognome = response.read[0].cognome;
+                        electron.remote.getGlobal("PatientShared").dataNascita = response.read[0].datanascita;
+                        electron.remote.getGlobal("PatientShared").sesso = response.read[0].sesso;
+                        electron.remote.getGlobal("PatientShared").provinciaNascita = response.read[0].provincianascita;
+                        electron.remote.getGlobal("PatientShared").cittaNascita = response.read[0].cittanascita;
+                        electron.remote.getGlobal("PatientShared").provinciaResidenza = response.read[0].provinciaresidenza;
+                        electron.remote.getGlobal("PatientShared").cittaResidenza = response.read[0].cittaresidenza;
+                        electron.remote.getGlobal("PatientShared").viaResidenza = response.read[0].viaresidenza;
+                        document.getElementById("name_surname").innerHTML = electron.remote.getGlobal("PatientShared").nome + " " + electron.remote.getGlobal("PatientShared").cognome;
+                    }
+                }
+            };
+            xhttp.open("GET", "http://99.80.72.24/read.php?table=0&cf=" + electron.remote.getGlobal("PatientShared").codiceFiscale + "&password=" + electron.remote.getGlobal("PatientShared").password, true);
+            xhttp.send();
+        }
+    </script>
+</head>
+
+<body style="font-family: 'Raleway', Arial, Helvetica, sans-serif; color: #ffffff; cursor: default;" onload="getData()">
+    <div class="container-fluid" style="text-align: center; background-color: #00796A; height: 40px !important">
+        <div class="row align-items-center" style="padding: 0px;">
+            <div class="col btn-func" onclick="BackWindow()" style="line-height: 2.5; margin-top: -10px;">
+                <img draggable="false" src="../../img/BackArrowIcon.svg" style="width: 25px; height: 25px;" />
+            </div>
+            <div class="col-9 draggable">
+                <img draggable="false" src="../../img/LogoTextWhite.png"
+                    style="margin-left: 83px; margin-top: -10px; height: 60px; width: 169px" />
+            </div>
+            <div class="col btn-func" id="btn-minimize" onclick="MinimizeWindow()"
+                style="line-height: 2.4; margin-top: -10px;">
+                <img draggable="false" src="../../img/MinimizeIcon.svg"
+                    style="width: 39px; height: 39px; padding-top:15px" />
+            </div>
+            <div class="col btn-func" onclick="CloseWindow()" style="line-height: 2.5; margin-top: -10px;">
+                <img draggable="false" src="../../img/CloseIcon.svg" style="width: 25px; height: 25px;" />
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row align-items-center" style="height: 280px;">
+            <div class="col-5">
+                <div id="circle" style="text-align: center; margin-left:155px">
+                    <img draggable="false" src="../../img/PazienteWhite.png" width="30%" height="40%"
+                        style="margin-top: 30px" /><br>
+                    <h5 style="font-weight: bold; margin-top: 25px">PAZIENTE</h5>
+                </div>
+            </div>
+            <div class="col-7">
+                <div style="color:#00796A; text-align: center; font-weight: bolder; font-size: 45px; padding-right:130px;">
+                    <span>Benvenuto</span>
+                    <p id="name_surname"></p>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center" style="height: 250px;">
+            <div class="col-3" style="padding-left: 25px">
+                <div id="circle-white" style="text-align: center;" onclick="Richiesta()">
+                    <img draggable="false" src="../../img/RicettaGreen.png" width="32%" height="40%"
+                        style="margin-top: 30px" /><br>
+                    <h5 style="font-weight: bold; margin-top: 25px">RICHIESTA<br>MEDICA</h5>
+                </div>
+            </div>
+            <div class="col-3" style="padding-left: 25px">
+                <div id="circle-white" style="text-align: center;" onclick="Ordina()">
+                    <img draggable="false" src="../../img/FarmacoGreen.png" width="25%" height="40%"
+                        style="margin-top: 30px" /><br>
+                    <h5 style="font-weight: bold; margin-top: 25px">ORDINA<br>FARMACO</h5>
+                </div>
+            </div>
+            <div class="col-3" style="padding-left: 25px">
+                <div id="circle-white" style="text-align: center;" onclick="Cronologia()">
+                    <img draggable="false" src="../../img/CronologiaGreen.png" width="37%" height="40%"
+                        style="margin-top: 30px" /><br>
+                    <h5 style="font-weight: bold; margin-top: 25px">CRONOLOGIA EVENTI</h5>
+                </div>
+            </div>
+            <div class="col-3" style="padding-left: 25px">
+                <div id="circle-white" style="text-align: center;" onclick="Impostazioni()">
+                    <img draggable="false" src="../../img/ImpostazioniGreen.png" width="40%" height="40%"
+                        style="margin-top: 30px" /><br>
+                    <h5 style="font-weight: bold; margin-top: 25px">IMPOSTAZIONI</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

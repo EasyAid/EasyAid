@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Medico</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../node_modules/font-awesome/css/font-awesome.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="../custom.css">
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script>
+
+        const electron = require('electron')
+        const BrowserWindow = electron.remote.BrowserWindow
+        const session = electron.remote.session;
+
+        //global: console.log(electron.remote.getGlobal("shared").stringa);
+
+        function CloseWindow() {
+            BrowserWindow.getFocusedWindow().close();
+        }
+
+        function MinimizeWindow() {
+            BrowserWindow.getFocusedWindow().minimize();
+        }
+
+        function BackWindow() {
+            BrowserWindow.getFocusedWindow().loadFile("src/SelectAccount.html");
+        }
+    </script>
+</head>
+
+<body style="font-family: 'Raleway', Arial, Helvetica, sans-serif; color: #ffffff; cursor: default;">
+    <div class="container-fluid" style="text-align: center; background-color: #00796A; height: 40px !important">
+        <div class="row align-items-center" style="padding: 0px;">
+            <div class="col btn-func" onclick="BackWindow()" style="line-height: 2.5; margin-top: -10px;">
+                <img draggable="false" src="../../img/BackArrowIcon.svg" style="width: 25px; height: 25px;" />
+            </div>
+            <div class="col-9 draggable">
+                <img draggable="false" src="../../img/LogoTextWhite.png"
+                    style="margin-left: 83px; margin-top: -10px; height: 60px; width: 169px" />
+            </div>
+            <div class="col btn-func" id="btn-minimize" onclick="MinimizeWindow()"
+                style="line-height: 2.4; margin-top: -10px;">
+                <img draggable="false" src="../../img/MinimizeIcon.svg"
+                    style="width: 39px; height: 39px; padding-top:15px" />
+            </div>
+            <div class="col btn-func" onclick="CloseWindow()" style="line-height: 2.5; margin-top: -10px;">
+                <img draggable="false" src="../../img/CloseIcon.svg" style="width: 25px; height: 25px;" />
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col" style="color: black !important">
+                <h1>MEDICO</h1>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

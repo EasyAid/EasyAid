@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login Paziente</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../node_modules/font-awesome/css/font-awesome.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="../custom.css">
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script>
+
+        const electron = require('electron')
+        const BrowserWindow = electron.remote.BrowserWindow
+        const session = electron.remote.session;
+
+        //global: console.log(electron.remote.getGlobal("shared").stringa);
+
+        function CloseWindow() {
+            BrowserWindow.getFocusedWindow().close();
+        }
+
+        function MinimizeWindow() {
+            BrowserWindow.getFocusedWindow().minimize();
+        }
+
+        function connectDatabase() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var response = JSON.parse(this.responseText);
+
+                    if (response.success == "1") {
+                        electron.remote.getGlobal("PatientShared").password = document.getElementById("TextPassword").value;
+                        electron.remote.getGlobal("PatientShared").codiceFiscale = document.getElementById("TextCodiceFiscale").value;
+                        if (document.getElementById("StayConnected").checked) {
+                            var expiration = new Date();
+                            expiration.setFullYear(2200);
+
+                            /* cookie type */
+
+                            const cookieType = { url: 'BaseURL', name: 'type', value: 'patient', expirationDate: expiration.getTime() };
+                            session.defaultSession.cookies.set(cookieType, (error) => {
+                                if (error) console.error(error);
+                            });
+
+                            /* user cookie */
+
+                            const cookieUser = { url: 'BaseURL', name: 'username', value: document.getElementById("TextCodiceFiscale").value, expirationDate: expiration.getTime() }
+                            session.defaultSession.cookies.set(cookieUser, (error) => {
+                                if (error) console.error(error);
+                            });
+
+                            /* password cookie */
+
+                            const cookiePassword = { url: 'BaseURL', name: 'password', value: document.getElementById("TextPassword").value, expirationDate: expiration.getTime() }
+                            session.defaultSession.cookies.set(cookiePassword, (error) => {
+                                if (error) console.error(error);
+                            });
+
+                            /* get cookies - TO BE REMOVED*/
+
+                            /*session.defaultSession.cookies.get({}, (error, cookies) => {
+                                console.log(error, cookies);
+                            })*/
+
+                            BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientHome.html");
+                        } else {
+                            BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientHome.html");
+                        }
+                    }
+                    else {
+                        var cf = document.getElementById("TextCodiceFiscale");
+                        var psw = document.getElementById("TextPassword");
+                        if (response.message == "ErrorUsername") {
+                            cf.value = "";
+                            cf.placeholder = "Username errato";
+                            cf.classList.add("wrong");
+                            document.getElementsByClassName("inputWithIcon")[0].classList.add("wrong");
+                            psw.value = "";
+                            psw.placeholder = "Inserire Password";
+                            psw.classList.add("wrong");
+                            document.getElementsByClassName("inputWithIcon")[1].classList.add("wrong");
+                        }
+                        else if (response.message == "ErrorPassword") {
+                            psw.value = "";
+                            psw.placeholder = "Password errata";
+                            psw.classList.add("wrong");
+                            document.getElementsByClassName("inputWithIcon")[1].classList.add("wrong");
+                        }
+                        else {
+                            alert("Errore sconosciuto!");
+                        }
+                    }
+                }
+            };
+            xhttp.open("GET", "http://99.80.72.24/login.php?table=0&cf=" + document.getElementById("TextCodiceFiscale").value + "&password=" + document.getElementById("TextPassword").value, true);
+            xhttp.send();
+        }
+
+        function BackWindow() {
+            BrowserWindow.getFocusedWindow().loadFile("src/SelectAccount.html");
+        }
+
+        function Registration() {
+            BrowserWindow.getFocusedWindow().loadFile("src/Patient/PatientRegistration.html");
+        }
+
+        function sendLogin() {
+            var eventoInvio = event.which || event.keyCode;
+            if (eventoInvio == 13) {
+                connectDatabase();
+            }
+        }
+
+        function checkInput() {
+            //non lo so ancora fare :D
+        }
+    </script>
+</head>
+
+<body style="font-family: 'Raleway', Arial, Helvetica, sans-serif; color: #ffffff; cursor: default;"
+    onkeypress="sendLogin()">
+    <div class="container-fluid" style="text-align: center; background-color: #00796A; height: 40px !important">
+        <div class="row align-items-center" style="padding: 0px;">
+            <div class="col btn-func" onclick="BackWindow()" style="line-height: 2.5; margin-top: -10px;">
+                <img draggable="false" src="../../img/BackArrowIcon.svg" style="width: 25px; height: 25px;" />
+            </div>
+            <div class="col-9 draggable">
+                <img draggable="false" src="../../img/LogoTextWhite.png"
+                    style="margin-left: 83px; margin-top: -10px; height: 60px; width: 169px" />
+            </div>
+            <div class="col btn-func" id="btn-minimize" onclick="MinimizeWindow()"
+                style="line-height: 2.4; margin-top: -10px;">
+                <img draggable="false" src="../../img/MinimizeIcon.svg"
+                    style="width: 39px; height: 39px; padding-top:15px" />
+            </div>
+            <div class="col btn-func" onclick="CloseWindow()" style="line-height: 2.5; margin-top: -10px;">
+                <img draggable="false" src="../../img/CloseIcon.svg" style="width: 25px; height: 25px;" />
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row align-items-center" style="margin-left: 370px; height: 220px; margin-top: 30px;">
+            <div class="col">
+                <div id="circle" style="text-align: center;">
+                    <img draggable="false" src="../../img/PazienteWhite.png" width="30%" height="40%"
+                        style="margin-top: 30px" /><br>
+                    <h5 style="font-weight: bold; margin-top: 25px">PAZIENTE</h5>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row align-items-center" style="height:250px">
+            <div class="col-6">
+                <div class="inputWithIcon" onclick="checkInput()">
+                    <input type="text" placeholder="Codice Fiscale" id="TextCodiceFiscale">
+                    <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+                </div>
+                <div class="inputWithIcon" onclick="checkInput()">
+                    <input type="password" placeholder="Password" id="TextPassword">
+                    <i class="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
+                </div>
+                <label class="container">
+                    <div style="margin-left:-11px;">Resta connesso</div>
+                    <input id="StayConnected" type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+
+            <div class="col-6" style="text-align: center">
+                <p style="color:#00695C">Non hai ancora un profilo?</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row" style="height:60px">
+            <div class="col-6" id="AccediButton" onclick="connectDatabase()"
+                style="text-align:center; font-weight: bold; background-color: #00695C; cursor: pointer;">
+                <p style="margin-top: 18px;">ACCEDI</p>
+            </div>
+
+            <div class="col-6" id="RegistratiButton" onclick="Registration()"
+                style="text-align:center; font-weight: bold; background-color: #00796A; cursor: pointer;">
+                <p style="margin-top: 18px;">REGISTRATI</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
