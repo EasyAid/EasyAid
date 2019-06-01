@@ -19,6 +19,7 @@ Entrambe le piattaforme si collegano ad un Server Web hostato su Amazon Web Serv
 * [Android Studio](https://developer.android.com/studio) - Sviluppo di APP Android scritte in Java
 
 ### Link utili
+* La [cartella](https://github.com/EasyAid/EasyAid/tree/Windows/Development/Desktop%20App/Deployment/EasyAidApp-win32-x64) contenente il file eseguibile della versione Windows (Minimo Windows 7 - Eseguire nella cartella stessa per via delle dipendenze con gli altri file contenuti nella stessa)
 * I [file PHP](https://github.com/EasyAid/EasyAid/tree/Windows/Development/PHP) presenti sul server web AWS
 * [Sito Web](https://easyaid.github.io/EasyAid) del progetto
 * [Presentazione](https://prezi.com/view/2sbyngP9BClrqdhERsvo) del progetto
