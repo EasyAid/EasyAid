@@ -19,6 +19,7 @@ Entrambe le piattaforme si collegano ad un Server Web hostato su Amazon Web Serv
 * [Android Studio](https://developer.android.com/studio) - Sviluppo di APP Android scritte in Java
 
 ### Link utili
+* I [file PHP](https://github.com/EasyAid/EasyAid/tree/Windows/Development/PHP) presenti sul server web AWS
 * [Sito Web](https://easyaid.github.io/EasyAid) del progetto
 * [Presentazione](https://prezi.com/view/2sbyngP9BClrqdhERsvo) del progetto
 * Il [progetto Gantt](https://github.com/EasyAid/EasyAid/blob/Windows/Project%20Specs/Project%20EasyAid.gan) è presente nella cartella "Project Specs" dei branch Windows e Android. A seguire uno screenshot dello stesso.
