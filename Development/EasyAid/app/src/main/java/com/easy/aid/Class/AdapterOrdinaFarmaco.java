@@ -1,4 +1,4 @@
-package com.easy.aid.Class.Card;
+package com.easy.aid.Class;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -12,8 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.easy.aid.Class.Farmaco;
-import com.easy.aid.Class.Ricetta;
 import com.easy.aid.R;
 
 import java.util.ArrayList;

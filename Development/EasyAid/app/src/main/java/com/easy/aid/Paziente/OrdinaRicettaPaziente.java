@@ -6,6 +6,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -21,6 +23,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.easy.aid.Class.AdapterOrdinaFarmaco;
 import com.easy.aid.Class.Card.CardFragmentPagerAdapter;
 import com.easy.aid.Class.Farmaco;
 import com.easy.aid.Class.NetVariables;
@@ -38,6 +41,9 @@ public class OrdinaRicettaPaziente extends AppCompatActivity {
     private NetVariables global;
 
     private boolean pagato = false;
+
+    private RecyclerView recyclerView;
+    private AdapterOrdinaFarmaco adapterOrdinaFarmaco;
 
     private RelativeLayout primo, secondo;
     private Button continua, invia;
@@ -73,16 +79,13 @@ public class OrdinaRicettaPaziente extends AppCompatActivity {
         invia = findViewById(R.id.inviaOrdineRicettaPaziente);
         paga = findViewById(R.id.pagaOra);
         ordinaDocumento = findViewById(R.id.ordineOrdineRicetta);
+        recyclerView = findViewById(R.id.recyclerViewOrdinaFarmaco);
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
-
-        CardFragmentPagerAdapter pagerAdapter = new CardFragmentPagerAdapter(getSupportFragmentManager(), dpToPixels(2, this));
-        ShadowTransformer fragmentCardShadowTransformer = new ShadowTransformer(viewPager, pagerAdapter);
-        fragmentCardShadowTransformer.enableScaling(true);
-
-        viewPager.setAdapter(pagerAdapter);
-        viewPager.setPageTransformer(false, fragmentCardShadowTransformer);
-        viewPager.setOffscreenPageLimit(3);
+        LinearLayoutManager layoutManager
+                = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+        adapterOrdinaFarmaco = new AdapterOrdinaFarmaco(0, global.ricette, global.farmaciID, getApplicationContext(), ordine);
+        recyclerView.setAdapter(adapterOrdinaFarmaco);
 
 
         paga.setOnClickListener(new View.OnClickListener() {

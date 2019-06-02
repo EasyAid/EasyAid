@@ -375,7 +375,7 @@ public class InitialSplashScreen extends AppCompatActivity {
                 params.put("table", "4");
                 if(r == 0){
                     params.put("id", "0");
-                    params.put("cf", String.valueOf(global.paziente.getCodiceFiscale()));
+                    params.put("cf", String.valueOf(global.paziente.getID()));
                 }else{
                     params.put("id", "1");
                     params.put("cf", "2");

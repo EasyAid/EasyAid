@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.easy.aid.Class.Card.AdapterOrdinaFarmaco;
+import com.easy.aid.Class.AdapterOrdinaFarmaco;
 import com.easy.aid.Class.NetVariables;
 import com.easy.aid.R;
 
