@@ -62,7 +62,6 @@
             <!--icona ricette-->
             <LinearLayout
                 android:id="@+id/RichiestaMedicaMed"
-                android:layout_weight="0.3"
                 android:layout_width="155dp"
                 android:layout_height="155dp"
                 android:layout_marginLeft="5dp"
@@ -90,7 +89,6 @@
             <!--icona calendario-->
             <LinearLayout
                 android:id="@+id/calendarioMed"
-                android:layout_weight="0.3"
                 android:layout_width="155dp"
                 android:layout_height="155dp"
                 android:layout_marginLeft="3dp"
@@ -99,8 +97,8 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="80dp"
+                    android:layout_width="80dp"
+                    android:layout_height="75dp"
                     android:src="@drawable/hd_calendar"/>
 
                 <TextView

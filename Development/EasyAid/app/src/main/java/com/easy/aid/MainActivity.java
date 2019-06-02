@@ -31,8 +31,6 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout sceltaPaziente;
     private LinearLayout sceltaFarmacia;
     private NetVariables global;
-    private NetVariables netVariables;
-    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

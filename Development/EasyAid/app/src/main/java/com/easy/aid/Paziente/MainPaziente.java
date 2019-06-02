@@ -44,13 +44,12 @@ import java.util.Map;
 
 /**
  * @author Cristian
- *
  */
 
 public class MainPaziente extends AppCompatActivity {
 
     private LinearLayout richiediVisRic, ordinaRicetta, impostazioni, cronologia;
-    private int close=0;
+    private int close = 0;
     private TextView nomeCognome;
 
     private LinearLayout splash;
@@ -70,10 +69,10 @@ public class MainPaziente extends AppCompatActivity {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        }else {
+        } else {
             Window window = getWindow();
             window.setStatusBarColor(ContextCompat
-                    .getColor(getApplicationContext(),R.color.colorAccent));
+                    .getColor(getApplicationContext(), R.color.colorAccent));
         }
 
         splash = findViewById(R.id.splashMainPaziente);
@@ -84,9 +83,9 @@ public class MainPaziente extends AppCompatActivity {
 
         global = (NetVariables) this.getApplication();
 
-        if(global.paziente != null){
+        if (global.paziente != null) {
             nomeCognome.setText(("BENVENUTO\n" + global.paziente.getNome().toUpperCase() + " " + global.paziente.getCognome().toUpperCase()));
-        }else{
+        } else {
             splash.setVisibility(View.VISIBLE);
             noSplash.setVisibility(View.GONE);
 
@@ -152,10 +151,10 @@ public class MainPaziente extends AppCompatActivity {
                         JSONObject jsonObject = null;
                         try {
                             jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString( "success");
+                            String success = jsonObject.getString("success");
                             JSONArray jsonArray = jsonObject.getJSONArray("read");
 
-                            if (success.equals("1")){
+                            if (success.equals("1")) {
 
                                 JSONObject object = jsonArray.getJSONObject(0);
                                 int id = object.getInt("id");
@@ -168,9 +167,9 @@ public class MainPaziente extends AppCompatActivity {
                                 String provinciaResidenza = object.getString("provinciaresidenza");
                                 String cittaResidenza = object.getString("cittaresidenza");
                                 String viaResidenza = object.getString("viaresidenza");
-                                Indirizzo nascita = new Indirizzo(provinciaNascita,cittaNascita,null,null);
-                                Indirizzo residenza = new Indirizzo(provinciaResidenza,cittaResidenza,viaResidenza,null);
-                                global.paziente = new Paziente(id, nome,cognome,dataNascita,codiceFiscale,nascita,residenza,null,null);
+                                Indirizzo nascita = new Indirizzo(provinciaNascita, cittaNascita, null, null);
+                                Indirizzo residenza = new Indirizzo(provinciaResidenza, cittaResidenza, viaResidenza, null);
+                                global.paziente = new Paziente(id, nome, cognome, dataNascita, codiceFiscale, nascita, residenza, null, null);
                                 nomeCognome.setText(("BENVENUTO\n" + nome.toUpperCase() + " " + cognome.toUpperCase()));
 
                             }
@@ -178,17 +177,16 @@ public class MainPaziente extends AppCompatActivity {
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(MainPaziente.this, "Error " + e.toString() , Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainPaziente.this, "Error " + e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(MainPaziente.this, "Error " + error.toString() , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainPaziente.this, "Error " + error.toString(), Toast.LENGTH_SHORT).show();
                     }
-                })
-        {
+                }) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
@@ -204,53 +202,53 @@ public class MainPaziente extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(close==0){
+        if (close == 0) {
             Toast.makeText(getApplicationContext(), "Premi un'altra volta per uscire", Toast.LENGTH_SHORT).show();
             close++;
-        }else{
+        } else {
             finish();
         }
     }
 
-    private void readRicette(){
+    private void readRicette() {
         global.ricette.clear();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, global.URL_READ,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         JSONObject jsonObject = null;
-                        if(response!=null){
-                            try {
+                        try {
+                            if (!response.equals("")) {
                                 jsonObject = new JSONObject(response);
-                                String success = jsonObject.getString( "success");
+                                String success = jsonObject.getString("success");
                                 JSONArray jsonArray = jsonObject.getJSONArray("read");
 
-                                if (success.equals("1")){
+                                if (success.equals("1")) {
 
-                                    for(int i =0;i < jsonArray.length(); i++){
+                                    for (int i = 0; i < jsonArray.length(); i++) {
 
                                         JSONObject object = jsonArray.getJSONObject(i);
 
-                                        String id  = object.getString("idricetta");
-                                        String idMedico  = object.getString("idmedico");
-                                        String idPaziente  = object.getString("idpaziente");
-                                        String idFarmaco  = object.getString("idfarmaco");
-                                        String numeroScatole  = object.getString("numeroscatole");
-                                        String descrizione  = object.getString("descrizione");
-                                        String esenzionePatologia  = object.getString("esenzionepatologia");
-                                        String esenzioneReddito  = object.getString("esenzionereddito");
-                                        String statoRichiesta  = object.getString("statorichiesta");
-                                        String data  = object.getString("data");
-                                        String ora  = object.getString("ora");
+                                        String id = object.getString("idricetta");
+                                        String idMedico = object.getString("idmedico");
+                                        String idPaziente = object.getString("idpaziente");
+                                        String idFarmaco = object.getString("idfarmaco");
+                                        String numeroScatole = object.getString("numeroscatole");
+                                        String descrizione = object.getString("descrizione");
+                                        String esenzionePatologia = object.getString("esenzionepatologia");
+                                        String esenzioneReddito = object.getString("esenzionereddito");
+                                        String statoRichiesta = object.getString("statorichiesta");
+                                        String data = object.getString("data");
+                                        String ora = object.getString("ora");
 
-                                        global.ricette.add(new Ricetta(Integer.parseInt(id),Integer.parseInt(idMedico),Integer.parseInt(idPaziente), Integer.parseInt(idFarmaco),Integer.parseInt(numeroScatole), descrizione, statoRichiesta, data, ora, Boolean.parseBoolean(esenzioneReddito), Boolean.parseBoolean(esenzionePatologia)));
+                                        global.ricette.add(new Ricetta(Integer.parseInt(id), Integer.parseInt(idMedico), Integer.parseInt(idPaziente), Integer.parseInt(idFarmaco), Integer.parseInt(numeroScatole), descrizione, statoRichiesta, data, ora, Boolean.parseBoolean(esenzioneReddito), Boolean.parseBoolean(esenzionePatologia)));
                                     }
                                 }
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                                Toast.makeText(MainPaziente.this, "Error " + e.toString() , Toast.LENGTH_SHORT).show();
                             }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(MainPaziente.this, "Error " + e.toString(), Toast.LENGTH_SHORT).show();
                         }
                         splash.setVisibility(View.GONE);
                         noSplash.setVisibility(View.VISIBLE);
@@ -259,17 +257,16 @@ public class MainPaziente extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(MainPaziente.this, "Error " + error.toString() , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainPaziente.this, "Error " + error.toString(), Toast.LENGTH_SHORT).show();
                     }
-                })
-        {
+                }) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
 
                 params.put("table", "4");
                 params.put("id", "0");
-                params.put("cf", String.valueOf(global.paziente.getID()));
+                params.put("cf", String.valueOf(global.paziente.getCodiceFiscale()));
 
                 return params;
             }

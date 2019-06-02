@@ -6,22 +6,12 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
-import android.text.Html;
-import android.text.TextWatcher;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,20 +21,17 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.easy.aid.Class.AdapterOrdinaFarmaco;
-import com.easy.aid.Class.CardFragmentPagerAdapter;
+import com.easy.aid.Class.Card.CardFragmentPagerAdapter;
 import com.easy.aid.Class.Farmaco;
 import com.easy.aid.Class.NetVariables;
 import com.easy.aid.Class.Ricetta;
-import com.easy.aid.Class.ShadowTransformer;
+import com.easy.aid.Class.Card.ShadowTransformer;
 import com.easy.aid.R;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class OrdinaRicettaPaziente extends AppCompatActivity {
 

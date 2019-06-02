@@ -319,44 +319,45 @@ public class InitialSplashScreen extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        JSONObject jsonObject = null;
+                         JSONObject jsonObject = null;
                         try {
-                            jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString( "success");
-                            JSONArray jsonArray = jsonObject.getJSONArray("read");
+                            if(!response.equals("")){
+                                jsonObject = new JSONObject(response);
+                                String success = jsonObject.getString( "success");
+                                JSONArray jsonArray = jsonObject.getJSONArray("read");
 
-                            if (success.equals("1")){
+                                if (success.equals("1")){
 
-                                //todo leggi farmaci e salva in array
-                                for(int i =0;i < jsonArray.length(); i++){
+                                    //todo leggi farmaci e salva in array
+                                    for(int i =0;i < jsonArray.length(); i++){
 
-                                    JSONObject object = jsonArray.getJSONObject(i);
+                                        JSONObject object = jsonArray.getJSONObject(i);
 
-                                    String id  = object.getString("idricetta");
-                                    String idMedico  = object.getString("idmedico");
-                                    String idPaziente  = object.getString("idpaziente");
-                                    String idFarmaco  = object.getString("idfarmaco");
-                                    String numeroScatole  = object.getString("numeroscatole");
-                                    String descrizione  = object.getString("descrizione");
-                                    String esenzionePatologia  = object.getString("esenzionepatologia");
-                                    String esenzioneReddito  = object.getString("esenzionereddito");
-                                    String statoRichiesta  = object.getString("statorichiesta");
-                                    String data  = object.getString("data");
-                                    String ora  = object.getString("ora");
+                                        String id  = object.getString("idricetta");
+                                        String idMedico  = object.getString("idmedico");
+                                        String idPaziente  = object.getString("idpaziente");
+                                        String idFarmaco  = object.getString("idfarmaco");
+                                        String numeroScatole  = object.getString("numeroscatole");
+                                        String descrizione  = object.getString("descrizione");
+                                        String esenzionePatologia  = object.getString("esenzionepatologia");
+                                        String esenzioneReddito  = object.getString("esenzionereddito");
+                                        String statoRichiesta  = object.getString("statorichiesta");
+                                        String data  = object.getString("data");
+                                        String ora  = object.getString("ora");
 
 
-                                    global.ricette.add(new Ricetta(Integer.parseInt(id),Integer.parseInt(idMedico),Integer.parseInt(idPaziente),Integer.parseInt(idFarmaco),Integer.parseInt(numeroScatole), descrizione, statoRichiesta, data, ora, Boolean.parseBoolean(esenzioneReddito), Boolean.parseBoolean(esenzionePatologia)));
+                                        global.ricette.add(new Ricetta(Integer.parseInt(id),Integer.parseInt(idMedico),Integer.parseInt(idPaziente),Integer.parseInt(idFarmaco),Integer.parseInt(numeroScatole), descrizione, statoRichiesta, data, ora, Boolean.parseBoolean(esenzioneReddito), Boolean.parseBoolean(esenzionePatologia)));
+
+                                    }
 
                                 }
-
-
-                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(intent);
-                                finish();
                             }
+
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                            finish();
                         } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(InitialSplashScreen.this, "Error " + e.toString() , Toast.LENGTH_SHORT).show();
+
                         }
                     }
                 },
@@ -374,7 +375,7 @@ public class InitialSplashScreen extends AppCompatActivity {
                 params.put("table", "4");
                 if(r == 0){
                     params.put("id", "0");
-                    params.put("cf", String.valueOf(global.paziente.getID()));
+                    params.put("cf", String.valueOf(global.paziente.getCodiceFiscale()));
                 }else{
                     params.put("id", "1");
                     params.put("cf", "2");

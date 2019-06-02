@@ -9,30 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.easy.aid.Class.AdapterOrdinaFarmaco;
+import com.easy.aid.Class.Card.AdapterOrdinaFarmaco;
 import com.easy.aid.Class.NetVariables;
-import com.easy.aid.Class.Ricetta;
-import com.easy.aid.Paziente.MainPaziente;
 import com.easy.aid.R;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class RichiesteRicetteMedico extends AppCompatActivity {
 

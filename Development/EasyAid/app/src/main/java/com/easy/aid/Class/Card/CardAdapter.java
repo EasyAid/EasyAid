@@ -1,4 +1,4 @@
-package com.easy.aid.Class;
+package com.easy.aid.Class.Card;
 
 import android.support.v7.widget.CardView;
 
