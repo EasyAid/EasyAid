@@ -1,7 +1,9 @@
 package com.easy.aid;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.CountDownTimer;
 import android.print.PageRange;
@@ -19,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.easy.aid.Class.DatabaseHelper;
 import com.easy.aid.Class.Farmaco;
 import com.easy.aid.Class.Indirizzo;
 import com.easy.aid.Class.Medico;
@@ -73,9 +76,12 @@ public class InitialSplashScreen extends AppCompatActivity {
         global.farmaciID = new HashMap<>();
         global.ricette = new ArrayList<>();
         global.province = new ArrayList<String>();
+        global.db = new DatabaseHelper(this);
+        global.prefs.edit().putString("readRicette", "0").apply();
 
         leggiProvince();
         leggiFarmaci();
+
 
     }
 
@@ -389,6 +395,5 @@ public class InitialSplashScreen extends AppCompatActivity {
         requestQueue.add(stringRequest);
 
     }
-
 
 }

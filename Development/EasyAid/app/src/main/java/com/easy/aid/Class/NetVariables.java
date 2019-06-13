@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 public class NetVariables extends Application {
+
     public static String URL = "99.80.72.24";
     public static String URL_LOGIN = "http://" + URL + "/login.php";
     public static String URL_READ = "http://" + URL + "/read.php";
@@ -18,6 +19,8 @@ public class NetVariables extends Application {
     public static String URL_INSERT = "http://" + URL + "/insert.php";
     public static String URL_LOGIN_AES = "http://" + URL + "/loginAES.php";
 
+
+    public DatabaseHelper db;
 
     public Map<String, Farmaco> farmaci;
     public Map<String, Farmaco> farmaciID;

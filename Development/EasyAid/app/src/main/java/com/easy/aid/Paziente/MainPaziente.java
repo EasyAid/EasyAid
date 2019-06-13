@@ -63,17 +63,7 @@ public class MainPaziente extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.paziente_main);
 
-        //CONTROLLA LE API DEL TELEFONO, SE MAGGIORI DI MARSHMELLOW MODIFICA IL COLORE DEL TESTO DELLA NOTIFICATION BAR IN CHIARO
-        //ALTRIMENTI SE E' INFERIORE ALLE API 23 MODIFICA LA NOTIFICATION BAR IN COLORE SCURO (IN QUANTO NON PUO MODIFICARE IL COLORE DEL TESTO)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        } else {
-            Window window = getWindow();
-            window.setStatusBarColor(ContextCompat
-                    .getColor(getApplicationContext(), R.color.colorAccent));
-        }
+        checkAPI();
 
         splash = findViewById(R.id.splashMainPaziente);
         noSplash = findViewById(R.id.noSplahMainPaziente);
@@ -96,7 +86,7 @@ public class MainPaziente extends AppCompatActivity {
                 }
 
                 public void onFinish() {
-                    Read(bundle.getString("CF"));
+                    ReadDaTi(bundle.getString("CF"));
                 }
 
             }.start();
@@ -142,7 +132,14 @@ public class MainPaziente extends AppCompatActivity {
 
     }
 
-    private void Read(final String sCF) {
+
+    /**
+     * Legge i dati sensibili relativi al Paziente
+     * Inserisce i dati nella global.list<String>
+     * @param sCF
+     *
+     */
+    private void ReadDaTi(final String sCF) {
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, global.URL_READ,
                 new Response.Listener<String>() {
@@ -173,7 +170,8 @@ public class MainPaziente extends AppCompatActivity {
                                 nomeCognome.setText(("BENVENUTO\n" + nome.toUpperCase() + " " + cognome.toUpperCase()));
 
                             }
-                            readRicette();
+                            splash.setVisibility(View.GONE);
+                            noSplash.setVisibility(View.VISIBLE);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -210,70 +208,17 @@ public class MainPaziente extends AppCompatActivity {
         }
     }
 
-    private void readRicette() {
-        global.ricette.clear();
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, global.URL_READ,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        JSONObject jsonObject = null;
-                        try {
-                            if (!response.equals("")) {
-                                jsonObject = new JSONObject(response);
-                                String success = jsonObject.getString("success");
-                                JSONArray jsonArray = jsonObject.getJSONArray("read");
-
-                                if (success.equals("1")) {
-
-                                    for (int i = 0; i < jsonArray.length(); i++) {
-
-                                        JSONObject object = jsonArray.getJSONObject(i);
-
-                                        String id = object.getString("idricetta");
-                                        String idMedico = object.getString("idmedico");
-                                        String idPaziente = object.getString("idpaziente");
-                                        String idFarmaco = object.getString("idfarmaco");
-                                        String numeroScatole = object.getString("numeroscatole");
-                                        String descrizione = object.getString("descrizione");
-                                        String esenzionePatologia = object.getString("esenzionepatologia");
-                                        String esenzioneReddito = object.getString("esenzionereddito");
-                                        String statoRichiesta = object.getString("statorichiesta");
-                                        String data = object.getString("data");
-                                        String ora = object.getString("ora");
-
-                                        global.ricette.add(new Ricetta(Integer.parseInt(id), Integer.parseInt(idMedico), Integer.parseInt(idPaziente), Integer.parseInt(idFarmaco), Integer.parseInt(numeroScatole), descrizione, statoRichiesta, data, ora, Boolean.parseBoolean(esenzioneReddito), Boolean.parseBoolean(esenzionePatologia)));
-                                    }
-                                }
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(MainPaziente.this, "Error " + e.toString(), Toast.LENGTH_SHORT).show();
-                        }
-                        splash.setVisibility(View.GONE);
-                        noSplash.setVisibility(View.VISIBLE);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(MainPaziente.this, "Error " + error.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-
-                params.put("table", "4");
-                params.put("id", "0");
-                params.put("cf", String.valueOf(global.paziente.getID()));
-
-                return params;
-            }
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-
+    private void checkAPI(){
+        //CONTROLLA LE API DEL TELEFONO, SE MAGGIORI DI MARSHMELLOW MODIFICA IL COLORE DEL TESTO DELLA NOTIFICATION BAR IN CHIARO
+        //ALTRIMENTI SE E' INFERIORE ALLE API 23 MODIFICA LA NOTIFICATION BAR IN COLORE SCURO (IN QUANTO NON PUO MODIFICARE IL COLORE DEL TESTO)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        } else {
+            Window window = getWindow();
+            window.setStatusBarColor(ContextCompat
+                    .getColor(getApplicationContext(), R.color.colorAccent));
+        }
     }
 }
