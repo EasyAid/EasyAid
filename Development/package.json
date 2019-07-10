@@ -1,0 +1,23 @@
+{
+  "name": "easyaid",
+  "version": "0.1.0",
+  "description": "easyaid new branch",
+  "main": "start.js",
+  "scripts": {
+    "test": "electron .",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EasyAid/EasyAid.git"
+  },
+  "author": "EasyAid Team <Lupi Matteo, Murtas Manuel, Ragosta Stefano, Tironi Cristian e Zanchi Federico>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EasyAid/EasyAid/issues"
+  },
+  "homepage": "https://github.com/EasyAid/EasyAid#readme",
+  "devDependencies": {
+    "electron": "^5.0.6"
+  }
+}
