@@ -150,7 +150,6 @@ public class InitialSplashScreen extends AppCompatActivity {
                                     Indirizzo residenza = new Indirizzo(provinciaResidenza,cittaResidenza,viaResidenza,null);
                                     global.paziente = new Paziente(id, nome,cognome,dataNascita,codiceFiscale,nascita,residenza,null,null);
 
-                                    readRicette(0);
                                 }else if(settore.equals("Medico")){
 
                                     int id = object.getInt("id");
@@ -176,8 +175,6 @@ public class InitialSplashScreen extends AppCompatActivity {
                                             resultCf, resultLuogonascita, resultLuogostudio,
                                             resultPassword, resultEmail, resultTelefono);
 
-                                    readRicette(1);
-
                                 }else if(settore.equals("Farmacia")){
 
 
@@ -194,6 +191,10 @@ public class InitialSplashScreen extends AppCompatActivity {
 
                                     }.start();
                                 }
+
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                                finish();
 
 
                             }
@@ -317,83 +318,6 @@ public class InitialSplashScreen extends AppCompatActivity {
                 }
             }
         }
-    }
-
-    private void readRicette(final int r){
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, global.URL_READ,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                         JSONObject jsonObject = null;
-                        try {
-                            if(!response.equals("")){
-                                jsonObject = new JSONObject(response);
-                                String success = jsonObject.getString( "success");
-                                JSONArray jsonArray = jsonObject.getJSONArray("read");
-
-                                if (success.equals("1")){
-
-                                    //todo leggi farmaci e salva in array
-                                    for(int i =0;i < jsonArray.length(); i++){
-
-                                        JSONObject object = jsonArray.getJSONObject(i);
-
-                                        String id  = object.getString("idricetta");
-                                        String idMedico  = object.getString("idmedico");
-                                        String idPaziente  = object.getString("idpaziente");
-                                        String idFarmaco  = object.getString("idfarmaco");
-                                        String numeroScatole  = object.getString("numeroscatole");
-                                        String descrizione  = object.getString("descrizione");
-                                        String esenzionePatologia  = object.getString("esenzionepatologia");
-                                        String esenzioneReddito  = object.getString("esenzionereddito");
-                                        String statoRichiesta  = object.getString("statorichiesta");
-                                        String data  = object.getString("data");
-                                        String ora  = object.getString("ora");
-
-
-                                        global.ricette.add(new Ricetta(Integer.parseInt(id),Integer.parseInt(idMedico),Integer.parseInt(idPaziente),Integer.parseInt(idFarmaco),Integer.parseInt(numeroScatole), descrizione, statoRichiesta, data, ora, Boolean.parseBoolean(esenzioneReddito), Boolean.parseBoolean(esenzionePatologia)));
-
-                                    }
-
-                                }
-                            }
-
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                            startActivity(intent);
-                            finish();
-                        } catch (JSONException e) {
-
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(InitialSplashScreen.this, "Errore di connessione" , Toast.LENGTH_SHORT).show();
-                    }
-                })
-        {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-
-                params.put("table", "4");
-                if(r == 0){
-                    params.put("id", "0");
-                    params.put("cf", String.valueOf(global.paziente.getID()));
-                }else{
-                    params.put("id", "1");
-                    params.put("cf", "2");
-                }
-
-                return params;
-            }
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-
     }
 
 }

@@ -40,16 +40,25 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.easy.aid.Class.AdapterRegistrazionePaziente;
+import com.easy.aid.Class.GeneralAdapter;
 import com.easy.aid.Class.NetVariables;
+import com.easy.aid.Class.Ricetta;
 import com.easy.aid.Medico.MainMedico;
 import com.easy.aid.Medico.RegistrazioneMedico;
 import com.easy.aid.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -59,11 +68,12 @@ public class RegistrazionePaziente extends AppCompatActivity {
     private String btnTextContinua = "CONTINUA";
     private String btnTextFinisci = "CONFERMA REGISTRAZIONE";
 
+    private NetVariables global;
     private EditText nome, cognome;
     private EditText codiceFiscale, viaResidenza;
     private EditText email, password, confermaPassword;
     private TextView dataNascita;
-    private AutoCompleteTextView provinciaNascita, cittaNascita, provinciaResidenza, cittaResidenza, medicoBase;
+    private AutoCompleteTextView provinciaNascita, cittaNascita, provinciaResidenza, cittaResidenza, autoCompleteMedicoBase;
     private Button registrazioneButton;
     private ImageView showCalendar;
     private ImageView back;
@@ -85,6 +95,7 @@ public class RegistrazionePaziente extends AppCompatActivity {
         setContentView(R.layout.paziente_registrazione);
 
         checkAPI();
+        global = (NetVariables) this.getApplication();
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         c = ((NetVariables) this.getApplication());
@@ -110,11 +121,12 @@ public class RegistrazionePaziente extends AppCompatActivity {
         sessoRadio = findViewById(R.id.sessoRadioRegistrazionewPaziente);
         provinciaResidenza = findViewById(R.id.editProvinciaResidenzaRegistrazionePaziente);
         cittaResidenza = findViewById(R.id.editCittaResidenzaRegistrazionePaziente);
-        medicoBase = findViewById(R.id.medicoBaseRegistrazionePaziente);
+        autoCompleteMedicoBase = findViewById(R.id.medicoBaseRegistrazionePaziente);
         viaResidenza = findViewById(R.id.editViaResidenzaRegistrazionePaziente);
         email = findViewById(R.id.indirizzoEmailRegistrazionePaziente);
         password = findViewById(R.id.editPasswordRegistrazionePaziente);
         confermaPassword = findViewById(R.id.editConfermaPasswordRegistrazionePaziente);
+
 
         myCalendar = Calendar.getInstance();
         date = new DatePickerDialog.OnDateSetListener() {
@@ -174,7 +186,7 @@ public class RegistrazionePaziente extends AppCompatActivity {
             }
         });
 
-        medicoBase.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        autoCompleteMedicoBase.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -209,6 +221,70 @@ public class RegistrazionePaziente extends AppCompatActivity {
                 checkBack();
             }
         });
+
+
+        readMedici();
+    }
+
+    private void readMedici(){
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, global.URL_READ,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        JSONObject jsonObject = null;
+                        if(response!=null){
+                            try {
+                                jsonObject = new JSONObject(response);
+                                String success = jsonObject.getString( "success");
+                                JSONArray jsonArray = jsonObject.getJSONArray("read");
+
+                                if (success.equals("1")){
+
+                                    List<Integer> id = new ArrayList<>();
+                                    List<String> nomiMedici = new ArrayList<>();
+                                    List<String> studiMedici = new ArrayList<>();
+
+                                    for(int i =0;i < jsonArray.length(); i++){
+
+                                        JSONObject object = jsonArray.getJSONObject(i);
+
+                                        String id  = object.getString("idMedico");
+
+                                    }
+
+
+
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                Toast.makeText(RegistrazionePaziente.this, "Error " + e.toString() , Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(RegistrazionePaziente.this, "Error " + error.toString() , Toast.LENGTH_SHORT).show();
+                    }
+                })
+        {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+
+                params.put("table", "5");
+                params.put("id", "0");
+
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
     }
 
     private void updateLabel() {

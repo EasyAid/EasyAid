@@ -361,7 +361,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
-                            android:hint="CODICE|FISCALE"
+                            android:hint="CODICE FISCALE"
                             android:imeOptions="actionDone"
                             android:inputType="text"
                             android:fontFamily="@font/raleway_regular"

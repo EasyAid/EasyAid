@@ -35,7 +35,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/back"/>
+                    android:src="@drawable/back" />
 
                 <TextView
                     android:layout_width="match_parent"

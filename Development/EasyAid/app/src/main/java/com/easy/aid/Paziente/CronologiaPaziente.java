@@ -7,10 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 import com.easy.aid.R;
 
 public class CronologiaPaziente extends AppCompatActivity {
+
+    private ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -8,12 +8,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -25,14 +25,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.easy.aid.Class.AdapterOrdinaFarmaco;
+import com.easy.aid.Class.GeneralAdapter;
 import com.easy.aid.Class.Card.CardFragmentPagerAdapter;
 import com.easy.aid.Class.Farmaco;
 import com.easy.aid.Class.NetVariables;
 import com.easy.aid.Class.Ricetta;
 import com.easy.aid.Class.Card.ShadowTransformer;
-import com.easy.aid.Farmacia.OrdinaRicetteFarmacia;
-import com.easy.aid.Medico.MainMedico;
 import com.easy.aid.R;
 
 import org.json.JSONArray;
@@ -43,7 +41,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnClickListener {
 
@@ -52,7 +49,7 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
     private boolean pagato = false;
 
     //private RecyclerView recyclerView;
-    private AdapterOrdinaFarmaco adapterOrdinaFarmaco;
+    private GeneralAdapter adapterOrdinaFarmaco;
 
     private LinearLayout aggiornaRicette;
     private RelativeLayout primo, secondo;
@@ -64,6 +61,7 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
     private double tot = 0;
     private CardFragmentPagerAdapter pagerAdapter;
     private ViewPager viewPager;
+    private ImageView back;
 
     private LinearLayout splash;
     private RelativeLayout noSplash;
@@ -75,6 +73,7 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
 
         checkAPI();
         global = (NetVariables) this.getApplication();
+
         ordine = new ArrayList<>();
 
         splash = findViewById(R.id.splashOrdinaPaziente);
@@ -93,13 +92,14 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
         invia.setOnClickListener(this);
         continuaOrdine = findViewById(R.id.continuaOrdinaFarmacoPaziente);
         continuaOrdine.setOnClickListener(this);
+        back = findViewById(R.id.backOrdinaRicPaz);
         viewPager = (ViewPager) findViewById(R.id.recyclerViewOrdinaFarmaco);
         //recyclerView = findViewById(R.id.recyclerViewOrdinaFarmaco);
 
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         //recyclerView.setLayoutManager(layoutManager);
-        adapterOrdinaFarmaco = new AdapterOrdinaFarmaco(0, global.ricette, global.farmaciID, getApplicationContext(), ordine);
+        adapterOrdinaFarmaco = new GeneralAdapter(0, global.ricette, global.farmaciID, getApplicationContext(), ordine);
         //recyclerView.setAdapter(adapterOrdinaFarmaco);
 
        if(global.prefs.getString("readRicette", null) != null && global.prefs.getString("readRicette", null).equals("1")){
@@ -107,6 +107,15 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
         }else{
             ReadRicette();
         }
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (global.checktime()) return;
+                finish();
+            }
+        });
+
     }
 
     private void ReadRicetteLocal(){

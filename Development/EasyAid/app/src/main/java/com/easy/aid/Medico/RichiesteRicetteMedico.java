@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.easy.aid.Class.AdapterOrdinaFarmaco;
+import com.easy.aid.Class.GeneralAdapter;
 import com.easy.aid.Class.NetVariables;
 import com.easy.aid.R;
 
@@ -19,7 +19,7 @@ public class RichiesteRicetteMedico extends AppCompatActivity {
     private NetVariables global;
 
     private RecyclerView recyclerView;
-    private AdapterOrdinaFarmaco adapterOrdinaFarmaco;
+    private GeneralAdapter adapterOrdinaFarmaco;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class RichiesteRicetteMedico extends AppCompatActivity {
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
-        adapterOrdinaFarmaco = new AdapterOrdinaFarmaco(1, global.ricette, global.farmaciID, getApplicationContext(), null);
+        adapterOrdinaFarmaco = new GeneralAdapter(1, global.ricette, global.farmaciID, getApplicationContext(), null);
         recyclerView.setAdapter(adapterOrdinaFarmaco);
 
         //CONTROLLA LE API DEL TELEFONO, SE MAGGIORI DI MARSHMELLOW MODIFICA IL COLORE DEL TESTO DELLA NOTIFICATION BAR IN CHIARO

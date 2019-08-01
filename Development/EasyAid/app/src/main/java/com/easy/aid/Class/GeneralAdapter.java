@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class AdapterOrdinaFarmaco extends RecyclerView.Adapter<AdapterOrdinaFarmaco.ViewHolder> {
+public class GeneralAdapter extends RecyclerView.Adapter<GeneralAdapter.ViewHolder> {
 
 
     private List<Ricetta> ricette;
@@ -27,7 +27,7 @@ public class AdapterOrdinaFarmaco extends RecyclerView.Adapter<AdapterOrdinaFarm
     private Context context;
     private int utente;
 
-    public AdapterOrdinaFarmaco(int id, List<Ricetta> ricette, Map<String, Farmaco> farmaci, Context context, List<Ricetta> ordine) {
+    public GeneralAdapter(int id, List<Ricetta> ricette, Map<String, Farmaco> farmaci, Context context, List<Ricetta> ordine) {
         this.utente = id;
         this.ricette = new ArrayList<>();
         this.ricette.addAll(ricette);

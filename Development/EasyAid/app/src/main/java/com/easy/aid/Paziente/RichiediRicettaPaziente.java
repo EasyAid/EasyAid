@@ -19,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -66,6 +67,8 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
     private Spinner dropdown;
     private boolean set = false;
     private Button invia;
+    private ImageView back;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,9 +87,10 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
         prezzoFarmaco   = findViewById(R.id.prezzoFarmacoRichiediRicettaPaz);
         invia           = findViewById(R.id.inviaRichiestaPaz);
         descPatologia = findViewById(R.id.descPatologiaRichiediRicettaPaz);
+        back = findViewById(R.id.backRichiediRicPaz);
 
         nomeCognomePaz.setText(Html.fromHtml(nomeCognomePaz.getText().toString() + "<br><b>" + global.paziente.getCognome().toUpperCase() +" " + global.paziente.getNome().toUpperCase() + "<b>"));
-        nomeCognomeMed.setText(Html.fromHtml(nomeCognomePaz.getText().toString() + "<br><b>DOTT. LUIGI<b>"));
+        nomeCognomeMed.setText(Html.fromHtml(nomeCognomeMed.getText().toString() + "<br><b>" + global.medico.getCognome().toUpperCase() +" " + global.medico.getNome().toUpperCase() + "<b>"));
 
         Set<String> keys = global.farmaci.keySet();
         String[] nomeFarmaci = keys.toArray(new String[keys.size()]);
@@ -161,6 +165,14 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
                         descPatologia.setError("Inserisci una descrizione");
                     }
                 }
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (global.checktime()) return;
+                finish();
             }
         });
 

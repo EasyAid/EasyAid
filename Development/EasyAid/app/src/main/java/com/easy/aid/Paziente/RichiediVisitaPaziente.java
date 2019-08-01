@@ -9,6 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +40,7 @@ public class RichiediVisitaPaziente extends AppCompatActivity {
     private CalendarView calendar;
     private int anno,mese,giorno;
     private Boolean click=false;
+    private ImageView back;
     private NetVariables global;
 
     @Override
@@ -61,6 +63,7 @@ public class RichiediVisitaPaziente extends AppCompatActivity {
         calendar = findViewById(R.id.calendarioRichiediVisitaPaz);
         nomeMedico = findViewById(R.id.nomeCognomeMedicoRichiediVisitaPaziente);
         nomePaziente = findViewById(R.id.nomeCognomePazienteRichiediVisitaPaziente);
+        back = findViewById(R.id.backRichiediVisitaPaz);
 
         nomePaziente.setText((nomePaziente.getText().toString()+ " " + global.paziente.getNome().toUpperCase()+ " "+ global.paziente.getCognome().toUpperCase()));
 
@@ -118,6 +121,15 @@ public class RichiediVisitaPaziente extends AppCompatActivity {
                 Invia();
             }
         });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (global.checktime()) return;
+                finish();
+            }
+        });
+
     }
 
     private void Invia() {

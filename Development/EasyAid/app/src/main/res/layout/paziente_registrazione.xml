@@ -517,7 +517,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="serif"
                                 android:inputType="text"
-                                android:hint="MEDICO DI BASE : 1"
+                                android:hint="MEDICO DI BASE"
                                 android:imeOptions="actionDone"
                                 android:textColor="@color/black"
                                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"

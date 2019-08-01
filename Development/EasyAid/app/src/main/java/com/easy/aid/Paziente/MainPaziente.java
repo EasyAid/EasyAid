@@ -27,6 +27,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.easy.aid.Class.Indirizzo;
+import com.easy.aid.Class.Medico;
 import com.easy.aid.Class.NetVariables;
 import com.easy.aid.Class.Paziente;
 import com.easy.aid.Class.Ricetta;
@@ -75,6 +76,7 @@ public class MainPaziente extends AppCompatActivity {
 
         if (global.paziente != null) {
             nomeCognome.setText(("BENVENUTO\n" + global.paziente.getNome().toUpperCase() + " " + global.paziente.getCognome().toUpperCase()));
+
         } else {
             splash.setVisibility(View.VISIBLE);
             noSplash.setVisibility(View.GONE);
@@ -164,12 +166,74 @@ public class MainPaziente extends AppCompatActivity {
                                 String provinciaResidenza = object.getString("provinciaresidenza");
                                 String cittaResidenza = object.getString("cittaresidenza");
                                 String viaResidenza = object.getString("viaresidenza");
+                                String idMedicoBase = object.getString("idmedicobase");
                                 Indirizzo nascita = new Indirizzo(provinciaNascita, cittaNascita, null, null);
                                 Indirizzo residenza = new Indirizzo(provinciaResidenza, cittaResidenza, viaResidenza, null);
-                                global.paziente = new Paziente(id, nome, cognome, dataNascita, codiceFiscale, nascita, residenza, null, null);
+                                global.paziente = new Paziente(id, nome, cognome, dataNascita, codiceFiscale, nascita, residenza, idMedicoBase, null);
                                 nomeCognome.setText(("BENVENUTO\n" + nome.toUpperCase() + " " + cognome.toUpperCase()));
 
+                                ReadMedico(idMedicoBase);
+                        }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(MainPaziente.this, "Error " + e.toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(MainPaziente.this, "Error " + error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("cf", sCF);
+                params.put("table", "0");
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
+    private void ReadMedico(final String idMedico) {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, global.URL_READ,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        JSONObject jsonObject = null;
+                        try {
+                            jsonObject = new JSONObject(response);
+                            String success = jsonObject.getString("success");
+                            JSONArray jsonArray = jsonObject.getJSONArray("read");
+
+                            if (success.equals("1")) {
+
+                                JSONObject object = jsonArray.getJSONObject(0);
+                                int id = object.getInt("id");
+                                String nome = object.getString("nome");
+                                String cognome = object.getString("cognome");
+                                String dataNascita = object.getString("datanascita");
+                                String codiceFiscale = object.getString("codicefiscale");
+                                String provinciaNascita = object.getString("provincianascita");
+                                String cittaNascita = object.getString("cittanascita");
+                                String provinciaStudio = object.getString("provinciastudio");
+                                String cittaStudio = object.getString("cittastudio");
+                                String viaStudio = object.getString("viastudio");
+                                String email = object.getString("email");
+                                String telefono = object.getString("telefono");
+
+                                Indirizzo nascita = new Indirizzo(provinciaNascita, cittaNascita, null, null);
+                                Indirizzo studio = new Indirizzo(provinciaStudio, cittaStudio, viaStudio, null);
+
+                                global.medico = new Medico(id, nome, cognome, dataNascita, false, codiceFiscale, nascita, studio, null, email, telefono);
+
                             }
+
                             splash.setVisibility(View.GONE);
                             noSplash.setVisibility(View.VISIBLE);
 
@@ -188,8 +252,8 @@ public class MainPaziente extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("cf", sCF);
-                params.put("table", "0");
+                params.put("cf", idMedico);
+                params.put("table", "7");
                 return params;
             }
         };

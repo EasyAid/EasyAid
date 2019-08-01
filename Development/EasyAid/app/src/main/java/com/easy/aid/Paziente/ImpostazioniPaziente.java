@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.easy.aid.Class.NetVariables;
 import com.easy.aid.InitialSplashScreen;
@@ -23,6 +24,7 @@ public class ImpostazioniPaziente extends AppCompatActivity {
     private Button logout;
     private Intent intent;
     private NetVariables global;
+    private ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
