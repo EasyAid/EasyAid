@@ -251,7 +251,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         " WHERE IdRicetta = '" + item.getIdRicetta() + "'";
                 Cursor data = db.rawQuery(query, null);
 
-                if(data != null) return true;
+                if(data.getCount() == 1) return true;
                 else return false;
 
             }

@@ -26,6 +26,10 @@ public class NetVariables extends Application {
     public Map<String, Farmaco> farmaciID;
     public List<Ricetta> ricette;
     public List<String> province;
+    public List<String> siglaProvince;
+    public List<String> siglaProvinceComuni;
+    public List<String> comuni;
+    public List<String> codiceComuni;
 
     public Medico medico;
     public Paziente paziente;

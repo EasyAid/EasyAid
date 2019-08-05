@@ -15,6 +15,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,12 +26,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.easy.aid.Class.GeneralAdapter;
-import com.easy.aid.Class.Card.CardFragmentPagerAdapter;
+import com.easy.aid.Class.CustomAdapter;
 import com.easy.aid.Class.Farmaco;
 import com.easy.aid.Class.NetVariables;
 import com.easy.aid.Class.Ricetta;
-import com.easy.aid.Class.Card.ShadowTransformer;
 import com.easy.aid.R;
 
 import org.json.JSONArray;
@@ -48,10 +47,6 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
 
     private boolean pagato = false;
 
-    //private RecyclerView recyclerView;
-    private GeneralAdapter adapterOrdinaFarmaco;
-
-    private LinearLayout aggiornaRicette;
     private RelativeLayout primo, secondo;
     private TextView ordinaDocumento;
     private List<Ricetta> ordine;
@@ -59,8 +54,7 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
     private Button invia;
     private Button continuaOrdine;
     private double tot = 0;
-    private CardFragmentPagerAdapter pagerAdapter;
-    private ViewPager viewPager;
+    private ListView listView;
     private ImageView back;
 
     private LinearLayout splash;
@@ -84,8 +78,6 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
         primo = findViewById(R.id.primoOrdinaFarmacia);
         secondo = findViewById(R.id.secondoOrdinaFarmacia);
         ordinaDocumento = findViewById(R.id.ordineOrdineRicetta);
-        aggiornaRicette = findViewById(R.id.aggiornaRicette);
-        aggiornaRicette.setOnClickListener(this);
         pagaOra = findViewById(R.id.pagaOra);
         pagaOra.setOnClickListener(this);
         invia = findViewById(R.id.inviaOrdineRicettaPaziente);
@@ -93,14 +85,7 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
         continuaOrdine = findViewById(R.id.continuaOrdinaFarmacoPaziente);
         continuaOrdine.setOnClickListener(this);
         back = findViewById(R.id.backOrdinaRicPaz);
-        viewPager = (ViewPager) findViewById(R.id.recyclerViewOrdinaFarmaco);
-        //recyclerView = findViewById(R.id.recyclerViewOrdinaFarmaco);
-
-        LinearLayoutManager layoutManager
-                = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        //recyclerView.setLayoutManager(layoutManager);
-        adapterOrdinaFarmaco = new GeneralAdapter(0, global.ricette, global.farmaciID, getApplicationContext(), ordine);
-        //recyclerView.setAdapter(adapterOrdinaFarmaco);
+        listView = findViewById(R.id.listViewOrdinaFarmacoPaziente);
 
        if(global.prefs.getString("readRicette", null) != null && global.prefs.getString("readRicette", null).equals("1")){
             ReadRicetteLocal();
@@ -142,7 +127,7 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
 
         }
 
-        viewPager();
+        listView();
     }
 
     private void ReadRicette(){
@@ -197,7 +182,7 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
                             }
 
 
-                            viewPager();
+                            listView();
 
                         }
                     }
@@ -225,15 +210,11 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
         requestQueue.add(stringRequest);
     }
 
-    private void viewPager(){
+    private void listView(){
 
-        pagerAdapter = new CardFragmentPagerAdapter(getSupportFragmentManager(), dpToPixels(2, OrdinaRicettaPaziente.this), global, ordine);
-        ShadowTransformer fragmentCardShadowTransformer = new ShadowTransformer(viewPager, pagerAdapter);
-        fragmentCardShadowTransformer.enableScaling(true);
-
-        viewPager.setAdapter(pagerAdapter);
-        viewPager.setPageTransformer(false, fragmentCardShadowTransformer);
-        viewPager.setOffscreenPageLimit(3);
+        //TODO LIST VIEW
+        CustomAdapter adapter = new CustomAdapter(getApplicationContext(), global.ricette, global.farmaciID);
+        listView.setAdapter(adapter);
 
         splash.setVisibility(View.GONE);
         noSplash.setVisibility(View.VISIBLE);
@@ -337,13 +318,6 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
                 for (int i = 0; i < ordine.size(); i++) {
                     Invia(ordine.get(i));
                 }
-                break;
-
-            case R.id.aggiornaRicette:
-                pagerAdapter.clearFragments();
-                pagerAdapter.notifyDataSetChanged();
-                viewPager.setAdapter(pagerAdapter);
-                ReadRicette();
                 break;
         }
     }

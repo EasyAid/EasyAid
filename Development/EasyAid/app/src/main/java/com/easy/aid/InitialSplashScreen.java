@@ -76,6 +76,10 @@ public class InitialSplashScreen extends AppCompatActivity {
         global.farmaciID = new HashMap<>();
         global.ricette = new ArrayList<>();
         global.province = new ArrayList<String>();
+        global.siglaProvince = new ArrayList<String>();
+        global.siglaProvinceComuni = new ArrayList<String>();
+        global.comuni = new ArrayList<String>();
+        global.codiceComuni = new ArrayList<String>();
         global.db = new DatabaseHelper(this);
         global.prefs.edit().putString("readRicette", "0").apply();
 
@@ -303,8 +307,46 @@ public class InitialSplashScreen extends AppCompatActivity {
 
             while ((mLine = reader.readLine()) != null) {
 
+
                 String provincia = mLine;
-                global.province.add(provincia);
+                String[] parts = provincia.split(";");
+                global.province.add(parts[0]);
+                global.siglaProvince.add(parts[1]);
+            }
+
+        } catch (IOException e) {
+            //log the exception
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    //log the exception
+                }
+            }
+        }
+
+        leggiComuni();
+    }
+
+    private void leggiComuni(){
+        BufferedReader reader = null;
+        try {
+
+            String mLine;
+            reader = new BufferedReader(
+                    new InputStreamReader(getAssets().open("comuni.txt"), StandardCharsets.UTF_8));
+
+            // do reading, usually loop until end of file reading
+
+            while ((mLine = reader.readLine()) != null) {
+
+
+                String comune = mLine;
+                String[] parts = comune.split(";");
+                global.siglaProvinceComuni.add(parts[0]);
+                global.comuni.add(parts[1]);
+                global.codiceComuni.add(parts[2]);
             }
 
         } catch (IOException e) {
@@ -319,5 +361,4 @@ public class InitialSplashScreen extends AppCompatActivity {
             }
         }
     }
-
 }
