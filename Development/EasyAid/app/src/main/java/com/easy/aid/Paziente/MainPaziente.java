@@ -128,7 +128,8 @@ public class MainPaziente extends AppCompatActivity {
         cronologia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(MainPaziente.this, CronologiaPaziente.class);
+                startActivity(i);
             }
         });
 

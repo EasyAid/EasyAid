@@ -11,10 +11,11 @@ import java.util.Map;
 
 public class NetVariables extends Application {
 
-    public static String URL = "99.80.72.24";
+    public static String URL = "192.168.1.16/easyaid";
     public static String URL_LOGIN = "http://" + URL + "/login.php";
     public static String URL_READ = "http://" + URL + "/read.php";
     public static String URL_UPLOAD = "http://" + URL + "/upload.php";
+    public static String URL_UPDATE = "http://" + URL + "/update.php";
     public static String URL_REGISTER = "http://" + URL + "/register.php";
     public static String URL_INSERT = "http://" + URL + "/insert.php";
     public static String URL_LOGIN_AES = "http://" + URL + "/loginAES.php";
@@ -25,6 +26,8 @@ public class NetVariables extends Application {
     public Map<String, Farmaco> farmaci;
     public Map<String, Farmaco> farmaciID;
     public List<Ricetta> ricette;
+    public Map<String, Ricetta> ricetteORDINATE;
+    public List<Ordine> ordini;
     public List<String> province;
     public List<String> siglaProvince;
     public List<String> siglaProvinceComuni;

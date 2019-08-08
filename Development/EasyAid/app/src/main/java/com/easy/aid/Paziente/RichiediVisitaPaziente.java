@@ -65,7 +65,9 @@ public class RichiediVisitaPaziente extends AppCompatActivity {
         nomePaziente = findViewById(R.id.nomeCognomePazienteRichiediVisitaPaziente);
         back = findViewById(R.id.backRichiediVisitaPaz);
 
-        nomePaziente.setText((nomePaziente.getText().toString()+ " " + global.paziente.getNome().toUpperCase()+ " "+ global.paziente.getCognome().toUpperCase()));
+        nomePaziente.setText((nomePaziente.getText().toString()+ " " + global.paziente.getCognome().toUpperCase()+ " "+ global.paziente.getNome().toUpperCase()));
+        nomeMedico.setText((nomeMedico.getText().toString()+ " " + global.medico.getCognome().toUpperCase()+ " "+ global.medico.getNome().toUpperCase()));
+
 
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String supp =  formatter.format(new Date());

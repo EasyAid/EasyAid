@@ -110,7 +110,8 @@ public class AccessoPaziente extends AppCompatActivity {
                 if (global.checktime()) return;
 
                 String sCF = cf.getText().toString().trim();
-                String sPass = md5(pwd.getText().toString().trim());
+                //String sPass = md5(pwd.getText().toString().trim());
+                String sPass = pwd.getText().toString().trim();
 
                 if(!sCF.isEmpty() && !sPass.isEmpty()){
                     Login(sCF,sPass);
@@ -146,7 +147,7 @@ public class AccessoPaziente extends AppCompatActivity {
         intent = new Intent(AccessoPaziente.this, MainPaziente.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN_AES,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -187,12 +188,12 @@ public class AccessoPaziente extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
 
                 try {
-                    s = MCrypt.bytesToHex( crypt.encrypt("0") );
-                    params.put("table", s);
-                    s = MCrypt.bytesToHex( crypt.encrypt(sCF) );
-                    params.put("cf", s);
-                    s = MCrypt.bytesToHex( crypt.encrypt(sPass) );
-                    params.put("password", s);
+                    //s = MCrypt.bytesToHex( crypt.encrypt("0") );
+                    params.put("table", "0");
+                    //s = MCrypt.bytesToHex( crypt.encrypt(sCF) );
+                    params.put("cf", sCF);
+                    //s = MCrypt.bytesToHex( crypt.encrypt(sPass) );
+                    params.put("password", sPass);
 
                 } catch (Exception e) {
                     e.printStackTrace();

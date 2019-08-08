@@ -75,6 +75,8 @@ public class InitialSplashScreen extends AppCompatActivity {
         global.farmaci = new HashMap<>();
         global.farmaciID = new HashMap<>();
         global.ricette = new ArrayList<>();
+        global.ricetteORDINATE = new HashMap<>();
+        global.ordini = new ArrayList<>();
         global.province = new ArrayList<String>();
         global.siglaProvince = new ArrayList<String>();
         global.siglaProvinceComuni = new ArrayList<String>();
@@ -123,6 +125,71 @@ public class InitialSplashScreen extends AppCompatActivity {
         }
     }
 
+
+    private void ReadMedico(final String idMedico) {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, global.URL_READ,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        JSONObject jsonObject = null;
+                        try {
+                            jsonObject = new JSONObject(response);
+                            String success = jsonObject.getString("success");
+                            JSONArray jsonArray = jsonObject.getJSONArray("read");
+
+                            if (success.equals("1")) {
+
+                                JSONObject object = jsonArray.getJSONObject(0);
+                                int id = object.getInt("id");
+                                String nome = object.getString("nome");
+                                String cognome = object.getString("cognome");
+                                String dataNascita = object.getString("datanascita");
+                                String codiceFiscale = object.getString("codicefiscale");
+                                String provinciaNascita = object.getString("provincianascita");
+                                String cittaNascita = object.getString("cittanascita");
+                                String provinciaStudio = object.getString("provinciastudio");
+                                String cittaStudio = object.getString("cittastudio");
+                                String viaStudio = object.getString("viastudio");
+                                String email = object.getString("email");
+                                String telefono = object.getString("telefono");
+
+                                Indirizzo nascita = new Indirizzo(provinciaNascita, cittaNascita, null, null);
+                                Indirizzo studio = new Indirizzo(provinciaStudio, cittaStudio, viaStudio, null);
+
+                                global.medico = new Medico(id, nome, cognome, dataNascita, false, codiceFiscale, nascita, studio, null, email, telefono);
+
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                                finish();
+
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(InitialSplashScreen.this, "Error " + e.toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(InitialSplashScreen.this, "Error " + error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("cf", idMedico);
+                params.put("table", "7");
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
     private void Read(){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, global.URL_READ,
                 new Response.Listener<String>() {
@@ -150,9 +217,12 @@ public class InitialSplashScreen extends AppCompatActivity {
                                     String provinciaResidenza = object.getString("provinciaresidenza");
                                     String cittaResidenza = object.getString("cittaresidenza");
                                     String viaResidenza = object.getString("viaresidenza");
+                                    String idMedicoBase = object.getString("idmedicobase");
                                     Indirizzo nascita = new Indirizzo(provinciaNascita,cittaNascita,null,null);
                                     Indirizzo residenza = new Indirizzo(provinciaResidenza,cittaResidenza,viaResidenza,null);
-                                    global.paziente = new Paziente(id, nome,cognome,dataNascita,codiceFiscale,nascita,residenza,null,null);
+                                    global.paziente = new Paziente(id, nome,cognome,dataNascita,codiceFiscale,nascita,residenza,idMedicoBase,null);
+
+                                    ReadMedico(idMedicoBase);
 
                                 }else if(settore.equals("Medico")){
 
@@ -179,6 +249,10 @@ public class InitialSplashScreen extends AppCompatActivity {
                                             resultCf, resultLuogonascita, resultLuogostudio,
                                             resultPassword, resultEmail, resultTelefono);
 
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    startActivity(intent);
+                                    finish();
+
                                 }else if(settore.equals("Farmacia")){
 
 
@@ -194,11 +268,13 @@ public class InitialSplashScreen extends AppCompatActivity {
                                         }
 
                                     }.start();
+
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    startActivity(intent);
+                                    finish();
                                 }
 
-                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(intent);
-                                finish();
+
 
 
                             }

@@ -47,9 +47,7 @@ public class RichiediVisitaRicettaPaziente extends AppCompatActivity {
         richiediVisita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(RichiediVisitaRicettaPaziente.this, RichiediVisitaPaziente.class);
-                startActivity(i);
-                finish();
+
             }
         });
 

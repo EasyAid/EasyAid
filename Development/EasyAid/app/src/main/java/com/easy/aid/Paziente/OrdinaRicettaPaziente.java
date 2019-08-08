@@ -48,13 +48,13 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
     private boolean pagato = false;
 
     private RelativeLayout primo, secondo;
-    private TextView ordinaDocumento;
+    private TextView indirizzo, totale;
     private List<Ricetta> ordine;
     private Button pagaOra;
     private Button invia;
     private Button continuaOrdine;
     private double tot = 0;
-    private ListView listView;
+    private ListView listView, ordineList;
     private ImageView back;
 
     private LinearLayout splash;
@@ -77,9 +77,11 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
 
         primo = findViewById(R.id.primoOrdinaFarmacia);
         secondo = findViewById(R.id.secondoOrdinaFarmacia);
-        ordinaDocumento = findViewById(R.id.ordineOrdineRicetta);
+        indirizzo = findViewById(R.id.indirizzoListaRicette);
+        totale = findViewById(R.id.totaleListaRicette);
         pagaOra = findViewById(R.id.pagaOra);
         pagaOra.setOnClickListener(this);
+        ordineList = findViewById(R.id.ordineListView);
         invia = findViewById(R.id.inviaOrdineRicettaPaziente);
         invia.setOnClickListener(this);
         continuaOrdine = findViewById(R.id.continuaOrdinaFarmacoPaziente);
@@ -212,17 +214,13 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
 
     private void listView(){
 
-        //TODO LIST VIEW
-        CustomAdapter adapter = new CustomAdapter(getApplicationContext(), global.ricette, global.farmaciID);
+        CustomAdapter adapter = new CustomAdapter(getApplicationContext(), global.ricette, global.farmaciID, ordine, true, totale, global.farmaciID);
         listView.setAdapter(adapter);
 
         splash.setVisibility(View.GONE);
         noSplash.setVisibility(View.VISIBLE);
     }
 
-    public static float dpToPixels(int dp, Context context) {
-        return dp * (context.getResources().getDisplayMetrics().density);
-    }
 
     private void hideKeyboard() {
         View view = this.getCurrentFocus();
@@ -237,6 +235,22 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
+                        JSONObject jsonObject = null;
+                        if(response!=null){
+                            try {
+                                jsonObject = new JSONObject(response);
+                                String success = jsonObject.getString( "success");
+
+                                if (success.equals("1")){
+                                    ModificaRicetta(ricetta.getIdRicetta());
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                Toast.makeText(OrdinaRicettaPaziente.this, "Error " + e.toString() , Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
                         Toast.makeText(getApplicationContext(), "Ordine inviata", Toast.LENGTH_SHORT).show();
                         finish();
                     }
@@ -254,6 +268,7 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
                 params.put("table", "5");
                 params.put("idfarmacia", "1");
                 params.put("idricetta", String.valueOf(ricetta.getIdRicetta()));
+                params.put("idpaziente", String.valueOf(ricetta.getIdPaziente()));
                 if (pagato) {
                     params.put("pagato", "true");
                     params.put("totale", "0");
@@ -284,6 +299,52 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
         }
     }
 
+    private void ModificaRicetta(final int IdRicetta) {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, NetVariables.URL_UPDATE,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        JSONObject jsonObject = null;
+                        if(response!=null){
+                            try {
+                                jsonObject = new JSONObject(response);
+                                String success = jsonObject.getString( "success");
+
+                                if (success.equals("1")){
+
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                Toast.makeText(OrdinaRicettaPaziente.this, "Error " + e.toString() , Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        Toast.makeText(getApplicationContext(), "Ordine inviata", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(OrdinaRicettaPaziente.this, "Error " + error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+
+                params.put("idricetta", String.valueOf(IdRicetta));
+
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -295,27 +356,26 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
 
             case R.id.continuaOrdinaFarmacoPaziente:
                 if (ordine.size() != 0) {
+
                     primo.setVisibility(View.GONE);
                     secondo.setVisibility(View.VISIBLE);
 
-                    for (int i = 0; i < ordine.size(); i++) {
-                        String old = ordinaDocumento.getText().toString();
-                        Farmaco farmaco = global.farmaciID.get(String.valueOf(ordine.get(i).getIdFarmaco()));
-                        ordinaDocumento.setText(old + "\n\nNOME: " + farmaco.getNome());
-                        old = ordinaDocumento.getText().toString();
-                        ordinaDocumento.setText(old + "\nPREZZO: " + farmaco.getPrezzoString(String.valueOf(ordine.get(i).getIdFarmaco())) + "€");
-                        tot += Double.parseDouble(farmaco.getPrezzoString(String.valueOf(ordine.get(i).getIdFarmaco())));
-                    }
-                    ordinaDocumento.setText(ordinaDocumento.getText().toString() + "\n\nTOTALE: " + tot + "€");
+                    CustomAdapter adapter = new CustomAdapter(getApplicationContext(), global.ricette, global.farmaciID, ordine, false, totale, global.farmaciID);
+                    ordineList.setAdapter(adapter);
 
-                    ordinaDocumento.setText(ordinaDocumento.getText().toString() + "\n\nINDIRIZZO: " + global.paziente.getIndirizzoResidenza().getCitta() + " " + global.paziente.getIndirizzoResidenza().getVia());
+                    for(int i=0;i<ordine.size();i++){
+                        tot += Double.parseDouble(global.farmaciID.get(String.valueOf(ordine.get(i).getIdFarmaco())).getPrezzoString(String.valueOf(ordine.get(i).getIdFarmaco())));
+                    }
+                    totale.setText("TOTALE: " + tot + "€");
+
+                    indirizzo.setText(("INDIRIZZO: " +global.paziente.getIndirizzoResidenza().getVia() + " " + global.paziente.getIndirizzoResidenza().getCitta()));
                 } else {
                     Toast.makeText(getApplicationContext(), "Aggiungi una ricetta", Toast.LENGTH_SHORT).show();
                 }
                 break;
 
             case R.id.inviaOrdineRicettaPaziente:
-                for (int i = 0; i < ordine.size(); i++) {
+                for(int i=0;i<ordine.size();i++){
                     Invia(ordine.get(i));
                 }
                 break;

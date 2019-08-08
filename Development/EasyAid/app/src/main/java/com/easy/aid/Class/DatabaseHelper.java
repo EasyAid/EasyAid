@@ -219,6 +219,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String query = null;
 
         switch (table){
+
+            case "4":{
+                    query = "SELECT * FROM Ricetta";
+                break;
+            }
+
             case "5":{
                 if(id.equals("1")){
                     query = "SELECT * FROM Ricetta WHERE StatoRichiesta='ACCETTATA'";
