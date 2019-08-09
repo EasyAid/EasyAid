@@ -102,8 +102,6 @@ public class CronoAdapter extends BaseAdapter {
 
         }
 
-
-
         return view;
     }
 }

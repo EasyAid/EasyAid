@@ -84,6 +84,7 @@ public class InitialSplashScreen extends AppCompatActivity {
         global.codiceComuni = new ArrayList<String>();
         global.db = new DatabaseHelper(this);
         global.prefs.edit().putString("readRicette", "0").apply();
+        global.prefs.edit().putString("readOrdini", "0").apply();
 
         leggiProvince();
         leggiFarmaci();

@@ -87,7 +87,11 @@ public class CronologiaPaziente extends AppCompatActivity {
 
                 title.setText("LISTA ORDINI");
 
-                ReadOrdini();
+                if (global.prefs.getString("readOrdini", null) != null && global.prefs.getString("readOrdini", null).equals("1")) {
+                    ReadOrdiniLocal();
+                } else {
+                    ReadOrdini();
+                }
             }
         });
 
@@ -110,6 +114,7 @@ public class CronologiaPaziente extends AppCompatActivity {
     private void ReadRicetteLocal() {
 
         global.ricette.clear();
+        global.ricetteORDINATE.clear();
 
         Cursor data = global.db.readData("4", null);
 
@@ -127,10 +132,50 @@ public class CronologiaPaziente extends AppCompatActivity {
             String ora = data.getString(10);
 
             Ricetta R = new Ricetta(Integer.parseInt(id), Integer.parseInt(idMedico), Integer.parseInt(idPaziente), Integer.parseInt(idFarmaco), Integer.parseInt(numeroScatole), descrizione, statoRichiesta, dataR, ora, Boolean.parseBoolean(esenzioneReddito), Boolean.parseBoolean(esenzionePatologia));
-            global.ricette.add(R);
+            if(!statoRichiesta.equals("ORDINATA")){
+                global.ricette.add(R);
+            }else{
+                global.ricetteORDINATE.put(id, R);
+            }
         }
 
         CronoAdapter crono = new CronoAdapter(getApplicationContext(), true, global.ricette, null, global);
+        listView.setAdapter(crono);
+    }
+
+    private void ReadOrdiniLocal() {
+
+        global.ordini.clear();
+
+        Cursor data = global.db.readData("8", null);
+
+        while (data.moveToNext()) {
+            String idordine = data.getString(0);
+            String idfarmacia = data.getString(1);
+            String idpaziente = data.getString(2);
+            String idricetta = data.getString(3);
+            String pagato = data.getString(4);
+            String totale = data.getString(5);
+            String date = data.getString(6);
+            String ora = data.getString(7);
+
+
+            boolean find=false;
+            for(int c=0;c<global.ordini.size();c++){
+                if(global.ordini.get(c).getIdOrdine() == Integer.parseInt(idordine)){
+                    global.ordini.get(c).addIdRicetta(Integer.parseInt(idricetta));
+                    find=true;
+                }
+            }
+
+            Ordine O = new Ordine(Integer.parseInt(idordine), Integer.parseInt(idpaziente), Integer.parseInt(idfarmacia), Integer.parseInt(pagato), Integer.parseInt(idricetta), date, ora, Double.parseDouble(totale));
+
+            if(!find){
+                global.ordini.add(O);
+            }
+        }
+
+        CronoAdapter crono = new CronoAdapter(getApplicationContext(), false, null, global.ordini, global);
         listView.setAdapter(crono);
     }
 
@@ -218,7 +263,6 @@ public class CronologiaPaziente extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-
     private void ReadOrdini() {
 
 
@@ -250,20 +294,31 @@ public class CronologiaPaziente extends AppCompatActivity {
 
                                         boolean find=false;
                                         for(int c=0;c<global.ordini.size();c++){
-                                            if(global.ordini.get(c).getData().equals(data)&&global.ordini.get(c).getOra().equals(ora)){
+                                            if(global.ordini.get(c).getData().equals(data)&&global.ordini.get(c).getOra().equals(ora)&&global.ordini.get(c).getIdPaziente() == Integer.parseInt(idpaziente)){
                                                 global.ordini.get(c).addIdRicetta(Integer.parseInt(idricetta));
                                                 find=true;
                                             }
                                         }
+                                        Ordine O = new Ordine(Integer.parseInt(idordine), Integer.parseInt(idpaziente), Integer.parseInt(idfarmacia), Integer.parseInt(pagato), Integer.parseInt(idricetta), data, ora, Double.parseDouble(totale));
                                         if(!find){
-                                            Ordine O = new Ordine(Integer.parseInt(idordine), Integer.parseInt(idpaziente), Integer.parseInt(idfarmacia), Integer.parseInt(pagato), Integer.parseInt(idricetta), data, ora, Double.parseDouble(totale));
                                             global.ordini.add(O);
+                                        }
+                                    }
+
+                                    for(int i=0;i<global.ordini.size();i++){
+                                        Ordine O = global.ordini.get(i);
+                                        if(global.db.exist("Ordine", O)){
+                                            global.db.updateName("Ordine", O);
+                                        }else{
+                                            global.db.addData("Ordine", O);
                                         }
                                     }
 
                                     //listView
                                     CronoAdapter crono = new CronoAdapter(getApplicationContext(), false, null, global.ordini, global);
                                     listView.setAdapter(crono);
+
+                                    global.prefs.edit().putString("readOrdini", "1").apply();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

@@ -36,9 +36,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_ORDINE = "Ordine";
     private static final String COL1_ORDINE = "IdOrdine";
     private static final String COL2_ORDINE = "IdFarmacia";
-    private static final String COL3_ORDINE = "IdRicetta";
-    private static final String COL4_ORDINE = "Pagato";
-    private static final String COL5_ORDINE = "Totale";
+    private static final String COL3_ORDINE = "IdPaziente";
+    private static final String COL4_ORDINE = "IdRicetta";
+    private static final String COL5_ORDINE = "Pagato";
+    private static final String COL6_ORDINE = "Totale";
+    private static final String COL7_ORDINE = "Data";
+    private static final String COL8_ORDINE = "Ora";
 
     private static final String TABLE_RICETTA = "Ricetta";
     private static final String COL1_RICETTA = "IdRicetta";
@@ -106,11 +109,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_ORDINE =
 
             "CREATE TABLE " + TABLE_ORDINE + "(" +
-                    COL1_ORDINE + " INTEGER PRIMARY KEY," +
+                    COL1_ORDINE + " INTEGER," +
                     COL2_ORDINE + " INTEGER," +
                     COL3_ORDINE + " INTEGER," +
-                    COL4_ORDINE + " TYNINT," + //TODO
-                    COL5_ORDINE + " VARCHAR(5))";
+                    COL4_ORDINE + " INTEGER," +
+                    COL5_ORDINE + " TYNINT," +
+                    COL6_ORDINE + " VARCHAR(5)," +
+                    COL7_ORDINE + " DATE," +
+                    COL8_ORDINE + " TIME," +
+                    "PRIMARY KEY ("+COL1_ORDINE+", "+COL4_ORDINE+"))";
 
     private static final String CREATE_TABLE_RICETTA =
 
@@ -183,10 +190,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public boolean addData(String table, Object i) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
 
         switch (table){
             case "Ricetta":{
+
+                ContentValues contentValues = new ContentValues();
                 Ricetta item = (Ricetta) i;
                 contentValues.put("IdRicetta", item.getIdRicetta());
                 contentValues.put("IdMedico", item.getIdMedico());
@@ -199,19 +207,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 contentValues.put("StatoRichiesta", item.getStatoRichiesta());
                 contentValues.put("Data", item.getData());
                 contentValues.put("Ora", item.getOra());
+
+                db.insert(table, null, contentValues);
+
+                break;
+            }
+
+            case "Ordine":{
+                Ordine item = (Ordine) i;
+
+                for(int p=0;p<item.getIdRicetta().size();p++){
+
+                    ContentValues contentValues = new ContentValues();
+                    contentValues.put("IdOrdine", item.getIdOrdine());
+                    contentValues.put("IdFarmacia", item.getIdFarmacia());
+                    contentValues.put("IdPaziente", item.getIdPaziente());
+                    contentValues.put("IdRicetta", item.getIdRicetta().get(p));
+                    contentValues.put("Pagato", item.getPagato());
+                    contentValues.put("Totale", item.getTotale());
+                    contentValues.put("Data", item.getData());
+                    contentValues.put("Ora", item.getOra());
+
+                    db.insert(table, null, contentValues);
+                }
+
                 break;
             }
 
         }
 
-        long result = db.insert(table, null, contentValues);
-
-        //if date as inserted incorrectly it will return -1
-        if (result == -1) {
-            return false;
-        } else {
-            return true;
-        }
+        return true;
     }
 
     public Cursor readData(String table, String id){
@@ -229,6 +254,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 if(id.equals("1")){
                     query = "SELECT * FROM Ricetta WHERE StatoRichiesta='ACCETTATA'";
                 }
+                break;
+            }
+
+            case "8":{
+                query = "SELECT * FROM Ordine";
                 break;
             }
         }
@@ -259,7 +289,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
                 if(data.getCount() == 1) return true;
                 else return false;
+            }
+            case "Ordine":{
+                Ordine item = (Ordine) object;
+                String query = "SELECT * FROM " + table +
+                        " WHERE IdOrdine = '" + item.getIdOrdine() + "'";
+                Cursor data = db.rawQuery(query, null);
 
+                if(data.getCount() > 0) return true;
+                else return false;
             }
 
         }
@@ -278,7 +316,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
                 query = "UPDATE " + table +
                         " SET " +
-                        "IdMedico= '" + item.getIdRicetta() + "', " +
+                        "IdMedico= '" + item.getIdMedico() + "', " +
                         "IdPaziente= '" + item.getIdPaziente() + "', " +
                         "IdFarmaco= '" + item.getIdFarmaco() + "', " +
                         "NumeroScatole= '" + item.getNumeroScatole() + "', " +
@@ -291,11 +329,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
                         "WHERE IdRicetta = '" + item.getIdRicetta() + "'";
 
+                db.execSQL(query);
+                break;
+            }
+
+            case "Ordine":{
+                Ordine item = (Ordine) object;
+
+
+                for(int p=0;p<item.getIdRicetta().size();p++){
+
+                    query = "UPDATE " + table +
+                            " SET " +
+                            "IdFarmacia= '" + item.getIdFarmacia() + "', " +
+                            "IdPaziente= '" + item.getIdPaziente() + "', " +
+                            "Pagato= '" + item.getPagato() + "', " +
+                            "Totale= '" + item.getTotale() + "', " +
+                            "Data= '" + item.getData() + "', " +
+                            "Ora= '" + item.getOra() + "' " +
+                            "WHERE IdRicetta = '" + item.getIdRicetta().get(p) + "' AND IdOrdine = '" + item.getIdOrdine() +"'";
+
+                    db.execSQL(query);
+                }
+                break;
+
             }
 
         }
 
-        db.execSQL(query);
     }
 
     public void deleteName(String table, int id, String name){
