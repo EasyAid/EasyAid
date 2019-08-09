@@ -46,7 +46,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -215,6 +217,12 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
 
     private void Invia() {
 
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        final String formattedDate = df.format(c.getTime());
+        df = new SimpleDateFormat("HH:mm:ss");
+        final String formattedTime = df.format(c.getTime());
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, NetVariables.URL_INSERT,
                 new Response.Listener<String>() {
                     @Override
@@ -244,8 +252,8 @@ public class RichiediRicettaPaziente extends AppCompatActivity {
                 params.put("esenzionepatologia", "false");
                 params.put("esenzionereddito", "false");
                 params.put("statorichiesta", "IN ATTESA");
-                params.put("data", "2019-04-19");
-                params.put("ora", "11:11");
+                params.put("data", formattedDate);
+                params.put("ora", formattedTime);
                 return params;
             }
         };

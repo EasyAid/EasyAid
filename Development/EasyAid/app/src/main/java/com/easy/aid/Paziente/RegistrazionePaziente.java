@@ -666,7 +666,7 @@ public class RegistrazionePaziente extends AppCompatActivity {
         }
         /*giorno*/
         int giorno=0;
-        if (dataNascitacf.charAt(0)== '0') giorno = Integer.parseInt(dataNascitacf.substring(0,1));
+        if (dataNascitacf.charAt(0)== '0') giorno = Integer.parseInt(dataNascitacf.substring(1,2));
         else giorno = Integer.parseInt(dataNascitacf.substring(0,2));
         if (sessoRadio.getCheckedRadioButtonId() == R.id.maschioRegistrazionePaziente) codFis+= giorno;
         else {

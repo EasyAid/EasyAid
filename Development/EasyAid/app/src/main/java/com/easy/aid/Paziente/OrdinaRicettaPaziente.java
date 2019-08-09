@@ -36,7 +36,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -230,7 +232,7 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
         }
     }
 
-    private void Invia(final Ricetta ricetta) {
+    private void Invia(final Ricetta ricetta, final String date, final String time) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, NetVariables.URL_INSERT,
                 new Response.Listener<String>() {
                     @Override
@@ -276,6 +278,8 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
                     params.put("pagato", "false");
                     params.put("totale", String.valueOf(tot));
                 }
+                params.put("data", date);
+                params.put("ora", time);
 
                 return params;
             }
@@ -375,8 +379,16 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
                 break;
 
             case R.id.inviaOrdineRicettaPaziente:
+
+
+                Calendar c = Calendar.getInstance();
+                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                String formattedDate = df.format(c.getTime());
+                df = new SimpleDateFormat("HH:mm:ss");
+                String formattedTime = df.format(c.getTime());
+
                 for(int i=0;i<ordine.size();i++){
-                    Invia(ordine.get(i));
+                    Invia(ordine.get(i), formattedDate, formattedTime);
                 }
                 break;
         }
