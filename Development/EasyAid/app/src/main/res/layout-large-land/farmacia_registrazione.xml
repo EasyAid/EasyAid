@@ -1,0 +1,820 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context=".Farmacia.RegistrazioneFarmacia">
+
+    <!-- mettere la topBar in tutti i layout -->
+    <LinearLayout
+        android:id="@+id/topbarRegistrazioneFarmacia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="vertical">
+        <!--top bar-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!--tasto indietro-->
+            <ImageView
+                android:id="@+id/backRegistrazioneFarmacia"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/back" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:fontFamily="@font/raleway_bold"
+                android:gravity="center"
+                android:text="REGISTRAZIONE FARMACIA"
+                android:textAlignment="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                android:textColor="@color/greenDark" />
+
+        </LinearLayout>
+        <!--riga verde-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/greenDark" />
+    </LinearLayout>
+
+    <!-- prima pagina -->
+    <ScrollView
+        android:id="@+id/registrazione1Farmacia"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/continuaRegistrazioneFarmacia"
+        android:layout_below="@id/topbarRegistrazioneFarmacia"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <!-- DATI DI CONTATTO -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="DATI DI CONTATTO"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                        android:textColor="@color/greenDark" />
+
+                    <!-- email -->
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editEmailFarmacia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:fontFamily="@font/raleway_regular"
+                            android:hint="EMAIL"
+                            android:imeOptions="actionGo"
+                            android:inputType="textEmailAddress"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@color/greenDark" />
+
+                    <!-- telefono -->
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editTelFarmacia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:fontFamily="@font/raleway_regular"
+                            android:hint="TELEFONO"
+                            android:imeOptions="actionGo"
+                            android:inputType="phone"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/greenDark" />
+                </LinearLayout>
+
+                <!-- IMPOSTAZIONE PASSWORD -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="IMPOSTAZIONE PASSWORD"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                        android:textColor="@color/greenDark" />
+
+                    <!-- password -->
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editPswFarmacia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:fontFamily="@font/raleway_regular"
+                            android:hint="PASSWORD"
+                            android:imeOptions="actionGo"
+                            android:inputType="textPassword"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@color/greenDark" />
+
+
+                    <!-- conferma password -->
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/confPswFarmacia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:fontFamily="@font/raleway_regular"
+                            android:hint="CONFERMA PASSWORD"
+                            android:imeOptions="actionGo"
+                            android:inputType="textPassword"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/greenDark" />
+                </LinearLayout>
+
+                <!-- INDIRIZZO FARMACIA -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="INDIRIZZO FARMACIA"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                        android:textColor="@color/greenDark" />
+
+                    <!-- provincia -->
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editProvinciaFarmacia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:fontFamily="@font/raleway_regular"
+                            android:hint="PROVINCIA"
+                            android:imeOptions="actionGo"
+                            android:inputType="text"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@color/greenDark" />
+
+                    <!-- città/comune -->
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editCittaFarmacia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:fontFamily="@font/raleway_regular"
+                            android:hint="CITTA|COMUNE"
+                            android:imeOptions="actionGo"
+                            android:inputType="text"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@color/greenDark" />
+
+                    <!-- via/piazza -->
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editViaFarmacia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:ems="10"
+                            android:fontFamily="@font/raleway_regular"
+                            android:hint="VIA|PIAZZA"
+                            android:imeOptions="actionDone"
+                            android:inputType="text"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/greenDark" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <!-- seconda pagina -->
+    <ScrollView
+        android:id="@+id/registrazione2Farmacia"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/continuaRegistrazioneFarmacia"
+        android:layout_below="@id/topbarRegistrazioneFarmacia"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <!-- calendario -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="IMPOSTA ORARI DI LAVORO"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:textColor="@color/greenDark" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/all_empty_round"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <!-- header riga -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.2"
+                            android:fontFamily="serif"
+                            android:text="GIORNO"
+                            android:textAlignment="center"
+                            android:textColor="@color/greenDark" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.19"
+                            android:fontFamily="serif"
+                            android:text="TURNO 1"
+                            android:textAlignment="center"
+                            android:textColor="@color/greenDark" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.21"
+                            android:fontFamily="serif"
+                            android:text="ORARI"
+                            android:textAlignment="center"
+                            android:textColor="@color/greenDark" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.19"
+                            android:fontFamily="serif"
+                            android:text="TURNO 2"
+                            android:textAlignment="center"
+                            android:textColor="@color/greenDark" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.21"
+                            android:fontFamily="serif"
+                            android:text="ORARI"
+                            android:textAlignment="center"
+                            android:textColor="@color/greenDark" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="3dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="3dp"
+                            android:layout_weight="0.2"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:weightSum="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:fontFamily="serif"
+                                android:gravity="center"
+                                android:text="LUN"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/greenDark" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:fontFamily="serif"
+                                android:gravity="center"
+                                android:text="MAR"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/greenDark" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:fontFamily="serif"
+                                android:gravity="center"
+                                android:text="MER"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/greenDark" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:fontFamily="serif"
+                                android:gravity="center"
+                                android:text="GIO"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/greenDark" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:fontFamily="serif"
+                                android:gravity="center"
+                                android:text="VEN"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/greenDark" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:fontFamily="serif"
+                                android:gravity="center"
+                                android:text="SAB"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/greenDark" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:fontFamily="serif"
+                                android:gravity="center"
+                                android:text="DOM"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/greenDark" />
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="3dp"
+                            android:layout_weight="0.19"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:weightSum="1">
+
+
+                            <CheckBox
+                                android:id="@+id/lavoroLunFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:checked="true" />
+
+                            <CheckBox
+                                android:id="@+id/lavoroMarFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:checked="true" />
+
+                            <CheckBox
+                                android:id="@+id/lavoroMerFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:checked="true" />
+
+                            <CheckBox
+                                android:id="@+id/lavoroGioFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:checked="true" />
+
+                            <CheckBox
+                                android:id="@+id/lavoroVenFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:checked="true" />
+
+                            <CheckBox
+                                android:id="@+id/lavoroSabFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:checked="true" />
+
+                            <CheckBox
+                                android:id="@+id/lavoroDomFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:checked="false" />
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="3dp"
+                            android:layout_weight="0.2"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:weightSum="1">
+
+
+                            <TextView
+                                android:id="@+id/mattinaLunFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.144"
+                                android:fontFamily="serif"
+                                android:gravity="center"
+                                android:text="@string/default_Hour"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/greenDark" />
+
+                            <TextView
+                                android:id="@+id/mattinaMarFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:fontFamily="serif"
+                                android:gravity="center"
+                                android:text="@string/default_Hour"
+                                android:textAlignment="center"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/greenDark" />
+
+                            <TextView
+                                android:id="@+id/mattinaMerFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:fontFamily="serif"
+                                android:gravity="center"
+                                android:text="@string/default_Hour"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/greenDark" />
+
+                            <TextView
+                                android:id="@+id/mattinaGioFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:fontFamily="serif"
+                                android:gravity="center"
+                                android:text="@string/default_Hour"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/greenDark" />
+
+                            <TextView
+                                android:id="@+id/mattinaVenFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:fontFamily="serif"
+                                android:gravity="center"
+                                android:text="@string/default_Hour"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/greenDark" />
+
+                            <TextView
+                                android:id="@+id/mattinaSabFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:fontFamily="serif"
+                                android:gravity="center"
+                                android:text="@string/default_Hour"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/greenDark" />
+
+                            <TextView
+                                android:id="@+id/mattinaDomFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.14"
+                                android:enabled="false"
+                                android:fontFamily="serif"
+                                android:gravity="center"
+                                android:text="@string/default_Hour"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/def" />
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="3dp"
+                            android:layout_weight="0.2"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:weightSum="1">
+
+
+                            <CheckBox
+                                android:id="@+id/pausaLunFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:checked="false" />
+
+                            <CheckBox
+                                android:id="@+id/pausaMarFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:checked="false" />
+
+                            <CheckBox
+                                android:id="@+id/pausaMerFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:checked="false" />
+
+                            <CheckBox
+                                android:id="@+id/pausaGioFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:checked="false" />
+
+                            <CheckBox
+                                android:id="@+id/pausaVenFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:checked="false" />
+
+                            <CheckBox
+                                android:id="@+id/pausaSabFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:checked="false" />
+
+                            <CheckBox
+                                android:id="@+id/pausaDomFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:checked="false" />
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="3dp"
+                            android:layout_weight="0.2"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:weightSum="1">
+
+
+                            <TextView
+                                android:id="@+id/seraLunFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.144"
+                                android:enabled="false"
+                                android:fontFamily="serif"
+                                android:gravity="center"
+                                android:text="@string/default_Hour"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/def" />
+
+                            <TextView
+                                android:id="@+id/seraMarFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:enabled="false"
+                                android:fontFamily="serif"
+                                android:gravity="center"
+                                android:text="@string/default_Hour"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/def" />
+
+                            <TextView
+                                android:id="@+id/seraMerFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:enabled="false"
+                                android:fontFamily="serif"
+                                android:gravity="center"
+                                android:text="@string/default_Hour"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/def" />
+
+                            <TextView
+                                android:id="@+id/seraGioFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:enabled="false"
+                                android:fontFamily="serif"
+                                android:gravity="center"
+                                android:text="@string/default_Hour"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/def" />
+
+                            <TextView
+                                android:id="@+id/seraVenFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:enabled="false"
+                                android:fontFamily="serif"
+                                android:gravity="center"
+                                android:text="@string/default_Hour"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/def" />
+
+                            <TextView
+                                android:id="@+id/seraSabFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.142"
+                                android:enabled="false"
+                                android:fontFamily="serif"
+                                android:gravity="center"
+                                android:text="@string/default_Hour"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/def" />
+
+                            <TextView
+                                android:id="@+id/seraDomFarmacia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.14"
+                                android:enabled="false"
+                                android:fontFamily="serif"
+                                android:gravity="center"
+                                android:text="@string/default_Hour"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/def" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/continuaRegistrazioneFarmacia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/greenDark"
+        android:fontFamily="@font/raleway_bold"
+        android:text="@string/continua"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

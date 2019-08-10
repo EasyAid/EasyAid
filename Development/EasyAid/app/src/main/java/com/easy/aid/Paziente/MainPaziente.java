@@ -1,6 +1,7 @@
 package com.easy.aid.Paziente;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.CountDownTimer;
 import android.support.v4.content.ContextCompat;
@@ -68,6 +69,10 @@ public class MainPaziente extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.paziente_main);
 
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+
         checkAPI();
 
         splash = findViewById(R.id.splashMainPaziente);
@@ -79,7 +84,22 @@ public class MainPaziente extends AppCompatActivity {
         global = (NetVariables) this.getApplication();
 
         if (global.paziente != null) {
-            nomeCognome.setText(("BENVENUTO\n" + global.paziente.getNome().toUpperCase() + " " + global.paziente.getCognome().toUpperCase()));
+
+            boolean b = bundle.getBoolean("Bentornato");
+            if(b){
+                if(global.paziente.isSesso()){
+                    nomeCognome.setText(("BENTORNATO\n" + global.paziente.getNome().toUpperCase() + " " + global.paziente.getCognome().toUpperCase()));
+                }else{
+                    nomeCognome.setText(("BENTORNATA\n" + global.paziente.getNome().toUpperCase() + " " + global.paziente.getCognome().toUpperCase()));
+                }
+            }else{
+                if(global.paziente.isSesso()){
+                    nomeCognome.setText(("BENVENUTO\n" + global.paziente.getNome().toUpperCase() + " " + global.paziente.getCognome().toUpperCase()));
+                }else{
+                    nomeCognome.setText(("BENVENUTA\n" + global.paziente.getNome().toUpperCase() + " " + global.paziente.getCognome().toUpperCase()));
+                }
+            }
+
 
         } else {
             splash.setVisibility(View.VISIBLE);
@@ -164,6 +184,7 @@ public class MainPaziente extends AppCompatActivity {
                                 int id = object.getInt("id");
                                 String nome = object.getString("nome");
                                 String cognome = object.getString("cognome");
+                                String sesso = object.getString("sesso");
                                 String dataNascita = object.getString("datanascita");
                                 String codiceFiscale = object.getString("codicefiscale");
                                 String provinciaNascita = object.getString("provincianascita");
@@ -174,9 +195,22 @@ public class MainPaziente extends AppCompatActivity {
                                 String idMedicoBase = object.getString("idmedicobase");
                                 Indirizzo nascita = new Indirizzo(provinciaNascita, cittaNascita, null, null);
                                 Indirizzo residenza = new Indirizzo(provinciaResidenza, cittaResidenza, viaResidenza, null);
-                                global.paziente = new Paziente(id, nome, cognome, dataNascita, codiceFiscale, nascita, residenza, idMedicoBase, null);
-                                nomeCognome.setText(("BENVENUTO\n" + nome.toUpperCase() + " " + cognome.toUpperCase()));
+                                global.paziente = new Paziente(id, nome, cognome, dataNascita, sesso, codiceFiscale, nascita, residenza, idMedicoBase, null);
 
+                                boolean b = bundle.getBoolean("Bentornato");
+                                if(b){
+                                    if(global.paziente.isSesso()){
+                                        nomeCognome.setText(("BENTORNATO\n" + global.paziente.getNome().toUpperCase() + " " + global.paziente.getCognome().toUpperCase()));
+                                    }else{
+                                        nomeCognome.setText(("BENTORNATA\n" + global.paziente.getNome().toUpperCase() + " " + global.paziente.getCognome().toUpperCase()));
+                                    }
+                                }else{
+                                    if(global.paziente.isSesso()){
+                                        nomeCognome.setText(("BENVENUTO\n" + global.paziente.getNome().toUpperCase() + " " + global.paziente.getCognome().toUpperCase()));
+                                    }else{
+                                        nomeCognome.setText(("BENVENUTA\n" + global.paziente.getNome().toUpperCase() + " " + global.paziente.getCognome().toUpperCase()));
+                                    }
+                                }
                                 ReadMedico(idMedicoBase);
                         }
                         } catch (JSONException e) {

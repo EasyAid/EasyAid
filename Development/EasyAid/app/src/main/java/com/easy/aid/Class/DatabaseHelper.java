@@ -370,4 +370,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(query);
     }
 
+    public void truncate(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_FARMACO);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_MEDICO);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ORDINE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_RICETTA);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_VISITA);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PAZIENTE);
+        onCreate(db);
+    }
+
 }

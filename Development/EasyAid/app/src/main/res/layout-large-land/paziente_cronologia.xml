@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    android:background="@color/background"
+    tools:context=".Paziente.CronologiaPaziente">
+
+    <LinearLayout
+        android:id="@+id/topbarCronologiaPaziente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical">
+        <!--top bar-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!--tasto indietro-->
+            <ImageView
+                android:id="@+id/backCronologiaPaziente"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:src="@drawable/back" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:fontFamily="@font/raleway_bold"
+                android:gravity="center"
+                android:text="CRONOLOGIA"
+                android:textAlignment="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Display1"
+                android:textColor="@color/greenDark" />
+
+        </RelativeLayout>
+        <!--riga verde-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/greenDark" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/listaCrono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/topbarCronologiaPaziente"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/raleway_bold"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+        android:text="LISTA RICETTE"/>
+
+    <ListView
+        android:id="@+id/listViewCrono"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:listSelector="@android:color/transparent"
+        android:divider="@null"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_below="@+id/listaCrono"
+        android:layout_above="@+id/bottombarCronologiaPaziente"/>
+
+
+    <LinearLayout
+        android:id="@+id/bottombarCronologiaPaziente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/richiesteCronoPaziente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/greenDark"
+            android:layout_margin="3dp"
+            android:textColor="@color/white"
+            android:text="RICHIESTE MEDICO"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+            android:fontFamily="@font/raleway_bold"
+            android:layout_weight="0.5"/>
+
+
+        <Button
+            android:id="@+id/ordiniCronoPaziente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:text="ORDINI FARMACIA"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+            android:fontFamily="@font/raleway_bold"
+            android:background="@drawable/all_empty"
+            android:textColor="@color/greenDark"
+            android:layout_weight="0.5"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

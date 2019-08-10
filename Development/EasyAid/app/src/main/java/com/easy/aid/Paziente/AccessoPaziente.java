@@ -165,6 +165,7 @@ public class AccessoPaziente extends AppCompatActivity {
                                 }
 
                                 intent.putExtra("CF", sCF);
+                                intent.putExtra("Bentornato", true);
                                 startActivity(intent);
                                 finish();
                             }else{

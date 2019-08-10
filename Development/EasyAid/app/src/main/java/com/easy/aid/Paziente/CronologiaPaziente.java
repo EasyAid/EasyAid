@@ -34,6 +34,8 @@ import org.w3c.dom.Text;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.microedition.khronos.opengles.GL;
+
 public class CronologiaPaziente extends AppCompatActivity {
 
     private ImageView back;
@@ -265,13 +267,14 @@ public class CronologiaPaziente extends AppCompatActivity {
 
     private void ReadOrdini() {
 
+        global.ordini.clear();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, global.URL_READ,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         JSONObject jsonObject = null;
-                        if (response != null) {
+                        if (!response.equals("")) {
                             try {
                                 jsonObject = new JSONObject(response);
                                 String success = jsonObject.getString("success");
@@ -325,6 +328,10 @@ public class CronologiaPaziente extends AppCompatActivity {
                                 Toast.makeText(CronologiaPaziente.this, "Error " + e.toString(), Toast.LENGTH_SHORT).show();
                             }
 
+                        }else{
+                            title.setText("NESSUN ORDINE");
+                            CronoAdapter crono = new CronoAdapter(getApplicationContext(), false, null, global.ordini, global);
+                            listView.setAdapter(crono);
                         }
                     }
                 },

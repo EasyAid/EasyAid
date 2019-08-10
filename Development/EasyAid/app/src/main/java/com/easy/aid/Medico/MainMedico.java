@@ -57,8 +57,6 @@ public class MainMedico extends AppCompatActivity {
     private LinearLayout cronologia;
     private LinearLayout calendario;
 
-    private LinearLayout splash;
-    private RelativeLayout noSplash;
 
     private Intent intent;
 
@@ -67,8 +65,6 @@ public class MainMedico extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.medico_main);
 
-        splash = findViewById(R.id.splashMainMedico);
-        noSplash = findViewById(R.id.noSplahMainMedico);
 
         nomeCognome = findViewById(R.id.nomeCognomeMed);
 
@@ -78,8 +74,6 @@ public class MainMedico extends AppCompatActivity {
         if(global.medico != null){
             nomeCognome.setText(("BENVENUTO\n" + global.medico.getNome().toUpperCase() + " " + global.medico.getCognome().toUpperCase()));
         }else{
-            splash.setVisibility(View.VISIBLE);
-            noSplash.setVisibility(View.GONE);
 
             Read(bundle.getString("CF"));
 
@@ -259,8 +253,6 @@ public class MainMedico extends AppCompatActivity {
                                 Toast.makeText(MainMedico.this, "Error " + e.toString() , Toast.LENGTH_SHORT).show();
                             }
 
-                            splash.setVisibility(View.GONE);
-                            noSplash.setVisibility(View.VISIBLE);
                         }
                     }
                 },

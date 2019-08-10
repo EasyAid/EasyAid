@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Farmacia.ImpostazioniFarmacia">
+
+    <!--topbar-->
+    <LinearLayout
+        android:id="@+id/topbarImpostazioniFarmacia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical">
+        <!--top bar-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!--tasto indietro-->
+            <ImageView
+                android:id="@+id/backImpostazioniFarm"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/back" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:fontFamily="@font/raleway_bold"
+                android:gravity="center"
+                android:text="IMPOSTAZIONI"
+                android:textAlignment="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                android:textColor="@color/greenDark" />
+
+        </LinearLayout>
+        <!--riga verde-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/greenDark" />
+    </LinearLayout>
+
+    <!-- prima pagina -->
+    <ScrollView
+        android:id="@+id/primaPagImpostazioniFarm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/topbarImpostazioniFarmacia"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- logout -->
+            <Button
+                android:id="@+id/logoutFarm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/all_round"
+                android:fontFamily="@font/raleway_bold"
+                android:padding="15dp"
+                android:text="CAMBIA ACCOUNT"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                android:textColor="@color/white" />
+
+            <!-- dati di contatto -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/raleway_bold"
+                android:gravity="center_horizontal"
+                android:text="DATI DI CONTATTO"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                android:textColor="@color/greenDark" />
+            <!-- email -->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/emailImpostazioniFarm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/white"
+                    android:fontFamily="@font/raleway_regular"
+                    android:hint="EMAIL"
+                    android:inputType="textEmailAddress"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/greenDark" />
+            <!-- telefono -->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/telefonoImpostazioniFarm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/white"
+                    android:fontFamily="@font/raleway_regular"
+                    android:hint="TELEFONO"
+                    android:inputType="text"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="15dp"
+                android:background="@color/greenDark" />
+
+            <!-- indirizzo farmacia -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/raleway_bold"
+                android:gravity="center_horizontal"
+                android:text="INDIRIZZO FARMACIA"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                android:textColor="@color/greenDark" />
+            <!-- provincia -->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/provinciaImpostazioniFarm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/white"
+                    android:fontFamily="@font/raleway_regular"
+                    android:hint="PROVINCIA"
+                    android:inputType="textEmailAddress"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/greenDark" />
+            <!-- citta -->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/cittaImpostazioniFarm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/white"
+                    android:fontFamily="@font/raleway_regular"
+                    android:hint="CITTA/COMUNE"
+                    android:inputType="textEmailAddress"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/greenDark" />
+            <!-- via -->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/viaImpostazioniFarm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/white"
+                    android:fontFamily="@font/raleway_regular"
+                    android:hint="VIA/PIAZZA"
+                    android:inputType="textEmailAddress"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/greenDark" />
+
+            <!-- password -->
+            <Button
+                android:id="@+id/cambiaPasswordFarm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/all_round"
+                android:padding="15dp"
+                android:text="CAMBIA PASSWORD"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- seconda pagina -->
+    <LinearLayout
+        android:id="@+id/secondaPagImpostazioniFarm"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/topbarImpostazioniFarmacia"
+        android:layout_above="@id/footerImpostazioniFarm"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- modifica password -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:gravity="center_horizontal"
+                    android:text="MODIFICA PASSWORD"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:textColor="@color/greenDark"/>
+                <!-- vecchia password -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/vecchiaPasswordImpostazioniFarm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:background="@color/white"
+                        android:fontFamily="@font/raleway_regular"
+                        android:hint="VECCHIA PASSWORD"
+                        android:inputType="textPassword"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/greenDark" />
+
+                <!-- nuova password -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/nuovaPasswordImpostazioniFarm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:background="@color/white"
+                        android:fontFamily="@font/raleway_regular"
+                        android:hint="NUOVA PASSWORD"
+                        android:inputType="textPassword"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/greenDark" />
+
+                <!-- conferma nuova password -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/confermaPasswordImpostazioniFarm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:background="@color/white"
+                        android:fontFamily="@font/raleway_regular"
+                        android:hint="CONFERMA NUOVA PASSWORD"
+                        android:inputType="textPassword"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/greenDark" />
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/footerImpostazioniFarm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/greenDark"
+        android:fontFamily="@font/raleway_bold"
+        android:text="CONFERMA MODIFICHE"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+        android:textColor="@color/white" />
+</RelativeLayout>

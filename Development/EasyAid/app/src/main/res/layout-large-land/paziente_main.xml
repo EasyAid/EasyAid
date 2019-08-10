@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    tools:context=".Paziente.MainPaziente">
+
+    <LinearLayout
+        android:id="@+id/splashMainPaziente"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/logo"/>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animation_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:lottie_autoPlay="true"
+            app:lottie_colorFilter="@color/colorAccent"
+            app:lottie_fileName="loading.json"
+            app:lottie_loop="true"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/noSplahMainPaziente"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:orientation="horizontal" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/greenDark" />
+
+            <TextView
+                android:id="@+id/nomeCognomePaz"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/raleway_bold"
+                android:text="BENVENUTO\nNOME COGNOME "
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Display1"
+                android:textColor="@color/greenDark" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+
+            <LinearLayout
+                android:id="@+id/richiediVisitaRicettaPaz"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/empty_circle"
+                android:gravity="center"
+                android:layout_marginRight="3dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="110dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/richiesta_medica"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="@color/greenDark"
+                    android:fontFamily="@font/raleway_bold"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:text="RICHIESTA\nMEDICO"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ordinaRicettaPaz"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="3dp"
+                android:background="@drawable/empty_circle"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="110dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ordina_farmaco"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="@color/greenDark"
+                    android:fontFamily="@font/raleway_bold"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:text="ORDINA\nFARMACO"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cronologiaPaz"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/empty_circle"
+                android:gravity="center"
+                android:layout_marginRight="3dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="110dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/cronologia"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="@color/greenDark"
+                    android:fontFamily="@font/raleway_bold"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:text="CRONOLOGIA"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/impostazioniPaz"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="3dp"
+                android:background="@drawable/empty_circle"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="110dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/impostazioni"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/raleway_bold"
+                    android:textColor="@color/greenDark"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:text="IMPOSTAZIONI"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

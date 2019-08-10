@@ -487,6 +487,7 @@ public class RegistrazionePaziente extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         intent.putExtra("CF", codiceFiscale.getText().toString());
+                        intent.putExtra("Benvenuto", false);
                         startActivity(intent);
                         finish();
                     }
@@ -514,7 +515,7 @@ public class RegistrazionePaziente extends AppCompatActivity {
                 params.put("idmedicobase", "2");
 
                 params.put("email", email.getText().toString());
-                params.put("password", md5(password.getText().toString()));
+                params.put("password", password.getText().toString());
 
                 return params;
             }
@@ -543,12 +544,6 @@ public class RegistrazionePaziente extends AppCompatActivity {
         }
         return "";
     }
-
-
-
-
-
-
 
     private void calcoloCodiceFiscale () {
         String codFis = "";

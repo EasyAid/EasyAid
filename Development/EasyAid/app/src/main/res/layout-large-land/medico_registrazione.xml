@@ -1,0 +1,1155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    tools:context=".Medico.RegistrazioneMedico">
+
+    <!-- mettere la topBar in tutti i layout -->
+    <LinearLayout
+        android:id="@+id/topbarRegistrazioneMedico"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical">
+        <!--top bar-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!--tasto indietro-->
+            <ImageView
+                android:id="@+id/backRegistrazioneMed"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/back" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="REGISTRAZIONE MEDICO"
+                android:textAlignment="center"
+                android:fontFamily="@font/raleway_bold"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                android:textColor="@color/greenDark" />
+
+        </LinearLayout>
+        <!--riga verde-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/greenDark" />
+    </LinearLayout>
+
+    <!--prima pagina-->
+    <ScrollView
+        android:id="@+id/registrazione1Med"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/continuaMed"
+        android:layout_below="@id/topbarRegistrazioneMedico"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="DATI ANAGRAFICI"
+                        android:fontFamily="@font/raleway_bold"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                        android:textColor="@color/greenDark" />
+
+                    <!--nome-->
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/layoutEditNomeMed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:errorTextAppearance="@style/TextAppearance.Design.Error">
+
+                        <EditText
+                            android:id="@+id/editNomeMed"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="NOME"
+                            android:fontFamily="@font/raleway_regular"
+                            android:imeOptions="actionGo"
+                            android:inputType="text"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/greenDark" />
+                </LinearLayout>
+
+                <!--Cognome-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/layoutEditCognomeMed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editCognomeMed"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="COGNOME"
+                            android:imeOptions="actionGo"
+                            android:fontFamily="@font/raleway_regular"
+                            android:inputType="text"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/greenDark" />
+
+                </LinearLayout>
+
+                <!--data nascita-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/calendar" />
+
+                        <EditText
+                            android:id="@+id/editDataNascitaMed"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="5dp"
+                            android:background="@null"
+                            android:hint="DATA DI NASCITA"
+                            android:imeOptions="actionGo"
+                            android:inputType="text"
+                            android:fontFamily="@font/raleway_regular"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+                    </LinearLayout>
+
+                    <CalendarView
+                        android:id="@+id/calendarioRegistrazioneMed"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@color/greenDark" />
+                </LinearLayout>
+
+                <!--maschio / femmina-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioGroup
+                        android:id="@+id/editSessoMed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/maschioMed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:text="Maschio"
+                            android:fontFamily="@font/raleway_regular"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+
+                        <RadioButton
+                            android:id="@+id/femminaMed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Femmina"
+                            android:fontFamily="@font/raleway_regular"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+                    </RadioGroup>
+                </LinearLayout>
+                <!--luogo di nascita-->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="left"
+                    android:text="LUOGO DI NASCITA"
+                    android:fontFamily="@font/raleway_bold"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:textColor="@color/greenDark" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/layoutEditProvinciaNascMed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editProvinciaNascMed"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="PROVINCIA"
+                            android:imeOptions="actionGo"
+                            android:inputType="text"
+                            android:fontFamily="@font/raleway_regular"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/greenDark" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/layoutEditCittaNascMed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editCittaNascMed"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="CITTA|COMUNE"
+                            android:imeOptions="actionGo"
+                            android:inputType="text"
+                            android:fontFamily="@font/raleway_regular"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/greenDark" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/layoutEditViaNascPaz"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editViaNascMed"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="VIA|PIAZZA"
+                            android:imeOptions="actionGo"
+                            android:inputType="text"
+                            android:fontFamily="@font/raleway_regular"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/greenDark" />
+                </LinearLayout>
+                <!--Codice fiscale-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:text="CODICE FISCALE"
+                        android:fontFamily="@font/raleway_bold"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                        android:textColor="@color/greenDark" />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/layoutEditCodiceFiscaleMed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editCodiceFiscaleMed"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="CODICE FISCALE"
+                            android:imeOptions="actionDone"
+                            android:inputType="text"
+                            android:fontFamily="@font/raleway_regular"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@color/greenDark" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <!--seconda pagina-->
+    <ScrollView
+        android:id="@+id/registrazione2Med"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/continuaMed"
+        android:layout_below="@+id/topbarRegistrazioneMedico"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="-2dp"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="vertical">
+
+                <!--orari-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="IMPOSTA ORARI DI LAVORO"
+                        android:fontFamily="@font/raleway_bold"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                        android:textColor="@color/greenDark" />
+                    <!--calendario-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/all_empty_round"
+                        android:orientation="vertical"
+                        android:padding="8dp"
+                        android:paddingBottom="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2"
+                                android:fontFamily="serif"
+                                android:text="GIORNO"
+                                android:textAlignment="center"
+                                android:textColor="@color/greenDark" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2"
+                                android:fontFamily="serif"
+                                android:text="TURNO 1"
+                                android:textAlignment="center"
+                                android:textColor="@color/greenDark" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2"
+                                android:fontFamily="serif"
+                                android:text="ORARI"
+                                android:textAlignment="center"
+                                android:textColor="@color/greenDark" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2"
+                                android:fontFamily="serif"
+                                android:text="TURNO 2"
+                                android:textAlignment="center"
+                                android:textColor="@color/greenDark" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2"
+                                android:fontFamily="serif"
+                                android:text="ORARI"
+                                android:textAlignment="center"
+                                android:textColor="@color/greenDark" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="3dp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="3dp"
+                                android:layout_weight="0.2"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:weightSum="1">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142"
+                                    android:fontFamily="serif"
+                                    android:gravity="center"
+                                    android:text="LUN"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                    android:textColor="@color/greenDark" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142"
+                                    android:fontFamily="serif"
+                                    android:gravity="center"
+                                    android:text="MAR"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                    android:textColor="@color/greenDark" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142"
+                                    android:fontFamily="serif"
+                                    android:gravity="center"
+                                    android:text="MER"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                    android:textColor="@color/greenDark" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142"
+                                    android:fontFamily="serif"
+                                    android:gravity="center"
+                                    android:text="GIO"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                    android:textColor="@color/greenDark" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142"
+                                    android:fontFamily="serif"
+                                    android:gravity="center"
+                                    android:text="VEN"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                    android:textColor="@color/greenDark" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142"
+                                    android:fontFamily="serif"
+                                    android:gravity="center"
+                                    android:text="SAB"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                    android:textColor="@color/greenDark" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142"
+                                    android:fontFamily="serif"
+                                    android:gravity="center"
+                                    android:text="DOM"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                    android:textColor="@color/greenDark" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="3dp"
+                                android:layout_weight="0.19"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:weightSum="1">
+
+
+                                <CheckBox
+                                    android:id="@+id/lavoroLunMed"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142"
+                                    android:checked="true" />
+
+                                <CheckBox
+                                    android:id="@+id/lavoroMarMed"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142"
+                                    android:checked="true" />
+
+                                <CheckBox
+                                    android:id="@+id/lavoroMerMed"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142"
+                                    android:checked="true" />
+
+                                <CheckBox
+                                    android:id="@+id/lavoroGioMed"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142"
+                                    android:checked="true" />
+
+                                <CheckBox
+                                    android:id="@+id/lavoroVenMed"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142"
+                                    android:checked="true" />
+
+                                <CheckBox
+                                    android:id="@+id/lavoroSabMed"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142"
+                                    android:checked="true" />
+
+                                <CheckBox
+                                    android:id="@+id/lavoroDomMed"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="3dp"
+                                android:layout_weight="0.2"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:weightSum="1"
+                                android:layout_marginBottom="3dp">
+
+
+                                <TextView
+                                    android:id="@+id/mattinaLunMedico"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.144"
+                                    android:fontFamily="serif"
+                                    android:gravity="center"
+                                    android:text="@string/default_Hour"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                    android:textColor="@color/greenDark" />
+
+                                <TextView
+                                    android:id="@+id/mattinaMarMedico"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142"
+                                    android:fontFamily="serif"
+                                    android:gravity="center"
+                                    android:text="@string/default_Hour"
+                                    android:textAlignment="center"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                    android:textColor="@color/greenDark" />
+
+                                <TextView
+                                    android:id="@+id/mattinaMerMedico"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142"
+                                    android:fontFamily="serif"
+                                    android:gravity="center"
+                                    android:text="@string/default_Hour"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                    android:textColor="@color/greenDark" />
+
+                                <TextView
+                                    android:id="@+id/mattinaGioMedico"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142"
+                                    android:fontFamily="serif"
+                                    android:gravity="center"
+                                    android:text="@string/default_Hour"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                    android:textColor="@color/greenDark" />
+
+                                <TextView
+                                    android:id="@+id/mattinaVenMedico"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142"
+                                    android:fontFamily="serif"
+                                    android:gravity="center"
+                                    android:text="@string/default_Hour"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                    android:textColor="@color/greenDark" />
+
+                                <TextView
+                                    android:id="@+id/mattinaSabMedico"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142"
+                                    android:fontFamily="serif"
+                                    android:gravity="center"
+                                    android:text="@string/default_Hour"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                    android:textColor="@color/greenDark" />
+
+                                <TextView
+                                    android:id="@+id/mattinaDomMedico"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.14"
+                                    android:enabled="false"
+                                    android:textColor="@color/def"
+                                    android:fontFamily="serif"
+                                    android:gravity="center"
+                                    android:text="@string/default_Hour"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="3dp"
+                                android:layout_weight="0.2"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:weightSum="1">
+
+
+                                <CheckBox
+                                    android:id="@+id/pausaLunMed"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142" />
+
+                                <CheckBox
+                                    android:id="@+id/pausaMarMed"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142" />
+
+                                <CheckBox
+                                    android:id="@+id/pausaMerMed"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142" />
+
+                                <CheckBox
+                                    android:id="@+id/pausaGioMed"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142" />
+
+                                <CheckBox
+                                    android:id="@+id/pausaVenMed"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142" />
+
+                                <CheckBox
+                                    android:id="@+id/pausaSabMed"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142" />
+
+                                <CheckBox
+                                    android:id="@+id/pausaDomMed"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="3dp"
+                                android:layout_weight="0.2"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:weightSum="1">
+
+
+                                <TextView
+                                    android:id="@+id/seraLunMedico"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.144"
+                                    android:enabled="false"
+                                    android:textColor="@color/def"
+                                    android:fontFamily="serif"
+                                    android:gravity="center"
+                                    android:text="@string/default_Hour"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+                                <TextView
+                                    android:id="@+id/seraMarMedico"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142"
+                                    android:enabled="false"
+                                    android:textColor="@color/def"
+                                    android:fontFamily="serif"
+                                    android:gravity="center"
+                                    android:text="@string/default_Hour"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+                                <TextView
+                                    android:id="@+id/seraMerMedico"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142"
+                                    android:enabled="false"
+                                    android:textColor="@color/def"
+                                    android:fontFamily="serif"
+                                    android:gravity="center"
+                                    android:text="@string/default_Hour"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+                                <TextView
+                                    android:id="@+id/seraGioMedico"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142"
+                                    android:enabled="false"
+                                    android:textColor="@color/def"
+                                    android:fontFamily="serif"
+                                    android:gravity="center"
+                                    android:text="@string/default_Hour"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+                                <TextView
+                                    android:id="@+id/seraVenMedico"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142"
+                                    android:enabled="false"
+                                    android:textColor="@color/def"
+                                    android:fontFamily="serif"
+                                    android:gravity="center"
+                                    android:text="@string/default_Hour"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+                                <TextView
+                                    android:id="@+id/seraSabMedico"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.142"
+                                    android:enabled="false"
+                                    android:textColor="@color/def"
+                                    android:fontFamily="serif"
+                                    android:gravity="center"
+                                    android:text="@string/default_Hour"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+                                <TextView
+                                    android:id="@+id/seraDomMedico"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.14"
+                                    android:enabled="false"
+                                    android:textColor="@color/def"
+                                    android:fontFamily="serif"
+                                    android:gravity="center"
+                                    android:text="@string/default_Hour"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="INDIRIZZO STUDIO MEDICO"
+                        android:fontFamily="@font/raleway_bold"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                        android:textColor="@color/greenDark" />
+                    <!--provincia-->
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/layoutEditProvinciaStudMed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editProvinciaStudMed"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="PROVINCIA"
+                            android:fontFamily="@font/raleway_regular"
+                            android:imeOptions="actionGo"
+                            android:inputType="text"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/greenDark" />
+                    <!--citta-->
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/layoutEditCittaStudMed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editCittaStudMed"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="CITTA|PROVINCIA"
+                            android:fontFamily="@font/raleway_regular"
+                            android:imeOptions="actionGo"
+                            android:inputType="text"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/greenDark" />
+                    <!--via-->
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/layoutEditViaStudMed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editViaStudMed"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="VIA|PIAZZA"
+                            android:fontFamily="@font/raleway_regular"
+                            android:imeOptions="actionDone"
+                            android:inputType="text"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@color/greenDark" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <!--terza pagina-->
+    <ScrollView
+        android:id="@+id/registrazione3Med"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/topbarRegistrazioneMedico"
+        android:layout_above="@id/continuaMed"
+        android:layout_marginTop="30dp"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="vertical">
+
+                <!--dati di contatto-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="90dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:text="DATI DI CONTATTO"
+                        android:fontFamily="@font/raleway_bold"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                        android:textColor="@color/greenDark" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@color/greenDark" />
+
+                    <!--email-->
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/layoutEditEmailMed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editEmailMed"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="EMAIL"
+                            android:fontFamily="@font/raleway_regular"
+                            android:imeOptions="actionGo"
+                            android:inputType="textEmailAddress"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@color/greenDark" />
+
+                    <!--telefono-->
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/layoutEditTelMed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editTelMed"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="TELEFONO"
+                            android:fontFamily="@font/raleway_regular"
+                            android:imeOptions="actionGo"
+                            android:inputType="phone"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@color/greenDark" />
+                </LinearLayout>
+
+                <!--password-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:text="IMPOSTAZIONE PASSWORD"
+                        android:fontFamily="@font/raleway_bold"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                        android:textColor="@color/greenDark" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@color/greenDark" />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/layoutEditPasswordMed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editPasswordMed"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="PASSWORD"
+                            android:imeOptions="actionGo"
+                            android:fontFamily="@font/raleway_regular"
+                            android:inputType="textPassword"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@color/greenDark" />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/layoutEditConfermaPasswordMed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editConfermaPasswordMed"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="CONFERMA PASSWORD"
+                            android:imeOptions="actionDone"
+                            android:fontFamily="@font/raleway_regular"
+                            android:inputType="textPassword"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/greenDark" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@color/greenDark" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/continuaMed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/greenDark"
+        android:text="@string/continua"
+        android:fontFamily="@font/raleway_bold"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+        android:textColor="@color/white" />
+</RelativeLayout>

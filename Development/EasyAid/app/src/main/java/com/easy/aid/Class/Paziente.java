@@ -11,15 +11,21 @@ public class Paziente implements Serializable {
     private String cognome;
     private String dataNascita;
     private String codiceFiscale;
+    private boolean sesso;
     private Indirizzo indirizzoNascita;
     private Indirizzo indirizzoResidenza;
     private String medicoBase, password;
 
-    public Paziente(int ID, String nome, String cognome, String dataNascita, String codiceFiscale, Indirizzo indirizzoNascita, Indirizzo indirizzoResidenza, String medicoBase, String password) {
+    public Paziente(int ID, String nome, String cognome, String dataNascita, String sesso, String codiceFiscale, Indirizzo indirizzoNascita, Indirizzo indirizzoResidenza, String medicoBase, String password) {
         this.ID = ID;
         this.nome = nome;
         this.cognome = cognome;
         this.dataNascita = dataNascita;
+        if(sesso.equals("Maschio")){
+            this.sesso = true;
+        }else{
+            this.sesso = false;
+        }
         this.codiceFiscale = codiceFiscale;
         this.indirizzoNascita = indirizzoNascita;
         this.indirizzoResidenza = indirizzoResidenza;
@@ -102,4 +108,11 @@ public class Paziente implements Serializable {
         this.password = password;
     }
 
+    public boolean isSesso() {
+        return sesso;
+    }
+
+    public void setSesso(boolean sesso) {
+        this.sesso = sesso;
+    }
 }

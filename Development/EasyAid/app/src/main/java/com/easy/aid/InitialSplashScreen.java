@@ -83,6 +83,7 @@ public class InitialSplashScreen extends AppCompatActivity {
         global.comuni = new ArrayList<String>();
         global.codiceComuni = new ArrayList<String>();
         global.db = new DatabaseHelper(this);
+        global.db.truncate();
         global.prefs.edit().putString("readRicette", "0").apply();
         global.prefs.edit().putString("readOrdini", "0").apply();
 
@@ -97,6 +98,7 @@ public class InitialSplashScreen extends AppCompatActivity {
 
             if (global.prefs.getString("settore", null).equals("Paziente")) {
                 intent = new Intent(InitialSplashScreen.this, MainPaziente.class);
+                intent.putExtra("Bentornato", true);
                 settore = "Paziente";
 
             } else if (global.prefs.getString("settore", null).equals("Medico")) {
@@ -215,13 +217,14 @@ public class InitialSplashScreen extends AppCompatActivity {
                                     String codiceFiscale = object.getString("codicefiscale");
                                     String provinciaNascita = object.getString("provincianascita");
                                     String cittaNascita = object.getString("cittanascita");
+                                    String sesso = object.getString("sesso");
                                     String provinciaResidenza = object.getString("provinciaresidenza");
                                     String cittaResidenza = object.getString("cittaresidenza");
                                     String viaResidenza = object.getString("viaresidenza");
                                     String idMedicoBase = object.getString("idmedicobase");
                                     Indirizzo nascita = new Indirizzo(provinciaNascita,cittaNascita,null,null);
                                     Indirizzo residenza = new Indirizzo(provinciaResidenza,cittaResidenza,viaResidenza,null);
-                                    global.paziente = new Paziente(id, nome,cognome,dataNascita,codiceFiscale,nascita,residenza,idMedicoBase,null);
+                                    global.paziente = new Paziente(id, nome,cognome,dataNascita, sesso, codiceFiscale,nascita,residenza,idMedicoBase,null);
 
                                     ReadMedico(idMedicoBase);
 

@@ -56,24 +56,26 @@
 
                 <ImageView
                     android:id="@+id/backOrdinaRicPaz"
-                    android:layout_width="30dp"
-                    android:layout_height="40dp"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_centerVertical="true"
                     android:layout_gravity="center"
                     android:src="@drawable/back" />
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="55dp"
                     android:fontFamily="@font/raleway_bold"
                     android:gravity="center"
                     android:text="ORDINA FARMACO"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Display1"
                     android:textColor="@color/greenDark" />
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="40dp"
+                    android:layout_width="45dp"
+                    android:layout_height="55dp"
                     android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
                     android:layout_gravity="center"
                     android:src="@drawable/carrello" />
 
@@ -103,7 +105,7 @@
                 android:gravity="center"
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="10dp"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                 android:fontFamily="@font/raleway_bold"
                 android:text="LISTA RICETTE" />
 
@@ -117,6 +119,8 @@
                     android:id="@+id/listViewOrdinaFarmacoPaziente"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
                     android:listSelector="@android:color/transparent"
                     android:layout_marginBottom="5dp"
                     android:divider="@null" />
@@ -127,9 +131,7 @@
                 android:id="@+id/bottombarOrdinaFarmacoPaz"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="5dp"
-                android:layout_marginBottom="5dp">
+                android:layout_alignParentBottom="true">
 
 
                 <LinearLayout
@@ -143,10 +145,11 @@
                         android:id="@+id/continuaOrdinaFarmacoPaziente"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="3dp"
-                        android:background="@drawable/all_round"
+                        android:background="@color/greenDark"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                         android:fontFamily="@font/raleway_bold"
                         android:text="CONTINUA ORDINE"
+                        android:padding="20dp"
                         android:textColor="@color/white" />
 
                 </LinearLayout>
@@ -172,9 +175,9 @@
                     android:id="@+id/indirizzoListaRicette"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:textAlignment="center"
                     android:layout_marginBottom="5dp"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                     android:fontFamily="@font/raleway_bold"
                     android:textColor="@color/black"
                     android:text="Indirizzo: Via Carino 24, Ponteranica (BG)"/>
@@ -183,10 +186,10 @@
                     android:id="@+id/totaleListaRicette"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:textAlignment="center"
                     android:layout_marginBottom="5dp"
                     android:textColor="@color/black"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                     android:fontFamily="@font/raleway_bold"
                     android:text="Totale: 54€"/>
 
@@ -198,6 +201,8 @@
                 android:layout_height="match_parent"
                 android:listSelector="@android:color/transparent"
                 android:layout_marginBottom="5dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
                 android:divider="@null"
                 android:layout_below="@+id/topListaRicette"
                 android:layout_above="@+id/bottombarOrdinaRicettaPaziente"/>
@@ -223,6 +228,7 @@
                         android:layout_margin="3dp"
                         android:background="@drawable/all_round"
                         android:fontFamily="@font/raleway_bold"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                         android:text="PAGA ORA"
                         android:textColor="@color/white" />
 
@@ -242,6 +248,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="3dp"
                         android:background="@drawable/all_round"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                         android:fontFamily="@font/raleway_bold"
                         android:text="INVIA ORDINE"
                         android:textColor="@color/white" />

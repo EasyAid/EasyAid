@@ -22,13 +22,9 @@
         <activity android:name=".Medico.RichiesteRicetteMedico" />
         <activity android:name=".Farmacia.RegistrazioneFarmacia" />
         <activity
-            android:name=".MainActivity"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait" />
+            android:name=".MainActivity"/>
         <activity
-            android:name=".InitialSplashScreen"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait">
+            android:name=".InitialSplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,57 +33,40 @@
         </activity>
         <activity
             android:name=".Paziente.AccessoPaziente"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Paziente.MainPaziente"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Paziente.RichiediVisitaPaziente"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait" />
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Paziente.RichiediRicettaPaziente"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Paziente.RichiediVisitaRicettaPaziente"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Paziente.OrdinaRicettaPaziente"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Paziente.ImpostazioniPaziente"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Paziente.CronologiaPaziente"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Paziente.RegistrazionePaziente"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Medico.AccessoMedico"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait" />
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".Farmacia.AccessoFarmacia"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait" />
-        <activity android:name=".Medico.MainMedico" />
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".Medico.MainMedico"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Medico.RegistrazioneMedico"
             android:windowSoftInputMode="adjustResize" />

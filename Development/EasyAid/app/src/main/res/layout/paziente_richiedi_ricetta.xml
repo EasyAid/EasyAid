@@ -39,6 +39,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:gravity="center"
+                        android:fontFamily="@font/raleway_bold"
                         android:textColor="@color/greenDark"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                         android:text="RICHIEDI RICETTA MEDICO"/>
@@ -70,7 +71,7 @@
                         android:id="@+id/nomeCognomePazienteRichiediRicettaPaziente"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="serif"
+                        android:fontFamily="@font/raleway_regular"
                         android:text="PAZIENTE"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         android:textColor="@color/greenDark" />
@@ -83,7 +84,7 @@
                         android:id="@+id/nomeCognomeMedicoRichiediRicettaPaz"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="serif"
+                        android:fontFamily="@font/raleway_regular"
                         android:layout_marginBottom="10dp"
                         android:textColor="@color/greenDark"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
@@ -121,7 +122,7 @@
                                     android:layout_height="wrap_content"
                                     android:hint="@string/descrizione_patologia"
                                     android:inputType="text"
-                                    android:fontFamily="serif"
+                                    android:fontFamily="@font/raleway_regular"
                                     android:textColor="@color/black"
                                     android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                                     android:background="@null"/>
@@ -148,7 +149,7 @@
                                 android:layout_alignParentTop="true"
                                 android:layout_centerHorizontal="true"
                                 android:hint="@string/farmaco_richiesto"
-                                android:fontFamily="serif"
+                                android:fontFamily="@font/raleway_regular"
                                 android:inputType="text"
                                 android:imeOptions="actionDone"
                                 android:textColor="@color/black"
@@ -188,7 +189,7 @@
                             android:layout_marginTop="20dp"
                             android:textColor="@color/black"
                             android:text="@string/prezzo"
-                            android:fontFamily="serif"
+                            android:fontFamily="@font/raleway_regular"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:background="@null"/>
 
@@ -207,6 +208,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginBottom="4dp"
                     android:textColor="@color/greenDark"
+                    android:fontFamily="@font/raleway_regular"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:text="@string/esenzione_per_reddito"/>
 
@@ -215,6 +217,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/greenDark"
                     android:layout_marginLeft="15dp"
+                    android:fontFamily="@font/raleway_regular"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:text="@string/esenzione_per_patologia"/>
 
@@ -231,6 +234,7 @@
         android:layout_marginBottom="0dp"
         android:background="@color/greenDark"
         android:text="@string/invia_richiesta"
+        android:fontFamily="@font/raleway_bold"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
         android:textColor="@color/white" />
 </RelativeLayout>
