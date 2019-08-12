@@ -36,6 +36,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -58,6 +59,7 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
     private double tot = 0;
     private ListView listView, ordineList;
     private ImageView back;
+    private int step;
 
     private LinearLayout splash;
     private RelativeLayout noSplash;
@@ -361,6 +363,7 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
             case R.id.continuaOrdinaFarmacoPaziente:
                 if (ordine.size() != 0) {
 
+                    step = 1;
                     primo.setVisibility(View.GONE);
                     secondo.setVisibility(View.VISIBLE);
 
@@ -391,6 +394,40 @@ public class OrdinaRicettaPaziente extends AppCompatActivity implements View.OnC
                     Invia(ordine.get(i), formattedDate, formattedTime);
                 }
                 break;
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt("pagOrdinePaziente", step);
+        outState.putSerializable("ordineOrdinePaziente", (Serializable) ordine);
+        outState.putSerializable("ricetteOrdinePaziente", (Serializable) global.ricette);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        step = savedInstanceState.getInt("pagOrdinePaziente");
+        ordine = (List<Ricetta>) savedInstanceState.getSerializable("ordineOrdinePaziente");
+        global.ricette = (List<Ricetta>) savedInstanceState.getSerializable("ricetteOrdinePaziente");
+        switch (step) {
+            case 0: {
+                primo.setVisibility(View.VISIBLE);
+                secondo.setVisibility(View.GONE);
+                CustomAdapter adapter = new CustomAdapter(getApplicationContext(), global.ricette, global.farmaciID, ordine, true, totale, global.farmaciID);
+                ordineList.setAdapter(adapter);
+                break;
+            }
+            case 1: {
+                primo.setVisibility(View.GONE);
+                secondo.setVisibility(View.VISIBLE);
+                CustomAdapter adapter = new CustomAdapter(getApplicationContext(), global.ricette, global.farmaciID, ordine, false, totale, global.farmaciID);
+                ordineList.setAdapter(adapter);
+                break;
+            }
         }
     }
 }

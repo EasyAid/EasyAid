@@ -31,8 +31,9 @@
                 android:id="@+id/farmacoCardView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/raleway_regular"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/black"
+                android:fontFamily="@font/raleway_bold"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                 android:text="FARMACO: " />
 
             <TextView
@@ -40,6 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:fontFamily="@font/raleway_regular"
                 android:text="PREZZO: " />
 

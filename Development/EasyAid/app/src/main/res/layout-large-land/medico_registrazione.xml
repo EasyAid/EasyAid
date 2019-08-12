@@ -27,19 +27,19 @@
             <!--tasto indietro-->
             <ImageView
                 android:id="@+id/backRegistrazioneMed"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_gravity="center"
                 android:src="@drawable/back" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="55dp"
                 android:gravity="center"
                 android:text="REGISTRAZIONE MEDICO"
                 android:textAlignment="center"
                 android:fontFamily="@font/raleway_bold"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Display1"
                 android:textColor="@color/greenDark" />
 
         </LinearLayout>
@@ -104,7 +104,7 @@
                             android:fontFamily="@font/raleway_regular"
                             android:imeOptions="actionGo"
                             android:inputType="text"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                             android:textColor="@color/greenDark" />
                     </android.support.design.widget.TextInputLayout>
 
@@ -135,7 +135,7 @@
                             android:imeOptions="actionGo"
                             android:fontFamily="@font/raleway_regular"
                             android:inputType="text"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                             android:textColor="@color/greenDark" />
 
                     </android.support.design.widget.TextInputLayout>
@@ -173,7 +173,7 @@
                             android:imeOptions="actionGo"
                             android:inputType="text"
                             android:fontFamily="@font/raleway_regular"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                             android:textColor="@color/greenDark" />
                     </LinearLayout>
 
@@ -219,7 +219,7 @@
                             android:layout_height="wrap_content"
                             android:text="Femmina"
                             android:fontFamily="@font/raleway_regular"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                             android:textColor="@color/greenDark" />
                     </RadioGroup>
                 </LinearLayout>
@@ -256,7 +256,7 @@
                             android:imeOptions="actionGo"
                             android:inputType="text"
                             android:fontFamily="@font/raleway_regular"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                             android:textColor="@color/greenDark" />
 
                     </android.support.design.widget.TextInputLayout>
@@ -289,7 +289,7 @@
                             android:imeOptions="actionGo"
                             android:inputType="text"
                             android:fontFamily="@font/raleway_regular"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                             android:textColor="@color/greenDark" />
 
                     </android.support.design.widget.TextInputLayout>
@@ -322,7 +322,7 @@
                             android:imeOptions="actionGo"
                             android:inputType="text"
                             android:fontFamily="@font/raleway_regular"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                             android:textColor="@color/greenDark" />
 
                     </android.support.design.widget.TextInputLayout>
@@ -365,7 +365,7 @@
                             android:imeOptions="actionDone"
                             android:inputType="text"
                             android:fontFamily="@font/raleway_regular"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
                             android:textColor="@color/greenDark" />
                     </android.support.design.widget.TextInputLayout>
 
@@ -1150,6 +1150,6 @@
         android:background="@color/greenDark"
         android:text="@string/continua"
         android:fontFamily="@font/raleway_bold"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Display1"
         android:textColor="@color/white" />
 </RelativeLayout>

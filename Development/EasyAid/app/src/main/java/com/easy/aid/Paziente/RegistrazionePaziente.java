@@ -789,4 +789,40 @@ public class RegistrazionePaziente extends AppCompatActivity {
         codFis+=carattereControllo;
         codiceFiscale.setText(codFis);
     }
+
+    //TABLET
+
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("pagRegistrazionePaziente", step);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        step = savedInstanceState.getInt("pagRegistrazionePaziente");
+        switch (step) {
+            case 0: {
+                registrazione[0].setVisibility(View.VISIBLE);
+                registrazione[1].setVisibility(View.GONE);
+                registrazione[2].setVisibility(View.GONE);
+                break;
+            }
+            case 1: {
+                registrazione[1].setVisibility(View.VISIBLE);
+                registrazione[0].setVisibility(View.GONE);
+                registrazione[2].setVisibility(View.GONE);
+                break;
+            }
+            case 2: {
+                registrazione[2].setVisibility(View.VISIBLE);
+                registrazione[0].setVisibility(View.GONE);
+                registrazione[1].setVisibility(View.GONE);
+                break;
+            }
+        }
+    }
 }
