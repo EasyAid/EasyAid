@@ -49,26 +49,16 @@ public class AccessoFarmacia extends AppCompatActivity {
 
         global = (NetVariables) (this).getApplication();
 
+
+        checkAPI();
+
         accedi = findViewById(R.id.accessoButtonFarm);
         registrazione = findViewById(R.id.registrazioneButtonFarm);
-
-        //CONTROLLA LE API DEL TELEFONO, SE MAGGIORI DI MARSHMELLOW MODIFICA IL COLORE DEL TESTO DELLA NOTIFICATION BAR IN CHIARO
-        //ALTRIMENTI SE E' INFERIORE ALLE API 23 MODIFICA LA NOTIFICATION BAR IN COLORE SCURO (IN QUANTO NON PUO MODIFICARE IL COLORE DEL TESTO)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        }else {
-            Window window = getWindow();
-            window.setStatusBarColor(ContextCompat
-                    .getColor(getApplicationContext(),R.color.colorAccent));
-        }
-
-        pwd         = findViewById(R.id.accessoPasswordFarm);
-        cf          = findViewById(R.id.accessoCodiceFarmacia);
-        back        = findViewById(R.id.backAccessoFarm);
-        layoutPass  = findViewById(R.id.layoutAccessoPasswordFarm);
-        back        = findViewById(R.id.backAccessoFarm);
+        pwd = findViewById(R.id.accessoPasswordFarm);
+        cf = findViewById(R.id.accessoCodiceFarmacia);
+        back = findViewById(R.id.backAccessoFarm);
+        layoutPass = findViewById(R.id.layoutAccessoPasswordFarm);
+        back = findViewById(R.id.backAccessoFarm);
 
         accedi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,9 +68,9 @@ public class AccessoFarmacia extends AppCompatActivity {
                 String sCF = cf.getText().toString().trim();
                 String sPass = pwd.getText().toString().trim();
 
-                if(!sCF.isEmpty() && !sPass.isEmpty()){
-                    Login(sCF,sPass);
-                }else{
+                if (!sCF.isEmpty() && !sPass.isEmpty()) {
+                    Login(sCF, sPass);
+                } else {
                     layoutPass.setPasswordVisibilityToggleEnabled(false);
                     cf.setError("Inserire mail");
                     pwd.setError("Inserire password");
@@ -104,6 +94,7 @@ public class AccessoFarmacia extends AppCompatActivity {
         });
 
     }
+
     private void Login(final String sCF, final String sPass) {
         intent = new Intent(AccessoFarmacia.this, MainFarmacia.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -115,14 +106,14 @@ public class AccessoFarmacia extends AppCompatActivity {
                         JSONObject jsonObject = null;
                         try {
                             jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString( "success");
+                            String success = jsonObject.getString("success");
                             JSONArray jsonArray = jsonObject.getJSONArray("login");
 
-                            if (success.equals("1")){
+                            if (success.equals("1")) {
                                 intent.putExtra("Email", sCF);
                                 startActivity(intent);
                                 finish();
-                            }else{
+                            } else {
                                 Toast.makeText(AccessoFarmacia.this, "Dati errati", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
@@ -134,10 +125,9 @@ public class AccessoFarmacia extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(AccessoFarmacia.this, "Error " + error.toString() , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AccessoFarmacia.this, "Error " + error.toString(), Toast.LENGTH_SHORT).show();
                     }
-                })
-        {
+                }) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
@@ -152,5 +142,19 @@ public class AccessoFarmacia extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
 
+    }
+
+    private void checkAPI() {
+        //CONTROLLA LE API DEL TELEFONO, SE MAGGIORI DI MARSHMELLOW MODIFICA IL COLORE DEL TESTO DELLA NOTIFICATION BAR IN CHIARO
+        //ALTRIMENTI SE E' INFERIORE ALLE API 23 MODIFICA LA NOTIFICATION BAR IN COLORE SCURO (IN QUANTO NON PUO MODIFICARE IL COLORE DEL TESTO)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        } else {
+            Window window = getWindow();
+            window.setStatusBarColor(ContextCompat
+                    .getColor(getApplicationContext(), R.color.colorAccent));
+        }
     }
 }

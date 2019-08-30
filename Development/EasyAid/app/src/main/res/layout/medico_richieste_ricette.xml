@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
     tools:context=".Medico.RichiesteRicetteMedico">
@@ -48,11 +49,24 @@
             android:background="@color/greenDark" />
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerViewMedico"
+    <TextView
+        android:id="@+id/listaRichiediMedico"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/topbarRichiesteMedico"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/raleway_bold"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:text="LISTA RICETTE"/>
+
+    <ListView
+        android:id="@+id/listMedicoRichiedi"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
-        android:layout_below="@id/topbarRichiesteMedico"/>
+        android:layout_margin="10dp"
+        android:listSelector="@android:color/transparent"
+        android:divider="@null"
+        android:layout_below="@+id/listaRichiediMedico"/>
 
 </RelativeLayout>

@@ -21,6 +21,10 @@ public class OrdinaRicetteFarmacia extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.farmacia_ordina_ricette);
 
+        checkAPI();
+    }
+
+    private void checkAPI(){
         //CONTROLLA LE API DEL TELEFONO, SE MAGGIORI DI MARSHMELLOW MODIFICA IL COLORE DEL TESTO DELLA NOTIFICATION BAR IN CHIARO
         //ALTRIMENTI SE E' INFERIORE ALLE API 23 MODIFICA LA NOTIFICATION BAR IN COLORE SCURO (IN QUANTO NON PUO MODIFICARE IL COLORE DEL TESTO)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
