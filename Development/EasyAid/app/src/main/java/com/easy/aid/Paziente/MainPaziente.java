@@ -212,7 +212,7 @@ public class MainPaziente extends AppCompatActivity {
                                     }
                                 }
                                 ReadMedico(idMedicoBase);
-                        }
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(MainPaziente.this, "Error " + e.toString(), Toast.LENGTH_SHORT).show();

@@ -36,6 +36,7 @@ public class NetVariables extends Application {
 
     public Medico medico;
     public Paziente paziente;
+    public Farmacia farmacia;
     public long mLastClickTime;
 
     public boolean checktime(){

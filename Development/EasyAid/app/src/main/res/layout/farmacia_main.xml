@@ -9,164 +9,198 @@
     android:focusableInTouchMode="true"
     tools:context=".Farmacia.MainFarmacia">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:orientation="horizontal" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@color/greenDark" />
-
-        <TextView
-            android:id="@+id/nomeFarmaciaHead"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:fontFamily="@font/raleway_bold"
-            android:gravity="center"
-            android:text="NOME FARMACIA"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
-            android:textColor="@color/greenDark" />
-    </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/splashMainFarmacia"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:gravity="center"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:visibility="gone"
+        android:gravity="center">
 
-        <LinearLayout
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="3dp"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/logo"/>
 
-            <!-- Richiesta farmaco -->
-            <LinearLayout
-                android:id="@+id/richiestaFarmacoFarm"
-                android:layout_width="155dp"
-                android:layout_height="155dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="3dp"
-                android:background="@drawable/empty_circle"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/ordina_farmaco" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/raleway_bold"
-                    android:text="RICHIESTE\nFARMACI"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/greenDark" />
-            </LinearLayout>
-
-            <!-- Calendario -->
-            <LinearLayout
-                android:id="@+id/calendarioFarm"
-                android:layout_width="155dp"
-                android:layout_height="155dp"
-                android:layout_marginLeft="3dp"
-                android:background="@drawable/empty_circle"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/hd_calendar" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/raleway_bold"
-                    android:text="CALENDARIO"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/greenDark" />
-
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animation_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_gravity="center"
+            app:lottie_autoPlay="true"
+            app:lottie_colorFilter="@color/colorAccent"
+            app:lottie_fileName="loading.json"
+            app:lottie_loop="true"/>
 
-            <!-- Cronologia -->
-            <LinearLayout
-                android:id="@+id/cronologiaFarm"
-                android:layout_width="155dp"
-                android:layout_height="155dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="3dp"
-                android:background="@drawable/empty_circle"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="75dp"
-                    android:src="@drawable/cronologia" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/raleway_bold"
-                    android:text="CRONOLOGIA"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/greenDark" />
-
-            </LinearLayout>
-
-            <!-- Imposstazioni -->
-            <LinearLayout
-                android:id="@+id/impostazioniFarm"
-                android:layout_width="155dp"
-                android:layout_height="155dp"
-                android:layout_marginLeft="3dp"
-                android:background="@drawable/empty_circle"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/impostazioni" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/raleway_bold"
-                    android:text="IMPOSTAZIONI"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/greenDark" />
-
-            </LinearLayout>
-        </LinearLayout>
     </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/noSplahMainFarmacia"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:orientation="horizontal" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/greenDark" />
+
+            <TextView
+                android:id="@+id/nomeCognomeFarm"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:fontFamily="@font/raleway_bold"
+                android:gravity="center"
+                android:text="NOME FARMACIA"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                android:textColor="@color/greenDark" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <!-- Richiesta farmaco -->
+                <LinearLayout
+                    android:id="@+id/richiestaFarmacoFarm"
+                    android:layout_width="155dp"
+                    android:layout_height="155dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="3dp"
+                    android:background="@drawable/empty_circle"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/ordina_farmaco" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="FARMACI\nORDINI"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/greenDark" />
+                </LinearLayout>
+
+                <!-- Calendario -->
+                <LinearLayout
+                    android:id="@+id/calendarioFarm"
+                    android:layout_width="155dp"
+                    android:layout_height="155dp"
+                    android:layout_marginLeft="3dp"
+                    android:background="@drawable/empty_circle"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/hd_calendar" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="CALENDARIO"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/greenDark" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <!-- Cronologia -->
+                <LinearLayout
+                    android:id="@+id/cronologiaFarm"
+                    android:layout_width="155dp"
+                    android:layout_height="155dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="3dp"
+                    android:background="@drawable/empty_circle"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="75dp"
+                        android:src="@drawable/cronologia" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="CRONOLOGIA"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/greenDark" />
+
+                </LinearLayout>
+
+                <!-- Imposstazioni -->
+                <LinearLayout
+                    android:id="@+id/impostazioniFarm"
+                    android:layout_width="155dp"
+                    android:layout_height="155dp"
+                    android:layout_marginLeft="3dp"
+                    android:background="@drawable/empty_circle"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/impostazioni" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="IMPOSTAZIONI"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/greenDark" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </RelativeLayout>

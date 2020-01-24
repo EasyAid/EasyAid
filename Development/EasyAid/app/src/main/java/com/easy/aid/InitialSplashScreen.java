@@ -246,7 +246,7 @@ public class InitialSplashScreen extends AppCompatActivity {
                                     String resultTelefono= object.getString("telefono");
 
                                     Indirizzo resultLuogonascita = new Indirizzo(resultProvincianascita, resultCittanascita);
-                                    Indirizzo resultLuogostudio = new Indirizzo(resultProvinciastudio, resultCittastudio);
+                                    Indirizzo resultLuogostudio = new Indirizzo(resultProvinciastudio, resultCittastudio, resultViastudio);
 
                                     global.medico = new Medico(id, resultNome, resultCognome, resultDatanascita,
                                             global.medico.getStringSesso(resultSesso),
