@@ -10,15 +10,14 @@
     replaceText(`${type}-version`, process.versions[type])
   }
 })*/
-const { ipcRenderer } = require('electron');
+const { remote } = require('electron');
 
-function init() {
-	// add global variables to your web page
-	
-	ipcRenderer.send("theme-request", "");
-	ipcRenderer.on("themes", (event, msg) => console.log("msg"));
-	window.isElectron = true;
-	console.log("preload");
+function preload() {
+	console.log(window);
+	window.addEventListener("test-answer", function(e) {
+		console.log(e.details);
+	});
+	window.dispatchEvent(new CustomEvent("test", {"details": "test question"}));
 }
 
-init();
+preload();
