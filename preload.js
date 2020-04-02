@@ -10,8 +10,6 @@
     replaceText(`${type}-version`, process.versions[type])
   }
 })*/
-const { remote } = require('electron');
-
 function preload() {
 	console.log(window);
 	window.addEventListener("test-answer", function(e) {

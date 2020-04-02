@@ -26,6 +26,8 @@ function createWindow() {
 	
 	console.log(mainWindow.webContents);
 
+	mainWindow.webContents.executeJavaScript('window.dispatchEvent(new CustomEvent("test", {"details": "test question"}));');
+
 }
 
 app.whenReady().then(createWindow);
